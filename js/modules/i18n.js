@@ -74,14 +74,13 @@ export const translations = {
         phase1Title: "Aşama 1: Fikir, AR-GE & Ücretsiz Ön Kayıt",
         phase1Desc: "Müşteriler kişisel bilgi ve miras tercihlerini içeren formu doldurarak ücretsiz olarak ön kayıt yaptırır. Bu aşamada herhangi bir kayıt ücreti talep edilmez; biyo-fizik AR-GE ve uluslararası miras hukuku altyapısı modellenir.",
         p1Check1: "Ücretsiz Kişisel Kayıt ve Biyo-Enerji Taslağı Oluşturma",
-        p1Check2: "Miras Devir Protokolü ve Vasiyetname Şablonu Hazırlığı",
         p1Check4: "Hukuki Beyan ve Sorumluluk Şartları Kabulü",
 
         phase2Badge: "AŞAMA 2 (AR-GE ve Altyapı Hazırlığı)",
         phase2Title: "Aşama 2: Biyo-Enerji Kilitleme & Escrow Sözleşmeleri",
         phase2Desc: "Teknolojik biyo-tarama donanımları ve uluslararası banka escrow sözleşmeleri devreye girer. Ön kayıt yaptıran müşterilerin ölüm öncesi hücre ve bilinç frekansı protokole kilitlenir.",
         p2Check1: "Ölüm Öncesi Hücresel Biyo-Enerji İzi Kilitleme",
-        p2Check2: "Resmi Bankacılık Escrow ve Vasiyetname Tescili",
+        p2Check2: "Miras Devir Protokolü, Vasiyetname Şablonu Hazırlığı ve Resmi Bankacılık Escrow Tescili",
         p2Check3: "Aşama 1 sürecinde form doldurup bağış yapan sıralamaya göre önceliklendirilen kişiye özel aktivasyon",
         p2Check4: "Kuantum Şifreli Dijital Miras Kasası Kurulumu",
 
@@ -322,14 +321,13 @@ export const translations = {
         phase1Title: "Phase 1: Concept, R&D & Free Pre-Registration",
         phase1Desc: "Clients fill out personal preferences and pre-register free of charge. No upfront fees are required during Phase 1 while biophysics R&D and legal escrow models are finalized.",
         p1Check1: "Free Personal Data Registration & Bio-Energy Profiling",
-        p1Check2: "Inheritance Escrow Transfer Protocol & Will Drafting",
         p1Check4: "Legal Liability & Responsibility Consent Protocol",
 
         phase2Badge: "PHASE 2 (R&D & Infra Prep)",
         phase2Title: "Phase 2: Bio-Energy Lock & Estate Escrow",
         phase2Desc: "Deployment of bio-energy frequency scanning hardware and international banking escrow contracts. Pre-registered clients have their pre-mortem cellular signature locked into the protocol.",
         p2Check1: "Pre-Mortem Cellular Bio-Energy Signature Lock",
-        p2Check2: "Official Banking Escrow & Will Registration",
+        p2Check2: "Inheritance Transfer Protocol, Will Drafting & Official Banking Escrow Registration",
         p2Check3: "Exclusive activation prioritized by ranking for applicants who complete the form and donate during Phase 1",
         p2Check4: "Quantum Encrypted Digital Will Vault Setup",
 
