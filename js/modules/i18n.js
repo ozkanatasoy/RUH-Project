@@ -94,7 +94,7 @@ export const translations = {
         // Phases (Roadmap Architecture Badges)
         phaseSub: "ŞEFFAFLIK İLKESİ VE PROJE YOL HARİTASI",
         phaseTitle: "Gelişim Yol Haritası",
-        phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmuştur.",
+        phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmıştır.",
         
         phase1Badge: "AŞAMA 1 (Şu An Aktif)",
         phase1Title: "Aşama 1: Fikir, AR-GE & Ücretsiz Ön Kayıt",
@@ -127,7 +127,7 @@ export const translations = {
         donateTargetLabel: "Hedeflanan AR-GE Fonu:",
         donatePriorityNotice: "<strong>Öncelik Kuralı:</strong> Form dolduran kullanıcılar arasında bağış yapan kişilerin kimlikleri (gizlilik ilkesi gereği ad ve soyadın baş harfleri hariç şifrelenerek) en çok bağış yapana göre sıralanır. En yüksek bağış sahipleri Aşama 2 ve 3 hizmet aktivasyonunda 1. Derece VIP sırayı alır.",
         btnOpenDonateModal: "AR-GE Havuzuna Bağış Yap & Öncelik Kazan",
-        leaderboardHeader: "Şifreli Bağışçı Sıralama Tablosu (En Yüksek Bağış Sıralaması)",
+        leaderboardHeader: "Bağışçı Sıralama Tablosu",
         thRank: "Sıra",
         thIdentity: "Şifreli Kimlik / İnisiyaller",
         thAmount: "Bağış Miktarı",
@@ -463,7 +463,7 @@ export const translations = {
         donateTargetLabel: "Target R&D Goal:",
         donatePriorityNotice: "<strong>Priority Rule:</strong> Donating applicants are encrypted (names masked except initials for privacy) and sorted by contribution amount. Top donors secure 1st Class VIP Priority placement for Phase 2 & 3 service activation.",
         btnOpenDonateModal: "Donate to R&D Fund & Gain Priority",
-        leaderboardHeader: "Encrypted Donor Leaderboard (Sorted by Highest Contribution)",
+        leaderboardHeader: "Donor Leaderboard Table",
         thRank: "Rank",
         thIdentity: "Encrypted Identity / Initials",
         thAmount: "Contribution Amount",
