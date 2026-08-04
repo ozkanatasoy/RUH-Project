@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal, Expanded FAQ & KVKK Privacy Policy.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy & Legal.html.
  */
 
 export const translations = {
@@ -10,7 +10,7 @@ export const translations = {
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         
-        // Nav (Shortened navLegal to Hukuk & KVKK / Legal & GDPR for header space)
+        // Nav
         navAbout: "Proje & Aşamalar",
         navMechanics: "Teknoloji & İşleyiş",
         navDonations: "AR-GE Havuzu",
@@ -21,6 +21,8 @@ export const translations = {
         navCta: "Yerinizi Ayırtın",
         navUserBtn: "Giriş Yap",
         navUserLogged: "Profilim",
+        btnBackMain: "Ana Portala Dön",
+        btnGoApply: "Anladım, Ön Kayıt Formuna Git",
 
         // Placeholders & Form Hints
         phFullName: "Örn: Ahmet Yıldız",
@@ -264,6 +266,46 @@ export const translations = {
         faqQ10: "Kişisel verilerim ve vasiyet detaylarım siber saldırılara karşı nasıl korunuyor?",
         faqA10: "Bütün biyo-profil kayıtları, finansal talimatlar ve vasiyet metinleri Post-Kuantum Şifreleme (PQC) ve ISO/IEC 27001 güvenlik standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik ilkesi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****).",
 
+        // Legal.html Page Specific i18n Keys
+        legalPageTag: "RESMİ HUKUKİ BEYAN & PROTOKOL ŞARTLARI",
+        legalPageHeading: "Hukuki Çerçeve ve Escrow Sözleşmesi",
+        legalPageSub: "RUH Project kapsamında yürütülen biyo-enerji kilitleme, kuantum GPS tespiti ve uluslararası bankacılık miras escrow devirlerinin yasal çerçevesi aşağıda ayrıntılı olarak açıklanmıştır.",
+        
+        legalM1Title: "Madde 1 - Taraflar ve Sözleşmenin Amacı",
+        legalM1P1: "İşbu sözleşme, R.U.H. Incorporation (Resonant Universal Heritage Inc.) ('Firma / Protokol Yönetimi') ile dijital portal üzerinden Aşama 1 ön kayıt formunu dolduran veya servise katılım sağlayan 'Müşteri / Kullanıcı' arasında akdedilmiştir.",
+        legalM1P2: "Sözleşmenin amacı; ölüm öncesinde kilitlenen biyo-enerji frekans izinin, ölüm sonrasında kuantum GPS uyduları ile tespit edilmesi ve müşterinin önceden belirlediği miras haklarının resmi bankacılık escrow ve vasiyetname mekanizmaları marifetiyle yeni kimliğine aktarılmasının yasal sınırlarını düzenlemektir.",
+        
+        legalM2Title: "Madde 2 - Aşama 1 Şeffaflık Beyanı ve AR-GE Statüsü",
+        legalM2P1: "Müşteri, RUH Project'in mevcut durumda bir <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecinde olduğunu açıkça beyan ve kabul eder. Aşama 1 kapsamında doldurulan formlar için müşteriden herhangi bir katılım ücreti talep edilmez.",
+        legalM2Notice: "<strong>Önemli Bilgilendirme:</strong> Ön kayıt yaptıran müşteriler, Aşama 2 (Biyo-Enerji Kilitleme Donanımı) ve Aşama 3 (Kuantum GPS Tespiti) devreye girdiğinde hizmet aktivasyon önceliği kazanır. AR-GE havuzuna bağış yapan kullanıcılar en yüksek tutara göre sıralanarak 1. Derece VIP aktivasyon sırasına sahip olur.",
+        
+        legalM3Title: "Madde 3 - Beden Seçimi İmkânsızlığı ve Kuantum GPS İlkesi",
+        legalM3P1: "Müşteri, sonraki yaşamında hangi canlı bedene (host body) aktarılacağını kendisinin veya Firmanın <strong>seçemeyeceğini</strong> bilmekte, anlamakta ve hukuken kabul etmektedir.",
+        legalM3P2: "Süreç; ölüm öncesinde vücutta kilitlenen Elektro-Manyetik Biyo-Enerji Frekansı ile ruhun doğal frekans uyumu sağladığı yeni canlı beden arasındaki kuantum sinyal rezonansına dayanır. Konu tespiti yalnızca yörünge uyduları destekli Kuantum GPS ağı ile otomatik olarak gerçekleştirilir.",
+
+        legalM4Title: "Madde 4 - Uluslararası Bankacılık Escrow ve Vasiyetname Transferi",
+        legalM4Def: "<strong>Escrow Sözleşmesi Nedir?</strong> Escrow (Emanet / Güvence Hesabı Sözleşmesi), iki taraf arasındaki bir finansal veya hukuki işlemin güvenle gerçekleşmesi amacıyla varlıkların (banka hesapları, kripto varlıklar, gayrimenkuller) tarafsız bir üçüncü taraf (yediemin / uluslararası banka / hukuk trustı) tarafından dondurularak koruma altına alınması ve sözleşmedeki şart tam olarak gerçekleştiğinde hak sahibine aktarılması mekanizmasıdır.",
+        legalM4StepsHeading: "Escrow Sözleşmesinin 4 Aşamalı Çalışma Protokolü:",
+        legalM4Step1Title: "🔒 1. Varlıkların Kilitlenmesi (Yaşam Süresince)",
+        legalM4Step1Desc: "Müşteri hayattayken vasiyetnamesini düzenler ve banka hesaplarını, gayrimenkullerini veya kripto fonlarını uluslararası anlaşmalı escrow protokolüne bağlar.",
+        legalM4Step2Title: "🛡️ 2. Ölüm Sonrası Koruma (Yediemin / Banka Kasası)",
+        legalM4Step2Desc: "Müşteri vefat ettiğinde varlıklar yasal olarak dondurulur. Üçüncü şahıslarca gasp edilmesi engellenir ve tarafsız bankacılık escrow hesabında güvende tutulur.",
+        legalM4Step3Title: "📡 3. Şartın Gerçekleşmesi (Kuantum GPS Tespiti)",
+        legalM4Step3Desc: "Escrow şartı: Ölüm öncesi kilitlenen biyo-enerji frekansının yeni canlı bedende kuantum GPS uyduları ile tespit edilip resmi olarak tescillenmesidir.",
+        legalM4Step4Title: "🔑 4. Varlıkların Yeni Bedene Resmi Devri",
+        legalM4Step4Desc: "Kuantum uyduları yeni bedenin konumunu doğruladığı an escrow şartı tamamlanır; resmi yasal kayyumlar marifetiyle varlıklar yeni kimliğinize aktarılır.",
+        legalM4BoxTitle: "💡 Escrow Sözleşmesinin Temel Gerekliliği ve Neden Önemli Olduğu:",
+        legalM4BoxLi1: "<strong>Mutlak Güvenlik Sınırı:</strong> Belirlenen kuantum GPS tescil şartı gerçekleşmeden hiçbir taraf veya 3. şahıs paraya dokunamaz.",
+        legalM4BoxLi2: "<strong>Kesintisiz Varlık Sürekliliği:</strong> Eski yaşamınızdaki birikimlerinizin kaybolmadan veya el koyulmadan, yasal olarak bir sonraki canlı bedeninize aktarılmasını hukuken garanti eder.",
+
+        legalM5Title: "Madde 5 - 6698 Sayılı KVKK, GDPR ve Gizlilik Politikası",
+        legalM5P1: "<strong>Kişisel Verilerin Korunması (KVKK):</strong> Müşteriye ait kişisel veriler (Ad, Soyad, TC Kimlik No, İletişim Bilgileri, Biyo-Enerji Profil Taslağı ve Vasiyet Detayları), 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Genel Veri Koruma Tüzüğü (GDPR) mevzuatına tam uyumlu olarak işlenmektedir.",
+        legalM5P2: "<strong>Post-Kuantum Şifreleme (PQC):</strong> Tüm veriler ISO/IEC 27001 bilgi güvenliği standartlarında ve kuantum bilgisayar saldırılarına karşı korumalı Post-Kuantum Kriptografi algoritmalarıyla şifrelenir.",
+        legalM5P3: "<strong>Şeffaf & Anonim Sıralama:</strong> Şeffaflık ilkemiz gereği bağışçı sıralama tablosunda müşterilerin ad ve soyadları varsayılan olarak kesinlikle şifrelenir (Örn: <code>A**** Y****</code>). Müşteri, kayıt adımı 3'teki KVKK kutucuğunu onaylayarak verilerinin şifrelenerek tescil edilmesine açık rıza gösterir.",
+
+        legalM6Title: "Madde 6 - Sorumluluk Sınırlaması ve Yasal Feragat",
+        legalM6P1: "RUH Project bilimsel ve hukuki AR-GE süreçlerine tabidir. Müşteri, işbu sözleşmeyi onaylayarak projenin aşamalı gelişim yapısını kabul ettiğini, Aşama 1 kayıtlarının deneysel ve hazırlık niteliğinde olduğunu kabul ve taahhüt eder.",
+
         // Footer
         footerDesc: "Ölüm sonrası biyo-enerji kilitleme, doğal ruh yerleşimi sonrası kuantum GPS tespiti ve miras koruma protokolü.",
         footerQuickLinks: "Hızlı Bağlantılar",
@@ -294,6 +336,8 @@ export const translations = {
         navCta: "Reserve Your Place",
         navUserBtn: "Login",
         navUserLogged: "My Profile",
+        btnBackMain: "Return to Main Portal",
+        btnGoApply: "I Understand, Go to Pre-Registration Form",
 
         // Placeholders & Form Hints
         phFullName: "e.g., John Smith",
@@ -536,6 +580,46 @@ export const translations = {
         faqA9: "Yes. Using the Will templates provided in Step 4, clients can allocate 100% to the new body, or split designated percentages to existing family members while transferring the remainder to the new identity.",
         faqQ10: "How are my personal data and Will details protected against cyber threats?",
         faqA10: "All bio-profiles, financial directives, and contract details are encrypted under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 standards. Leaderboard data displays initials only (e.g. A**** Y****).",
+
+        // Legal.html Page Specific i18n Keys
+        legalPageTag: "OFFICIAL LEGAL DISCLAIMER & PROTOCOL TERMS",
+        legalPageHeading: "Legal Framework & Escrow Contract",
+        legalPageSub: "The legal framework governing bio-energy locking, Quantum GPS host body tracing, and international banking estate escrow transfers executed under RUH Project is detailed below.",
+        
+        legalM1Title: "Article 1 - Parties & Contract Purpose",
+        legalM1P1: "This contract is entered into between R.U.H. Incorporation (Resonant Universal Heritage Inc.) ('Company / Protocol Management') and the 'Client / User' filling out the Phase 1 pre-registration form or accessing the portal.",
+        legalM1P2: "The purpose of this agreement is to define the legal scope of pre-mortem bio-energy signature locking, post-mortem Quantum GPS host body verification, and the execution of designated estate rights via official banking escrow and Will mechanisms.",
+        
+        legalM2Title: "Article 2 - Phase 1 Transparency Disclosure & R&D Status",
+        legalM2P1: "Client explicitly acknowledges and agrees that RUH Project is currently in a <strong>Phase 1 (Concept, R&D & Free Pre-Registration)</strong> stage. No registration fees are collected for forms submitted during Phase 1.",
+        legalM2Notice: "<strong>Important Notice:</strong> Pre-registered clients secure priority service activation rights upon deployment of Phase 2 (Bio-Energy Lock Hardware) and Phase 3 (Quantum GPS Tracing). Donating applicants are sorted by contribution amount to receive 1st Class VIP Priority placement.",
+        
+        legalM3Title: "Article 3 - Host Body Non-Selection Limitation & Quantum GPS Principle",
+        legalM3P1: "Client understands, acknowledges, and legally accepts that neither the Client nor Company can <strong>choose or select</strong> which living host body the consciousness will transfer to post-transition.",
+        legalM3P2: "The process relies strictly on quantum signal resonance between the pre-mortem electro-magnetic bio-energy frequency and the newly born entity providing natural frequency harmony. Location tracing is performed autonomously via orbital satellite Quantum GPS arrays.",
+
+        legalM4Title: "Article 4 - International Banking Escrow & Estate Transfer",
+        legalM4Def: "<strong>What is an Escrow Agreement?</strong> An Escrow contract is a financial and legal arrangement where assets (bank accounts, crypto, real estate) are frozen and held in trust by a neutral third party (escrowee / international bank / legal trust) until specified contract conditions are fully satisfied, whereupon assets are released to the beneficiary.",
+        legalM4StepsHeading: "4-Stage Escrow Protocol Workflow:",
+        legalM4Step1Title: "🔒 1. Asset Locking (During Lifetime)",
+        legalM4Step1Desc: "Client drafts their Will and links bank accounts, real estate, or crypto funds to the international banking escrow protocol during their lifetime.",
+        legalM4Step2Title: "🛡️ 2. Post-Mortem Asset Protection (Neutral Escrow Trust)",
+        legalM4Step2Desc: "Upon death, assets are legally frozen to prevent unauthorized third-party seizure, remaining safely held in the neutral banking escrow trust.",
+        legalM4Step3Title: "📡 3. Condition Fulfillment (Quantum GPS Tracing)",
+        legalM4Step3Desc: "Escrow release condition: Verifying and registering the locked bio-energy signature in the new host body via Quantum GPS satellite tracking.",
+        legalM4Step4Title: "🔑 4. Legal Asset Transfer to New Identity",
+        legalM4Step4Desc: "Once Quantum GPS confirms host body location, escrow terms are fulfilled and official legal custodians execute the transfer of wealth to your new identity.",
+        legalM4BoxTitle: "💡 Fundamental Necessity & Importance of Escrow Contracts:",
+        legalM4BoxLi1: "<strong>Absolute Security Boundary:</strong> No party or third person can access funds until the designated Quantum GPS verification condition is met.",
+        legalM4BoxLi2: "<strong>Seamless Wealth Continuity:</strong> Legally guarantees that assets from your prior life are preserved and seamlessly transferred to your next living identity without loss or seizure.",
+
+        legalM5Title: "Article 5 - KVKK Law No. 6698, GDPR & Privacy Policy",
+        legalM5P1: "<strong>Data Protection (KVKK & GDPR):</strong> Client personal data (Name, ID, Contact Info, Bio-Energy Profile Draft, Will Details) are processed in full compliance with Turkish KVKK Law No. 6698 and European General Data Protection Regulation (GDPR).",
+        legalM5P2: "<strong>Post-Quantum Cryptography (PQC):</strong> All data is encrypted under ISO/IEC 27001 security standards and post-quantum cryptographic algorithms resilient against quantum computer decryption.",
+        legalM5P3: "<strong>Transparent & Masked Ranking:</strong> Pursuant to our transparency policy, donor leaderboard entries strictly mask client names (e.g. <code>A**** Y****</code>). Client provides explicit consent for data processing by checking the KVKK consent box in Step 3.",
+
+        legalM6Title: "Article 6 - Limitation of Liability & Legal Waiver",
+        legalM6P1: "RUH Project is subject to ongoing scientific R&D and legal trust frameworks. By approving this contract, client agrees to the phased development roadmap and acknowledges that Phase 1 registrations represent experimental and preliminary enrollment.",
 
         // Footer
         footerDesc: "Post-mortem bio-energy locking, Quantum GPS host body tracing following natural soul relocation, and legal estate escrow protocol.",

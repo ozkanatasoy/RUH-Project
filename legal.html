@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RUH Project | Hukuki Çerçeve & Escrow Sözleşmesi</title>
+    <title data-i18n="legalDocTitle">RUH Project | Hukuki Çerçeve & Escrow Sözleşmesi</title>
     <meta name="description" content="RUH Project Uluslararası Hukuki Çerçeve, Biyo-Enerji Kilitleme, Kuantum GPS Tespiti ve Sözleşmeli Miras Devir Altyapısı Şartları.">
     <meta name="theme-color" content="#07080d">
 
@@ -125,9 +125,14 @@
                 </div>
             </a>
 
-            <div class="nav-actions" style="margin-left: auto;">
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 14px; margin-left: auto;">
+                <!-- Language Toggle Button -->
+                <button class="lang-switch-btn" id="langToggleBtn" aria-label="Dil Değiştir / Switch Language" title="Dil Değiştir / Switch Language">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="langCurrentLabel">TR</span>
+                </button>
                 <a href="index.html" class="btn btn-outline btn-sm">
-                    <i class="fa-solid fa-arrow-left"></i> Ana Portala Dön
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="btnBackMain">Ana Portala Dön</span>
                 </a>
             </div>
         </div>
@@ -137,10 +142,10 @@
     <section class="legal-page-header">
         <div class="container">
             <div class="hero-tag">
-                <i class="fa-solid fa-scale-balanced"></i> RESMİ HUKUKİ BEYAN & PROTOKOL ŞARTLARI
+                <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="legalPageTag">RESMİ HUKUKİ BEYAN & PROTOKOL ŞARTLARI</span>
             </div>
-            <h1 class="gradient-text" style="font-size: 2.8rem; margin-bottom: 12px;">Hukuki Çerçeve ve Escrow Sözleşmesi</h1>
-            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 780px;">
+            <h1 class="gradient-text" style="font-size: 2.8rem; margin-bottom: 12px;" data-i18n="legalPageHeading">Hukuki Çerçeve ve Escrow Sözleşmesi</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 780px;" data-i18n="legalPageSub">
                 RUH Project kapsamında yürütülen biyo-enerji kilitleme, kuantum GPS tespiti ve uluslararası bankacılık miras escrow devirlerinin yasal çerçevesi aşağıda ayrıntılı olarak açıklanmıştır.
             </p>
         </div>
@@ -153,12 +158,12 @@
             <!-- Section 1 -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
-                    <i class="fa-solid fa-file-contract"></i> Madde 1 - Taraflar ve Sözleşmenin Amacı
+                    <i class="fa-solid fa-file-contract"></i> <span data-i18n="legalM1Title">Madde 1 - Taraflar ve Sözleşmenin Amacı</span>
                 </h2>
-                <p>
+                <p data-i18n="legalM1P1">
                     İşbu sözleşme, R.U.H. Incorporation (Resonant Universal Heritage Inc.) ("Firma / Protokol Yönetimi") ile dijital portal üzerinden Aşama 1 ön kayıt formunu dolduran veya servise katılım sağlayan "Müşteri / Kullanıcı" arasında akdedilmiştir.
                 </p>
-                <p>
+                <p data-i18n="legalM1P2">
                     Sözleşmenin amacı; ölüm öncesinde kilitlenen biyo-enerji frekans izinin, ölüm sonrasında kuantum GPS uyduları ile tespit edilmesi ve müşterinin önceden belirlediği miras haklarının resmi bankacılık escrow ve vasiyetname mekanizmaları marifetiyle yeni kimliğine aktarılmasının yasal sınırlarını düzenlemektir.
                 </p>
             </div>
@@ -166,12 +171,12 @@
             <!-- Section 2 -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
-                    <i class="fa-solid fa-flask"></i> Madde 2 - Aşama 1 Şeffaflık Beyanı ve AR-GE Statüsü
+                    <i class="fa-solid fa-flask"></i> <span data-i18n="legalM2Title">Madde 2 - Aşama 1 Şeffaflık Beyanı ve AR-GE Statüsü</span>
                 </h2>
-                <p>
+                <p data-i18n="legalM2P1">
                     Müşteri, RUH Project'in mevcut durumda bir <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecinde olduğunu açıkça beyan ve kabul eder. Aşama 1 kapsamında doldurulan formlar için müşteriden herhangi bir katılım ücreti talep edilmez.
                 </p>
-                <div class="legal-highlight-box">
+                <div class="legal-highlight-box" data-i18n="legalM2Notice">
                     <strong>Önemli Bilgilendirme:</strong> Ön kayıt yaptıran müşteriler, Aşama 2 (Biyo-Enerji Kilitleme Donanımı) ve Aşama 3 (Kuantum GPS Tespiti) devreye girdiğinde hizmet aktivasyon önceliği kazanır. AR-GE havuzuna bağış yapan kullanıcılar en yüksek tutara göre sıralanarak 1. Derece VIP aktivasyon sırasına sahip olur.
                 </div>
             </div>
@@ -179,12 +184,12 @@
             <!-- Section 3 -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
-                    <i class="fa-solid fa-ban"></i> Madde 3 - Beden Seçimi İmkânsızlığı ve Kuantum GPS İlkesi
+                    <i class="fa-solid fa-ban"></i> <span data-i18n="legalM3Title">Madde 3 - Beden Seçimi İmkânsızlığı ve Kuantum GPS İlkesi</span>
                 </h2>
-                <p>
+                <p data-i18n="legalM3P1">
                     Müşteri, sonraki yaşamında hangi canlı bedene (host body) aktarılacağını kendisinin veya Firmanın <strong>seçemeyeceğini</strong> bilmekte, anlamakta ve hukuken kabul etmektedir.
                 </p>
-                <p>
+                <p data-i18n="legalM3P2">
                     Süreç; ölüm öncesinde vücutta kilitlenen Elektro-Manyetik Biyo-Enerji Frekansı ile ruhun doğal frekans uyumu sağladığı yeni canlı beden arasındaki kuantum sinyal rezonansına dayanır. Konu tespiti yalnızca yörünge uyduları destekli Kuantum GPS ağı ile otomatik olarak gerçekleştirilir.
                 </p>
             </div>
@@ -192,40 +197,40 @@
             <!-- Section 4: Expanded Escrow Contract Details -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
-                    <i class="fa-solid fa-vault"></i> Madde 4 - Uluslararası Bankacılık Escrow ve Vasiyetname Transferi
+                    <i class="fa-solid fa-vault"></i> <span data-i18n="legalM4Title">Madde 4 - Uluslararası Bankacılık Escrow ve Vasiyetname Transferi</span>
                 </h2>
-                <p>
+                <p data-i18n="legalM4Def">
                     <strong>Escrow Sözleşmesi Nedir?</strong> Escrow (Emanet / Güvence Hesabı Sözleşmesi), iki taraf arasındaki bir finansal veya hukuki işlemin güvenle gerçekleşmesi amacıyla varlıkların (banka hesapları, kripto varlıklar, gayrimenkuller) tarafsız bir üçüncü taraf (yediemin / uluslararası banka / hukuk trustı) tarafından dondurularak koruma altına alınması ve sözleşmedeki şart tam olarak gerçekleştiğinde hak sahibine aktarılması mekanizmasıdır.
                 </p>
 
                 <h4 style="color: var(--color-gold); font-size: 1.05rem; margin-top: 20px; margin-bottom: 12px;">
-                    <i class="fa-solid fa-diagram-project"></i> Escrow Sözleşmesinin 4 Aşamalı Çalışma Protokolü:
+                    <i class="fa-solid fa-diagram-project"></i> <span data-i18n="legalM4StepsHeading">Escrow Sözleşmesinin 4 Aşamalı Çalışma Protokolü:</span>
                 </h4>
 
                 <div class="escrow-steps-list">
                     <div class="escrow-step-item">
-                        <strong>🔒 1. Varlıkların Kilitlenmesi (Yaşam Süresince)</strong>
-                        <p>Müşteri hayattayken vasiyetnamesini düzenler ve banka hesaplarını, gayrimenkullerini veya kripto fonlarını uluslararası anlaşmalı escrow protokolüne bağlar.</p>
+                        <strong data-i18n="legalM4Step1Title">🔒 1. Varlıkların Kilitlenmesi (Yaşam Süresince)</strong>
+                        <p data-i18n="legalM4Step1Desc">Müşteri hayattayken vasiyetnamesini düzenler ve banka hesaplarını, gayrimenkullerini veya kripto fonlarını uluslararası anlaşmalı escrow protokolüne bağlar.</p>
                     </div>
                     <div class="escrow-step-item">
-                        <strong>🛡️ 2. Ölüm Sonrası Koruma (Yediemin / Banka Kasası)</strong>
-                        <p>Müşteri vefat ettiğinde varlıklar yasal olarak dondurulur. Üçüncü şahıslarca gasp edilmesi engellenir ve tarafsız bankacılık escrow hesabında güvende tutulur.</p>
+                        <strong data-i18n="legalM4Step2Title">🛡️ 2. Ölüm Sonrası Koruma (Yediemin / Banka Kasası)</strong>
+                        <p data-i18n="legalM4Step2Desc">Müşteri vefat ettiğinde varlıklar yasal olarak dondurulur. Üçüncü şahıslarca gasp edilmesi engellenir ve tarafsız bankacılık escrow hesabında güvende tutulur.</p>
                     </div>
                     <div class="escrow-step-item">
-                        <strong>📡 3. Şartın Gerçekleşmesi (Kuantum GPS Tespiti)</strong>
-                        <p>Escrow şartı: Ölüm öncesi kilitlenen biyo-enerji frekansının yeni canlı bedende kuantum GPS uyduları ile tespit edilip resmi olarak tescillenmesidir.</p>
+                        <strong data-i18n="legalM4Step3Title">📡 3. Şartın Gerçekleşmesi (Kuantum GPS Tespiti)</strong>
+                        <p data-i18n="legalM4Step3Desc">Escrow şartı: Ölüm öncesi kilitlenen biyo-enerji frekansının yeni canlı bedende kuantum GPS uyduları ile tespit edilip resmi olarak tescillenmesidir.</p>
                     </div>
                     <div class="escrow-step-item">
-                        <strong>🔑 4. Varlıkların Yeni Bedene Resmi Devri</strong>
-                        <p>Kuantum uyduları yeni bedenin konumunu doğruladığı an escrow şartı tamamlanır; resmi yasal kayyumlar marifetiyle varlıklar yeni kimliğinize aktarılır.</p>
+                        <strong data-i18n="legalM4Step4Title">🔑 4. Varlıkların Yeni Bedene Resmi Devri</strong>
+                        <p data-i18n="legalM4Step4Desc">Kuantum uyduları yeni bedenin konumunu doğruladığı an escrow şartı tamamlanır; resmi yasal kayyumlar marifetiyle varlıklar yeni kimliğinize aktarılır.</p>
                     </div>
                 </div>
 
                 <div class="legal-highlight-box" style="border-left-color: var(--color-cyan);">
-                    <strong>💡 Escrow Sözleşmesinin Temel Gerekliliği ve Neden Önemli Olduğu:</strong>
+                    <strong data-i18n="legalM4BoxTitle">💡 Escrow Sözleşmesinin Temel Gerekliliği ve Neden Önemli Olduğu:</strong>
                     <ul style="margin-top: 8px; margin-left: 20px; color: var(--text-muted);">
-                        <li><strong>Mutlak Güvenlik Sınırı:</strong> Belirlenen kuantum GPS tescil şartı gerçekleşmeden hiçbir taraf veya 3. şahıs paraya dokunamaz.</li>
-                        <li><strong>Kesintisiz Varlık Sürekliliği:</strong> Eski yaşamınızdaki birikimlerinizin kaybolmadan veya el koyulmadan, yasal olarak bir sonraki canlı bedeninize aktarılmasını hukuken garanti eder.</li>
+                        <li data-i18n="legalM4BoxLi1"><strong>Mutlak Güvenlik Sınırı:</strong> Belirlenen kuantum GPS tescil şartı gerçekleşmeden hiçbir taraf veya 3. şahıs paraya dokunamaz.</li>
+                        <li data-i18n="legalM4BoxLi2"><strong>Kesintisiz Varlık Sürekliliği:</strong> Eski yaşamınızdaki birikimlerinizin kaybolmadan veya el koyulmadan, yasal olarak bir sonraki canlı bedeninize aktarılmasını hukuken garanti eder.</li>
                     </ul>
                 </div>
             </div>
@@ -233,15 +238,15 @@
             <!-- Section 5 -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
-                    <i class="fa-solid fa-user-shield"></i> Madde 5 - 6698 Sayılı KVKK, GDPR ve Gizlilik Politikası
+                    <i class="fa-solid fa-user-shield"></i> <span data-i18n="legalM5Title">Madde 5 - 6698 Sayılı KVKK, GDPR ve Gizlilik Politikası</span>
                 </h2>
-                <p>
+                <p data-i18n="legalM5P1">
                     <strong>Kişisel Verilerin Korunması (KVKK):</strong> Müşteriye ait kişisel veriler (Ad, Soyad, TC Kimlik No, İletişim Bilgileri, Biyo-Enerji Profil Taslağı ve Vasiyet Detayları), 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Genel Veri Koruma Tüzüğü (GDPR) mevzuatına tam uyumlu olarak işlenmektedir.
                 </p>
-                <p>
+                <p data-i18n="legalM5P2">
                     <strong>Post-Kuantum Şifreleme (PQC):</strong> Tüm veriler ISO/IEC 27001 bilgi güvenliği standartlarında ve kuantum bilgisayar saldırılarına karşı korumalı Post-Kuantum Kriptografi algoritmalarıyla şifrelenir.
                 </p>
-                <p>
+                <p data-i18n="legalM5P3">
                     <strong>Şeffaf & Anonim Sıralama:</strong> Şeffaflık ilkemiz gereği bağışçı sıralama tablosunda müşterilerin ad ve soyadları varsayılan olarak kesinlikle şifrelenir (Örn: <code>A**** Y****</code>). Müşteri, kayıt adımı 3'teki KVKK kutucuğunu onaylayarak verilerinin şifrelenerek tescil edilmesine açık rıza gösterir.
                 </p>
             </div>
@@ -249,16 +254,16 @@
             <!-- Section 6 -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
-                    <i class="fa-solid fa-gavel"></i> Madde 6 - Sorumluluk Sınırlaması ve Yasal Feragat
+                    <i class="fa-solid fa-gavel"></i> <span data-i18n="legalM6Title">Madde 6 - Sorumluluk Sınırlaması ve Yasal Feragat</span>
                 </h2>
-                <p>
+                <p data-i18n="legalM6P1">
                     RUH Project bilimsel ve hukuki AR-GE süreçlerine tabidir. Müşteri, işbu sözleşmeyi onaylayarak projenin aşamalı gelişim yapısını kabul ettiğini, Aşama 1 kayıtlarının deneysel ve hazırlık niteliğinde olduğunu kabul ve taahhüt eder.
                 </p>
             </div>
 
             <div style="text-align: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-color);">
                 <a href="index.html#apply" class="btn btn-glow btn-lg">
-                    <i class="fa-solid fa-check"></i> Anladım, Ön Kayıt Formuna Git
+                    <i class="fa-solid fa-check"></i> <span data-i18n="btnGoApply">Anladım, Ön Kayıt Formuna Git</span>
                 </a>
             </div>
 
@@ -276,9 +281,23 @@
                         <span class="logo-sub">PROJECT</span>
                     </div>
                 </a>
-                <p>© 2026 RUH Project. Tüm Hakları Saklıdır. | Uluslararası Hukuki Çerçeve</p>
+                <p>© 2026 R.U.H. Incorporation (Resonant Universal Heritage Inc.). Tüm Hakları Saklıdır. | Uluslararası Hukuki Çerçeve & GDPR</p>
             </div>
         </div>
     </footer>
+
+    <!-- ES6 i18n Language Switcher Module Script -->
+    <script type="module">
+        import { getCurrentLang, switchLanguage } from './js/modules/i18n.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            const langBtn = document.getElementById('langToggleBtn');
+            if (langBtn) {
+                langBtn.addEventListener('click', () => {
+                    const nextLang = getCurrentLang() === 'tr' ? 'en' : 'tr';
+                    switchLanguage(nextLang);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
