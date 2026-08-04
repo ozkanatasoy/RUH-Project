@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RUH Project | Ruh Aktarımı & Miras Koruma Protokolü</title>
     <meta name="description" content="Ölmeden önce yerinizi ayırtın. RUH Project, ölüm sonrası biyo-enerji izi kilitleme, kuantum GPS tespiti ve sözleşmeli miras koruma protokolüdür.">
-    <meta name="keywords" content="RUH Project, Ruh Aktarımı, Miras Koruma, Escrow, Biyo-Enerji Kilitleme, Kuantum GPS, Şeffaf Bağış">
+    <meta name="keywords" content="RUH Project, Ruh Aktarımı, Miras Koruma, Escrow, Biyo-Enerji Kilitleme, Kuantum GPS, Şeffaf Bağış, R.U.H. Incorporation">
     <meta name="author" content="Özkan Atasoy - RUH Project Team">
     <meta name="theme-color" content="#07080d">
 
@@ -27,7 +27,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Libre+Barcode+39+Text&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -63,6 +63,7 @@
                 <a href="#donations" class="nav-link" data-i18n="navDonations">Şeffaf AR-GE Havuzu</a>
                 <a href="legal.html" class="nav-link" data-i18n="navLegal">Hukuki Çerçeve</a>
                 <a href="#apply" class="nav-link" data-i18n="navApply">Ön Kayıt Başvurusu</a>
+                <a href="#verify" class="nav-link" data-i18n="navVerify">Sertifika Sorgulama</a>
                 <a href="#faq" class="nav-link" data-i18n="navFaq">SSS</a>
             </nav>
 
@@ -696,6 +697,32 @@
             </div>
         </section>
 
+        <!-- Public Certificate & Barcode Verification Portal Section -->
+        <section class="section section-dark section-verify" id="verify">
+            <div class="container">
+                <div class="section-header text-center">
+                    <div class="section-subtitle" data-i18n="verifySub">SİSTEM DOĞRULAMA & ORJİNAL KAYIT SORGULAMA</div>
+                    <h2 class="section-title" data-i18n="verifyTitle">Sertifika & Barkod Doğrulama</h2>
+                    <p class="section-desc" data-i18n="verifyDesc">
+                        R.U.H. Incorporation tarafından düzenlenen resmi sertifikaların ve 11 haneli Dijital Enerji İzi ID'lerinin orijinalliğini 16 haneli barkod numaranız ile buradan sorgulayabilirsiniz.
+                    </p>
+                </div>
+
+                <div class="cyber-card verify-search-card" style="max-width: 680px; margin: 0 auto; padding: 32px;">
+                    <form id="verifyForm" onsubmit="return false;" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <input type="text" class="form-control" id="verifyInput" placeholder="16 Haneli Barkod No veya 11 Haneli Enerji İzi ID" data-i18n-placeholder="phVerifyInput" style="flex: 1; min-width: 260px;" required>
+                        <button type="button" class="btn btn-gold" id="btnVerifySubmit">
+                            <i class="fa-solid fa-qrcode"></i> <span data-i18n="btnVerify">Sorgula & Doğrula</span>
+                        </button>
+                    </form>
+
+                    <div id="verifyResultContainer" style="margin-top: 24px; display: none;">
+                        <!-- Verified Result Card rendered dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- FAQ Section -->
         <section class="section" id="faq">
             <div class="container">
@@ -772,7 +799,7 @@
                     Ölüm sonrası ruh aktarımı, biyo-enerji kilitleme ve miras koruma protokolü.
                 </p>
                 <div class="copyright">
-                    © 2026 RUH Project. Tüm Hakları Saklıdır. | GitHub Repository Release
+                    © 2026 R.U.H. Incorporation. Tüm Hakları Saklıdır. | GitHub Repository Release
                 </div>
             </div>
 
@@ -784,6 +811,7 @@
                     <li><a href="#donations" data-i18n="navDonations">Şeffaf AR-GE Havuzu</a></li>
                     <li><a href="legal.html" data-i18n="navLegal">Hukuki Çerçeve</a></li>
                     <li><a href="#apply" data-i18n="navApply">Ön Kayıt Başvurusu</a></li>
+                    <li><a href="#verify" data-i18n="navVerify">Sertifika Sorgulama</a></li>
                     <li><a href="#faq" data-i18n="navFaq">Sıkça Sorulan Sorular</a></li>
                 </ul>
             </div>
@@ -799,35 +827,60 @@
 
     <!-- Certificate Modal -->
     <div class="modal-backdrop" id="certificateModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width: 680px;">
             <div class="modal-header">
-                <h3 id="certModalTitle"><i class="fa-solid fa-certificate"></i> <span data-i18n="certModalTitle">RUH Project Ön Kayıt Sertifikası</span></h3>
+                <h3 id="certModalTitle"><i class="fa-solid fa-certificate highlight-gold"></i> <span data-i18n="certModalTitle">R.U.H. Incorporation Resmi Ön Kayıt Sertifikası</span></h3>
                 <button class="modal-close" id="closeCertModal" aria-label="Kapat / Close Modal">&times;</button>
             </div>
             <div class="modal-body" id="certificateBody">
-                <div class="cert-card">
+                
+                <!-- Member Switcher if multiple family members exist -->
+                <div id="certMemberSwitcherWrapper" style="margin-bottom: 16px; text-align: center;"></div>
+
+                <!-- Printable Corporate Certificate Document -->
+                <div class="cert-card printable-cert">
                     <div class="cert-border">
-                        <div class="cert-header">
-                            <i class="fa-solid fa-dna cert-logo-icon"></i>
-                            <h2>RUH PROJECT PROTOCOL</h2>
-                            <p class="cert-subtitle" data-i18n="certOfficialDoc">AŞAMA 1 BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ</p>
-                        </div>
-                        <div class="cert-hash-box">
-                            <span>Hash ID:</span> <strong id="certHashVal">RUH-2026-X9842-887</strong>
-                        </div>
-                        <div class="cert-details">
-                            <p><strong>Başvuru Sahibi:</strong> <span id="certHolderName">Ahmet Yıldız</span></p>
-                            <p><strong>Kayıtlı Kişi Sayısı:</strong> <span id="certMemberCount">1 Kişi</span></p>
-                            <p><strong>Seçilen Protokol:</strong> <span id="certTierName">Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)</span></p>
-                            <p><strong>Miras Devir Durumu:</strong> <span id="certInheritance">Kayıtlı & Escrow Onaylı</span></p>
-                            <p><strong>Tarih:</strong> <span id="certDate">04.08.2026</span></p>
-                        </div>
-                        <div class="cert-footer-stamp">
-                            <div class="qr-mockup">
-                                <i class="fa-solid fa-qrcode"></i>
+                        <div class="cert-header" style="text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 6px;">
+                                <i class="fa-solid fa-dna cert-logo-icon" style="font-size: 2rem; color: var(--color-cyan);"></i>
+                                <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; letter-spacing: 0.1em; color: #fff;">R.U.H. INCORPORATION</span>
                             </div>
-                            <div class="stamp-box" data-i18n="certStamp">
-                                PH1 APPROVED<br>RUH R&D VAULT
+                            <span style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--text-muted); display: block; text-transform: uppercase;">PROTOCOL & ESCROW VAULT</span>
+                            <h2 style="font-size: 1.15rem; color: var(--color-gold); margin-top: 10px;" data-i18n="certOfficialDoc">AŞAMA 1 RESMİ BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ</h2>
+                        </div>
+
+                        <div class="cert-details-grid" style="display: grid; grid-template-columns: 1fr 120px; gap: 20px; align-items: center;">
+                            <div>
+                                <p style="margin-bottom: 8px;"><strong>Başvuru Sahibi:</strong> <span id="certHolderName" style="font-size: 1.2rem; color: #fff; font-weight: 700;">Ahmet Yıldız</span></p>
+                                <p style="margin-bottom: 8px;"><strong>Dijital Enerji İzi ID (11 Hane):</strong> <strong id="certEnergyIdVal" class="highlight-cyan" style="font-family: monospace; font-size: 1.05rem;">RUH84K92M17</strong></p>
+                                <p style="margin-bottom: 8px;"><strong>Kayıtlı Kişi Sayısı:</strong> <span id="certMemberCount">1 Kişi</span></p>
+                                <p style="margin-bottom: 8px;"><strong>Seçilen Protokol:</strong> <span id="certTierName">Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)</span></p>
+                                <p style="margin-bottom: 8px;"><strong>Miras Devir Durumu:</strong> <span id="certInheritance">Kayıtlı & Escrow Onaylı</span></p>
+                                <p style="margin-bottom: 8px;"><strong>Tarih ve Saat:</strong> <span id="certDate">04.08.2026 18:10:55</span></p>
+                            </div>
+
+                            <!-- Live QR Code pointing to verification URL -->
+                            <div style="text-align: center;">
+                                <img id="certQrImg" src="" alt="Sertifika QR Kodu" style="width: 110px; height: 110px; border-radius: 8px; border: 1px solid var(--border-color); background: #000; padding: 4px;">
+                                <span style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-top: 4px;">Kamera ile Tara</span>
+                            </div>
+                        </div>
+
+                        <!-- Barcode Section -->
+                        <div class="cert-barcode-wrapper" style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--border-color); text-align: center;">
+                            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 4px;">REKORT / BARKOD NO (16 HANE)</span>
+                            <strong id="certBarcodeVal" class="highlight-gold" style="font-family: monospace; font-size: 1.25rem; letter-spacing: 0.15em; display: block; margin-bottom: 8px;">8942-7109-4482-1928</strong>
+                            
+                            <!-- Visual Barcode Lines simulation -->
+                            <div class="visual-barcode-bars" style="display: flex; justify-content: center; gap: 3px; height: 32px; opacity: 0.85;">
+                                <span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 4px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 4px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span>
+                            </div>
+                        </div>
+
+                        <div class="cert-footer-stamp" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Düzenleyen Kurum: R.U.H. Incorporation Vault</span>
+                            <div class="stamp-box" data-i18n="certStamp" style="border: 2px solid var(--color-gold); color: var(--color-gold); padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.75rem; text-align: center; text-transform: uppercase;">
+                                PH1 APPROVED<br>R.U.H. INCORPORATION
                             </div>
                         </div>
                     </div>
@@ -914,17 +967,20 @@
                         <div class="profile-avatar-icon"><i class="fa-solid fa-user-astronaut"></i></div>
                         <div>
                             <h4 id="profName" class="gradient-text">Ahmet Yıldız</h4>
-                            <p id="profEmail" style="font-size: 0.88rem; color: var(--text-muted);">ahmet@example.com</p>
+                            <div style="font-size: 0.88rem; color: var(--color-cyan); margin-top: 2px;">
+                                <i class="fa-solid fa-dna"></i> <span data-i18n="lblEnergyId">Dijital Enerji İzi ID (11 Hane):</span> <strong id="profEnergyId" class="highlight-cyan" style="font-family: monospace;">RUH84K92M17</strong>
+                            </div>
+                            <p id="profEmail" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">ahmet@example.com</p>
                         </div>
                     </div>
                     <div class="profile-details-grid">
                         <div class="prof-detail-item">
-                            <span class="prof-label" data-i18n="lblProfIdentity">Kimlik / Pasaport:</span>
-                            <strong id="profIdentity" class="prof-val">11111111111</strong>
+                            <span class="prof-label" data-i18n="lblProfBarcode">Barkod No (16 Hane):</span>
+                            <strong id="profBarcode" class="prof-val highlight-gold" style="font-family: monospace;">8942-7109-4482-1928</strong>
                         </div>
                         <div class="prof-detail-item">
-                            <span class="prof-label" data-i18n="lblProfHash">Biyo-Kayıt Hash ID:</span>
-                            <strong id="profHash" class="prof-val highlight-cyan">RUH-2026-X9842-887</strong>
+                            <span class="prof-label" data-i18n="lblProfIdentity">Kimlik / Pasaport:</span>
+                            <strong id="profIdentity" class="prof-val">11111111111</strong>
                         </div>
                         <div class="prof-detail-item">
                             <span class="prof-label" data-i18n="lblProfTier">Protokol Seviyesi:</span>

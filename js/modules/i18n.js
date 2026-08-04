@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card & Optional Badge.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card & Certificate Verification Portal.
  */
 
 export const translations = {
@@ -16,6 +16,7 @@ export const translations = {
         navDonations: "Şeffaf AR-GE Havuzu",
         navLegal: "Hukuki Çerçeve",
         navApply: "Ön Kayıt Başvurusu",
+        navVerify: "Sertifika Sorgulama",
         navFaq: "SSS",
         navCta: "Yerinizi Ayırtın",
         navUserBtn: "Giriş Yap",
@@ -34,6 +35,7 @@ export const translations = {
         phConfirmPassword: "Şifrenizi tekrar giriniz",
         phLoginEmail: "Kayıtlı E-posta Adresiniz",
         phLoginPass: "Kullanıcı Şifreniz",
+        phVerifyInput: "16 Haneli Barkod No veya 11 Haneli Enerji İzi ID",
 
         // Auth & User Profile Modal
         loginModalTitle: "Kullanıcı Girişi",
@@ -49,6 +51,8 @@ export const translations = {
         lblProfStatus: "Biyo-Enerji İzi Durumu:",
         lblProfStatusVal: "KİLİTLENMEYE HAZIR (Aşama 1 Ön Kayıtlı)",
         lblProfInheritance: "Miras Escrow Tercihi:",
+        lblEnergyId: "Dijital Enerji İzi ID (11 Hane):",
+        lblProfBarcode: "Barkod No (16 Hane):",
         btnLogout: "Oturumu Kapat",
 
         // Hero
@@ -127,6 +131,12 @@ export const translations = {
         tier1Label: "Seviye 1: $5,000,000 USD - Prototip & Yasal Sözleşme Altyapısı",
         tier2Label: "Seviye 2: $25,000,000 USD - Donanım Üretimi & Uydu Entegrasyonu",
         tier3Label: "Seviye 3: $70,000,000 USD - Tam Ölçekli Küresel AR-GE & Escrow Ağı (Ana Hedef)",
+
+        // Certificate Verification Section
+        verifySub: "SİSTEM DOĞRULAMA & ORJİNAL KAYIT SORGULAMA",
+        verifyTitle: "Sertifika & Barkod Doğrulama",
+        verifyDesc: "R.U.H. Incorporation tarafından düzenlenen resmi sertifikaların ve 11 haneli Dijital Enerji İzi ID'lerinin orijinalliğini 16 haneli barkod numaranız ile buradan sorgulayabilirsiniz.",
+        btnVerify: "Sorgula & Doğrula",
 
         // Donation Modal
         donateModalTitle: "AR-GE ve Altyapı Fonuna Bağış Yap",
@@ -229,7 +239,7 @@ export const translations = {
         // FAQ
         faqSub: "MERAK EDİLENLER",
         faqTitle: "Sıkça Sorulan Sorular",
-        faqQ1: "Geçilecek canlı bedeni kendim seçebilir miyim?",
+        faqQ1: "Geçilecek canlı bedeni kendim seçabilir miyim?",
         faqA1: "Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ölüm öncesinde vücutta kilitlenen biyo-enerji izi ve doğal frekans uyumu doğrultusunda ruhun aktarıldığı yeni beden kuantum GPS sinyalleri ile otomatik olarak tespit edilir.",
         faqQ2: "Aşama 1 Ön Kayıt ücretli midir?",
         faqA2: "Hayır, Aşama 1 ön kayıt katılımı tamamen ücretsizdir. Bu aşamada form dolduran kullanıcılar biyo-enerji taslağını oluşturur ve Aşama 2 & 3 devreye girdiğinde öncelikli hizmet sırası kazanır.",
@@ -245,9 +255,9 @@ export const translations = {
         footerLegalNotice: "Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar sorumluluk şartlarını kabul eder.",
 
         // Modal Certificate
-        certModalTitle: "RUH Project Ön Kayıt Sertifikası",
-        certOfficialDoc: "AŞAMA 1 BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ",
-        certStamp: "PH1 APPROVED<br>RUH R&D VAULT",
+        certModalTitle: "R.U.H. Incorporation Resmi Ön Kayıt Sertifikası",
+        certOfficialDoc: "AŞAMA 1 RESMİ BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ",
+        certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
         btnPrint: "Sertifikayı Yazdır / PDF İndir",
         btnClose: "Kapat"
     },
@@ -263,6 +273,7 @@ export const translations = {
         navDonations: "Transparent R&D Pool",
         navLegal: "Legal Framework",
         navApply: "Pre-Registration Portal",
+        navVerify: "Verify Certificate",
         navFaq: "FAQ",
         navCta: "Reserve Your Place",
         navUserBtn: "Login",
@@ -281,6 +292,7 @@ export const translations = {
         phConfirmPassword: "Re-enter your password",
         phLoginEmail: "Your Registered Email Address",
         phLoginPass: "Your Password",
+        phVerifyInput: "16-Digit Barcode No or 11-Digit Energy ID",
 
         // Auth & User Profile Modal
         loginModalTitle: "User Login",
@@ -296,6 +308,8 @@ export const translations = {
         lblProfStatus: "Bio-Energy Lock Status:",
         lblProfStatusVal: "READY FOR LOCKING (Phase 1 Pre-Registered)",
         lblProfInheritance: "Inheritance Escrow Choice:",
+        lblEnergyId: "Digital Energy ID (11 Chars):",
+        lblProfBarcode: "Barcode No (16 Digits):",
         btnLogout: "Log Out",
 
         // Hero
@@ -374,6 +388,12 @@ export const translations = {
         tier1Label: "Tier 1: $5,000,000 USD - Prototype & Legal Contract Infrastructure",
         tier2Label: "Tier 2: $25,000,000 USD - Hardware Manufacturing & Satellite Integration",
         tier3Label: "Tier 3: $70,000,000 USD - Full-Scale Global R&D & Escrow Network (Main Goal)",
+
+        // Certificate Verification Section
+        verifySub: "SYSTEM VERIFICATION & CERTIFICATE LOOKUP",
+        verifyTitle: "Certificate & Barcode Verification",
+        verifyDesc: "Verify the official authenticity of certificates and 11-digit Digital Energy IDs issued by R.U.H. Incorporation using your 16-digit barcode number.",
+        btnVerify: "Lookup & Verify",
 
         // Donation Modal
         donateModalTitle: "Donate to R&D & Infrastructure Fund",
@@ -492,9 +512,9 @@ export const translations = {
         footerLegalNotice: "This project is currently in Phase 1 (Concept & R&D). All services and contracts are governed under international legal frameworks; clients accept responsibility terms.",
 
         // Modal Certificate
-        certModalTitle: "RUH Project Pre-Registration Certificate",
-        certOfficialDoc: "PHASE 1 BIO-ENERGY & INHERITANCE REGISTRATION CERTIFICATE",
-        certStamp: "PH1 APPROVED<br>RUH R&D VAULT",
+        certModalTitle: "R.U.H. Incorporation Official Pre-Registration Certificate",
+        certOfficialDoc: "PHASE 1 OFFICIAL BIO-ENERGY & INHERITANCE REGISTRATION CERTIFICATE",
+        certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
         btnPrint: "Print Certificate / Download PDF",
         btnClose: "Close"
     }

@@ -1,16 +1,16 @@
 /**
- * RUH PROJECT - Wizard & Application State Module (3-Phase & Single Protocol Card)
- * Manages 5-step wizard navigation, dynamic family member forms, Phase 1 free enrollment, account creation, and certificate preview.
+ * RUH PROJECT - Wizard & Application State Module
+ * Manages 5-step wizard navigation, multi-member form registration, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
 import { getWillTemplate } from './templates.js';
-import { registerUserAccount } from './auth.js';
+import { registerUserAccount, generateEnergyId, generateBarcode16, formatBarcode } from './auth.js';
 
 let currentStep = 1;
 let memberCount = 1;
 let selectedTier = 'phase1';
-let selectedTierFee = 0; // Phase 1 Free!
+let currentMemberCerts = [];
 
 export function initWizard() {
     const familyFormsContainer = document.getElementById('familyFormsContainer');
@@ -19,7 +19,7 @@ export function initWizard() {
     const nextStepBtn = document.getElementById('nextStepBtn');
     const submitFormBtn = document.getElementById('submitFormBtn');
 
-    // Add Family Member
+    // Add Family Member Form
     if (addMemberBtn) {
         addMemberBtn.addEventListener('click', () => {
             memberCount++;
@@ -349,32 +349,56 @@ function initCertificateModal(submitFormBtn) {
             }
 
             const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
-            const randomHash = 'RUH-2026-X' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(100 + Math.random() * 900);
             const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
             const inheritStatus = isInheritYes 
                 ? (lang === 'tr' ? 'Kayıtlı & Escrow Onaylı' : 'Registered & Escrow Approved')
                 : (lang === 'tr' ? 'Beden Tespiti (Miras Devirsiz)' : 'Host Body Detection Only');
 
-            // Save Account & Auto-login
-            registerUserAccount({
-                fullName: primaryName,
-                identityNo: primaryId,
-                email: primaryEmail,
-                password: password,
-                hashId: randomHash,
-                tierName: selectedTierName,
-                inheritanceStatus: inheritStatus,
-                registeredAt: new Date().toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US')
+            const now = new Date();
+            const dateStr = now.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US');
+            const timeStr = now.toLocaleTimeString(lang === 'tr' ? 'tr-TR' : 'en-US');
+            const fullDateTime = `${dateStr} ${timeStr}`;
+
+            // Build array of all registered family members with unique 11-digit Energy IDs and 16-digit Barcodes
+            currentMemberCerts = [];
+            const formCards = document.querySelectorAll('.family-member-card');
+            
+            formCards.forEach((card, idx) => {
+                const num = idx + 1;
+                const fName = card.querySelector(`input[name="fullName_${num}"]`)?.value || (num === 1 ? primaryName : `Member ${num}`);
+                const fId = card.querySelector(`input[name="identityNo_${num}"]`)?.value || primaryId;
+                const fEmail = card.querySelector(`input[name="email_${num}"]`)?.value || primaryEmail;
+
+                currentMemberCerts.push({
+                    fullName: fName,
+                    identityNo: fId,
+                    email: fEmail,
+                    energyId: generateEnergyId(), // 11 alphanumeric characters
+                    barcode: generateBarcode16(), // 16 digits
+                    registeredAt: fullDateTime,
+                    tierName: selectedTierName,
+                    inheritanceStatus: inheritStatus
+                });
             });
 
-            document.getElementById('certHashVal').textContent = randomHash;
-            document.getElementById('certHolderName').textContent = primaryName;
-            document.getElementById('certMemberCount').textContent = `${memberCount} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
-            document.getElementById('certTierName').textContent = `${selectedTierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
-            document.getElementById('certInheritance').textContent = inheritStatus;
+            const primaryMember = currentMemberCerts[0];
 
-            const today = new Date();
-            document.getElementById('certDate').textContent = today.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US');
+            // Save Account & Auto-login
+            registerUserAccount({
+                fullName: primaryMember.fullName,
+                identityNo: primaryMember.identityNo,
+                email: primaryMember.email,
+                password: password,
+                energyId: primaryMember.energyId,
+                barcode: primaryMember.barcode,
+                tierName: selectedTierName,
+                inheritanceStatus: inheritStatus,
+                registeredAt: fullDateTime,
+                members: currentMemberCerts
+            });
+
+            // Render Certificate in Modal
+            renderCertificateView(0);
 
             if (certModal) certModal.classList.add('active');
         });
@@ -383,4 +407,66 @@ function initCertificateModal(submitFormBtn) {
     if (closeCertModal) closeCertModal.addEventListener('click', () => certModal.classList.remove('active'));
     if (finishModalBtn) finishModalBtn.addEventListener('click', () => certModal.classList.remove('active'));
     if (printCertBtn) printCertBtn.addEventListener('click', () => window.print());
+}
+
+/**
+ * Renders an official corporate R.U.H. Incorporation certificate inside the modal
+ */
+export function renderCertificateView(memberIndex = 0) {
+    const cert = currentMemberCerts[memberIndex] || currentMemberCerts[0];
+    if (!cert) return;
+
+    const lang = getCurrentLang();
+    const holderEl = document.getElementById('certHolderName');
+    const energyIdEl = document.getElementById('certEnergyIdVal');
+    const barcodeEl = document.getElementById('certBarcodeVal');
+    const memberCountEl = document.getElementById('certMemberCount');
+    const tierEl = document.getElementById('certTierName');
+    const inheritEl = document.getElementById('certInheritance');
+    const dateEl = document.getElementById('certDate');
+    const qrImgEl = document.getElementById('certQrImg');
+
+    if (holderEl) holderEl.textContent = cert.fullName;
+    if (energyIdEl) energyIdEl.textContent = cert.energyId;
+    if (barcodeEl) barcodeEl.textContent = formatBarcode(cert.barcode);
+    if (memberCountEl) memberCountEl.textContent = `${currentMemberCerts.length} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
+    if (tierEl) tierEl.textContent = `${cert.tierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
+    if (inheritEl) inheritEl.textContent = cert.inheritanceStatus;
+    if (dateEl) dateEl.textContent = cert.registeredAt;
+
+    // Generate dynamic QR code URL linking directly to verification portal on mobile scan
+    const verifyUrl = `https://ozkanatasoy.github.io/RUH-Project/?verify=${cert.barcode}#verify`;
+    if (qrImgEl) {
+        qrImgEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(verifyUrl)}&color=00f2fe&bkgnd=07080d`;
+        qrImgEl.alt = `Sertifika QR Kodu: ${cert.barcode}`;
+    }
+
+    // Populate Member Switcher dropdown if multiple members exist
+    const switcherWrapper = document.getElementById('certMemberSwitcherWrapper');
+    if (switcherWrapper) {
+        if (currentMemberCerts.length > 1) {
+            switcherWrapper.style.display = 'block';
+            switcherWrapper.innerHTML = `
+                <label style="font-size: 0.85rem; color: var(--text-muted); margin-right: 8px;">
+                    ${lang === 'tr' ? 'Sertifika Seçin:' : 'Select Certificate:'}
+                </label>
+                <select id="certMemberSelect" class="form-control" style="display: inline-block; width: auto; padding: 4px 12px; font-size: 0.88rem;">
+                    ${currentMemberCerts.map((m, i) => `
+                        <option value="${i}" ${i === memberIndex ? 'selected' : ''}>
+                            ${m.fullName} (${m.energyId})
+                        </option>
+                    `).join('')}
+                </select>
+            `;
+
+            const selectEl = document.getElementById('certMemberSelect');
+            if (selectEl) {
+                selectEl.addEventListener('change', (e) => {
+                    renderCertificateView(parseInt(e.target.value, 10));
+                });
+            }
+        } else {
+            switcherWrapper.style.display = 'none';
+        }
+    }
 }

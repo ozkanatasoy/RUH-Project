@@ -2156,3 +2156,39 @@ a:hover {
     }
 }
 
+/* --- Print Styles for Official Corporate Certificate --- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #certificateModal, #certificateModal * {
+        visibility: visible;
+    }
+    #certificateModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #07080d !important;
+        display: block !important;
+        box-shadow: none !important;
+    }
+    .modal-dialog {
+        max-width: 100% !important;
+        margin: 0 !important;
+        border: none !important;
+        background: transparent !important;
+    }
+    .modal-header, .modal-footer, #certMemberSwitcherWrapper {
+        display: none !important;
+    }
+    .printable-cert {
+        border: 2px solid #ffd700 !important;
+        background: #07080d !important;
+        color: #ffffff !important;
+        padding: 32px !important;
+    }
+}
+
+
