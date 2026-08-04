@@ -869,10 +869,12 @@ a:hover {
 
 .table-responsive {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .leaderboard-table {
     width: 100%;
+    min-width: 540px;
     border-collapse: collapse;
     text-align: left;
     font-size: 0.92rem;
@@ -1630,7 +1632,8 @@ a:hover {
     border-radius: var(--radius-lg);
     width: 100%;
     max-width: 680px;
-    overflow: hidden;
+    max-height: 90vh;
+    overflow-y: auto;
     animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1798,30 +1801,77 @@ a:hover {
     }
 }
 
-/* --- Responsive Breakpoints --- */
+/* ==========================================================================
+   TABLET & MOBILE RESPONSIVE OPTIMIZATIONS (320px to 1024px)
+   ========================================================================== */
+
+/* --- Tablets & Laptops (max-width: 992px) --- */
 @media (max-width: 992px) {
+    .container {
+        padding: 0 20px;
+    }
+    
     .hero-container {
         grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
     }
+    
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
     .hero-title {
         font-size: 3rem;
     }
+    
+    .hero-slogan {
+        font-size: 1.5rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
     .grid-3 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
+    
     .footer-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
+
     .priority-callout-box {
         flex-direction: column;
         text-align: center;
     }
+    
+    .priority-callout-box p {
+        text-align: center;
+    }
+
     .profile-details-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/* --- Mobile Landscape & Tablets (max-width: 768px) --- */
 @media (max-width: 768px) {
+    .section {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* Mobile Nav Drawer */
     .nav-menu {
         position: fixed;
         top: 70px;
@@ -1829,39 +1879,199 @@ a:hover {
         width: 100%;
         height: calc(100vh - 70px);
         background: rgba(7, 8, 13, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         padding: 40px 24px;
-        transition: var(--transition-fast);
+        gap: 24px;
+        transition: var(--transition-normal);
+        z-index: 999;
     }
+
     .nav-menu.active {
         left: 0;
     }
+
+    .nav-link {
+        font-size: 1.15rem;
+    }
+
     .hamburger {
         display: flex;
     }
+
+    .nav-actions {
+        gap: 8px;
+    }
+
+    .nav-actions .btn-glow {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+    }
+
+    .lang-switch-btn {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+    }
+
+    /* Grids & Cards */
     .grid-2, .grid-3 {
         grid-template-columns: 1fr;
     }
+
     .form-grid {
         grid-template-columns: 1fr;
     }
+
     .hero-title {
-        font-size: 2.3rem;
+        font-size: 2.4rem;
     }
+
     .hero-slogan {
         font-size: 1.3rem;
     }
+
+    .canvas-wrapper {
+        height: 210px;
+    }
+
     .inheritance-choice-box {
         grid-template-columns: 1fr;
     }
+
+    /* Wizard Mobile Formatting */
     .wizard-card {
         padding: 24px 16px;
+        border-radius: var(--radius-md);
     }
+
     .wizard-steps-header {
         overflow-x: auto;
-        padding-bottom: 12px;
+        padding-bottom: 14px;
+        justify-content: flex-start;
+        gap: 16px;
+        -webkit-overflow-scrolling: touch;
     }
+
+    .step-indicator {
+        min-width: 60px;
+    }
+
+    .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+
     .step-label {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
+        white-space: nowrap;
+    }
+
+    .step-line {
+        min-width: 20px;
+    }
+
+    .calculator-summary-box {
+        padding: 16px;
+    }
+
+    .calc-row {
+        font-size: 0.88rem;
+    }
+
+    /* Footer */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+        padding: 12px;
+    }
+
+    .modal-dialog {
+        max-width: 100% !important;
+        border-radius: var(--radius-md);
+    }
+
+    .modal-body {
+        padding: 18px;
+    }
+}
+
+/* --- Small Mobile Phones (max-width: 576px) --- */
+@media (max-width: 576px) {
+    .announcement-bar {
+        font-size: 0.78rem;
+    }
+
+    .announcement-content p {
+        font-size: 0.78rem;
+    }
+
+    .logo-title {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-slogan {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .donation-stats-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .donate-presets-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .wizard-footer-buttons {
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+
+    .wizard-footer-buttons .btn {
+        width: 100%;
+    }
+
+    .cert-border {
+        padding: 16px;
+    }
+
+    .cert-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .cert-footer-stamp {
+        flex-direction: column;
+        gap: 16px;
     }
 }

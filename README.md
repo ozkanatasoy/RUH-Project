@@ -28,6 +28,14 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ---
 
+## 📱 Mobile & Tablet Responsive Optimization
+
+- **Fluid Viewport Scaling:** Pixel-perfect typography and grid scaling across all screen sizes (320px mobile up to 4K ultra-wide).
+- **Touch-Optimized Controls:** Touch-scrolling leaderboard tables (`-webkit-overflow-scrolling: touch`), responsive drawer navigation, and accessible mobile step indicators.
+- **Adaptive Modal Dialogs:** Dialogs adapt dynamically to screen heights and widths (`max-height: 90vh; overflow-y: auto`), preventing text or button clipping on small smartphone displays.
+
+---
+
 ## 🔐 User Registration & Customer Profile Dashboard
 
 - **Account Registration:** Completing the pre-registration wizard auto-registers a secure user account with custom password authentication.
@@ -71,7 +79,7 @@ To accelerate hardware biophysics R&D and orbital satellite Quantum GPS array de
 RUH-Project/
 ├── .gitignore              # Ignores system, IDE, and temporary cache files
 ├── index.html              # HTML5 Semantic structure, Open Graph SEO & A11y
-├── style.css               # 60-30-10 Design System, Skeleton Loaders & Responsive Grid
+├── style.css               # 60-30-10 Design System, Skeleton Loaders, Responsive Mobile Rules
 ├── js/                     # ES6 Modular Architecture
 │   ├── app.js              # Main application entrypoint
 │   └── modules/
