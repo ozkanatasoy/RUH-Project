@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUH Project | Ruh Aktarımı & Miras Koruma Protokolü</title>
+    <meta name="description" content="Ölmeden önce yerinizi ayırtın. RUH Project, ölüm sonrası ruh aktarımı, enerji izi kilitleme, GPS tespiti ve miras koruma protokolüdür.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-tr">
+    
+    <!-- Top Announcement Banner -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container announcement-content">
+            <span class="badge badge-pulse" data-i18n="announcementBadge">AŞAMA 1 (AR-GE)</span>
+            <p data-i18n="announcementText">
+                Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ön Kayıt)</strong> sürecindedir. Katılım bedeli teknolojik ve hukuki altyapıyı destekler. Ön kayıt yaptıranlar Aşama 2'de öncelikli hizmet alır.
+            </p>
+            <button class="announcement-close" id="closeAnnouncement" aria-label="Close Notice"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-dna"></i></div>
+                <div class="logo-text">
+                    <span class="logo-title">RUH</span>
+                    <span class="logo-sub">PROJECT</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-link" data-i18n="navAbout">Proje & Aşamalar</a>
+                <a href="#mechanics" class="nav-link" data-i18n="navMechanics">Teknoloji & İşleyiş</a>
+                <a href="#legal" class="nav-link" data-i18n="navLegal">Hukuki Çerçeve</a>
+                <a href="#apply" class="nav-link" data-i18n="navApply">Ön Kayıt Başvurusu</a>
+                <a href="#faq" class="nav-link" data-i18n="navFaq">SSS</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Language Toggle Button -->
+                <button class="lang-switch-btn" id="langToggleBtn" title="Dil Değiştir / Switch Language">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="langCurrentLabel">TR</span>
+                </button>
+                <a href="#apply" class="btn btn-glow btn-sm" data-i18n="navCta">Yerinizi Ayırtın</a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <i class="fa-solid fa-atom"></i>
+                    <span data-i18n="heroTag">Biyo-Enerji Kilitlenme & Kuantum GPS Protokolü</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text" data-i18n="heroTitleGrad">RUH PROJECT</span>
+                </h1>
+                <p class="hero-slogan" id="heroSlogan" data-i18n="heroSlogan">
+                    "Ölmeden önce yerinizi ayırtın"
+                </p>
+                <p class="hero-description" data-i18n="heroDesc">
+                    İnsan bilincinin ve biyo-enerji izinin ölüm öncesinde kilitlenerek, sonraki canlı bedende kuantum GPS aracılığıyla tespiti ve mirasa dair tüm finansal ve taşınmaz hakların hukuki sözleşmelerle yeni yaşama aktarılması protokolü.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#apply" class="btn btn-glow btn-lg" data-i18n="heroBtnApply">
+                        <i class="fa-solid fa-user-plus"></i> Ön Kayıt Formu Doldur
+                    </a>
+                    <a href="#mechanics" class="btn btn-outline btn-lg" data-i18n="heroBtnExplore">
+                        <i class="fa-solid fa-microscope"></i> Teknolojiyi İncele
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">Phase 1</span>
+                        <span class="stat-label" data-i18n="statPhase">AR-GE ve Hukuk Altyapısı</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">$20,000</span>
+                        <span class="stat-label" data-i18n="statFee">Kişi Başı Katılım Bedeli</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label" data-i18n="statEscrow">Sözleşmeli Miras Garantisi</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Interactive Visualizer Card -->
+            <div class="hero-visual">
+                <div class="cyber-card visual-card">
+                    <div class="card-header-line">
+                        <span class="status-dot green"></span>
+                        <span class="card-status-text" data-i18n="canvasStatus">BİYO-ENERJİ FREKANS TARAMASI</span>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="energyCanvas"></canvas>
+                        <div class="canvas-overlay">
+                            <div class="reticle"></div>
+                            <div class="scan-line"></div>
+                        </div>
+                    </div>
+                    <div class="canvas-info">
+                        <div class="info-row">
+                            <span data-i18n="labelEnergyLock">Enerji İzi Durumu:</span>
+                            <span class="highlight-cyan" data-i18n="statusLocked">KİLİTLENMEYE HAZIR</span>
+                        </div>
+                        <div class="info-row">
+                            <span data-i18n="labelGPS">Kuantum GPS Frekansı:</span>
+                            <span class="highlight-gold">948.22 THz Escrow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 1 & Phase 2 Architecture Notice -->
+    <section class="section section-phases" id="about">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-subtitle" data-i18n="phaseSub">ŞEFFAFLIK İLKESİ VE PROJE YOL HARİTASI</div>
+                <h2 class="section-title" data-i18n="phaseTitle">Fikir ve Uygulama Aşamaları</h2>
+                <p class="section-desc" data-i18n="phaseDesc">
+                    RUH Project iki temel evrede yürütülecektir. Şeffaflık ilkesi gereği ön kayıt sürecindeki katılım şartları aşağıda sunulmuştur.
+                </p>
+            </div>
+
+            <div class="grid grid-2 phase-cards">
+                <!-- Phase 1 Card -->
+                <div class="cyber-card phase-card phase-1-card">
+                    <div class="phase-badge phase-badge-1" data-i18n="phase1Badge">AŞAMA 1 (Şu An Aktif)</div>
+                    <h3 class="phase-card-title" data-i18n="phase1Title">Fikir, AR-GE & Ön Kayıt Süreci</h3>
+                    <p class="phase-card-desc" data-i18n="phase1Desc">
+                        Müşteriler kişisel bilgi ve miras tercihlerini içeren ön kayıt formunu doldurarak kişi başı belirlenen hizmet katılım bedelini öder. Bu bedel, uluslararası biyo-fizik AR-GE çalışmalarını ve küresel miras hukuku altyapısını finanse eder.
+                    </p>
+                    <ul class="phase-list">
+                        <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="p1Check1">Kişisel Form Kaydı ve Biyo-Enerji Profili Oluşturma</span></li>
+                        <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="p1Check2">Miras Devir Protokolü ve Vasiyetname Şablonu Hazırlığı</span></li>
+                        <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="p1Check3">Aşama 2 Devreye Girdiğinde Öncelikli Aktivasyon Hakkı</span></li>
+                        <li><i class="fa-solid fa-check-circle"></i> <span data-i18n="p1Check4">Hukuki Sorumluluk ve Sözleşme Onay Protokolü</span></li>
+                    </ul>
+                </div>
+
+                <!-- Phase 2 Card -->
+                <div class="cyber-card phase-card phase-2-card">
+                    <div class="phase-badge phase-badge-2" data-i18n="phase2Badge">AŞAMA 2 (Gelecek Aktivasyon)</div>
+                    <h3 class="phase-card-title" data-i18n="phase2Title">Uygulama & Hizmet Aktivasyonu</h3>
+                    <p class="phase-card-desc" data-i18n="phase2Desc">
+                        Teknolojik biyo-tarama donanımları ve uluslararası hukuki escrow sözleşme altyapısı tamamlandığında, 1. Aşamada ön kayıt yaptıran ve ödemesini tamamlayan müşteriler doğrudan ve öncelikli olarak hizmetten yararlanır.
+                    </p>
+                    <ul class="phase-list">
+                        <li><i class="fa-solid fa-shield-halved"></i> <span data-i18n="p2Check1">Ölüm Öncesi Vücutta Biyo-Enerji İzi Kilitleme İşlemi</span></li>
+                        <li><i class="fa-solid fa-satellite-dish"></i> <span data-i18n="p2Check2">Yeni Bedende Kuantum GPS Yeri Tespiti ve Tescil</span></li>
+                        <li><i class="fa-solid fa-vault"></i> <span data-i18n="p2Check3">Banka Escrow ve Miras Taşınmaz Devirlerinin Gerçekleştirilmesi</span></li>
+                        <li><i class="fa-solid fa-user-shield"></i> <span data-i18n="p2Check4">Vasiyetname Şartlarının Yeni Beden Kimliğine Aktarılması</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Technology & Rules Section -->
+    <section class="section section-dark" id="mechanics">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-subtitle" data-i18n="mechSub">TEMEL İLKELER VE TEKNİK MEKANİZMA</div>
+                <h2 class="section-title" data-i18n="mechTitle">Nasıl Çalışır?</h2>
+                <p class="section-desc" data-i18n="mechDesc">
+                    Beden seçimi yapılmaz; biyo-enerji iziniz kilitlenir ve doğal uyum kanalıyla yeni beden kuantum GPS ile tespit edilir.
+                </p>
+            </div>
+
+            <div class="grid grid-3 mechanics-grid">
+                <div class="cyber-card mechanic-card">
+                    <div class="card-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                    <h4 data-i18n="mechCard1Title">1. Enerji İzi Kilitleme</h4>
+                    <p data-i18n="mechCard1Desc">
+                        Ölüm öncesinde kişinin hücre ve bilincine özel elektro-manyetik biyo-enerji frekansı taranarak dijital protokole kilitlenir. Firma veya müşteri geçilecek bedeni seçemez.
+                    </p>
+                </div>
+
+                <div class="cyber-card mechanic-card">
+                    <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4 data-i18n="mechCard2Title">2. Kuantum GPS Tespiti</h4>
+                    <p data-i18n="mechCard2Desc">
+                        Ruhun yeni canlı bedende hayat bulmasıyla birlikte, kilitlenen biyo-enerji izinin yaydığı frekans sinyali sayesinde yeni bedenin konumu nokta atışı tespit edilir.
+                    </p>
+                </div>
+
+                <div class="cyber-card mechanic-card">
+                    <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h4 data-i18n="mechCard3Title">3. Hukuki Miras Transferi</h4>
+                    <p data-i18n="mechCard3Desc">
+                        Belirlenen vasiyetname ve bankacılık escrow sözleşmeleri doğrultusunda, kişinin önceki yaşamındaki tüm mal varlığı ve taşınmazları resmi devir süreciyle yeni kimliğine garanti edilir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Multi-Step Registration Form Section -->
+    <section class="section section-apply" id="apply">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-subtitle" data-i18n="wizardSub">İNTERAKTİF BAŞVURU PORTALI</div>
+                <h2 class="section-title" data-i18n="wizardTitle">Ön Kayıt ve Protokol Formu</h2>
+                <p class="section-desc" data-i18n="wizardDesc">
+                    Formu doldurarak ve kayıt ücretini onaylayarak RUH Project Aşama 1 protokolüne katılım sağlayabilirsiniz. Şahsen veya aile üyeleriniz için ayrı formlar oluşturabilirsiniz.
+                </p>
+            </div>
+
+            <!-- Wizard Card Container -->
+            <div class="cyber-card wizard-card">
+                
+                <!-- Wizard Progress Indicator -->
+                <div class="wizard-steps-header">
+                    <div class="step-indicator active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label" data-i18n="step1Header">Kişisel & Aile</div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-indicator" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label" data-i18n="step2Header">Ücret & Paket</div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-indicator" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label" data-i18n="step3Header">Hukuki Onay</div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-indicator" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label" data-i18n="step4Header">Miras & Vasiyet</div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-indicator" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-label" data-i18n="step5Header">Özet & Sertifika</div>
+                    </div>
+                </div>
+
+                <!-- Step Panels Container -->
+                <form id="ruhWizardForm" onsubmit="return false;">
+                    
+                    <!-- STEP 1: Personal & Family Member Information -->
+                    <div class="wizard-step-panel active" id="stepPanel1">
+                        <div class="panel-heading">
+                            <h3 data-i18n="step1Title">Adım 1: Müşteri & Aile Üyeleri Bilgi Formu</h3>
+                            <p data-i18n="step1Subtitle">
+                                Kendi bilgilerinizi doldurduktan sonra dilerseniz aile üyeleriniz için de ilave form oluşturabilirsiniz. Her kişi için ayrı katılım ücreti hesaplanır.
+                            </p>
+                        </div>
+
+                        <!-- Family Dynamic Forms Wrapper -->
+                        <div id="familyFormsContainer" class="family-forms-container">
+                            <!-- Primary Form (Form 1) -->
+                            <div class="family-member-card" data-member-index="1">
+                                <div class="member-card-header">
+                                    <span class="member-card-title">
+                                        <i class="fa-solid fa-user-astronaut"></i> <span data-i18n="formTitle1">Form 1: Ana Başvuru Sahibi (Kendiniz)</span>
+                                    </span>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label data-i18n="lblFullName">Ad Soyad *</label>
+                                        <input type="text" class="form-control" name="fullName_1" placeholder="Örn: Ahmet Yıldız" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="lblIdentity">TC Kimlik / Pasaport No *</label>
+                                        <input type="text" class="form-control" name="identityNo_1" placeholder="11 Haneli TC veya Pasaport" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="lblBirthDate">Doğum Tarihi *</label>
+                                        <input type="date" class="form-control" name="birthDate_1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="lblEmail">E-posta Adresi *</label>
+                                        <input type="email" class="form-control" name="email_1" placeholder="ahmet@example.com" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="lblPhone">Telefon Numarası *</label>
+                                        <input type="tel" class="form-control" name="phone_1" placeholder="+90 555 000 0000" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="lblRelation">Yakınlık Derecesi</label>
+                                        <input type="text" class="form-control" name="relation_1" value="Kendisi (Ana Başvuran)" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add Member Control -->
+                        <div class="add-member-wrapper">
+                            <button type="button" class="btn btn-outline btn-add-member" id="addMemberBtn">
+                                <i class="fa-solid fa-user-plus"></i> <span data-i18n="btnAddFamily">+ Aile Üyesi İçin Ayrı Form Ekle</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Service Fee & Tier Selection -->
+                    <div class="wizard-step-panel" id="stepPanel2">
+                        <div class="panel-heading">
+                            <h3 data-i18n="step2Title">Adım 2: Hizmet Ücreti Hesaplama & Protokol Paketi</h3>
+                            <p data-i18n="step2Subtitle">
+                                Doldurulan form sayısına göre kişi başı standart taban hizmet ücreti ($20,000 USD) hesaplanır. Protokol paketinizi seçebilirsiniz.
+                            </p>
+                        </div>
+
+                        <!-- Package Cards Selection -->
+                        <div class="grid grid-2 package-selection-grid">
+                            <!-- Alpha Tier -->
+                            <div class="cyber-card tier-card active" data-tier="alpha" data-fee="20000">
+                                <div class="tier-badge">STANDARD</div>
+                                <h3>Alfa Protokol</h3>
+                                <div class="tier-price">$20,000 <span>/ kişi</span></div>
+                                <p data-i18n="alphaDesc">Standart AR-GE katılımı, biyo-enerji izi ön kayıt kilidi ve temel miras escrow sözleşmesi.</p>
+                                <ul class="tier-features">
+                                    <li><i class="fa-solid fa-check"></i> <span data-i18n="feat1">Biyo-Enerji İzi Kaydı</span></li>
+                                    <li><i class="fa-solid fa-check"></i> <span data-i18n="feat2">Kuantum GPS Tespiti Sinyal Tescili</span></li>
+                                    <li><i class="fa-solid fa-check"></i> <span data-i18n="feat3">Aşama 2 Öncelikli Aktivasyon</span></li>
+                                    <li><i class="fa-solid fa-check"></i> <span data-i18n="feat4">Standart Bankacılık Vasiyet Protokolü</span></li>
+                                </ul>
+                                <button type="button" class="btn btn-outline btn-select-tier" data-i18n="btnSelected">Seçildi</button>
+                            </div>
+
+                            <!-- Sovereign Soul Tier -->
+                            <div class="cyber-card tier-card" data-tier="sovereign" data-fee="45000">
+                                <div class="tier-badge gold-badge">VIP PROTOCOL</div>
+                                <h3>Sovereign Soul Protokol</h3>
+                                <div class="tier-price">$45,000 <span>/ kişi</span></div>
+                                <p data-i18n="sovereignDesc">Kuantum kriptografik kasa, yörünge uydu takipli VIP GPS ve özel hukuki kayyum desteği.</p>
+                                <ul class="tier-features">
+                                    <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov1">Tüm Alfa Protokol Hakları</span></li>
+                                    <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov2">Yörünge Uydusu Destekli Öncelikli GPS Tespiti</span></li>
+                                    <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov3">Kuantum Şifreli Dijital Vasiyet Kasası</span></li>
+                                    <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov4">Uluslararası Özel Hukuk Kayyumu Ataması</span></li>
+                                </ul>
+                                <button type="button" class="btn btn-outline btn-select-tier" data-i18n="btnSelect">Paketi Seç</button>
+                            </div>
+                        </div>
+
+                        <!-- Live Calculator Summary Box -->
+                        <div class="calculator-summary-box">
+                            <div class="calc-row">
+                                <span data-i18n="calcFormCount">Toplam Kayıtlı Kişi Sayısı:</span>
+                                <strong id="calcMemberCount">1 Kişi</strong>
+                            </div>
+                            <div class="calc-row">
+                                <span data-i18n="calcSelectedTier">Seçilen Protokol:</span>
+                                <strong id="calcTierName">Alfa Protokol ($20,000 / Kişi)</strong>
+                            </div>
+                            <div class="calc-divider"></div>
+                            <div class="calc-row total-row">
+                                <span data-i18n="calcTotal">Toplam Katılım Bedeli:</span>
+                                <strong id="calcTotalAmount" class="gradient-text-gold">$20,000 USD</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Legal Disclaimers & Contract Authorization -->
+                    <div class="wizard-step-panel" id="stepPanel3">
+                        <div class="panel-heading">
+                            <h3 data-i18n="step3Title">Adım 3: Hukuki Çerçeve ve Sorumluluk Sözleşmesi</h3>
+                            <p data-i18n="step3Subtitle">
+                                RUH Project Aşama 1 kapsamında bütün sorumluluğun kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.
+                            </p>
+                        </div>
+
+                        <!-- Scrollable Contract Box -->
+                        <div class="contract-scroll-box" id="contractBox">
+                            <h4 data-i18n="contractHeader">RUH PROJECT AŞAMA 1 ÖN KAYIT VE HUKUKİ SORUMLULUK SÖZLEŞMESİ</h4>
+                            <p data-i18n="contractP1">
+                                <strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, RUH Project ("Firma") ile bu platform üzerinden ön kayıt formunu dolduran ve katılım bedelini ödeyen "Müşteri" arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 (Uygulama) haklarının belirlenmesidir.
+                            </p>
+                            <p data-i18n="contractP2">
+                                <strong>Madde 2 - Şeffaflık ve Fikir Aşaması Beyanı:</strong> Müşteri, projenin mevcut durumda bir AR-GE ve fikir aşamasında olduğunu, ödenen hizmet bedelinin teknolojik biyo-enerji tarama yazılımları, uluslararası miras hukuku protokolleri ve altyapı geliştirilmesi amacıyla kullanıldığını gayri kabili rücu kabul eder.
+                            </p>
+                            <p data-i18n="contractP3">
+                                <strong>Madde 3 - Beden Seçim Sınırlaması:</strong> Müşteri, sonraki yaşamında hangi canlı bedene geçeceğini kendisinin veya Firmanın seçemeyeceğini bilmekte ve kabul etmektedir. Süreç tamamen ölüm öncesi kilitlenen biyo-enerji frekansı ve kuantum GPS tespiti esasına dayanır.
+                            </p>
+                            <p data-i18n="contractP4">
+                                <strong>Madde 4 - Sorumluluk Reddi:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, Aşama 2 hizmet aktivasyonu gerçekleştiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.
+                            </p>
+                        </div>
+
+                        <!-- Checkboxes -->
+                        <div class="contract-checkboxes">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="chkTerms" required>
+                                <span class="checkmark"></span>
+                                <span data-i18n="chkTermsText">Yukarıdaki hukuki sözleşmeyi okudum, anladım ve Aşama 1 AR-GE katılım şartlarını ve tüm sorumluluğu kabul ediyorum. *</span>
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="chkNoChoice" required>
+                                <span class="checkmark"></span>
+                                <span data-i18n="chkNoChoiceText">Beden seçimi yapılamayacağını ve biyo-enerji kilitleme prensibini onaylıyorum. *</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Inheritance Rights & Will Generation -->
+                    <div class="wizard-step-panel" id="stepPanel4">
+                        <div class="panel-heading">
+                            <h3 data-i18n="step4Title">Adım 4: Miras Devir Seçimi & Vasiyetname Şablonu</h3>
+                            <p data-i18n="step4Subtitle">
+                                İsteyen müşteriler mevcut finansal ve taşınmaz haklarını bir sonraki canlı bedenine aktarabilir. Sözleşmeler hukuki çerçevede banka ve resmi organlarca ölüm sonrası yürütülecektir.
+                            </p>
+                        </div>
+
+                        <!-- Inheritance Choice Toggles -->
+                        <div class="inheritance-choice-box">
+                            <label class="radio-card active" id="radioInheritYes">
+                                <input type="radio" name="inheritanceChoice" value="yes" checked>
+                                <div class="radio-content">
+                                    <i class="fa-solid fa-vault"></i>
+                                    <div>
+                                        <strong data-i18n="inheritYesTitle">Evet, Mirasımı Yeni Bedene Aktarmak İstiyorum</strong>
+                                        <p data-i18n="inheritYesDesc">Vasiyetname ve bankacılık escrow anlaşması ile haklarım kilitlensin.</p>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="radio-card" id="radioInheritNo">
+                                <input type="radio" name="inheritanceChoice" value="no">
+                                <div class="radio-content">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div>
+                                        <strong data-i18n="inheritNoTitle">İstemiyorum / Sonra Düşüneceğim</strong>
+                                        <p data-i18n="inheritNoDesc">Miras aktarımı olmadan sadece beden tespiti protokolü yürütülsün.</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Will Form Area (Visible if Yes) -->
+                        <div id="willSection" class="will-section">
+                            <div class="template-selector-bar">
+                                <span class="template-label" data-i18n="templateLabel">Hazır Vasiyet Şablonları:</span>
+                                <button type="button" class="btn btn-xs btn-outline" id="btnTpl1" data-i18n="btnTpl1">%100 Tam Devir Şablonu</button>
+                                <button type="button" class="btn btn-xs btn-outline" id="btnTpl2" data-i18n="btnTpl2">Paylaşmalı Vasiyet Şablonu</button>
+                                <button type="button" class="btn btn-xs btn-outline" id="btnTpl3" data-i18n="btnTpl3">Kripto & Taşınmaz Fonu</button>
+                            </div>
+
+                            <div class="form-group">
+                                <label data-i18n="lblWillText">Vasiyetname & Miras Aktarım Talimatı Metni</label>
+                                <textarea class="form-control text-area-will" id="willText" rows="6" placeholder="Ölümümden sonra tespit edilecek yeni bedenime aktarılmasını istediğim banka hesapları, gayrimenkuller ve taşınır varlıkların listesi..."></textarea>
+                            </div>
+                            <p class="form-hint" data-i18n="willHint"><i class="fa-solid fa-info-circle"></i> Bu metin sadece yazılı bir sözleşme taslağıdır. Gerekli devir ve banka süreçleri müşteri öldükten sonra hukuki escrow kanallarınca gerçekleştirilecektir.</p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Summary Review & Certificate -->
+                    <div class="wizard-step-panel" id="stepPanel5">
+                        <div class="panel-heading">
+                            <h3 data-i18n="step5Title">Adım 5: Özet İnceleme & Ön Kayıt Onayı</h3>
+                            <p data-i18n="step5Subtitle">
+                                Başvuru özetinizi kontrol ediniz ve Aşama 1 ön kayıt sertifikanızı oluşturunuz.
+                            </p>
+                        </div>
+
+                        <div class="summary-review-card">
+                            <div class="review-row">
+                                <span class="rev-label" data-i18n="revForms">Kayıtlı Formlar:</span>
+                                <span class="rev-value" id="revMemberNames">Ahmet Yıldız</span>
+                            </div>
+                            <div class="review-row">
+                                <span class="rev-label" data-i18n="revTier">Seçilen Paket:</span>
+                                <span class="rev-value" id="revTierName">Alfa Protokol</span>
+                            </div>
+                            <div class="review-row">
+                                <span class="rev-label" data-i18n="revInherit">Miras Aktarımı:</span>
+                                <span class="rev-value" id="revInheritanceStatus">Evet (Vasiyetname Ekli)</span>
+                            </div>
+                            <div class="review-row">
+                                <span class="rev-label" data-i18n="revTotal">Toplam Ödenecek Katılım Bedeli:</span>
+                                <span class="rev-value highlight-gold" id="revTotalFee">$20,000 USD</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method Preview -->
+                        <div class="payment-method-box">
+                            <h4 data-i18n="payMethodTitle">Ödeme Yöntemi Seçimi (Aşama 1 AR-GE Fonu)</h4>
+                            <div class="grid grid-3 pay-options">
+                                <label class="pay-card active">
+                                    <input type="radio" name="payMethod" value="wire" checked>
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <span data-i18n="payWire">Banka Havalesi / SWIFT</span>
+                                </label>
+                                <label class="pay-card">
+                                    <input type="radio" name="payMethod" value="crypto">
+                                    <i class="fa-brands fa-bitcoin"></i>
+                                    <span data-i18n="payCrypto">USDT / Crypto Escrow</span>
+                                </label>
+                                <label class="pay-card">
+                                    <input type="radio" name="payMethod" value="card">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    <span data-i18n="payCard">Kredi Kartı / Taksit</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wizard Buttons Bar -->
+                    <div class="wizard-footer-buttons">
+                        <button type="button" class="btn btn-outline" id="prevStepBtn" style="display: none;">
+                            <i class="fa-solid fa-arrow-left"></i> <span data-i18n="btnPrev">Geri</span>
+                        </button>
+                        <div class="flex-spacer"></div>
+                        <button type="button" class="btn btn-glow" id="nextStepBtn">
+                            <span data-i18n="btnNext">Devam Et</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button type="button" class="btn btn-gold" id="submitFormBtn" style="display: none;">
+                            <i class="fa-solid fa-certificate"></i> <span data-i18n="btnSubmit">Ön Kaydı Tamamla & Sertifikayı Al</span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-subtitle" data-i18n="faqSub">MERAK EDİLENLER</div>
+                <h2 class="section-title" data-i18n="faqTitle">Sıkça Sorulan Sorular</h2>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faqQ1">Geçilecek canlı bedeni kendim seçebilir miyim?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faqA1">
+                            Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ölüm öncesinde vücutta kilitlenen biyo-enerji izi ve doğal frekans uyumu doğrultusunda ruhun aktarıldığı yeni beden kuantum GPS sinyalleri ile otomatik olarak tespit edilir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faqQ2">Ödediğim $20,000 USD katılım ücreti ne amaçla kullanılmaktadır?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faqA2">
+                            Bu ücret Aşama 1 (Fikir ve AR-GE) kapsamında biyo-fizik araştırmalarını, frekans kilitleme yazılımlarını ve uluslararası miras devir hukuku altyapısını finanse eder. Katılım sağlayanlar Aşama 2 aktivasyonunda öncelikli hakkı kazanır.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faqQ3">Mirasım yeni bedene hukuken nasıl aktarılacak?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faqA3">
+                            Aşama 4'te doldurduğunuz vasiyetname metni ve anlaşmalı banka escrow protokolleri doğrultusunda, ölüm gerçekleştikten ve yeni beden GPS ile tescil edildikten sonra resmi hukuk organları marifetiyle mal varlığınız devredilir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faqQ4">Aile üyelerim için ayrı ücret ödemem gerekiyor mu?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faqA4">
+                            Evet. Her bireyin biyo-enerji izi ve kuantum frekansı benzersiz olduğundan, form adımında eklenen her aile üyesi için ayrı form ve ayrı hizmet ücreti ($20,000 USD / kişi) hesaplanır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="legal">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i class="fa-solid fa-dna"></i></div>
+                    <div class="logo-text">
+                        <span class="logo-title">RUH</span>
+                        <span class="logo-sub">PROJECT</span>
+                    </div>
+                </a>
+                <p data-i18n="footerDesc">
+                    Ölüm sonrası ruh aktarımı, biyo-enerji kilitleme ve miras koruma protokolü.
+                </p>
+                <div class="copyright">
+                    © 2026 RUH Project. Tüm Hakları Saklıdır. | GitHub Repository Release
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h5 data-i18n="footerQuickLinks">Hızlı Bağlantılar</h5>
+                <ul>
+                    <li><a href="#about" data-i18n="navAbout">Proje & Aşamalar</a></li>
+                    <li><a href="#mechanics" data-i18n="navMechanics">Teknoloji & İşleyiş</a></li>
+                    <li><a href="#apply" data-i18n="navApply">Ön Kayıt Başvurusu</a></li>
+                    <li><a href="#faq" data-i18n="navFaq">Sıkça Sorulan Sorular</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-legal">
+                <h5 data-i18n="footerLegalTitle">Yasal Uyarı</h5>
+                <p data-i18n="footerLegalNotice">
+                    Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar sorumluluk şartlarını kabul eder.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Certificate Modal -->
+    <div class="modal-backdrop" id="certificateModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-certificate"></i> <span data-i18n="certModalTitle">RUH Project Ön Kayıt Sertifikası</span></h3>
+                <button class="modal-close" id="closeCertModal">&times;</button>
+            </div>
+            <div class="modal-body" id="certificateBody">
+                <div class="cert-card">
+                    <div class="cert-border">
+                        <div class="cert-header">
+                            <i class="fa-solid fa-dna cert-logo-icon"></i>
+                            <h2>RUH PROJECT PROTOCOL</h2>
+                            <p class="cert-subtitle" data-i18n="certOfficialDoc">AŞAMA 1 BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ</p>
+                        </div>
+                        <div class="cert-hash-box">
+                            <span>Hash ID:</span> <strong id="certHashVal">RUH-2026-X9842-887</strong>
+                        </div>
+                        <div class="cert-details">
+                            <p><strong>Başvuru Sahibi:</strong> <span id="certHolderName">Ahmet Yıldız</span></p>
+                            <p><strong>Kayıtlı Kişi Sayısı:</strong> <span id="certMemberCount">1 Kişi</span></p>
+                            <p><strong>Seçilen Protokol:</strong> <span id="certTierName">Alfa Protokol ($20,000 USD/Kişi)</span></p>
+                            <p><strong>Miras Devir Durumu:</strong> <span id="certInheritance">Kayıtlı & Escrow Onaylı</span></p>
+                            <p><strong>Tarih:</strong> <span id="certDate">04.08.2026</span></p>
+                        </div>
+                        <div class="cert-footer-stamp">
+                            <div class="qr-mockup">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <div class="stamp-box" data-i18n="certStamp">
+                                PH1 APPROVED<br>RUH R&D VAULT
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="printCertBtn"><i class="fa-solid fa-print"></i> <span data-i18n="btnPrint">Sertifikayı Yazdır / PDF İndir</span></button>
+                <button class="btn btn-glow" id="finishModalBtn"><i class="fa-solid fa-check"></i> <span data-i18n="btnClose">Kapat</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
