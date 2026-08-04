@@ -1,17 +1,22 @@
 # RUH Project
 
-**"Reserve your place before you die"**
+> **"Ölmeden önce yerinizi ayırtın"** / **"Reserve your place before you die"**
 
 ![RUH Project Banner](https://img.shields.io/badge/Phase-Phase%201%20(R%26D%20%26%20Pre--Registration)-00f2fe?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-ffd700?style=for-the-badge)
 ![Bilingual](https://img.shields.io/badge/Language-Bilingual%20(TR%20%7C%20EN)-7928ca?style=for-the-badge)
+![Architecture](https://img.shields.io/badge/Architecture-ES6%20Modules%20%2B%20CSS%20Design%20System-ff8c00?style=for-the-badge)
 ![Deployment](https://img.shields.io/badge/Deploy-GitHub%20Pages%20Ready-00ff88?style=for-the-badge)
 
 ---
 
 ## 🌌 Project Overview & About
 
-"Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
+"Ölmeden önce yerinizi ayırtın." RUH Project, ölüm öncesinde biyo-enerji izini dijital protokole kilitleyen ve ölüm sonrası kuantum GPS ile yeni canlı bedeni tespit eden yenilikçi bir AR-GE girişimidir. Hukuki escrow ve vasiyetname altyapısı sayesinde tüm finansal ve taşınmaz haklarınız resmi sözleşmelerle sonraki yaşamınıza güvenle aktarılır.
+
+> **About (EN):** "Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
+
+---
 
 ## 🏛️ Project Phases & Transparency
 
@@ -37,16 +42,13 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ---
 
-## 🖥️ Web Portal Features
+## 🏗️ Technical Architecture & Enhancements
 
-- **Full Bilingual Support (TR / EN):** Instant language switcher across the entire application, form wizard, legal contracts, and certificate generator.
-- **Interactive 5-Step Registration Wizard:**
-  - **Step 1: Applicant & Family Member Forms:** Add separate sub-forms for family members (e.g. Form 1: Self, Form 2: Spouse, Form 3: Child).
-  - **Step 2: Service Fee Calculation & Tier Selection:** Select between *Alfa Protocol* ($20,000 USD/person) and *Sovereign Soul Protocol* ($45,000 USD/person). Live price updates.
-  - **Step 3: Legal Disclaimers & Responsibility Agreement:** Full contractual waiver where user acknowledges Phase 1 R&D status and accepts full liability.
-  - **Step 4: Inheritance Rights & Will Generator:** Option to toggle asset transfer and generate legal will drafts using ready-to-use template buttons (%100 Full Transfer, Split Estate, Crypto Vault).
-  - **Step 5: Review & Official Certificate Generator:** Generates a printable/downloadable RUH Pre-Registration Certificate with digital Hash ID and QR code mockup.
-- **Interactive Bio-Energy Canvas:** Real-time canvas simulation showing cellular frequency scanning and wave resonance.
+- **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, and `js/app.js` entrypoint).
+- **60-30-10 CSS Design System:** 60% Obsidian Black (`#07080d`), 30% Structural Surface Glass (`#121624`), 10% Neon Cyan (`#00f2fe`) & Gold (`#ffd700`) accents.
+- **SEO & Social Open Graph Metadata:** Complete Open Graph (`og:*`) & Twitter Cards (`twitter:*`) for viral social media preview cards.
+- **WCAG Accessibility (A11y):** ARIA roles (`role="dialog"`, `role="tablist"`, `aria-expanded`), high-contrast focus rings (`:focus-visible`), and screen-reader accessibility.
+- **UI/UX Micro-Interactions:** Skeleton loading shimmer animations during step changes and card hover transformations.
 
 ---
 
@@ -54,11 +56,18 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ```text
 RUH-Project/
-├── index.html        # SPA Structure with Hero, Visualizer, 5-Step Wizard, FAQ & Certificate Modal
-├── style.css         # Cyber-luxury dark theme (Obsidian, Cyan, Purple, Gold) & Responsive Layout
-├── script.js        # Bilingual Dictionary, Step Wizard Logic, Live Calculator & Canvas Animation
-├── README.md         # Comprehensive Repository Documentation & Roadmap
-└── LICENSE           # Open-source MIT License
+├── .gitignore              # Ignores system, IDE, and temporary cache files
+├── index.html              # HTML5 Semantic structure, Open Graph SEO & A11y
+├── style.css               # 60-30-10 Design System, Skeleton Loaders & Responsive Grid
+├── js/                     # ES6 Modular Architecture
+│   ├── app.js              # Main application entrypoint
+│   └── modules/
+│       ├── i18n.js         # TR/EN translation dictionary & state manager
+│       ├── wizard.js       # 5-step form wizard, family forms & live calculator
+│       ├── canvas.js       # Bio-energy particle frequency visualizer
+│       └── templates.js    # Will directive draft templates
+├── README.md               # Comprehensive Repository Documentation & Architecture
+└── LICENSE                 # Open-source MIT License
 ```
 
 ---
@@ -66,7 +75,7 @@ RUH-Project/
 ## 🚀 Local Setup & GitHub Pages Deployment
 
 ### **1. Local Testing**
-No compilation or Node.js environment required! Simply open `index.html` in any browser:
+Open `index.html` via any local HTTP server (or open `http://localhost:3000`):
 ```bash
 # Clone the repository
 git clone https://github.com/ozkanatasoy/RUH-Project.git
@@ -74,12 +83,12 @@ git clone https://github.com/ozkanatasoy/RUH-Project.git
 # Navigate into directory
 cd RUH-Project
 
-# Open in browser (Windows)
-start index.html
+# Run local HTTP server
+npx serve .
 ```
 
 ### **2. Deploying to GitHub Pages**
-1. Push the code to your main branch on GitHub.
+1. Push the code to your `main` branch on GitHub.
 2. Go to **Repository Settings** -> **Pages**.
 3. Under **Build and deployment**, set Source to `Deploy from a branch`.
 4. Select `main` branch and `/ (root)` folder.
