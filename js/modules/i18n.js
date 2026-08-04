@@ -6,7 +6,7 @@
 export const translations = {
     tr: {
         // Meta & General
-        title: "RUH Project | Ruh Aktarımı & Miras Koruma Protokolü",
+        title: "RUH Project | Biyo-Enerji & Ruh Tespiti ve Miras Koruma Protokolü",
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         
@@ -59,7 +59,7 @@ export const translations = {
         heroTag: "Biyo-Enerji Kilitlenme & Kuantum GPS Protokolü",
         heroTitleGrad: "RUH PROJECT",
         heroSlogan: '"Ölmeden önce yerinizi ayırtın"',
-        heroDesc: "İnsan bilincinin ve biyo-enerji izinin ölüm öncesinde kilitlenerek, sonraki canlı bedende kuantum GPS aracılığıyla tespiti ve mirasa dair tüm finansal ve taşınmaz hakların hukuki sözleşmelerle yeni yaşama aktarılması protokolü.",
+        heroDesc: "İnsan bilincinin ve biyo-enerji izinin ölüm öncesinde kilitlenerek, ruhun doğal yerleşimi sonrasında yeni canlı bedende kuantum GPS aracılığıyla tespiti ve mirasa dair tüm finansal ve taşınmaz hakların hukuki sözleşmelerle yeni yaşama devredilmesi protokolü.",
         heroBtnApply: "Ücretsiz Ön Kayıt Formu",
         heroBtnExplore: "Aşamaları İncele",
         statPhase: "AR-GE ve Hukuk Altyapısı",
@@ -90,8 +90,8 @@ export const translations = {
         p2Check4: "Kuantum Şifreli Dijital Miras Kasası Kurulumu",
 
         phase3Badge: "AŞAMA 3 (Planlanan Evre - Beklemede)",
-        phase3Title: "Aşama 3: Kuantum GPS Tespiti & Canlı Beden Aktarımı",
-        phase3Desc: "Ruhun yeni canlı bedende hayat bulmasıyla birlikte kuantum uydu ağı sinyali tespit eder. Hukuki kayyumlar marifetiyle tüm miras varlıkları resmi olarak yeni kimliğe devredilir.",
+        phase3Title: "Aşama 3: Kuantum GPS Tespiti & Yeni Beden Tescili",
+        phase3Desc: "Ruhun doğal süreçle yeni canlı bedende hayat bulmasıyla birlikte kuantum uydu ağı sinyali tespit eder. Hukuki kayyumlar marifetiyle tüm miras varlıkları resmi olarak yeni kimliğe devredilir.",
         p3Check1: "Yörünge Uyduları Destekli Kuantum GPS Yeri Tespiti",
         p3Check2: "Banka Escrow ve Gayrimenkul Devirlerinin Gerçekleştirilmesi",
         p3Check3: "Yeni Beden Kimliğine Vasiyet Şartlarının Aktarılması",
@@ -148,11 +148,11 @@ export const translations = {
         // Mechanics & Badges
         mechSub: "TEMEL İLKELER VE TEKNİK MEKANİZMA",
         mechTitle: "Nasıl Çalışır?",
-        mechDesc: "Beden seçimi yapılmaz; biyo-enerji iziniz kilitlenir ve doğal uyum kanalıyla yeni beden kuantum GPS ile tespit edilir.",
+        mechDesc: "Beden seçimi yapılmaz; biyo-enerji iziniz kilitlenir ve ruhun doğal yerleşimi sonrasında yeni beden kuantum GPS ile tespit edilir.",
         mechCard1Title: "1. Enerji İzi Kilitleme",
         mechCard1Desc: "Ölüm öncesinde kişinin hücre ve bilincine özel elektro-manyetik biyo-enerji frekansı taranarak dijital protokole kilitlenir. Firma veya müşteri geçilecek bedeni seçemez.",
         mechCard2Title: "2. Kuantum GPS Tespiti",
-        mechCard2Desc: "Ruhun yeni canlı bedende hayat bulmasıyla birlikte, kilitlenen biyo-enerji izinin yaydığı frekans sinyali sayesinde yeni bedenin konumu nokta atışı tespit edilir.",
+        mechCard2Desc: "Ruhun doğal süreçle yeni canlı bedende hayat bulmasıyla birlikte, kilitlenen biyo-enerji izinin yaydığı frekans sinyali sayesinde yeni bedenin konumu nokta atışı tespit edilir.",
         mechCard3Title: "3. Hukuki Miras Transferi",
         mechCard3Desc: "Belirlenen vasiyetname ve bankacılık escrow sözleşmeleri doğrultusunda, kişinin önceki yaşamındaki tüm mal varlığı ve taşınmazları resmi devir süreciyle yeni kimliğine garanti edilir.",
         badgeOptional: "İsteğe Bağlı",
@@ -240,7 +240,7 @@ export const translations = {
         faqSub: "MERAK EDİLENLER VE TEKNİK DETAYLAR",
         faqTitle: "Sıkça Sorulan Sorular (SSS)",
         faqQ1: "Geçilecek canlı bedeni kendim seçebilir miyim?",
-        faqA1: "Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ölüm öncesinde vücutta kilitlenen biyo-enerji izi ve doğal frekans uyumu doğrultusunda ruhun aktarıldığı yeni beden kuantum GPS sinyalleri ile otomatik olarak tespit edilir.",
+        faqA1: "Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ruhun doğal süreçle yeni bedene yerleşmesi sonrasında, kilitlenen biyo-enerji izi kuantum GPS sinyalleri ile otomatik olarak tespit edilir.",
         faqQ2: "Aşama 1 Ön Kayıt ücretli midir?",
         faqA2: "Hayır, Aşama 1 ön kayıt katılımı tamamen ücretsizdir. Bu aşamada form dolduran kullanıcılar biyo-enerji taslağını oluşturur ve Aşama 2 & 3 devreye girdiğinde öncelikli hizmet sırası kazanır.",
         faqQ3: "Mirasım yeni bedene hukuken nasıl aktarılacak?",
@@ -254,14 +254,14 @@ export const translations = {
         faqQ7: "AR-GE bağış havuzuna yapılan katkılar nasıl değerlendirilir ve öncelik nasıl sağlanır?",
         faqA7: "Toplanan bağışlar %100 şeffaflık ilkesiyle 4 ana AR-GE kalemi (biyo-fizik donanımları, uydu ağı, escrow trustları ve uzman kadro) için kullanılır. Bağış yapan kullanıcılar sistemde en yüksek tutara göre sıralanarak Aşama 2 & 3 aktivasyonlarında 1. Derece VIP sırayı alır.",
         faqQ8: "Ölüm anından ruhun yeni canlı bedende tespit edilmesine kadar geçen süre ne kadardır?",
-        faqA8: "Bilinç ve biyo-enerji akışı hücresel rezonansa bağlıdır. Yörünge uydularımız 7/24 küresel frekans taraması yapar ve ruh yeni bedende canlılık kazandığı an kilitli frekans sinyali sayesinde nokta atışı tespit edilir.",
+        faqA8: "Bilinç ve biyo-enerji akışı doğal biyolojik rezonansa bağlıdır. Yörünge uydularımız 7/24 küresel frekans taraması yapar ve ruh yeni bedende canlılık kazandığı an kilitli frekans sinyali sayesinde nokta atışı tespit edilir.",
         faqQ9: "Mirasımı mevcut ailem ile yeni bedenim arasında paylaştırabilir miyim?",
         faqA9: "Evet. Adım 4 vasiyetname seçeneğinde sunulan hazır şablonlar marifetiyle mal varlığınızın %100'ünü yeni bedeninize aktarabileceğiniz gibi, belirlediğiniz oranları mevcut aile üyelerinize bırakıp kalan kısmı yeni bedeninize devredebilirsiniz.",
         faqQ10: "Kişisel verilerim ve vasiyet detaylarım siber saldırılara karşı nasıl korunuyor?",
         faqA10: "Bütün biyo-profil kayıtları, finansal talimatlar ve vasiyet metinleri Post-Kuantum Şifreleme (PQC) ve ISO/IEC 27001 güvenlik standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik ilkesi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****).",
 
         // Footer
-        footerDesc: "Ölüm sonrası ruh aktarımı, biyo-enerji kilitleme ve miras koruma protokolü.",
+        footerDesc: "Ölüm sonrası biyo-enerji kilitleme, doğal ruh yerleşimi sonrası kuantum GPS tespiti ve miras koruma protokolü.",
         footerQuickLinks: "Hızlı Bağlantılar",
         footerLegalTitle: "Yasal Uyarı",
         footerLegalNotice: "Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar sorumluluk şartlarını kabul eder.",
@@ -275,7 +275,7 @@ export const translations = {
     },
     en: {
         // Meta & General
-        title: "RUH Project | Soul Relocation & Inheritance Protocol",
+        title: "RUH Project | Bio-Energy & Soul Identification and Estate Protection Protocol",
         announcementBadge: "PHASE 1 (FREE PRE-REGISTRATION)",
         announcementText: "This portal is currently in <strong>Phase 1 (Concept, R&D & Free Pre-Registration)</strong>. Pre-registered users gain priority service activation upon Phase 2 & 3 deployment.",
         
@@ -328,7 +328,7 @@ export const translations = {
         heroTag: "Bio-Energy Lock & Quantum GPS Protocol",
         heroTitleGrad: "RUH PROJECT",
         heroSlogan: '"Reserve your place before you die"',
-        heroDesc: "A revolutionary protocol locking human consciousness and bio-energy signature before death, pinpointing the target host body via Quantum GPS post-relocation, and securing all inheritance & estate rights via legal contracts.",
+        heroDesc: "A protocol locking pre-mortem bio-energy signature, detecting the host body via Quantum GPS following natural soul relocation, and legally transferring estate rights.",
         heroBtnApply: "Free Pre-Registration Form",
         heroBtnExplore: "Explore Roadmap",
         statPhase: "R&D & Legal Infrastructure",
@@ -359,8 +359,8 @@ export const translations = {
         p2Check4: "Quantum Encrypted Digital Will Vault Setup",
 
         phase3Badge: "PHASE 3 (Planned Phase - Standby)",
-        phase3Title: "Phase 3: Quantum GPS Tracing & Host Body Relocation",
-        phase3Desc: "Upon consciousness rebirth in a new host body, orbital satellite arrays pinpoint the target vessel. Legal custodians execute the official transfer of wealth to the new identity.",
+        phase3Title: "Phase 3: Quantum GPS Tracing & Host Body Verification",
+        phase3Desc: "Upon natural soul presence in a new host body, orbital satellite arrays pinpoint the target vessel. Legal custodians execute the official transfer of wealth to the new identity.",
         p3Check1: "Orbital Satellite Priority Quantum GPS Location Tracing",
         p3Check2: "Execution of Banking Escrow & Real Estate Asset Transfer",
         p3Check3: "Will Terms Activation for the Identified Identity",
@@ -417,11 +417,11 @@ export const translations = {
         // Mechanics & Badges
         mechSub: "CORE PRINCIPLES & TECHNICAL MECHANISMS",
         mechTitle: "How It Works",
-        mechDesc: "Host body selection is impossible; your bio-energy signature is locked pre-death, and your next host body is located via resonant Quantum GPS.",
+        mechDesc: "Host body selection is impossible; your bio-energy signature is locked pre-death, and your next host body is located via resonant Quantum GPS post natural relocation.",
         mechCard1Title: "1. Bio-Energy Signature Lock",
         mechCard1Desc: "Prior to death, the unique electro-magnetic frequency of the client's cellular consciousness is scanned and locked into the digital protocol. Neither the client nor RUH can select the host body.",
         mechCard2Title: "2. Quantum GPS Tracing",
-        mechCard2Desc: "As consciousness awakens in the new living entity, the locked bio-frequency signal allows Quantum GPS satellite arrays to pinpoint the exact location of the target host body.",
+        mechCard2Desc: "As consciousness naturally awakens in the new living entity, the locked bio-frequency signal allows Quantum GPS satellite arrays to pinpoint the exact location of the target host body.",
         mechCard3Title: "3. Legal Estate Escrow",
         mechCard3Desc: "Pursuant to pre-established legal trusts and banking escrow contracts, all assets, bank accounts, and real estate are legally transferred to the new identity.",
         badgeOptional: "Optional",
@@ -530,7 +530,7 @@ export const translations = {
         faqA10: "All bio-profiles, financial directives, and contract details are encrypted under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 standards. Leaderboard data displays initials only (e.g. A**** Y****).",
 
         // Footer
-        footerDesc: "Post-mortem soul relocation, bio-energy signature locking, and inheritance protection protocol.",
+        footerDesc: "Post-mortem bio-energy locking, Quantum GPS host body tracing following natural soul relocation, and legal estate escrow protocol.",
         footerQuickLinks: "Quick Links",
         footerLegalTitle: "Legal Disclaimer",
         footerLegalNotice: "This project is currently in Phase 1 (Concept & R&D). All services and contracts are governed under international legal frameworks; clients accept responsibility terms.",
