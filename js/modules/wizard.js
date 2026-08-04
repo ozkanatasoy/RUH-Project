@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, strict multi-member form validation, newborn birth date calculation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
+ * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing red input error highlights, custom cyber alert modals, newborn birth date calculation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -13,13 +13,55 @@ let selectedTier = 'phase1';
 let currentMemberCerts = [];
 
 /**
+ * Custom Cyber Alert Modal (replaces browser's default native alert popup)
+ * Smoothly focuses and scrolls to target invalid element upon dismissal.
+ */
+export function showCustomAlert(msg, targetElement = null) {
+    const modal = document.getElementById('validationAlertModal');
+    const msgEl = document.getElementById('validationModalMessage');
+    const btnDismiss = document.getElementById('btnDismissValidationModal');
+
+    if (msgEl) msgEl.textContent = msg;
+
+    if (modal) {
+        modal.classList.add('active');
+
+        const dismissHandler = () => {
+            modal.classList.remove('active');
+            btnDismiss.removeEventListener('click', dismissHandler);
+            document.removeEventListener('keydown', keyHandler);
+
+            if (targetElement) {
+                try {
+                    targetElement.focus();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } catch (e) {
+                    console.log('Scroll error:', e);
+                }
+            }
+        };
+
+        const keyHandler = (e) => {
+            if (e.key === 'Enter' || e.key === 'Escape') {
+                dismissHandler();
+            }
+        };
+
+        btnDismiss.addEventListener('click', dismissHandler);
+        document.addEventListener('keydown', keyHandler);
+    } else {
+        alert(msg);
+        if (targetElement) targetElement.focus();
+    }
+}
+
+/**
  * Attaches birth date change listener to calculate age automatically (supports newborns born today with age = 0)
  */
 function attachBirthDateAgeListener(card, num) {
     const birthEl = card.querySelector(`input[name="birthDate_${num}"]`);
     const ageEl = card.querySelector(`input[name="age_${num}"]`);
     if (birthEl && ageEl) {
-        // Set max date to today so newborns (born today) can be registered!
         const todayStr = new Date().toISOString().split('T')[0];
         birthEl.max = todayStr;
 
@@ -34,9 +76,27 @@ function attachBirthDateAgeListener(card, num) {
                 }
                 if (age < 0) age = 0; // Newborn baby
                 ageEl.value = age;
+
+                // Remove input-error highlight if present
+                birthEl.classList.remove('input-error');
+                ageEl.classList.remove('input-error');
             }
         });
     }
+}
+
+/**
+ * Attaches auto-clear listener for input error highlight
+ */
+function attachErrorClearListener(element) {
+    if (!element) return;
+    const clearFn = () => {
+        element.classList.remove('input-error');
+        element.removeEventListener('input', clearFn);
+        element.removeEventListener('change', clearFn);
+    };
+    element.addEventListener('input', clearFn);
+    element.addEventListener('change', clearFn);
 }
 
 export function initWizard() {
@@ -168,6 +228,8 @@ export function initWizard() {
             if (p1 === p2) {
                 passMatchStatus.textContent = lang === 'tr' ? '✓ Şifreler eşleşiyor' : '✓ Passwords match';
                 passMatchStatus.style.color = 'var(--color-green)';
+                regPassEl.classList.remove('input-error');
+                regPassConfirmEl.classList.remove('input-error');
             } else {
                 passMatchStatus.textContent = lang === 'tr' ? '✗ Şifreler eşleşmiyor' : '✗ Passwords do not match';
                 passMatchStatus.style.color = 'var(--color-red)';
@@ -290,46 +352,90 @@ function showSkeletonLoading(callback) {
     }
 }
 
+/**
+ * Strict Step Validator with Red Input Error Highlight
+ */
 function validateStep(step) {
     const lang = getCurrentLang();
+    let firstInvalidInput = null;
+
     if (step === 1) {
         const formCards = document.querySelectorAll('.family-member-card');
-        for (let idx = 0; idx < formCards.length; idx++) {
+        let hasError = false;
+
+        formCards.forEach((card, idx) => {
             const num = idx + 1;
-            const nameEl = formCards[idx].querySelector(`input[name="fullName_${num}"]`);
-            const idEl = formCards[idx].querySelector(`input[name="identityNo_${num}"]`);
-            const birthEl = formCards[idx].querySelector(`input[name="birthDate_${num}"]`);
-            const ageEl = formCards[idx].querySelector(`input[name="age_${num}"]`);
-            const genderEl = formCards[idx].querySelector(`select[name="gender_${num}"]`);
-            const emailEl = formCards[idx].querySelector(`input[name="email_${num}"]`);
-            const phoneEl = formCards[idx].querySelector(`input[name="phone_${num}"]`);
-            const relEl = formCards[idx].querySelector(`input[name="relation_${num}"]`);
+            const nameEl = card.querySelector(`input[name="fullName_${num}"]`);
+            const idEl = card.querySelector(`input[name="identityNo_${num}"]`);
+            const birthEl = card.querySelector(`input[name="birthDate_${num}"]`);
+            const ageEl = card.querySelector(`input[name="age_${num}"]`);
+            const genderEl = card.querySelector(`select[name="gender_${num}"]`);
+            const emailEl = card.querySelector(`input[name="email_${num}"]`);
+            const phoneEl = card.querySelector(`input[name="phone_${num}"]`);
+            const relEl = card.querySelector(`input[name="relation_${num}"]`);
 
-            const isNameValid = nameEl && nameEl.value.trim().length > 0;
-            const isIdValid = idEl && idEl.value.trim().length > 0;
-            const isBirthValid = birthEl && birthEl.value.length > 0;
-            const isAgeValid = ageEl && ageEl.value !== '' && ageEl.value !== undefined && parseInt(ageEl.value, 10) >= 0;
-            const isGenderValid = genderEl && genderEl.value !== '';
-            const isEmailValid = emailEl && emailEl.value.trim().length > 0;
-            const isPhoneValid = phoneEl && phoneEl.value.trim().length > 0;
-            const isRelValid = relEl && relEl.value.trim().length > 0;
+            const checkAndHighlight = (el, isValid) => {
+                if (!isValid) {
+                    hasError = true;
+                    if (el) {
+                        el.classList.add('input-error');
+                        attachErrorClearListener(el);
+                        if (!firstInvalidInput) firstInvalidInput = el;
+                    }
+                } else if (el) {
+                    el.classList.remove('input-error');
+                }
+            };
 
-            if (!isNameValid || !isIdValid || !isBirthValid || !isAgeValid || !isGenderValid || !isEmailValid || !isPhoneValid || !isRelValid) {
-                alert(lang === 'tr' 
-                    ? `⚠️ Form ${num}'de doldurulmamış eksik alanlar bulunmaktadır!\n\nAdım 2'ye geçebilmek için Ad Soyad, Kimlik No, Doğum Tarihi, Yaş, Cinsiyet, E-posta, Telefon Numarası ve Yakınlık alanlarının tamamını eksiksiz doldurmanız zorunludur.` 
-                    : `⚠️ Form ${num} has incomplete required fields!\n\nTo proceed to Step 2, you must fill out Full Name, National ID, Birth Date, Age, Gender, Email, Phone Number, and Relationship.`);
-                return false;
-            }
+            checkAndHighlight(nameEl, nameEl && nameEl.value.trim().length > 0);
+            checkAndHighlight(idEl, idEl && idEl.value.trim().length > 0);
+            checkAndHighlight(birthEl, birthEl && birthEl.value.length > 0);
+            checkAndHighlight(ageEl, ageEl && ageEl.value !== '' && ageEl.value !== undefined && parseInt(ageEl.value, 10) >= 0);
+            checkAndHighlight(genderEl, genderEl && genderEl.value !== '');
+            checkAndHighlight(emailEl, emailEl && emailEl.value.trim().length > 0);
+            checkAndHighlight(phoneEl, phoneEl && phoneEl.value.trim().length > 0);
+            checkAndHighlight(relEl, relEl && relEl.value.trim().length > 0);
+        });
+
+        if (hasError) {
+            const alertMsg = lang === 'tr' 
+                ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
+                : 'Please complete all required missing fields!';
+            showCustomAlert(alertMsg, firstInvalidInput);
+            return false;
         }
     } else if (step === 3) {
         const chkTerms = document.getElementById('chkTerms');
         const chkKvkk = document.getElementById('chkKvkk');
+        let hasError = false;
+
         if (!chkTerms || !chkTerms.checked) {
-            alert(lang === 'tr' ? 'Lütfen Hukuki Çerçeve ve Sorumluluk Sözleşmesi\'ni onaylayınız.' : 'Please accept the Legal Terms Contract.');
-            return false;
+            hasError = true;
+            if (chkTerms) {
+                chkTerms.classList.add('input-error');
+                attachErrorClearListener(chkTerms);
+                if (!firstInvalidInput) firstInvalidInput = chkTerms;
+            }
+        } else if (chkTerms) {
+            chkTerms.classList.remove('input-error');
         }
+
         if (!chkKvkk || !chkKvkk.checked) {
-            alert(lang === 'tr' ? 'Lütfen 6698 Sayılı KVKK ve Gizlilik Politikası Aydınlatma Metni\'ni onaylayınız.' : 'Please accept the KVKK Privacy Policy Consent.');
+            hasError = true;
+            if (chkKvkk) {
+                chkKvkk.classList.add('input-error');
+                attachErrorClearListener(chkKvkk);
+                if (!firstInvalidInput) firstInvalidInput = chkKvkk;
+            }
+        } else if (chkKvkk) {
+            chkKvkk.classList.remove('input-error');
+        }
+
+        if (hasError) {
+            const alertMsg = lang === 'tr' 
+                ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
+                : 'Please complete all required missing fields!';
+            showCustomAlert(alertMsg, firstInvalidInput);
             return false;
         }
     }
@@ -399,9 +505,8 @@ export function populateContingencySuccessionView() {
 
     const lang = getCurrentLang();
     const familyCards = document.querySelectorAll('.family-member-card');
-    
+
     if (familyCards.length > 1) {
-        // Multiple family members registered
         let html = `
             <p style="font-size: 0.88rem; color: var(--color-gold); margin-bottom: 14px; font-weight: 600;">
                 <i class="fa-solid fa-users"></i> ${translations[lang].contingencyMultiNotice || 'Kayıtlı diğer aile üyeleriniz arasından hak devri yapmak istediğiniz kişi(leri) seçiniz ve devir oranlarını belirleyiniz:'}
@@ -442,7 +547,6 @@ export function populateContingencySuccessionView() {
         container.innerHTML = html;
 
     } else {
-        // Single applicant (only Form 1)
         const html = `
             <div class="contingency-single-box">
                 <p style="font-size: 0.88rem; color: var(--color-gold); margin-bottom: 12px; font-weight: 600;">
@@ -461,6 +565,10 @@ export function populateContingencySuccessionView() {
             </div>
         `;
         container.innerHTML = html;
+        const bName = document.getElementById('backupHeirName');
+        const bRel = document.getElementById('backupHeirRelation');
+        if (bName) attachErrorClearListener(bName);
+        if (bRel) attachErrorClearListener(bRel);
     }
 }
 
@@ -477,34 +585,40 @@ function initCertificateModal(submitFormBtn) {
             const primaryId = document.querySelector('input[name="identityNo_1"]')?.value || '11111111111';
             const primaryEmail = document.querySelector('input[name="email_1"]')?.value || 'user@example.com';
             const primaryPhone = document.querySelector('input[name="phone_1"]')?.value || '';
-            
+
             const regPasswordInput = document.getElementById('regPassword');
             const regPasswordConfirmInput = document.getElementById('regPasswordConfirm');
 
             const password = regPasswordInput ? regPasswordInput.value.trim() : '';
             const confirmPassword = regPasswordConfirmInput ? regPasswordConfirmInput.value.trim() : '';
 
-            // Password Rule Checks (Social Media Rules: min 8 chars, 1 uppercase, 1 lowercase, 1 number)
+            // Password Rule Checks
             const hasMinLength = password.length >= 8;
             const hasUpper = /[A-Z]/.test(password);
             const hasLower = /[a-z]/.test(password);
             const hasNumber = /[0-9]/.test(password);
 
             if (!hasMinLength || !hasUpper || !hasLower || !hasNumber) {
-                alert(lang === 'tr' 
-                    ? 'Şifreniz güvenlik kurallarına uymamaktadır.\nLütfen en az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içeren bir şifre giriniz.' 
-                    : 'Password does not meet security requirements.\nMust contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number.'
-                );
-                if (regPasswordInput) regPasswordInput.focus();
+                if (regPasswordInput) {
+                    regPasswordInput.classList.add('input-error');
+                    attachErrorClearListener(regPasswordInput);
+                }
+                const msg = lang === 'tr' 
+                    ? 'Şifreniz en az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir!' 
+                    : 'Password must contain 8+ chars, uppercase, lowercase & number!';
+                showCustomAlert(msg, regPasswordInput);
                 return;
             }
 
             if (password !== confirmPassword) {
-                alert(lang === 'tr' 
-                    ? 'Girdiğiniz şifreler eşleşmiyor! Lütfen şifre doğrulama kutucuğuna aynı şifreyi giriniz.' 
-                    : 'Passwords do not match! Please re-enter the exact same password in the confirmation box.'
-                );
-                if (regPasswordConfirmInput) regPasswordConfirmInput.focus();
+                if (regPasswordConfirmInput) {
+                    regPasswordConfirmInput.classList.add('input-error');
+                    attachErrorClearListener(regPasswordConfirmInput);
+                }
+                const msg = lang === 'tr' 
+                    ? 'Girdiğiniz şifreler eşleşmiyor!' 
+                    : 'Passwords do not match!';
+                showCustomAlert(msg, regPasswordConfirmInput);
                 return;
             }
 
@@ -515,8 +629,12 @@ function initCertificateModal(submitFormBtn) {
                 const bName = document.getElementById('backupHeirName');
                 const bRel = document.getElementById('backupHeirRelation');
                 if (bName && !bName.value.trim()) {
-                    alert(lang === 'tr' ? 'Lütfen vefat halinde devredilecek Yedek Hak Sahibi Ad Soyad alanını doldurunuz.' : 'Please enter Backup Heir Full Name.');
-                    if (bName) bName.focus();
+                    bName.classList.add('input-error');
+                    attachErrorClearListener(bName);
+                    const msg = lang === 'tr' 
+                        ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
+                        : 'Please complete all required missing fields!';
+                    showCustomAlert(msg, bName);
                     return;
                 }
                 backupHeirData = {
@@ -536,9 +654,8 @@ function initCertificateModal(submitFormBtn) {
             const timeStr = now.toLocaleTimeString(lang === 'tr' ? 'tr-TR' : 'en-US');
             const fullDateTime = `${dateStr} ${timeStr}`;
 
-            // Build array of all registered family members with unique 11-digit Energy IDs and 16-digit Barcodes
             currentMemberCerts = [];
-            
+
             familyCards.forEach((card, idx) => {
                 const num = idx + 1;
                 const fName = card.querySelector(`input[name="fullName_${num}"]`)?.value || (num === 1 ? primaryName : `Member ${num}`);
@@ -555,8 +672,8 @@ function initCertificateModal(submitFormBtn) {
                     phone: fPhone,
                     age: fAge,
                     gender: fGender,
-                    energyId: generateEnergyId(), // 11 alphanumeric characters
-                    barcode: generateBarcode16(), // 16 digits
+                    energyId: generateEnergyId(),
+                    barcode: generateBarcode16(),
                     registeredAt: fullDateTime,
                     tierName: selectedTierName,
                     inheritanceStatus: inheritStatus
@@ -579,16 +696,17 @@ function initCertificateModal(submitFormBtn) {
                 tierName: selectedTierName,
                 inheritanceStatus: inheritStatus,
                 registeredAt: fullDateTime,
-                phoneVerified: false, // Default false until SMS verification in profile
+                phoneVerified: false,
                 backupHeir: backupHeirData,
                 members: currentMemberCerts
             });
 
-            // Simulated Email Verification Link Notification
-            alert(lang === 'tr' 
-                ? `📧 E-POSTA DOĞRULAMA BİLDİRİMİ:\n\nForm kaydınız başarıyla oluşturuldu! E-posta adresinize (${primaryMember.email}) doğrulama bağlantısı gönderilmiştir.\n\nTelefon numaranızı (${primaryMember.phone}) doğrulamak için sağ üstteki 'Profilim' sekmesinden 6 haneli Mobil SMS Onay sistemini kullanabilirsiniz.`
-                : `📧 EMAIL VERIFICATION NOTICE:\n\nRegistration complete! A verification link has been sent to your email (${primaryMember.email}).\n\nTo verify your phone (${primaryMember.phone}), use the 6-digit Mobile SMS system in your 'My Profile' tab.`
-            );
+            // Custom Notification for Email Verification
+            const successMsg = lang === 'tr' 
+                ? `Form kaydınız oluşturuldu! E-postanıza (${primaryMember.email}) onay bağlantısı gönderildi.` 
+                : `Registration successful! Verification link sent to your email (${primaryMember.email}).`;
+
+            showCustomAlert(successMsg);
 
             // Render Certificate in Modal
             renderCertificateView(0);
@@ -627,14 +745,12 @@ export function renderCertificateView(memberIndex = 0) {
     if (inheritEl) inheritEl.textContent = cert.inheritanceStatus;
     if (dateEl) dateEl.textContent = cert.registeredAt;
 
-    // Generate dynamic QR code URL linking directly to verification portal on mobile scan
     const verifyUrl = `https://ozkanatasoy.github.io/RUH-Project/?verify=${cert.barcode}#verify`;
     if (qrImgEl) {
         qrImgEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(verifyUrl)}&color=00f2fe&bkgnd=07080d`;
         qrImgEl.alt = `Sertifika QR Kodu: ${cert.barcode}`;
     }
 
-    // Populate Member Switcher dropdown if multiple members exist
     const switcherWrapper = document.getElementById('certMemberSwitcherWrapper');
     const switcherSelect = document.getElementById('certMemberSwitcher');
 

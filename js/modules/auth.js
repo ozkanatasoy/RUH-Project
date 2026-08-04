@@ -1,9 +1,10 @@
 /**
  * RUH PROJECT - User Authentication & Profile Dashboard Module
- * Handles accounts, 11-digit Digital Energy IDs, 16-digit Barcodes, Remember Me, Forgot Password Reset, Mobile SMS Verification, profile dashboard, and public certificate verification.
+ * Handles accounts, 11-digit Digital Energy IDs, 16-digit Barcodes, Remember Me, Forgot Password Reset, Mobile SMS Verification, profile dashboard, custom modal alerts, and public certificate verification.
  */
 
 import { getCurrentLang, getTranslation } from './i18n.js';
+import { showCustomAlert } from './wizard.js';
 
 let currentUser = null;
 let generatedSmsCode = null;
@@ -18,7 +19,7 @@ export function generateEnergyId() {
     for (let i = 0; i < 8; i++) {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    return result; // 11 alphanumeric characters
+    return result;
 }
 
 /**
@@ -31,7 +32,7 @@ export function generateBarcode16() {
     for (let i = 0; i < 16; i++) {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-    return result; // 16 digits
+    return result;
 }
 
 /**
@@ -74,7 +75,6 @@ export function initAuth() {
     const forgotPassLink = document.getElementById('forgotPassLink');
     const logoutBtn = document.getElementById('logoutBtn');
 
-    // SMS Verification Buttons inside Profile Modal
     const btnSendSmsCode = document.getElementById('btnSendSmsCode');
     const btnVerifySmsCode = document.getElementById('btnVerifySmsCode');
 
@@ -84,7 +84,6 @@ export function initAuth() {
                 openProfileModal();
             } else {
                 if (loginModal) {
-                    // Pre-fill remembered email if saved
                     const rememberedEmail = localStorage.getItem('ruh_remembered_email');
                     const loginEmailInput = document.getElementById('loginEmail');
                     const chkRemember = document.getElementById('chkRememberMe');
@@ -136,7 +135,6 @@ export function initAuth() {
         logoutBtn.addEventListener('click', handleLogout);
     }
 
-    // Profile SMS Verification Handlers
     if (btnSendSmsCode) {
         btnSendSmsCode.addEventListener('click', handleSendSmsCode);
     }
@@ -149,7 +147,6 @@ export function initAuth() {
 export function registerUserAccount(accountData) {
     const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
     
-    // Ensure primary applicant has 11-digit Energy ID and 16-digit Barcode
     if (!accountData.energyId) accountData.energyId = generateEnergyId();
     if (!accountData.barcode) accountData.barcode = generateBarcode16();
     if (accountData.phoneVerified === undefined) accountData.phoneVerified = false;
@@ -163,7 +160,6 @@ export function registerUserAccount(accountData) {
 
     localStorage.setItem('ruh_accounts', JSON.stringify(existingAccounts));
 
-    // Register all member certificates to global public lookup db
     const certDb = JSON.parse(localStorage.getItem('ruh_certificates_db') || '[]');
     const members = accountData.members || [{
         fullName: accountData.fullName,
@@ -199,7 +195,6 @@ export function registerUserAccount(accountData) {
 
     localStorage.setItem('ruh_certificates_db', JSON.stringify(certDb));
 
-    // Auto-login
     currentUser = accountData;
     localStorage.setItem('ruh_current_user', JSON.stringify(currentUser));
     updateNavAuthButton();
@@ -214,8 +209,22 @@ function handleLogin() {
     const email = emailInput ? emailInput.value.trim() : '';
     const pass = passInput ? passInput.value : '';
 
+    if (emailInput) emailInput.classList.remove('input-error');
+    if (passInput) passInput.classList.remove('input-error');
+
+    let firstInvalid = null;
+    if (!email && emailInput) {
+        emailInput.classList.add('input-error');
+        firstInvalid = emailInput;
+    }
+    if (!pass && passInput) {
+        passInput.classList.add('input-error');
+        if (!firstInvalid) firstInvalid = passInput;
+    }
+
     if (!email || !pass) {
-        alert(lang === 'tr' ? 'Lütfen e-posta ve şifrenizi giriniz.' : 'Please enter email and password.');
+        const msg = lang === 'tr' ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' : 'Please complete all required missing fields!';
+        showCustomAlert(msg, firstInvalid);
         return;
     }
 
@@ -226,7 +235,6 @@ function handleLogin() {
         currentUser = user;
         localStorage.setItem('ruh_current_user', JSON.stringify(currentUser));
         
-        // Remember Me logic
         if (chkRemember && chkRemember.checked) {
             localStorage.setItem('ruh_remembered_email', email);
         } else {
@@ -236,12 +244,15 @@ function handleLogin() {
         updateNavAuthButton();
         const loginModal = document.getElementById('loginModal');
         if (loginModal) loginModal.classList.remove('active');
-        alert(lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`);
+        showCustomAlert(lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`);
         openProfileModal();
     } else {
-        alert(lang === 'tr' 
-            ? 'Hatalı e-posta veya şifre!\nLütfen bilgilerinizi kontrol edin veya ön kayıt formunu tamamlayarak hesap oluşturun.' 
-            : 'Invalid email or password!\nPlease check your credentials or complete pre-registration to create an account.');
+        if (emailInput) emailInput.classList.add('input-error');
+        if (passInput) passInput.classList.add('input-error');
+        const msg = lang === 'tr' 
+            ? 'Hatalı e-posta veya şifre!' 
+            : 'Invalid email or password!';
+        showCustomAlert(msg, emailInput);
     }
 }
 
@@ -251,9 +262,13 @@ function handleForgotPassword() {
     const email = forgotEmailInput ? forgotEmailInput.value.trim() : '';
 
     if (!email) {
-        alert(lang === 'tr' ? 'Lütfen e-posta adresinizi giriniz.' : 'Please enter your email address.');
+        if (forgotEmailInput) forgotEmailInput.classList.add('input-error');
+        const msg = lang === 'tr' ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' : 'Please complete all required missing fields!';
+        showCustomAlert(msg, forgotEmailInput);
         return;
     }
+
+    if (forgotEmailInput) forgotEmailInput.classList.remove('input-error');
 
     const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
     const found = existingAccounts.find(acc => acc.email.toLowerCase() === email.toLowerCase());
@@ -262,13 +277,15 @@ function handleForgotPassword() {
     if (forgotModal) forgotModal.classList.remove('active');
 
     if (found) {
-        alert(lang === 'tr' 
-            ? `📧 ŞİFRE SIFIRLAMA TALEBİ ALINDI:\n\nŞifre sıfırlama talimatları ve güvenli giriş bağlantısı e-posta adresinize (${email}) gönderilmiştir. Lütfen gelen kutunuzu kontrol ediniz.` 
-            : `📧 PASSWORD RESET REQUEST RECEIVED:\n\nPassword reset instructions and a secure link have been sent to your email (${email}). Please check your inbox.`);
+        const msg = lang === 'tr' 
+            ? `Şifre sıfırlama bağlantısı e-posta adresinize (${email}) gönderilmiştir.` 
+            : `Password reset link sent to your email address (${email}).`;
+        showCustomAlert(msg);
     } else {
-        alert(lang === 'tr' 
-            ? `Bu e-posta adresi (${email}) sistemde kayıtlı değildir. Lütfen Ön Kayıt Formu'nu doldurarak hesap oluşturunuz.` 
-            : `This email address (${email}) is not registered. Please complete the Pre-Registration Form to create an account.`);
+        const msg = lang === 'tr' 
+            ? `Bu e-posta adresi (${email}) sistemde kayıtlı değildir.` 
+            : `This email address (${email}) is not registered.`;
+        showCustomAlert(msg);
     }
 }
 
@@ -279,7 +296,7 @@ function handleLogout() {
     updateNavAuthButton();
     const profileModal = document.getElementById('profileModal');
     if (profileModal) profileModal.classList.remove('active');
-    alert(lang === 'tr' ? 'Oturum kapatıldı.' : 'Logged out successfully.');
+    showCustomAlert(lang === 'tr' ? 'Oturum kapatıldı.' : 'Logged out successfully.');
 }
 
 function handleSendSmsCode() {
@@ -287,14 +304,13 @@ function handleSendSmsCode() {
     const lang = getCurrentLang();
     const phone = currentUser.phone || currentUser.members?.[0]?.phone || '+90 555 000 0000';
 
-    // Generate random 6-digit SMS code
     generatedSmsCode = Math.floor(100000 + Math.random() * 900000).toString();
 
-    // Show simulated SMS Alert
-    alert(lang === 'tr'
-        ? `📱 SIMÜLE EDİLEN MOBİL SMS İLETİSİ:\n\nR.U.H. Incorporation Mobil Onay Kodunuz: [ ${generatedSmsCode} ]\n\nTelefon Numarası: ${phone}\nLütfen bu 6 haneli kodu kutucuğa girerek onaylayınız.`
-        : `📱 SIMULATED MOBILE SMS MESSAGE:\n\nR.U.H. Incorporation Mobile Verification Code: [ ${generatedSmsCode} ]\n\nPhone: ${phone}\nPlease enter this 6-digit code in the box to confirm.`
-    );
+    const msg = lang === 'tr'
+        ? `Mobil SMS Onay Kodunuz: [ ${generatedSmsCode} ]`
+        : `Mobile SMS Verification Code: [ ${generatedSmsCode} ]`;
+
+    showCustomAlert(msg);
 
     const smsInputRow = document.getElementById('smsInputRow');
     if (smsInputRow) smsInputRow.style.display = 'flex';
@@ -307,14 +323,17 @@ function handleVerifySmsCode() {
     const inputCode = smsInput ? smsInput.value.trim() : '';
 
     if (!inputCode) {
-        alert(lang === 'tr' ? 'Lütfen telefonunuza gelen 6 haneli kodu giriniz.' : 'Please enter the 6-digit code sent to your phone.');
+        if (smsInput) smsInput.classList.add('input-error');
+        const msg = lang === 'tr' ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' : 'Please complete all required missing fields!';
+        showCustomAlert(msg, smsInput);
         return;
     }
+
+    if (smsInput) smsInput.classList.remove('input-error');
 
     if (inputCode === generatedSmsCode || inputCode === '123456') {
         currentUser.phoneVerified = true;
 
-        // Update in localStorage
         localStorage.setItem('ruh_current_user', JSON.stringify(currentUser));
         const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
         const idx = existingAccounts.findIndex(acc => acc.email.toLowerCase() === currentUser.email.toLowerCase());
@@ -323,16 +342,18 @@ function handleVerifySmsCode() {
             localStorage.setItem('ruh_accounts', JSON.stringify(existingAccounts));
         }
 
-        // Update UI Badge
         updateProfilePhoneStatusUI();
 
-        alert(lang === 'tr' 
-            ? '✓ TEBRİKLER!\nMobil telefon numaranız 6 haneli SMS onay kodu ile başarıyla doğrulandı.' 
-            : '✓ CONGRATULATIONS!\nYour mobile phone number has been successfully verified via 6-digit SMS code.');
+        const msg = lang === 'tr' 
+            ? 'Mobil telefon numaranız başarıyla doğrulandı.' 
+            : 'Mobile phone number successfully verified.';
+        showCustomAlert(msg);
     } else {
-        alert(lang === 'tr' 
-            ? '✗ Hatalı SMS kodu! Lütfen telefonunuza gelen 6 haneli onay kodunu tekrar kontrol ediniz.' 
-            : '✗ Invalid SMS code! Please re-check the 6-digit code sent to your phone.');
+        if (smsInput) smsInput.classList.add('input-error');
+        const msg = lang === 'tr' 
+            ? 'Hatalı SMS kodu!' 
+            : 'Invalid SMS code!';
+        showCustomAlert(msg, smsInput);
     }
 }
 
@@ -468,7 +489,6 @@ export function initVerificationTool() {
         });
     }
 
-    // Auto-fill query parameter if present in URL (e.g. ?verify=8942-7109-4482-1928)
     const urlParams = new URLSearchParams(window.location.search);
     const verifyCode = urlParams.get('verify');
     if (verifyCode && verifyInput) {

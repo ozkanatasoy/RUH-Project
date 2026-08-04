@@ -2199,4 +2199,18 @@ a:hover {
     }
 }
 
+/* --- Validation Error Highlight Styles --- */
+.input-error {
+    border-color: #ff3366 !important;
+    box-shadow: 0 0 16px rgba(255, 51, 102, 0.45) !important;
+    background-color: rgba(255, 51, 102, 0.08) !important;
+    animation: shakeInput 0.35s ease-in-out;
+}
+
+@keyframes shakeInput {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
 

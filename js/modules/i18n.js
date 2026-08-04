@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html, Contingency Heir Transfer, Remember Me, Forgot Password & Mobile SMS Verification.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html, Contingency Heir Transfer, Remember Me, Forgot Password, Mobile SMS Verification & Custom Validation Modal.
  */
 
 export const translations = {
@@ -9,6 +9,9 @@ export const translations = {
         title: "RUH Project | Biyo-Enerji & Ruh Tespiti ve Miras Koruma Protokolü",
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
+        btnOk: "Tamam",
+        valModalTitle: "Eksik Bilgi Uyarısı",
+        valModalMsg: "Doldurulmamış zorunlu eksik alanları tamamlayın!",
         
         // Nav
         navAbout: "Proje & Aşamalar",
@@ -354,6 +357,9 @@ export const translations = {
         title: "RUH Project | Bio-Energy & Soul Identification and Estate Protection Protocol",
         announcementBadge: "PHASE 1 (FREE PRE-REGISTRATION)",
         announcementText: "This portal is currently in <strong>Phase 1 (Concept, R&D & Free Pre-Registration)</strong>. Pre-registered users gain priority service activation upon Phase 2 & 3 deployment.",
+        btnOk: "OK",
+        valModalTitle: "Incomplete Information Warning",
+        valModalMsg: "Please complete all required missing fields!",
         
         // Nav (Shortened navLegal to Legal & GDPR for header space)
         navAbout: "Project & Phases",
