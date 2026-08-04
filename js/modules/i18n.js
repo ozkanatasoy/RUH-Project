@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html & Contingency Heir Transfer.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html & Contingency Heir Transfer.
  */
 
 export const translations = {
@@ -148,10 +148,10 @@ export const translations = {
         costItem4Desc: "Kuantum fizikçileri, nörologlar, hukukçular ve siber güvenlik/ISO sertifikasyon altyapısı.",
         costItem4Amount: "$20,000,000 USD",
 
-        fundingTiersTitle: "Tavsiye Edilen AR-GE Bağış Hedef Seviyeleri",
-        tier1Label: "Seviye 1: $5,000,000 USD - Prototip & Yasal Sözleşme Altyapısı",
-        tier2Label: "Seviye 2: $25,000,000 USD - Donanım Üretimi & Uydu Entegrasyonu",
-        tier3Label: "Seviye 3: $100,000,000 USD - Tam Ölçekli Küresel AR-GE & Escrow Ağı (Ana Hedef)",
+        fundingTiersTitle: "$100M Dolar Toplam AR-GE Fonu Kademeli Dağılım Seviyeleri",
+        tier1Label: "Seviye 1 (%15 Pay): $15,000,000 USD - Uluslararası Miras Escrow Trustları & Siber Güvenlik",
+        tier2Label: "Seviye 2 (%35 Pay - Toplam $50M): $35,000,000 USD - Biyo-Fizik Kuantum Sensör Donanımları & Laboratuvar İmalatı",
+        tier3Label: "Seviye 3 (%50 Pay - Tam Hedef $100M): $50,000,000 USD - Kuantum GPS Yörünge Uydu Ağı & Tam Operasyon (Ana Hedef)",
 
         // Certificate Verification Section
         verifySub: "SİSTEM DOĞRULAMA & ORJİNAL KAYIT SORGULAMA",
@@ -484,10 +484,10 @@ export const translations = {
         costItem4Desc: "Quantum physicists, neuroscientists, legal counsel, and cybersecurity/ISO certification infrastructure.",
         costItem4Amount: "$20,000,000 USD",
 
-        fundingTiersTitle: "Target R&D Funding Progress Tiers",
-        tier1Label: "Tier 1: $5,000,000 USD - Prototype & Legal Contract Infrastructure",
-        tier2Label: "Tier 2: $25,000,000 USD - Hardware Manufacturing & Satellite Integration",
-        tier3Label: "Tier 3: $100,000,000 USD - Full-Scale Global R&D & Escrow Network (Main Goal)",
+        fundingTiersTitle: "$100M Total R&D Fund Phased Distribution Tiers",
+        tier1Label: "Tier 1 (15% Share): $15,000,000 USD - International Estate Trusts & Cybersecurity Infrastructure",
+        tier2Label: "Tier 2 (35% Share - Cumulative $50M): $35,000,000 USD - Biophysics Quantum Sensor Hardware & Cleanroom Labs",
+        tier3Label: "Tier 3 (50% Share - Total Goal $100M): $50,000,000 USD - Quantum GPS Satellite Network & Full Operations (Main Goal)",
 
         // Certificate Verification Section
         verifySub: "SYSTEM VERIFICATION & CERTIFICATE LOOKUP",
