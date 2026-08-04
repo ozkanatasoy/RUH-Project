@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal & Expanded FAQ.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal, Expanded FAQ & KVKK Privacy Policy.
  */
 
 export const translations = {
@@ -14,7 +14,7 @@ export const translations = {
         navAbout: "Proje & Aşamalar",
         navMechanics: "Teknoloji & İşleyiş",
         navDonations: "Şeffaf AR-GE Havuzu",
-        navLegal: "Hukuki Çerçeve",
+        navLegal: "Hukuki Çerçeve & KVKK",
         navApply: "Ön Kayıt Başvurusu",
         navVerify: "Sertifika Sorgulama",
         navFaq: "SSS",
@@ -163,7 +163,7 @@ export const translations = {
         wizardDesc: "Formu doldurarak RUH Project Aşama 1 ücretsiz ön kayıt protokolüne katılım sağlayabilirsiniz. Şahsen veya aile üyeleriniz için ayrı kayıt oluşturabilirsiniz.",
         step1Header: "Kişisel & Aile",
         step2Header: "Protokol Kaydı",
-        step3Header: "Hukuki Onay",
+        step3Header: "Hukuki Onay & KVKK",
         step4Header: "Miras & Vasiyet",
         step5Header: "Özet & Sertifika",
 
@@ -196,14 +196,16 @@ export const translations = {
         calcTotal: "Aşama 1 Katılım Ücreti:",
 
         // Wizard Step 3
-        step3Title: "Adım 3: Hukuki Çerçeve ve Sorumluluk Sözleşmesi",
-        step3Subtitle: "RUH Project Aşama 1 ön kayıt kapsamında bütün sorumluluğun kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.",
+        step3Title: "Adım 3: Hukuki Çerçeve ve KVKK Gizlilik Sözleşmesi",
+        step3Subtitle: "RUH Project Aşama 1 ön kayıt kapsamında bütün sorumluluğun ve 6698 Sayılı KVKK gizlilik şartlarının kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.",
         contractHeader: "RUH PROJECT AŞAMA 1 ÖN KAYIT VE HUKUKİ SORUMLULUK SÖZLEŞMESİ",
         contractP1: "<strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, RUH Project ('Firma') ile bu platform üzerinden ücretsiz ön kayıt formunu dolduran 'Müşteri' arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 & 3 öncelik haklarının belirlenmesidir.",
         contractP2: "<strong>Madde 2 - Şeffaflık ve Ücretsiz Ön Kayıt Beyanı:</strong> Müşteri, projenin mevcut durumda bir AR-GE ve fikir aşamasında olduğunu, Aşama 1 kaydının ücretsiz olduğunu ve gelecekteki hizmet aktivasyonları için sırasını güvenceye aldığını kabul eder.",
         contractP3: "<strong>Madde 3 - Beden Seçim Sınırlaması:</strong> Müşteri, sonraki yaşamında hangi canlı bedene geçeceğini kendisinin veya Firmanın seçemeyeceğini bilmekte ve kabul etmektedir. Süreç tamamen ölüm öncesi kilitlenen biyo-enerji frekansı ve kuantum GPS tespiti esasına dayanır.",
-        contractP4: "<strong>Madde 4 - Sorumluluk Reddi:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, sonraki aşamalar devreye girdiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.",
+        contractP4: "<strong>Madde 4 - Sorumluluk Reddi ve Hizmet Önceliği:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, sonraki aşamalar devreye girdiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.",
+        contractP5: "<strong>Madde 5 - 6698 Sayılı KVKK ve Gizlilik Politikası:</strong> Müşteriye ait kişisel veriler (Ad, Soyad, TC Kimlik No, İletişim Bilgileri) ve biyo-enerji profil taslağı 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Genel Veri Koruma Tüzüğü (GDPR) uyumlu Post-Kuantum Şifreleme (PQC) standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik prensibi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****). Müşteri verilerinin tescil ve doğrulanma amacıyla işlenmesini açık rızası ile kabul eder.",
         chkTermsText: "Yukarıdaki hukuki sözleşmeyi okudum, anladım ve Aşama 1 ön kayıt şartlarını ve tüm sorumluluğu kabul ediyorum. *",
+        chkKvkkText: "6698 Sayılı KVKK ve Gizlilik Politikası Aydınlatma Metni'ni okudum, kişisel verilerimin, biyo-enerji taslağımın ve vasiyet bilgilerimin şifrelenerek işlenmesini onaylıyorum. *",
 
         // Wizard Step 4
         step4Title: "Adım 4: Miras Devir Seçimi & Vasiyetname Şablonu",
@@ -263,8 +265,8 @@ export const translations = {
         // Footer
         footerDesc: "Ölüm sonrası biyo-enerji kilitleme, doğal ruh yerleşimi sonrası kuantum GPS tespiti ve miras koruma protokolü.",
         footerQuickLinks: "Hızlı Bağlantılar",
-        footerLegalTitle: "Yasal Uyarı",
-        footerLegalNotice: "Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar sorumluluk şartlarını kabul eder.",
+        footerLegalTitle: "Yasal Uyarı & KVKK",
+        footerLegalNotice: "Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler 6698 Sayılı KVKK ve uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar gizlilik ve sorumluluk şartlarını kabul eder.",
 
         // Modal Certificate
         certModalTitle: "R.U.H. Incorporation Resmi Ön Kayıt Sertifikası",
@@ -283,7 +285,7 @@ export const translations = {
         navAbout: "Project & Phases",
         navMechanics: "Tech & Mechanics",
         navDonations: "Transparent R&D Pool",
-        navLegal: "Legal Framework",
+        navLegal: "Legal Framework & KVKK",
         navApply: "Pre-Registration Portal",
         navVerify: "Verify Certificate",
         navFaq: "FAQ",
@@ -432,7 +434,7 @@ export const translations = {
         wizardDesc: "Participate in RUH Project Phase 1 free pre-registration protocol. Fill separate forms for yourself and family members.",
         step1Header: "Personal & Family",
         step2Header: "Protocol Entry",
-        step3Header: "Legal Waiver",
+        step3Header: "Legal Waiver & KVKK",
         step4Header: "Inheritance & Will",
         step5Header: "Review & Certificate",
 
@@ -465,14 +467,16 @@ export const translations = {
         calcTotal: "Phase 1 Contribution Fee:",
 
         // Wizard Step 3
-        step3Title: "Step 3: Legal Framework & Responsibility Agreement",
-        step3Subtitle: "Official legal contract below wherein customer assumes full liability for Phase 1 R&D pre-registration.",
+        step3Title: "Step 3: Legal Framework & KVKK Privacy Policy",
+        step3Subtitle: "Official legal contract below wherein customer assumes full liability and consents to KVKK Privacy Policy for Phase 1 R&D pre-registration.",
         contractHeader: "RUH PROJECT PHASE 1 PRE-REGISTRATION & LEGAL LIABILITY CONTRACT",
         contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between RUH Project ('Company') and the 'Client' filling out the free pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 & 3 priority rights.",
         contractP2: "<strong>Article 2 - Free Pre-Registration Disclosure:</strong> Client acknowledges that the project is currently in R&D and concept phase, Phase 1 registration is free of charge, and reserves priority for future service activations.",
         contractP3: "<strong>Article 3 - Host Body Non-Selection Limitation:</strong> Client understands and agrees that neither the Client nor Company can choose the destination living entity. The process relies strictly on pre-mortem bio-energy signature locking and Quantum GPS tracing.",
-        contractP4: "<strong>Article 4 - Liability Release:</strong> Client agrees that due to the scientific R&D nature of the service, pre-registered clients receive priority activation rights upon Phase 2 rollout.",
+        contractP4: "<strong>Article 4 - Liability Release & Service Priority:</strong> Client agrees that due to the scientific R&D nature of the service, pre-registered clients receive priority activation rights upon Phase 2 rollout.",
+        contractP5: "<strong>Article 5 - KVKK Law No. 6698 & Privacy Policy:</strong> Client personal data (Name, ID, Contact Info) and bio-profile drafts are stored under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 compliant with KVKK Law No. 6698 and GDPR. Leaderboard entries display masked initials (e.g. A**** Y****) for privacy. Client provides explicit consent for data processing.",
         chkTermsText: "I have read, understood, and accept the legal contract, Phase 1 pre-registration terms, and full user liability. *",
+        chkKvkkText: "I have read the KVKK Law No. 6698 Privacy Policy Disclosure, and I consent to the encrypted processing of my personal data, bio-energy profile draft, and Will details. *",
 
         // Wizard Step 4
         step4Title: "Step 4: Inheritance Transfer Choice & Will Template",
@@ -532,8 +536,8 @@ export const translations = {
         // Footer
         footerDesc: "Post-mortem bio-energy locking, Quantum GPS host body tracing following natural soul relocation, and legal estate escrow protocol.",
         footerQuickLinks: "Quick Links",
-        footerLegalTitle: "Legal Disclaimer",
-        footerLegalNotice: "This project is currently in Phase 1 (Concept & R&D). All services and contracts are governed under international legal frameworks; clients accept responsibility terms.",
+        footerLegalTitle: "Legal Disclaimer & KVKK",
+        footerLegalNotice: "This project is currently in Phase 1 (Concept & R&D). All services and contracts are governed under KVKK Law No. 6698 and international legal frameworks; clients accept privacy and responsibility terms.",
 
         // Modal Certificate
         certModalTitle: "R.U.H. Incorporation Official Pre-Registration Certificate",

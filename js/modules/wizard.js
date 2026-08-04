@@ -243,8 +243,13 @@ function validateStep(step) {
         }
     } else if (step === 3) {
         const chkTerms = document.getElementById('chkTerms');
+        const chkKvkk = document.getElementById('chkKvkk');
         if (!chkTerms || !chkTerms.checked) {
-            alert(lang === 'tr' ? 'Lütfen hukuki sözleşmeyi onaylayınız.' : 'Please accept the legal terms contract.');
+            alert(lang === 'tr' ? 'Lütfen Hukuki Çerçeve ve Sorumluluk Sözleşmesi\'ni onaylayınız.' : 'Please accept the Legal Terms Contract.');
+            return false;
+        }
+        if (!chkKvkk || !chkKvkk.checked) {
+            alert(lang === 'tr' ? 'Lütfen 6698 Sayılı KVKK ve Gizlilik Politikası Aydınlatma Metni\'ni onaylayınız.' : 'Please accept the KVKK Privacy Policy Consent.');
             return false;
         }
     }
