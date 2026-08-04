@@ -1,14 +1,14 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture.
  */
 
 export const translations = {
     tr: {
         // Meta & General
         title: "RUH Project | Ruh Aktarımı & Miras Koruma Protokolü",
-        announcementBadge: "AŞAMA 1 (AR-GE)",
-        announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ön Kayıt)</strong> sürecindedir. Katılım bedeli teknolojik ve hukuki altyapıyı destekler. Ön kayıt yaptıranlar Aşama 2'de öncelikli hizmet alır.",
+        announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
+        announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         
         // Nav
         navAbout: "Proje & Aşamalar",
@@ -23,35 +23,44 @@ export const translations = {
         heroTitleGrad: "RUH PROJECT",
         heroSlogan: '"Ölmeden önce yerinizi ayırtın"',
         heroDesc: "İnsan bilincinin ve biyo-enerji izinin ölüm öncesinde kilitlenerek, sonraki canlı bedende kuantum GPS aracılığıyla tespiti ve mirasa dair tüm finansal ve taşınmaz hakların hukuki sözleşmelerle yeni yaşama aktarılması protokolü.",
-        heroBtnApply: "Ön Kayıt Formu Doldur",
-        heroBtnExplore: "Teknolojiyi İncele",
+        heroBtnApply: "Ücretsiz Ön Kayıt Formu",
+        heroBtnExplore: "Aşamaları İncele",
         statPhase: "AR-GE ve Hukuk Altyapısı",
-        statFee: "Kişi Başı Katılım Bedeli",
+        statFee: "Aşama 1 Katılım Ücreti",
         statEscrow: "Sözleşmeli Miras Garantisi",
         canvasStatus: "BİYO-ENERJİ FREKANS TARAMASI",
         labelEnergyLock: "Enerji İzi Durumu:",
         statusLocked: "KİLİTLENMEYE HAZIR",
         labelGPS: "Kuantum GPS Frekansı:",
 
-        // Phases
+        // Phases (3 Phase Architecture)
         phaseSub: "ŞEFFAFLIK İLKESİ VE PROJE YOL HARİTASI",
-        phaseTitle: "Fikir ve Uygulama Aşamaları",
-        phaseDesc: "RUH Project iki temel evrede yürütülecektir. Şeffaflık ilkesi gereği ön kayıt sürecindeki katılım şartları aşağıda sunulmuştur.",
+        phaseTitle: "3 Aşamalı Gelişim Yol Haritası",
+        phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmuştur.",
+        
         phase1Badge: "AŞAMA 1 (Şu An Aktif)",
-        phase1Title: "Fikir, AR-GE & Ön Kayıt Süreci",
-        phase1Desc: "Müşteriler kişisel bilgi ve miras tercihlerini içeren ön kayıt formunu doldurarak kişi başı belirlenen hizmet katılım bedelini öder. Bu bedel, uluslararası biyo-fizik AR-GE çalışmalarını ve küresel miras hukuku altyapısını finanse eder.",
-        p1Check1: "Kişisel Form Kaydı ve Biyo-Enerji Profili Oluşturma",
+        phase1Title: "Aşama 1: Fikir, AR-GE & Ücretsiz Ön Kayıt",
+        phase1Desc: "Müşteriler kişisel bilgi ve miras tercihlerini içeren formu doldurarak ücretsiz olarak ön kayıt yaptırır. Bu aşamada herhangi bir kayıt ücreti talep edilmez; biyo-fizik AR-GE ve uluslararası miras hukuku altyapısı modellenir.",
+        p1Check1: "Ücretsiz Kişisel Kayıt ve Biyo-Enerji Taslağı Oluşturma",
         p1Check2: "Miras Devir Protokolü ve Vasiyetname Şablonu Hazırlığı",
-        p1Check3: "Aşama 2 Devreye Girdiğinde Öncelikli Aktivasyon Hakkı",
-        p1Check4: "Hukuki Sorumluluk ve Sözleşme Onay Protokolü",
+        p1Check3: "Sonraki Aşamalar Devreye Girdiğinde Sıra Önceliği Hakkı",
+        p1Check4: "Hukuki Beyan ve Sorumluluk Şartları Kabulü",
 
-        phase2Badge: "AŞAMA 2 (Gelecek Aktivasyon)",
-        phase2Title: "Uygulama & Hizmet Aktivasyonu",
-        phase2Desc: "Teknolojik biyo-tarama donanımları ve uluslararası hukuki escrow sözleşme altyapısı tamamlandığında, 1. Aşamada ön kayıt yaptıran ve ödemesini tamamlayan müşteriler doğrudan ve öncelikli olarak hizmetten yararlanır.",
-        p2Check1: "Ölüm Öncesi Vücutta Biyo-Enerji İzi Kilitleme İşlemi",
-        p2Check2: "Yeni Bedende Kuantum GPS Yeri Tespiti ve Tescil",
-        p2Check3: "Banka Escrow ve Miras Taşınmaz Devirlerinin Gerçekleştirilmesi",
-        p2Check4: "Vasiyetname Şartlarının Yeni Beden Kimliğine Aktarılması",
+        phase2Badge: "AŞAMA 2 (Geliştirme)",
+        phase2Title: "Aşama 2: Biyo-Enerji Kilitleme & Escrow Sözleşmeleri",
+        phase2Desc: "Teknolojik biyo-tarama donanımları ve uluslararası banka escrow sözleşmeleri devreye girer. Ön kayıt yaptıran müşterilerin ölüm öncesi hücre ve bilinç frekansı protokole kilitlenir.",
+        p2Check1: "Ölüm Öncesi Hücresel Biyo-Enerji İzi Kilitleme",
+        p2Check2: "Resmi Bankacılık Escrow ve Vasiyetname Tescili",
+        p2Check3: "Aşama 1 Kullanıcılarına Özel Öncelikli Aktivasyon",
+        p2Check4: "Kuantum Şifreli Dijital Miras Kasası Kurulumu",
+
+        phase3Badge: "AŞAMA 3 (Aktivasyon)",
+        phase3Title: "Aşama 3: Kuantum GPS Tespiti & Canlı Beden Aktarımı",
+        phase3Desc: "Ruhun yeni canlı bedende hayat bulmasıyla birlikte kuantum uydu ağı sinyali tespit eder. Hukuki kayyumlar marifetiyle tüm miras varlıkları resmi olarak yeni kimliğe devredilir.",
+        p3Check1: "Yörünge Uyduları Destekli Kuantum GPS Yeri Tespiti",
+        p3Check2: "Banka Escrow ve Gayrimenkul Devirlerinin Gerçekleştirilmesi",
+        p3Check3: "Yeni Beden Kimliğine Vasiyet Şartlarının Aktarılması",
+        p3Check4: "Kesintisiz Yaşam ve Varlık Sürekliliği Garantisi",
 
         // Mechanics
         mechSub: "TEMEL İLKELER VE TEKNİK MEKANİZMA",
@@ -66,17 +75,17 @@ export const translations = {
 
         // Wizard Headers
         wizardSub: "İNTERAKTİF BAŞVURU PORTALI",
-        wizardTitle: "Ön Kayıt ve Protokol Formu",
-        wizardDesc: "Formu doldurarak ve kayıt ücretini onaylayarak RUH Project Aşama 1 protokolüne katılım sağlayabilirsiniz. Şahsen veya aile üyeleriniz için ayrı formlar oluşturabilirsiniz.",
+        wizardTitle: "Aşama 1 Ön Kayıt Formu",
+        wizardDesc: "Formu doldurarak RUH Project Aşama 1 ücretsiz ön kayıt protokolüne katılım sağlayabilirsiniz. Şahsen veya aile üyeleriniz için ayrı kayıt oluşturabilirsiniz.",
         step1Header: "Kişisel & Aile",
-        step2Header: "Ücret & Paket",
+        step2Header: "Protokol Paketi",
         step3Header: "Hukuki Onay",
         step4Header: "Miras & Vasiyet",
         step5Header: "Özet & Sertifika",
 
         // Wizard Step 1
         step1Title: "Adım 1: Müşteri & Aile Üyeleri Bilgi Formu",
-        step1Subtitle: "Kendi bilgilerinizi doldurduktan sonra dilerseniz aile üyeleriniz için de ilave form oluşturabilirsiniz. Her kişi için ayrı katılım ücreti hesaplanır.",
+        step1Subtitle: "Kendi bilgilerinizi doldurduktan sonra dilerseniz aile üyeleriniz için de ilave form oluşturabilirsiniz. Aşama 1 ön kaydı tamamen ücretsizdir.",
         formTitle1: "Form 1: Ana Başvuru Sahibi (Kendiniz)",
         formTitleN: "Form ",
         lblFullName: "Ad Soyad *",
@@ -89,13 +98,13 @@ export const translations = {
         btnRemoveMember: "Formu Kaldır",
 
         // Wizard Step 2
-        step2Title: "Adım 2: Hizmet Ücreti Hesaplama & Protokol Paketi",
-        step2Subtitle: "Doldurulan form sayısına göre kişi başı standart taban hizmet ücreti ($20,000 USD) hesaplanır. Protokol paketinizi seçebilirsiniz.",
-        alphaDesc: "Standart AR-GE katılımı, biyo-enerji izi ön kayıt kilidi ve temel miras escrow sözleşmesi.",
+        step2Title: "Adım 2: Protokol Seçimi (Aşama 1 Ücretsiz)",
+        step2Subtitle: "Aşama 1 ön kayıt sürecinde katılım ücretsizdir. Aşama 2 ve 3 aktivasyonunda tercih edeceğiniz protokol seviyesini belirleyebilirsiniz.",
+        alphaDesc: "Aşama 1 ücretsiz ön kayıt, biyo-enerji taslağı ve standart miras escrow protokolü.",
         sovereignDesc: "Kuantum kriptografik kasa, yörünge uydu takipli VIP GPS ve özel hukuki kayyum desteği.",
-        feat1: "Biyo-Enerji İzi Kaydı",
-        feat2: "Kuantum GPS Tespiti Sinyal Tescili",
-        feat3: "Aşama 2 Öncelikli Aktivasyon",
+        feat1: "Aşama 1 Ücretsiz Ön Kayıt Hakkı",
+        feat2: "Biyo-Enerji Taslak Profili",
+        feat3: "Aşama 2 ve 3 Öncelikli Aktivasyon",
         feat4: "Standart Bankacılık Vasiyet Protokolü",
         featSov1: "Tüm Alfa Protokol Hakları",
         featSov2: "Yörünge Uydusu Destekli Öncelikli GPS Tespiti",
@@ -105,17 +114,17 @@ export const translations = {
         btnSelected: "Seçildi",
         calcFormCount: "Toplam Kayıtlı Kişi Sayısı:",
         calcSelectedTier: "Seçilen Protokol:",
-        calcTotal: "Toplam Katılım Bedeli:",
+        calcTotal: "Aşama 1 Katılım Ücreti:",
 
         // Wizard Step 3
         step3Title: "Adım 3: Hukuki Çerçeve ve Sorumluluk Sözleşmesi",
-        step3Subtitle: "RUH Project Aşama 1 kapsamında bütün sorumluluğun kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.",
+        step3Subtitle: "RUH Project Aşama 1 ön kayıt kapsamında bütün sorumluluğun kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.",
         contractHeader: "RUH PROJECT AŞAMA 1 ÖN KAYIT VE HUKUKİ SORUMLULUK SÖZLEŞMESİ",
-        contractP1: "<strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, RUH Project ('Firma') ile bu platform üzerinden ön kayıt formunu dolduran ve katılım bedelini ödeyen 'Müşteri' arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 (Uygulama) haklarının belirlenmesidir.",
-        contractP2: "<strong>Madde 2 - Şeffaflık ve Fikir Aşaması Beyanı:</strong> Müşteri, projenin mevcut durumda bir AR-GE ve fikir aşamasında olduğunu, ödenen hizmet bedelinin teknolojik biyo-enerji tarama yazılımları, uluslararası miras hukuku protokolleri ve altyapı geliştirilmesi amacıyla kullanıldığını gayri kabili rücu kabul eder.",
+        contractP1: "<strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, RUH Project ('Firma') ile bu platform üzerinden ücretsiz ön kayıt formunu dolduran 'Müşteri' arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 & 3 öncelik haklarının belirlenmesidir.",
+        contractP2: "<strong>Madde 2 - Şeffaflık ve Ücretsiz Ön Kayıt Beyanı:</strong> Müşteri, projenin mevcut durumda bir AR-GE ve fikir aşamasında olduğunu, Aşama 1 kaydının ücretsiz olduğunu ve gelecekteki hizmet aktivasyonları için sırasını güvenceye aldığını kabul eder.",
         contractP3: "<strong>Madde 3 - Beden Seçim Sınırlaması:</strong> Müşteri, sonraki yaşamında hangi canlı bedene geçeceğini kendisinin veya Firmanın seçemeyeceğini bilmekte ve kabul etmektedir. Süreç tamamen ölüm öncesi kilitlenen biyo-enerji frekansı ve kuantum GPS tespiti esasına dayanır.",
-        contractP4: "<strong>Madde 4 - Sorumluluk Reddi:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, Aşama 2 hizmet aktivasyonu gerçekleştiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.",
-        chkTermsText: "Yukarıdaki hukuki sözleşmeyi okudum, anladım ve Aşama 1 AR-GE katılım şartlarını ve tüm sorumluluğu kabul ediyorum. *",
+        contractP4: "<strong>Madde 4 - Sorumluluk Reddi:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, sonraki aşamalar devreye girdiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.",
+        chkTermsText: "Yukarıdaki hukuki sözleşmeyi okudum, anladım ve Aşama 1 ön kayıt şartlarını ve tüm sorumluluğu kabul ediyorum. *",
         chkNoChoiceText: "Beden seçimi yapılamayacağını ve biyo-enerji kilitleme prensibini onaylıyorum. *",
 
         // Wizard Step 4
@@ -138,26 +147,26 @@ export const translations = {
         revForms: "Kayıtlı Formlar:",
         revTier: "Seçilen Paket:",
         revInherit: "Miras Aktarımı:",
-        revTotal: "Toplam Ödenecek Katılım Bedeli:",
-        payMethodTitle: "Ödeme Yöntemi Seçimi (Aşama 1 AR-GE Fonu)",
-        payWire: "Banka Havalesi / SWIFT",
-        payCrypto: "USDT / Crypto Escrow",
-        payCard: "Kredi Kartı / Taksit",
+        revTotal: "Aşama 1 Katılım Bedeli:",
+        payMethodTitle: "Ön Kayıt Onay Protokolü",
+        payWire: "Dijital Ön Kayıt Tescili",
+        payCrypto: "Biyo-Enerji Sinyal Tescili",
+        payCard: "Hukuki Ön Onay",
         btnPrev: "Geri",
         btnNext: "Devam Et",
-        btnSubmit: "Ön Kaydı Tamamla & Sertifikayı Al",
+        btnSubmit: "Ücretsiz Ön Kaydı Tamamla & Sertifikayı Al",
 
         // FAQ
         faqSub: "MERAK EDİLENLER",
         faqTitle: "Sıkça Sorulan Sorular",
         faqQ1: "Geçilecek canlı bedeni kendim seçebilir miyim?",
         faqA1: "Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ölüm öncesinde vücutta kilitlenen biyo-enerji izi ve doğal frekans uyumu doğrultusunda ruhun aktarıldığı yeni beden kuantum GPS sinyalleri ile otomatik olarak tespit edilir.",
-        faqQ2: "Ödediğim $20,000 USD katılım ücreti ne amaçla kullanılmaktadır?",
-        faqA2: "Bu ücret Aşama 1 (Fikir ve AR-GE) kapsamında biyo-fizik araştırmalarını, frekans kilitleme yazılımlarını ve uluslararası miras devir hukuku altyapısını finanse eder. Katılım sağlayanlar Aşama 2 aktivasyonunda öncelikli hakkı kazanır.",
+        faqQ2: "Aşama 1 Ön Kayıt ücretli midir?",
+        faqA2: "Hayır, Aşama 1 ön kayıt katılımı tamamen ücretsizdir. Bu aşamada form dolduran kullanıcılar biyo-enerji taslağını oluşturur ve Aşama 2 & 3 devreye girdiğinde öncelikli hizmet sırası kazanır.",
         faqQ3: "Mirasım yeni bedene hukuken nasıl aktarılacak?",
         faqA3: "Aşama 4'te doldurduğunuz vasiyetname metni ve anlaşmalı banka escrow protokolleri doğrultusunda, ölüm gerçekleştikten ve yeni beden GPS ile tescil edildikten sonra resmi hukuk organları marifetiyle mal varlığınız devredilir.",
-        faqQ4: "Aile üyelerim için ayrı ücret ödemem gerekiyor mu?",
-        faqA4: "Evet. Her bireyin biyo-enerji izi ve kuantum frekansı benzersiz olduğundan, form adımında eklenen her aile üyesi için ayrı form ve ayrı hizmet ücreti ($20,000 USD / kişi) hesaplanır.",
+        faqQ4: "Aile üyelerim için ayrı form doldurmam gerekiyor mu?",
+        faqA4: "Evet. Her bireyin biyo-enerji izi ve kuantum frekansı benzersiz olduğundan, form adımında eklenen her aile üyesi için ayrı form doldurularak sisteme kaydedilir.",
 
         // Footer
         footerDesc: "Ölüm sonrası ruh aktarımı, biyo-enerji kilitleme ve miras koruma protokolü.",
@@ -175,8 +184,8 @@ export const translations = {
     en: {
         // Meta & General
         title: "RUH Project | Soul Relocation & Inheritance Protocol",
-        announcementBadge: "PHASE 1 (R&D)",
-        announcementText: "This portal is currently in <strong>Phase 1 (Concept, R&D & Pre-Registration)</strong>. Pre-registration fees fund technological & legal infrastructure. Enrolled clients receive priority activation in Phase 2.",
+        announcementBadge: "PHASE 1 (FREE PRE-REGISTRATION)",
+        announcementText: "This portal is currently in <strong>Phase 1 (Concept, R&D & Free Pre-Registration)</strong>. Pre-registered users gain priority service activation upon Phase 2 & 3 deployment.",
         
         // Nav
         navAbout: "Project & Phases",
@@ -191,35 +200,44 @@ export const translations = {
         heroTitleGrad: "RUH PROJECT",
         heroSlogan: '"Reserve your place before you die"',
         heroDesc: "A revolutionary protocol locking human consciousness and bio-energy signature before death, pinpointing the target host body via Quantum GPS post-relocation, and securing all inheritance & estate rights via legal contracts.",
-        heroBtnApply: "Fill Pre-Registration Form",
-        heroBtnExplore: "Explore Technology",
+        heroBtnApply: "Free Pre-Registration Form",
+        heroBtnExplore: "Explore Roadmap",
         statPhase: "R&D & Legal Infrastructure",
-        statFee: "Contribution Fee / Person",
+        statFee: "Phase 1 Pre-Registration Fee",
         statEscrow: "Contractual Estate Guarantee",
         canvasStatus: "BIO-ENERGY FREQUENCY SCANNER",
         labelEnergyLock: "Energy Signature State:",
         statusLocked: "READY FOR LOCKING",
         labelGPS: "Quantum GPS Frequency:",
 
-        // Phases
+        // Phases (3 Phase Architecture)
         phaseSub: "TRANSPARENCY & PROJECT ROADMAP",
-        phaseTitle: "Concept & Activation Phases",
-        phaseDesc: "RUH Project operates under two transparent phases. Below are the terms governing Phase 1 pre-registration.",
+        phaseTitle: "3-Phase Development Roadmap",
+        phaseDesc: "RUH Project operates under a transparent 3-phase development roadmap detailed below.",
+        
         phase1Badge: "PHASE 1 (Currently Active)",
-        phase1Title: "Concept, R&D & Pre-Registration",
-        phase1Desc: "Clients fill out personal & estate preferences and pay the designated per-person contribution fee. This capital finances global bio-physics R&D and international estate escrow legal frameworks.",
-        p1Check1: "Personal Data Registration & Bio-Energy Profiling",
+        phase1Title: "Phase 1: Concept, R&D & Free Pre-Registration",
+        phase1Desc: "Clients fill out personal preferences and pre-register free of charge. No upfront fees are required during Phase 1 while biophysics R&D and legal escrow models are finalized.",
+        p1Check1: "Free Personal Data Registration & Bio-Energy Profiling",
         p1Check2: "Inheritance Escrow Transfer Protocol & Will Drafting",
-        p1Check3: "Priority Service Activation Right upon Phase 2 Rollout",
+        p1Check3: "Priority Placement for Phase 2 & 3 Service Activation",
         p1Check4: "Legal Liability & Responsibility Consent Protocol",
 
-        phase2Badge: "PHASE 2 (Future Activation)",
-        phase2Title: "Implementation & Service Activation",
-        phase2Desc: "Once bio-scanning hardware and international banking escrow contracts are live, clients pre-registered in Phase 1 gain immediate, first-tier priority service access.",
-        p2Check1: "Pre-Mortem Bio-Energy Signature Locking Procedure",
-        p2Check2: "Quantum GPS Location Tracing & Registration of Next Host Body",
-        p2Check3: "Execution of Banking Escrow & Real Estate Asset Transfer",
-        p2Check4: "Will Terms Activation for the Identified Identity",
+        phase2Badge: "PHASE 2 (Development)",
+        phase2Title: "Phase 2: Bio-Energy Lock & Estate Escrow",
+        phase2Desc: "Deployment of bio-energy frequency scanning hardware and international banking escrow contracts. Pre-registered clients have their pre-mortem cellular signature locked into the protocol.",
+        p2Check1: "Pre-Mortem Cellular Bio-Energy Signature Lock",
+        p2Check2: "Official Banking Escrow & Will Registration",
+        p2Check3: "Exclusive Priority Activation for Phase 1 Registrants",
+        p2Check4: "Quantum Encrypted Digital Will Vault Setup",
+
+        phase3Badge: "PHASE 3 (Activation)",
+        phase3Title: "Phase 3: Quantum GPS Tracing & Host Body Relocation",
+        phase3Desc: "Upon consciousness rebirth in a new host body, orbital satellite arrays pinpoint the target vessel. Legal custodians execute the official transfer of wealth to the new identity.",
+        p3Check1: "Orbital Satellite Priority Quantum GPS Location Tracing",
+        p3Check2: "Execution of Banking Escrow & Real Estate Asset Transfer",
+        p3Check3: "Will Terms Activation for the Identified Identity",
+        p3Check4: "Seamless Life Continuity & Wealth Protection Guarantee",
 
         // Mechanics
         mechSub: "CORE PRINCIPLES & TECHNICAL MECHANISMS",
@@ -234,17 +252,17 @@ export const translations = {
 
         // Wizard Headers
         wizardSub: "INTERACTIVE APPLICATION PORTAL",
-        wizardTitle: "Pre-Registration & Protocol Form",
-        wizardDesc: "Participate in RUH Project Phase 1 by submitting the registration form and contribution fee. Fill separate forms for yourself and family members.",
+        wizardTitle: "Phase 1 Pre-Registration Form",
+        wizardDesc: "Participate in RUH Project Phase 1 free pre-registration protocol. Fill separate forms for yourself and family members.",
         step1Header: "Personal & Family",
-        step2Header: "Fee & Package",
+        step2Header: "Protocol Tier",
         step3Header: "Legal Waiver",
         step4Header: "Inheritance & Will",
         step5Header: "Review & Certificate",
 
         // Wizard Step 1
         step1Title: "Step 1: Applicant & Family Information Form",
-        step1Subtitle: "Fill your own details first, then add optional separate forms for family members. Fees are calculated per person.",
+        step1Subtitle: "Fill your own details first, then add optional separate forms for family members. Phase 1 pre-registration is completely free.",
         formTitle1: "Form 1: Primary Applicant (Self)",
         formTitleN: "Form ",
         lblFullName: "Full Name *",
@@ -257,13 +275,13 @@ export const translations = {
         btnRemoveMember: "Remove Form",
 
         // Wizard Step 2
-        step2Title: "Step 2: Service Fee Calculation & Protocol Tier",
-        step2Subtitle: "Standard baseline contribution fee ($20,000 USD per person) is calculated based on registered form count. Select your protocol tier.",
-        alphaDesc: "Standard R&D participation, bio-energy signature pre-registration lock, and baseline estate escrow contract.",
+        step2Title: "Step 2: Protocol Selection (Phase 1 Free)",
+        step2Subtitle: "Phase 1 enrollment is completely free. Choose your preferred protocol tier for Phase 2 & 3 service activation.",
+        alphaDesc: "Phase 1 free pre-registration, bio-energy profile draft, and standard estate escrow protocol.",
         sovereignDesc: "Quantum cryptographic vault, orbital satellite-tracked VIP GPS, and dedicated international legal custodian.",
-        feat1: "Bio-Energy Signature Registration",
-        feat2: "Quantum GPS Tracing Signal Escrow",
-        feat3: "Phase 2 Priority Activation Guarantee",
+        feat1: "Phase 1 Free Pre-Registration Spot",
+        feat2: "Bio-Energy Profile Draft",
+        feat3: "Phase 2 & 3 Priority Activation Guarantee",
         feat4: "Standard Banking Will Protocol",
         featSov1: "Includes All Alpha Protocol Rights",
         featSov2: "Orbital Satellite Priority GPS Tracing",
@@ -273,17 +291,17 @@ export const translations = {
         btnSelected: "Selected",
         calcFormCount: "Total Registered Persons:",
         calcSelectedTier: "Selected Protocol:",
-        calcTotal: "Total Contribution Fee:",
+        calcTotal: "Phase 1 Contribution Fee:",
 
         // Wizard Step 3
         step3Title: "Step 3: Legal Framework & Responsibility Agreement",
         step3Subtitle: "Official legal contract below wherein customer assumes full liability for Phase 1 R&D pre-registration.",
         contractHeader: "RUH PROJECT PHASE 1 PRE-REGISTRATION & LEGAL LIABILITY CONTRACT",
-        contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between RUH Project ('Company') and the 'Client' filling out the pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 (Activation) rights.",
-        contractP2: "<strong>Article 2 - R&D Disclosure & Transparency:</strong> Client irrevocably acknowledges that the project is currently in R&D and concept phase, and paid contribution fees fund biophysics R&D, energy-scanning software, and international legal escrow frameworks.",
+        contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between RUH Project ('Company') and the 'Client' filling out the free pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 & 3 priority rights.",
+        contractP2: "<strong>Article 2 - Free Pre-Registration Disclosure:</strong> Client acknowledges that the project is currently in R&D and concept phase, Phase 1 registration is free of charge, and reserves priority for future service activations.",
         contractP3: "<strong>Article 3 - Host Body Non-Selection Limitation:</strong> Client understands and agrees that neither the Client nor Company can choose the destination living entity. The process relies strictly on pre-mortem bio-energy signature locking and Quantum GPS tracing.",
         contractP4: "<strong>Article 4 - Liability Release:</strong> Client agrees that due to the scientific R&D nature of the service, pre-registered clients receive priority activation rights upon Phase 2 rollout.",
-        chkTermsText: "I have read, understood, and accept the legal contract, Phase 1 R&D contribution terms, and full user liability. *",
+        chkTermsText: "I have read, understood, and accept the legal contract, Phase 1 pre-registration terms, and full user liability. *",
         chkNoChoiceText: "I confirm that host body selection is impossible and accept the bio-energy locking principle. *",
 
         // Wizard Step 4
@@ -306,26 +324,26 @@ export const translations = {
         revForms: "Registered Forms:",
         revTier: "Selected Package:",
         revInherit: "Inheritance Transfer:",
-        revTotal: "Total Payable Contribution Fee:",
-        payMethodTitle: "Payment Method Selection (Phase 1 R&D Fund)",
-        payWire: "Bank Wire / SWIFT",
-        payCrypto: "USDT / Crypto Escrow",
-        payCard: "Credit Card / Installments",
+        revTotal: "Phase 1 Contribution Fee:",
+        payMethodTitle: "Pre-Registration Protocol Approval",
+        payWire: "Digital Pre-Registration Entry",
+        payCrypto: "Bio-Energy Signal Escrow",
+        payCard: "Legal Pre-Approval",
         btnPrev: "Back",
         btnNext: "Continue",
-        btnSubmit: "Complete Registration & Get Certificate",
+        btnSubmit: "Complete Free Pre-Registration & Get Certificate",
 
         // FAQ
         faqSub: "FREQUENTLY ASKED QUESTIONS",
         faqTitle: "Frequently Asked Questions",
         faqQ1: "Can I choose which living host body I will transfer to?",
         faqA1: "No. Neither the client nor RUH Project can select the host body. The bio-energy signature locked before death naturally resonates with the target host body, which is automatically pinpointed via Quantum GPS signals.",
-        faqQ2: "What is the purpose of the $20,000 USD contribution fee?",
-        faqA2: "This fee finances Phase 1 R&D, biophysics frequency locking software, and international legal inheritance escrow frameworks. Pre-registered participants gain priority activation in Phase 2.",
+        faqQ2: "Is Phase 1 Pre-Registration free?",
+        faqA2: "Yes! Phase 1 pre-registration is 100% free of charge. Users filling out the form create their bio-energy draft profile and secure first-tier priority placement for Phase 2 & 3 activation.",
         faqQ3: "How will my inheritance be legally transferred to the new host body?",
         faqA3: "Pursuant to your Will draft and banking escrow agreements, once death occurs and the new host body's location is verified via GPS, legal escrow executors transfer the assets.",
-        faqQ4: "Do I need to pay a separate fee for each family member?",
-        faqA4: "Yes. Since every individual possesses a unique bio-energy frequency, a separate form and individual fee ($20,000 USD per person) applies for each family member added.",
+        faqQ4: "Do I need to fill a separate form for each family member?",
+        faqA4: "Yes. Since every individual possesses a unique bio-energy frequency, a separate form is filled and registered for each added family member.",
 
         // Footer
         footerDesc: "Post-mortem soul relocation, bio-energy signature locking, and inheritance protection protocol.",

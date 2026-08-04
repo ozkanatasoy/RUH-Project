@@ -694,7 +694,7 @@ a:hover {
     margin: 0 auto;
 }
 
-/* --- Phase 1 & 2 Cards --- */
+/* --- 3 Phase Architecture Badges & Cards --- */
 .phase-card {
     position: relative;
     display: flex;
@@ -724,13 +724,20 @@ a:hover {
     border: 1px solid #b829ea;
 }
 
+.phase-badge-3 {
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+}
+
 .phase-card-title {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
     margin-bottom: 14px;
 }
 
 .phase-card-desc {
     margin-bottom: 24px;
+    font-size: 0.92rem;
 }
 
 .phase-list {
@@ -744,12 +751,16 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-main);
 }
 
 .phase-list i {
     color: var(--color-primary);
+}
+
+.phase-3-card .phase-list i {
+    color: var(--color-gold);
 }
 
 /* --- Mechanics Grid --- */
@@ -1532,7 +1543,7 @@ a:hover {
         font-size: 3rem;
     }
     .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
     .footer-container {
         grid-template-columns: 1fr;

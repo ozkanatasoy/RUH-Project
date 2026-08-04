@@ -1,6 +1,6 @@
 /**
- * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, dynamic family member forms, live pricing, and certificate preview.
+ * RUH PROJECT - Wizard & Application State Module (3-Phase & Free Pre-Registration)
+ * Manages 5-step wizard navigation, dynamic family member forms, Phase 1 free enrollment, and certificate preview.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -9,7 +9,7 @@ import { getWillTemplate } from './templates.js';
 let currentStep = 1;
 let memberCount = 1;
 let selectedTier = 'alpha';
-let selectedTierFee = 20000;
+let selectedTierFee = 0; // Phase 1 is Free!
 let selectedTierName = 'Alfa Protokol';
 
 export function initWizard() {
@@ -100,7 +100,7 @@ export function initWizard() {
 
             card.classList.add('active');
             selectedTier = card.getAttribute('data-tier');
-            selectedTierFee = parseInt(card.getAttribute('data-fee'), 10);
+            selectedTierFee = 0; // Phase 1 Free
             
             const selectedBtn = card.querySelector('.btn-select-tier');
             if (selectedBtn) selectedBtn.textContent = translations[lang].btnSelected;
@@ -166,7 +166,6 @@ export function updateFeeSummary() {
     const lang = getCurrentLang();
     const count = document.querySelectorAll('.family-member-card').length || 1;
     memberCount = count;
-    const totalAmount = count * selectedTierFee;
 
     const countText = `${count} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
     const calcMemberCountEl = document.getElementById('calcMemberCount');
@@ -174,11 +173,11 @@ export function updateFeeSummary() {
 
     const calcTierNameEl = document.getElementById('calcTierName');
     if (calcTierNameEl) {
-        calcTierNameEl.textContent = `${selectedTierName} ($${selectedTierFee.toLocaleString()} / ${lang === 'tr' ? 'Kişi' : 'Person'})`;
+        calcTierNameEl.textContent = `${selectedTierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
     }
 
     const calcTotalEl = document.getElementById('calcTotalAmount');
-    if (calcTotalEl) calcTotalEl.textContent = `$${totalAmount.toLocaleString()} USD`;
+    if (calcTotalEl) calcTotalEl.textContent = lang === 'tr' ? '$0 USD (Ücretsiz Ön Kayıt)' : '$0 USD (Free Pre-Registration)';
 }
 
 function updateStepView() {
@@ -219,7 +218,7 @@ function showSkeletonLoading(callback) {
         setTimeout(() => {
             wizardCard.classList.remove('skeleton-loading');
             if (callback) callback();
-        }, 220);
+        }, 200);
     } else {
         if (callback) callback();
     }
@@ -279,7 +278,6 @@ function initInheritanceAndTemplates() {
 function populateSummaryReview() {
     const lang = getCurrentLang();
     const primaryName = document.querySelector('input[name="fullName_1"]')?.value || 'Ahmet Yıldız';
-    const totalFee = memberCount * selectedTierFee;
 
     const revMemberNames = document.getElementById('revMemberNames');
     if (revMemberNames) revMemberNames.textContent = `${primaryName} (${memberCount} ${lang === 'tr' ? 'Kişi' : 'Person'})`;
@@ -296,7 +294,7 @@ function populateSummaryReview() {
     }
 
     const revTotalFee = document.getElementById('revTotalFee');
-    if (revTotalFee) revTotalFee.textContent = `$${totalFee.toLocaleString()} USD`;
+    if (revTotalFee) revTotalFee.textContent = lang === 'tr' ? '$0 USD (Ücretsiz Ön Kayıt)' : '$0 USD (Free Pre-Registration)';
 }
 
 function initCertificateModal(submitFormBtn) {
@@ -309,13 +307,12 @@ function initCertificateModal(submitFormBtn) {
         submitFormBtn.addEventListener('click', () => {
             const lang = getCurrentLang();
             const primaryName = document.querySelector('input[name="fullName_1"]')?.value || 'Ahmet Yıldız';
-            const totalFee = memberCount * selectedTierFee;
             const randomHash = 'RUH-2026-X' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(100 + Math.random() * 900);
 
             document.getElementById('certHashVal').textContent = randomHash;
             document.getElementById('certHolderName').textContent = primaryName;
             document.getElementById('certMemberCount').textContent = `${memberCount} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
-            document.getElementById('certTierName').textContent = `${selectedTierName} ($${totalFee.toLocaleString()} USD)`;
+            document.getElementById('certTierName').textContent = `${selectedTierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
             
             const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
             document.getElementById('certInheritance').textContent = isInheritYes 
