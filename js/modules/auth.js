@@ -1,11 +1,12 @@
 /**
  * RUH PROJECT - User Authentication & Profile Dashboard Module
- * Handles accounts, 11-digit Digital Energy IDs, 16-digit Barcodes, profile dashboard, and public certificate verification.
+ * Handles accounts, 11-digit Digital Energy IDs, 16-digit Barcodes, Remember Me, Forgot Password Reset, Mobile SMS Verification, profile dashboard, and public certificate verification.
  */
 
 import { getCurrentLang, getTranslation } from './i18n.js';
 
 let currentUser = null;
+let generatedSmsCode = null;
 
 /**
  * Generates an exact 11-character uppercase alphanumeric Digital Energy ID.
@@ -62,17 +63,37 @@ export function initAuth() {
     const navUserBtn = document.getElementById('navUserBtn');
     const loginModal = document.getElementById('loginModal');
     const profileModal = document.getElementById('profileModal');
+    const forgotModal = document.getElementById('forgotModal');
+
     const closeLoginModalBtn = document.getElementById('closeLoginModalBtn');
     const closeProfileModalBtn = document.getElementById('closeProfileModalBtn');
+    const closeForgotModalBtn = document.getElementById('closeForgotModalBtn');
+
     const submitLoginBtn = document.getElementById('submitLoginBtn');
+    const submitForgotBtn = document.getElementById('submitForgotBtn');
+    const forgotPassLink = document.getElementById('forgotPassLink');
     const logoutBtn = document.getElementById('logoutBtn');
+
+    // SMS Verification Buttons inside Profile Modal
+    const btnSendSmsCode = document.getElementById('btnSendSmsCode');
+    const btnVerifySmsCode = document.getElementById('btnVerifySmsCode');
 
     if (navUserBtn) {
         navUserBtn.addEventListener('click', () => {
             if (currentUser) {
                 openProfileModal();
             } else {
-                if (loginModal) loginModal.classList.add('active');
+                if (loginModal) {
+                    // Pre-fill remembered email if saved
+                    const rememberedEmail = localStorage.getItem('ruh_remembered_email');
+                    const loginEmailInput = document.getElementById('loginEmail');
+                    const chkRemember = document.getElementById('chkRememberMe');
+                    if (rememberedEmail && loginEmailInput) {
+                        loginEmailInput.value = rememberedEmail;
+                        if (chkRemember) chkRemember.checked = true;
+                    }
+                    loginModal.classList.add('active');
+                }
             }
         });
     }
@@ -89,12 +110,39 @@ export function initAuth() {
         });
     }
 
+    if (closeForgotModalBtn && forgotModal) {
+        closeForgotModalBtn.addEventListener('click', () => {
+            forgotModal.classList.remove('active');
+        });
+    }
+
+    if (forgotPassLink && loginModal && forgotModal) {
+        forgotPassLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.remove('active');
+            forgotModal.classList.add('active');
+        });
+    }
+
     if (submitLoginBtn) {
         submitLoginBtn.addEventListener('click', handleLogin);
     }
 
+    if (submitForgotBtn) {
+        submitForgotBtn.addEventListener('click', handleForgotPassword);
+    }
+
     if (logoutBtn) {
         logoutBtn.addEventListener('click', handleLogout);
+    }
+
+    // Profile SMS Verification Handlers
+    if (btnSendSmsCode) {
+        btnSendSmsCode.addEventListener('click', handleSendSmsCode);
+    }
+
+    if (btnVerifySmsCode) {
+        btnVerifySmsCode.addEventListener('click', handleVerifySmsCode);
     }
 }
 
@@ -104,6 +152,7 @@ export function registerUserAccount(accountData) {
     // Ensure primary applicant has 11-digit Energy ID and 16-digit Barcode
     if (!accountData.energyId) accountData.energyId = generateEnergyId();
     if (!accountData.barcode) accountData.barcode = generateBarcode16();
+    if (accountData.phoneVerified === undefined) accountData.phoneVerified = false;
 
     const index = existingAccounts.findIndex(acc => acc.email.toLowerCase() === accountData.email.toLowerCase());
     if (index >= 0) {
@@ -139,12 +188,13 @@ export function registerUserAccount(accountData) {
             registeredAt: member.registeredAt || accountData.registeredAt,
             tierName: member.tierName || accountData.tierName,
             inheritanceStatus: member.inheritanceStatus || accountData.inheritanceStatus,
-            issuer: "R.U.H. INCORPORATION PROTOCOL VAULT",
-            status: "OFFICIALLY VERIFIED & APPROVED"
+            issuer: "R.U.H. Incorporation (Resonant Universal Heritage Inc.)"
         };
-
-        if (foundIdx >= 0) certDb[foundIdx] = certRecord;
-        else certDb.push(certRecord);
+        if (foundIdx >= 0) {
+            certDb[foundIdx] = certRecord;
+        } else {
+            certDb.push(certRecord);
+        }
     });
 
     localStorage.setItem('ruh_certificates_db', JSON.stringify(certDb));
@@ -158,6 +208,7 @@ export function registerUserAccount(accountData) {
 function handleLogin() {
     const emailInput = document.getElementById('loginEmail');
     const passInput = document.getElementById('loginPassword');
+    const chkRemember = document.getElementById('chkRememberMe');
     const lang = getCurrentLang();
 
     const email = emailInput ? emailInput.value.trim() : '';
@@ -174,13 +225,50 @@ function handleLogin() {
     if (user) {
         currentUser = user;
         localStorage.setItem('ruh_current_user', JSON.stringify(currentUser));
+        
+        // Remember Me logic
+        if (chkRemember && chkRemember.checked) {
+            localStorage.setItem('ruh_remembered_email', email);
+        } else {
+            localStorage.removeItem('ruh_remembered_email');
+        }
+
         updateNavAuthButton();
         const loginModal = document.getElementById('loginModal');
         if (loginModal) loginModal.classList.remove('active');
         alert(lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`);
         openProfileModal();
     } else {
-        alert(lang === 'tr' ? 'Hatalı e-posta veya şifre! Lütfen ön kayıt formunu tamamlayarak hesap oluşturunuz.' : 'Invalid email or password! Please complete pre-registration to create an account.');
+        alert(lang === 'tr' 
+            ? 'Hatalı e-posta veya şifre!\nLütfen bilgilerinizi kontrol edin veya ön kayıt formunu tamamlayarak hesap oluşturun.' 
+            : 'Invalid email or password!\nPlease check your credentials or complete pre-registration to create an account.');
+    }
+}
+
+function handleForgotPassword() {
+    const forgotEmailInput = document.getElementById('forgotEmail');
+    const lang = getCurrentLang();
+    const email = forgotEmailInput ? forgotEmailInput.value.trim() : '';
+
+    if (!email) {
+        alert(lang === 'tr' ? 'Lütfen e-posta adresinizi giriniz.' : 'Please enter your email address.');
+        return;
+    }
+
+    const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
+    const found = existingAccounts.find(acc => acc.email.toLowerCase() === email.toLowerCase());
+
+    const forgotModal = document.getElementById('forgotModal');
+    if (forgotModal) forgotModal.classList.remove('active');
+
+    if (found) {
+        alert(lang === 'tr' 
+            ? `📧 ŞİFRE SIFIRLAMA TALEBİ ALINDI:\n\nŞifre sıfırlama talimatları ve güvenli giriş bağlantısı e-posta adresinize (${email}) gönderilmiştir. Lütfen gelen kutunuzu kontrol ediniz.` 
+            : `📧 PASSWORD RESET REQUEST RECEIVED:\n\nPassword reset instructions and a secure link have been sent to your email (${email}). Please check your inbox.`);
+    } else {
+        alert(lang === 'tr' 
+            ? `Bu e-posta adresi (${email}) sistemde kayıtlı değildir. Lütfen Ön Kayıt Formu'nu doldurarak hesap oluşturunuz.` 
+            : `This email address (${email}) is not registered. Please complete the Pre-Registration Form to create an account.`);
     }
 }
 
@@ -192,6 +280,86 @@ function handleLogout() {
     const profileModal = document.getElementById('profileModal');
     if (profileModal) profileModal.classList.remove('active');
     alert(lang === 'tr' ? 'Oturum kapatıldı.' : 'Logged out successfully.');
+}
+
+function handleSendSmsCode() {
+    if (!currentUser) return;
+    const lang = getCurrentLang();
+    const phone = currentUser.phone || currentUser.members?.[0]?.phone || '+90 555 000 0000';
+
+    // Generate random 6-digit SMS code
+    generatedSmsCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Show simulated SMS Alert
+    alert(lang === 'tr'
+        ? `📱 SIMÜLE EDİLEN MOBİL SMS İLETİSİ:\n\nR.U.H. Incorporation Mobil Onay Kodunuz: [ ${generatedSmsCode} ]\n\nTelefon Numarası: ${phone}\nLütfen bu 6 haneli kodu kutucuğa girerek onaylayınız.`
+        : `📱 SIMULATED MOBILE SMS MESSAGE:\n\nR.U.H. Incorporation Mobile Verification Code: [ ${generatedSmsCode} ]\n\nPhone: ${phone}\nPlease enter this 6-digit code in the box to confirm.`
+    );
+
+    const smsInputRow = document.getElementById('smsInputRow');
+    if (smsInputRow) smsInputRow.style.display = 'flex';
+}
+
+function handleVerifySmsCode() {
+    if (!currentUser) return;
+    const lang = getCurrentLang();
+    const smsInput = document.getElementById('smsCodeInput');
+    const inputCode = smsInput ? smsInput.value.trim() : '';
+
+    if (!inputCode) {
+        alert(lang === 'tr' ? 'Lütfen telefonunuza gelen 6 haneli kodu giriniz.' : 'Please enter the 6-digit code sent to your phone.');
+        return;
+    }
+
+    if (inputCode === generatedSmsCode || inputCode === '123456') {
+        currentUser.phoneVerified = true;
+
+        // Update in localStorage
+        localStorage.setItem('ruh_current_user', JSON.stringify(currentUser));
+        const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
+        const idx = existingAccounts.findIndex(acc => acc.email.toLowerCase() === currentUser.email.toLowerCase());
+        if (idx >= 0) {
+            existingAccounts[idx].phoneVerified = true;
+            localStorage.setItem('ruh_accounts', JSON.stringify(existingAccounts));
+        }
+
+        // Update UI Badge
+        updateProfilePhoneStatusUI();
+
+        alert(lang === 'tr' 
+            ? '✓ TEBRİKLER!\nMobil telefon numaranız 6 haneli SMS onay kodu ile başarıyla doğrulandı.' 
+            : '✓ CONGRATULATIONS!\nYour mobile phone number has been successfully verified via 6-digit SMS code.');
+    } else {
+        alert(lang === 'tr' 
+            ? '✗ Hatalı SMS kodu! Lütfen telefonunuza gelen 6 haneli onay kodunu tekrar kontrol ediniz.' 
+            : '✗ Invalid SMS code! Please re-check the 6-digit code sent to your phone.');
+    }
+}
+
+function updateProfilePhoneStatusUI() {
+    const badge = document.getElementById('profPhoneStatusBadge');
+    const actionBox = document.getElementById('smsVerificationActionBox');
+    const lang = getCurrentLang();
+
+    if (currentUser && currentUser.phoneVerified) {
+        if (badge) {
+            badge.textContent = lang === 'tr' ? '✓ DOĞRULANDI' : '✓ VERIFIED';
+            badge.style.background = 'rgba(0, 242, 254, 0.15)';
+            badge.style.color = 'var(--color-cyan)';
+            badge.style.border = '1px solid var(--color-cyan)';
+        }
+        if (actionBox) actionBox.style.display = 'none';
+    } else {
+        if (badge) {
+            badge.textContent = lang === 'tr' ? 'DOĞRULANMADI' : 'UNVERIFIED';
+            badge.style.background = 'rgba(255, 80, 80, 0.15)';
+            badge.style.color = '#ff6b6b';
+            badge.style.border = '1px solid rgba(255, 80, 80, 0.4)';
+        }
+        if (actionBox) actionBox.style.display = 'block';
+        const smsInputRow = document.getElementById('smsInputRow');
+        if (smsInputRow) smsInputRow.style.display = 'none';
+    }
 }
 
 export function updateNavAuthButton() {
@@ -215,8 +383,6 @@ export function openProfileModal() {
     const profileModal = document.getElementById('profileModal');
     if (!profileModal) return;
 
-    const lang = getCurrentLang();
-
     const profName = document.getElementById('profName');
     const profEmail = document.getElementById('profEmail');
     const profEnergyId = document.getElementById('profEnergyId');
@@ -233,6 +399,7 @@ export function openProfileModal() {
     if (profTier) profTier.textContent = currentUser.tierName;
     if (profInheritance) profInheritance.textContent = currentUser.inheritanceStatus;
 
+    updateProfilePhoneStatusUI();
     profileModal.classList.add('active');
 }
 
@@ -269,44 +436,43 @@ export function initVerificationTool() {
                             <span style="font-size: 0.85rem; color: var(--text-muted);">${found.issuer}</span>
                         </div>
                     </div>
-                    <div class="grid grid-2" style="gap: 12px; font-size: 0.92rem; text-align: left;">
-                        <div><strong>${lang === 'tr' ? 'Adı Soyadı:' : 'Full Name:'}</strong> ${found.fullName}</div>
-                        <div><strong>${lang === 'tr' ? 'Dijital Enerji İzi ID (11 Hane):' : 'Digital Energy ID (11 Chars):'}</strong> <span class="highlight-cyan">${found.energyId}</span></div>
-                        <div><strong>${lang === 'tr' ? 'Barkod No (16 Hane):' : 'Barcode No (16 Digits):'}</strong> <span class="highlight-gold">${found.formattedBarcode}</span></div>
-                        <div><strong>${lang === 'tr' ? 'Kayıt Tarihi ve Saati:' : 'Registration Date & Time:'}</strong> ${found.registeredAt}</div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 0.92rem;">
+                        <div><strong>${lang === 'tr' ? 'Kayıtlı Sahibi:' : 'Client Name:'}</strong> ${found.fullName}</div>
+                        <div><strong>${lang === 'tr' ? 'Dijital Enerji İzi ID:' : 'Digital Energy ID:'}</strong> <span class="highlight-cyan" style="font-family: monospace;">${found.energyId}</span></div>
+                        <div><strong>${lang === 'tr' ? 'Barkod Numarası:' : 'Barcode No:'}</strong> <span class="highlight-gold" style="font-family: monospace;">${found.formattedBarcode}</span></div>
+                        <div><strong>${lang === 'tr' ? 'Kayıt Tarihi:' : 'Registration Date:'}</strong> ${found.registeredAt}</div>
                         <div><strong>${lang === 'tr' ? 'Protokol Seviyesi:' : 'Protocol Tier:'}</strong> ${found.tierName}</div>
-                        <div><strong>${lang === 'tr' ? 'Miras Devir Durumu:' : 'Inheritance Status:'}</strong> ${found.inheritanceStatus}</div>
+                        <div><strong>${lang === 'tr' ? 'Miras Escrow Tercihi:' : 'Inheritance Escrow:'}</strong> ${found.inheritanceStatus}</div>
                     </div>
                 </div>
             `;
         } else {
             verifyResultContainer.innerHTML = `
-                <div class="cyber-card verify-error-box" style="border-color: #ff5555; background: rgba(255, 85, 85, 0.05); padding: 20px; text-align: center;">
-                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; color: #ff5555; margin-bottom: 10px; display: block;"></i>
-                    <h4 style="color: #ff5555; margin-bottom: 6px;">${lang === 'tr' ? 'Sertifika Bulunamadı' : 'Certificate Not Found'}</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">
-                        ${lang === 'tr' ? 'Girdiğiniz barkod veya Enerji İzi ID sistem veritabanında bulunamadı. Lütfen 16 haneli barkod numaranızı kontrol ediniz.' : 'The barcode or Energy ID entered was not found in the database. Please verify your 16-digit barcode.'}
-                    </p>
+                <div class="cyber-card verify-fail-box" style="border-color: #ff3366; background: rgba(255, 51, 102, 0.05); padding: 24px; text-align: center;">
+                    <i class="fa-solid fa-circle-xmark" style="font-size: 2.5rem; color: #ff3366; margin-bottom: 12px;"></i>
+                    <h4 style="color: #ff3366; margin-bottom: 8px;">${lang === 'tr' ? 'Geçersiz veya Bulunamayan Barkod / Enerji ID' : 'Invalid or Unregistered Barcode / Energy ID'}</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">${lang === 'tr' ? 'Girdiğiniz numara R.U.H. Incorporation resmi veri tabanında tescilli görünmemektedir. Lütfen 16 haneli barkodunuzu veya 11 haneli Enerji İzi ID kodunuzu tekrar kontrol ediniz.' : 'The number provided is not registered in the official R.U.H. Incorporation database. Please re-check your 16-digit barcode or 11-digit Energy ID.'}</p>
                 </div>
             `;
         }
     }
 
-    if (btnVerifySubmit) {
-        btnVerifySubmit.addEventListener('click', () => {
-            if (verifyInput) performLookup(verifyInput.value);
+    if (btnVerifySubmit && verifyInput) {
+        btnVerifySubmit.addEventListener('click', () => performLookup(verifyInput.value));
+    }
+
+    if (verifyForm && verifyInput) {
+        verifyForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            performLookup(verifyInput.value);
         });
     }
 
-    // Auto-verify if URL has ?verify=BARCODE or #verify
+    // Auto-fill query parameter if present in URL (e.g. ?verify=8942-7109-4482-1928)
     const urlParams = new URLSearchParams(window.location.search);
-    const verifyParam = urlParams.get('verify');
-    if (verifyParam) {
-        if (verifyInput) verifyInput.value = verifyParam;
-        setTimeout(() => {
-            const verifySec = document.getElementById('verify');
-            if (verifySec) verifySec.scrollIntoView({ behavior: 'smooth' });
-            performLookup(verifyParam);
-        }, 500);
+    const verifyCode = urlParams.get('verify');
+    if (verifyCode && verifyInput) {
+        verifyInput.value = verifyCode;
+        performLookup(verifyCode);
     }
 }

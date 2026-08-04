@@ -455,11 +455,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblBirthDate">Doğum Tarihi *</label>
-                                            <input type="date" class="form-control" name="birthDate_1" required>
+                                            <input type="date" class="form-control" name="birthDate_1" id="birthDate_1" required>
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblAge">Yaş *</label>
-                                            <input type="number" class="form-control" name="age_1" placeholder="Örn: 35" data-i18n-placeholder="phAge" min="1" max="120" required>
+                                            <input type="number" class="form-control" name="age_1" placeholder="Örn: 35" data-i18n-placeholder="phAge" min="0" max="120" required>
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblGender">Cinsiyet *</label>
@@ -474,13 +474,16 @@
                                             <label data-i18n="lblEmail">E-posta Adresi *</label>
                                             <input type="email" class="form-control" name="email_1" placeholder="ahmet@example.com" data-i18n-placeholder="phEmail" required>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="grid-column: span 2;">
                                             <label data-i18n="lblPhone">Telefon Numarası *</label>
                                             <input type="tel" class="form-control" name="phone_1" placeholder="+90 555 000 0000" data-i18n-placeholder="phPhone" required>
+                                            <small class="form-hint" style="color: var(--color-cyan); font-size: 0.78rem; display: block; margin-top: 5px;" data-i18n="phoneNoticeHint">
+                                                <i class="fa-solid fa-mobile-screen-button"></i> Form tamamlandığında e-postanıza doğrulama bağlantısı, profilinizde ise mobil SMS onay sistemi sunulacaktır.
+                                            </small>
                                         </div>
-                                        <div class="form-group">
-                                            <label data-i18n="lblRelation">Yakınlık Derecesi</label>
-                                            <input type="text" class="form-control" name="relation_1" value="Kendisi (Ana Başvuran)" data-i18n-placeholder="phRelationSelf" readonly>
+                                        <div class="form-group" style="grid-column: span 2;">
+                                            <label data-i18n="lblRelation">Yakınlık Derecesi *</label>
+                                            <input type="text" class="form-control" name="relation_1" value="Kendisi (Ana Başvuran)" data-i18n-placeholder="phRelationSelf" readonly required>
                                         </div>
                                     </div>
                                 </div>
@@ -1054,8 +1057,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Login Modal -->
     <div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
         <div class="modal-dialog" style="max-width: 440px;">
             <div class="modal-header">
@@ -1068,12 +1069,43 @@
                         <label data-i18n="lblLoginEmail">E-posta Adresi *</label>
                         <input type="email" class="form-control" id="loginEmail" placeholder="Kayıtlı E-posta Adresiniz" data-i18n-placeholder="phLoginEmail" required>
                     </div>
-                    <div class="form-group" style="margin-bottom: 24px;">
+                    <div class="form-group" style="margin-bottom: 16px;">
                         <label data-i18n="lblLoginPass">Şifre *</label>
                         <input type="password" class="form-control" id="loginPassword" placeholder="Kullanıcı Şifreniz" data-i18n-placeholder="phLoginPass" required>
                     </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer; color: var(--text-muted); margin: 0;">
+                            <input type="checkbox" id="chkRememberMe" style="accent-color: var(--color-cyan);">
+                            <span data-i18n="lblRememberMe">Beni Hatırla</span>
+                        </label>
+                        <a href="#" id="forgotPassLink" style="font-size: 0.88rem; color: var(--color-cyan); text-decoration: none;" data-i18n="btnForgotPass">Şifremi Unuttum?</a>
+                    </div>
                     <button type="button" class="btn btn-glow" id="submitLoginBtn" style="width: 100%;">
                         <i class="fa-solid fa-key"></i> <span data-i18n="btnLoginSubmit">Oturum Aç</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal-backdrop" id="forgotModal" role="dialog" aria-modal="true" aria-labelledby="forgotModalTitle">
+        <div class="modal-dialog" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 id="forgotModalTitle"><i class="fa-solid fa-key highlight-gold"></i> <span data-i18n="forgotModalTitle">Şifremi Unuttum</span></h3>
+                <button class="modal-close" id="closeForgotModalBtn" aria-label="Kapat / Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="forgotForm" onsubmit="return false;">
+                    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;" data-i18n="forgotDesc">
+                        Kayıtlı e-posta adresinizi giriniz. Şifre sıfırlama talimatları ve onay bağlantısı e-postanıza gönderilecektir.
+                    </p>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label data-i18n="lblLoginEmail">E-posta Adresi *</label>
+                        <input type="email" class="form-control" id="forgotEmail" placeholder="Kayıtlı E-posta Adresiniz" data-i18n-placeholder="phLoginEmail" required>
+                    </div>
+                    <button type="button" class="btn btn-gold" id="submitForgotBtn" style="width: 100%;">
+                        <i class="fa-solid fa-paper-plane"></i> <span data-i18n="btnSendReset">Şifre Sıfırlama Bağlantısı Gönder</span>
                     </button>
                 </form>
             </div>
@@ -1120,6 +1152,25 @@
                             <span class="prof-label" data-i18n="lblProfInheritance">Miras Escrow Tercihi:</span>
                             <strong id="profInheritance" class="prof-val highlight-gold">Kayıtlı & Escrow Onaylı</strong>
                         </div>
+                        
+                        <!-- Mobile SMS Verification Box -->
+                        <div class="prof-detail-item" style="grid-column: span 2; background: rgba(0, 242, 254, 0.05); padding: 14px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.2); margin-top: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <span class="prof-label" style="margin: 0;"><i class="fa-solid fa-mobile-retro highlight-cyan"></i> <span data-i18n="lblProfPhoneSms">Mobil SMS Doğrulama Durumu:</span></span>
+                                <span id="profPhoneStatusBadge" class="priority-tag badge-standard" style="background: rgba(255, 80, 80, 0.15); color: #ff6b6b; border: 1px solid rgba(255, 80, 80, 0.4);">DOĞRULANMADI</span>
+                            </div>
+                            <div id="smsVerificationActionBox">
+                                <button type="button" class="btn btn-outline btn-sm" id="btnSendSmsCode" style="font-size: 0.82rem; padding: 8px 14px; width: 100%;">
+                                    <i class="fa-solid fa-paper-plane"></i> <span data-i18n="btnSendSms">Telefonunuza 6 Haneli Mobil SMS Onay Kodu Gönder</span>
+                                </button>
+                                <div id="smsInputRow" style="display: none; margin-top: 12px; flex-direction: row; gap: 8px; align-items: center;">
+                                    <input type="text" class="form-control" id="smsCodeInput" placeholder="6 Haneli Kodu Giriniz" maxlength="6" style="text-align: center; font-weight: 700; letter-spacing: 0.15em;">
+                                    <button type="button" class="btn btn-gold btn-sm" id="btnVerifySmsCode" style="white-space: nowrap;">
+                                        <i class="fa-solid fa-check-double"></i> <span data-i18n="btnConfirmSms">Onayla</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1129,7 +1180,7 @@
                 </button>
             </div>
         </div>
-    </footer>
+    </div>
 
     <!-- ES6 Module Script -->
     <script type="module" src="js/app.js"></script>

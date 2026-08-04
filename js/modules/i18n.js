@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html & Contingency Heir Transfer.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html, Contingency Heir Transfer, Remember Me, Forgot Password & Mobile SMS Verification.
  */
 
 export const translations = {
@@ -40,13 +40,14 @@ export const translations = {
         phVerifyInput: "16 Haneli Barkod No veya 11 Haneli Enerji İzi ID",
         phAge: "Örn: 35",
 
-        // Form Age & Gender i18n
+        // Form Age, Gender & Phone Notice i18n
         lblAge: "Yaş *",
         lblGender: "Cinsiyet *",
         optGenderSelect: "Cinsiyet Seçiniz",
         optGenderMale: "Erkek",
         optGenderFemale: "Kadın",
         optGenderOther: "Diğer / Belirtmek İstemiyorum",
+        phoneNoticeHint: "<i class=\"fa-solid fa-mobile-screen-button\"></i> Form tamamlandığında e-postanıza doğrulama bağlantısı, profilinizde ise mobil SMS onay sistemi sunulacaktır.",
 
         // Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri)
         contingencyTitle: "Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri Protokolü",
@@ -58,10 +59,15 @@ export const translations = {
         phBackupHeirName: "Örn: Mehmet Yıldız",
         phBackupHeirRelation: "Örn: Oğlu / +90 555...",
 
-        // Auth & User Profile Modal
+        // Auth, Remember Me, Forgot Password & User Profile Modal
         loginModalTitle: "Kullanıcı Girişi",
         lblLoginEmail: "E-posta Adresi *",
         lblLoginPass: "Şifre *",
+        lblRememberMe: "Beni Hatırla",
+        btnForgotPass: "Şifremi Unuttum?",
+        forgotModalTitle: "Şifremi Unuttum",
+        forgotDesc: "Kayıtlı e-posta adresinizi giriniz. Şifre sıfırlama talimatları ve onay bağlantısı e-postanıza gönderilecektir.",
+        btnSendReset: "Şifre Sıfırlama Bağlantısı Gönder",
         btnLoginSubmit: "Oturum Aç",
         profileModalTitle: "Müşteri Hesabı & Protokol Profili",
         lblProfTitle: "Kayıtlı Müşteri:",
@@ -74,6 +80,9 @@ export const translations = {
         lblProfInheritance: "Miras Escrow Tercihi:",
         lblEnergyId: "Dijital Enerji İzi ID (11 Hane):",
         lblProfBarcode: "Barkod No (16 Hane):",
+        lblProfPhoneSms: "Mobil SMS Doğrulama Durumu:",
+        btnSendSms: "Telefonunuza 6 Haneli Mobil SMS Onay Kodu Gönder",
+        btnConfirmSms: "Onayla",
         btnLogout: "Oturumu Kapat",
 
         // Hero
@@ -94,7 +103,7 @@ export const translations = {
         // Phases (Roadmap Architecture Badges)
         phaseSub: "ŞEFFAFLIK İLKESİ VE PROJE YOL HARİTASI",
         phaseTitle: "Gelişim Yol Haritası",
-        phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmıştır.",
+        phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmuştur.",
         
         phase1Badge: "AŞAMA 1 (Şu An Aktif)",
         phase1Title: "Aşama 1: Fikir, AR-GE & Ücretsiz Ön Kayıt",
@@ -198,7 +207,7 @@ export const translations = {
         lblBirthDate: "Doğum Tarihi *",
         lblEmail: "E-posta Adresi *",
         lblPhone: "Telefon Numarası *",
-        lblRelation: "Yakınlık Derecesi",
+        lblRelation: "Yakınlık Derecesi *",
         btnAddFamily: "+ Aile Üyesi İçin Ayrı Form Ekle",
         btnRemoveMember: "Formu Kaldır",
 
@@ -376,13 +385,14 @@ export const translations = {
         phVerifyInput: "16-Digit Barcode No or 11-Digit Energy ID",
         phAge: "e.g., 35",
 
-        // Form Age & Gender i18n
+        // Form Age, Gender & Phone Notice i18n
         lblAge: "Age *",
         lblGender: "Gender *",
         optGenderSelect: "Select Gender",
         optGenderMale: "Male",
         optGenderFemale: "Female",
         optGenderOther: "Other / Prefer not to say",
+        phoneNoticeHint: "<i class=\"fa-solid fa-mobile-screen-button\"></i> Upon registration, a verification link will be sent to your email, and mobile SMS verification will be available in your profile.",
 
         // Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri)
         contingencyTitle: "Succession Rights Transfer Protocol Prior to Phase 2 & 3",
@@ -394,10 +404,15 @@ export const translations = {
         phBackupHeirName: "e.g., John Smith",
         phBackupHeirRelation: "e.g., Son / +1 555...",
 
-        // Auth & User Profile Modal
+        // Auth, Remember Me, Forgot Password & User Profile Modal
         loginModalTitle: "User Login",
         lblLoginEmail: "Email Address *",
         lblLoginPass: "Password *",
+        lblRememberMe: "Remember Me",
+        btnForgotPass: "Forgot Password?",
+        forgotModalTitle: "Reset Password",
+        forgotDesc: "Enter your registered email address. Password reset instructions and verification link will be sent to your email.",
+        btnSendReset: "Send Password Reset Link",
         btnLoginSubmit: "Log In",
         profileModalTitle: "Customer Account & Protocol Profile",
         lblProfTitle: "Registered Client:",
@@ -410,6 +425,9 @@ export const translations = {
         lblProfInheritance: "Inheritance Escrow Choice:",
         lblEnergyId: "Digital Energy ID (11 Chars):",
         lblProfBarcode: "Barcode No (16 Digits):",
+        lblProfPhoneSms: "Mobile SMS Verification Status:",
+        btnSendSms: "Send 6-Digit Mobile SMS Verification Code",
+        btnConfirmSms: "Verify Code",
         btnLogout: "Log Out",
 
         // Hero
@@ -534,7 +552,7 @@ export const translations = {
         lblBirthDate: "Date of Birth *",
         lblEmail: "Email Address *",
         lblPhone: "Phone Number *",
-        lblRelation: "Relationship",
+        lblRelation: "Relationship *",
         btnAddFamily: "+ Add Separate Form for Family Member",
         btnRemoveMember: "Remove Form",
 

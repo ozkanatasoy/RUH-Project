@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, multi-member form registration, Age & Gender validation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
+ * Manages 5-step wizard navigation, strict multi-member form validation, newborn birth date calculation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -12,12 +12,45 @@ let memberCount = 1;
 let selectedTier = 'phase1';
 let currentMemberCerts = [];
 
+/**
+ * Attaches birth date change listener to calculate age automatically (supports newborns born today with age = 0)
+ */
+function attachBirthDateAgeListener(card, num) {
+    const birthEl = card.querySelector(`input[name="birthDate_${num}"]`);
+    const ageEl = card.querySelector(`input[name="age_${num}"]`);
+    if (birthEl && ageEl) {
+        // Set max date to today so newborns (born today) can be registered!
+        const todayStr = new Date().toISOString().split('T')[0];
+        birthEl.max = todayStr;
+
+        birthEl.addEventListener('change', () => {
+            if (birthEl.value) {
+                const birthDate = new Date(birthEl.value);
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                if (age < 0) age = 0; // Newborn baby
+                ageEl.value = age;
+            }
+        });
+    }
+}
+
 export function initWizard() {
     const familyFormsContainer = document.getElementById('familyFormsContainer');
     const addMemberBtn = document.getElementById('addMemberBtn');
     const prevStepBtn = document.getElementById('prevStepBtn');
     const nextStepBtn = document.getElementById('nextStepBtn');
     const submitFormBtn = document.getElementById('submitFormBtn');
+
+    // Attach birth date age calculator listener to Form 1
+    const primaryCard = document.querySelector('.family-member-card[data-member-index="1"]');
+    if (primaryCard) {
+        attachBirthDateAgeListener(primaryCard, 1);
+    }
 
     // Add Family Member Form
     if (addMemberBtn) {
@@ -72,7 +105,7 @@ export function initWizard() {
                     </div>
                     <div class="form-group">
                         <label>${lblAgeVal}</label>
-                        <input type="number" class="form-control" name="age_${memberIndex}" placeholder="${phAgeVal}" data-i18n-placeholder="phAge" min="1" max="120" required>
+                        <input type="number" class="form-control" name="age_${memberIndex}" placeholder="${phAgeVal}" data-i18n-placeholder="phAge" min="0" max="120" required>
                     </div>
                     <div class="form-group">
                         <label>${lblGenderVal}</label>
@@ -87,11 +120,14 @@ export function initWizard() {
                         <label>${translations[lang].lblEmail}</label>
                         <input type="email" class="form-control" name="email_${memberIndex}" placeholder="${phEmail}" data-i18n-placeholder="phEmail" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="grid-column: span 2;">
                         <label>${translations[lang].lblPhone}</label>
                         <input type="tel" class="form-control" name="phone_${memberIndex}" placeholder="${phPhone}" data-i18n-placeholder="phPhone" required>
+                        <small class="form-hint" style="color: var(--color-cyan); font-size: 0.78rem; display: block; margin-top: 5px;" data-i18n="phoneNoticeHint">
+                            <i class="fa-solid fa-mobile-screen-button"></i> Form tamamlandığında e-postanıza doğrulama bağlantısı, profilinizde ise mobil SMS onay sistemi sunulacaktır.
+                        </small>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="grid-column: span 2;">
                         <label>${translations[lang].lblRelation}</label>
                         <input type="text" class="form-control" name="relation_${memberIndex}" placeholder="${phRel}" data-i18n-placeholder="phRelationFamily" required>
                     </div>
@@ -99,6 +135,7 @@ export function initWizard() {
             `;
 
             familyFormsContainer.appendChild(memberCard);
+            attachBirthDateAgeListener(memberCard, memberIndex);
             updateFeeSummary();
         });
     }
@@ -261,25 +298,26 @@ function validateStep(step) {
             const num = idx + 1;
             const nameEl = formCards[idx].querySelector(`input[name="fullName_${num}"]`);
             const idEl = formCards[idx].querySelector(`input[name="identityNo_${num}"]`);
+            const birthEl = formCards[idx].querySelector(`input[name="birthDate_${num}"]`);
             const ageEl = formCards[idx].querySelector(`input[name="age_${num}"]`);
             const genderEl = formCards[idx].querySelector(`select[name="gender_${num}"]`);
+            const emailEl = formCards[idx].querySelector(`input[name="email_${num}"]`);
+            const phoneEl = formCards[idx].querySelector(`input[name="phone_${num}"]`);
+            const relEl = formCards[idx].querySelector(`input[name="relation_${num}"]`);
 
-            if (!nameEl || !nameEl.value.trim() || !idEl || !idEl.value.trim()) {
+            const isNameValid = nameEl && nameEl.value.trim().length > 0;
+            const isIdValid = idEl && idEl.value.trim().length > 0;
+            const isBirthValid = birthEl && birthEl.value.length > 0;
+            const isAgeValid = ageEl && ageEl.value !== '' && ageEl.value !== undefined && parseInt(ageEl.value, 10) >= 0;
+            const isGenderValid = genderEl && genderEl.value !== '';
+            const isEmailValid = emailEl && emailEl.value.trim().length > 0;
+            const isPhoneValid = phoneEl && phoneEl.value.trim().length > 0;
+            const isRelValid = relEl && relEl.value.trim().length > 0;
+
+            if (!isNameValid || !isIdValid || !isBirthValid || !isAgeValid || !isGenderValid || !isEmailValid || !isPhoneValid || !isRelValid) {
                 alert(lang === 'tr' 
-                    ? `Lütfen Form ${num}'deki Ad Soyad ve Kimlik No alanlarını doldurunuz.` 
-                    : `Please complete Full Name and Identity No in Form ${num}.`);
-                return false;
-            }
-            if (!ageEl || !ageEl.value.trim()) {
-                alert(lang === 'tr' 
-                    ? `Lütfen Form ${num}'deki Yaş alanını doldurunuz.` 
-                    : `Please enter Age in Form ${num}.`);
-                return false;
-            }
-            if (!genderEl || !genderEl.value) {
-                alert(lang === 'tr' 
-                    ? `Lütfen Form ${num}'deki Cinsiyet seçimini yapınız.` 
-                    : `Please select Gender in Form ${num}.`);
+                    ? `⚠️ Form ${num}'de doldurulmamış eksik alanlar bulunmaktadır!\n\nAdım 2'ye geçebilmek için Ad Soyad, Kimlik No, Doğum Tarihi, Yaş, Cinsiyet, E-posta, Telefon Numarası ve Yakınlık alanlarının tamamını eksiksiz doldurmanız zorunludur.` 
+                    : `⚠️ Form ${num} has incomplete required fields!\n\nTo proceed to Step 2, you must fill out Full Name, National ID, Birth Date, Age, Gender, Email, Phone Number, and Relationship.`);
                 return false;
             }
         }
@@ -438,6 +476,7 @@ function initCertificateModal(submitFormBtn) {
             const primaryName = document.querySelector('input[name="fullName_1"]')?.value || 'Ahmet Yıldız';
             const primaryId = document.querySelector('input[name="identityNo_1"]')?.value || '11111111111';
             const primaryEmail = document.querySelector('input[name="email_1"]')?.value || 'user@example.com';
+            const primaryPhone = document.querySelector('input[name="phone_1"]')?.value || '';
             
             const regPasswordInput = document.getElementById('regPassword');
             const regPasswordConfirmInput = document.getElementById('regPasswordConfirm');
@@ -505,13 +544,15 @@ function initCertificateModal(submitFormBtn) {
                 const fName = card.querySelector(`input[name="fullName_${num}"]`)?.value || (num === 1 ? primaryName : `Member ${num}`);
                 const fId = card.querySelector(`input[name="identityNo_${num}"]`)?.value || primaryId;
                 const fEmail = card.querySelector(`input[name="email_${num}"]`)?.value || primaryEmail;
-                const fAge = card.querySelector(`input[name="age_${num}"]`)?.value || '';
+                const fPhone = card.querySelector(`input[name="phone_${num}"]`)?.value || primaryPhone;
+                const fAge = card.querySelector(`input[name="age_${num}"]`)?.value || '0';
                 const fGender = card.querySelector(`select[name="gender_${num}"]`)?.value || '';
 
                 currentMemberCerts.push({
                     fullName: fName,
                     identityNo: fId,
                     email: fEmail,
+                    phone: fPhone,
                     age: fAge,
                     gender: fGender,
                     energyId: generateEnergyId(), // 11 alphanumeric characters
@@ -529,6 +570,7 @@ function initCertificateModal(submitFormBtn) {
                 fullName: primaryMember.fullName,
                 identityNo: primaryMember.identityNo,
                 email: primaryMember.email,
+                phone: primaryMember.phone,
                 age: primaryMember.age,
                 gender: primaryMember.gender,
                 password: password,
@@ -537,9 +579,16 @@ function initCertificateModal(submitFormBtn) {
                 tierName: selectedTierName,
                 inheritanceStatus: inheritStatus,
                 registeredAt: fullDateTime,
+                phoneVerified: false, // Default false until SMS verification in profile
                 backupHeir: backupHeirData,
                 members: currentMemberCerts
             });
+
+            // Simulated Email Verification Link Notification
+            alert(lang === 'tr' 
+                ? `📧 E-POSTA DOĞRULAMA BİLDİRİMİ:\n\nForm kaydınız başarıyla oluşturuldu! E-posta adresinize (${primaryMember.email}) doğrulama bağlantısı gönderilmiştir.\n\nTelefon numaranızı (${primaryMember.phone}) doğrulamak için sağ üstteki 'Profilim' sekmesinden 6 haneli Mobil SMS Onay sistemini kullanabilirsiniz.`
+                : `📧 EMAIL VERIFICATION NOTICE:\n\nRegistration complete! A verification link has been sent to your email (${primaryMember.email}).\n\nTo verify your phone (${primaryMember.phone}), use the 6-digit Mobile SMS system in your 'My Profile' tab.`
+            );
 
             // Render Certificate in Modal
             renderCertificateView(0);
