@@ -290,9 +290,13 @@
     <script type="module">
         import { getCurrentLang, switchLanguage } from './js/modules/i18n.js';
         document.addEventListener('DOMContentLoaded', () => {
+            // Apply saved language state on page load
+            switchLanguage(getCurrentLang());
+
             const langBtn = document.getElementById('langToggleBtn');
             if (langBtn) {
-                langBtn.addEventListener('click', () => {
+                langBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
                     const nextLang = getCurrentLang() === 'tr' ? 'en' : 'tr';
                     switchLanguage(nextLang);
                 });
