@@ -296,7 +296,7 @@ export const translations = {
         faqQ7: "AR-GE bağış havuzuna yapılan katkılar nasıl değerlendirilir ve öncelik nasıl sağlanır?",
         faqA7: "Toplanan bağışlar %100 şeffaflık ilkesiyle 4 ana AR-GE kalemi (biyo-fizik donanımları, uydu ağı, escrow trustları ve uzman kadro) için kullanılır. Bağış yapan kullanıcılar sistemde en yüksek tutara göre sıralanarak Aşama 2 & 3 aktivasyonlarında 1. Derece VIP sırayı alır.",
         faqQ8: "Ölüm anından ruhun yeni canlı bedende tespit edilmesine kadar geçen süre ne kadardır?",
-        faqA8: "Bilinç ve biyo-enerji akışı doğal biyolojik rezonansa bağlıdır. Yörünge uydularımız 7/24 küresel frekans taraması yapar ve ruh yeni bedende canlılık kazandığı an kilitli frekans sinyali sayesinde nokta atışı tespit edilir.",
+        faqA8: "Bilinç ve biyo-enerji akışı doğal biyolojik rezonansa bağlıdır. Yörünge uydularımız 7/24 küresel frekans taraması mevcuttur ve ruh yeni bedende canlılık kazandığı an kilitli frekans sinyali sayesinde nokta atışı tespit edilir.",
         faqQ9: "Mirasımı mevcut ailem ile yeni bedenim arasında paylaştırabilir miyim?",
         faqA9: "Evet. Adım 4 vasiyetname seçeneğinde sunulan hazır şablonlar marifetiyle mal varlığınızın %100'ünü yeni bedeninize aktarabileceğiniz gibi, belirlediğiniz oranları mevcut aile üyelerinize bırakıp kalan kısmı yeni bedeninize devredebilirsiniz.",
         faqQ10: "Kişisel verilerim ve vasiyet detaylarım siber saldırılara karşı nasıl korunuyor?",
@@ -357,7 +357,7 @@ export const translations = {
         lblCertHolder: "HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER",
         certQrCaption: "Kuantum Doğrulama QR Kodu",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
-        btnPrint: "Sertifikayı PDF İndir",
+        btnPrint: "Sertifikayı İndir",
         btnClose: "Kapat"
     },
     en: {
@@ -713,7 +713,7 @@ export const translations = {
         lblCertHolder: "HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER",
         certQrCaption: "Quantum Verification QR Code",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
-        btnPrint: "Download Certificate PDF",
+        btnPrint: "Download Certificate",
         btnClose: "Close"
     }
 };

@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing input error highlights, custom cyber alert & success modals, newborn birth date calculation, Contingency Heir Succession Protocol (with opt-out checkbox), 11-digit Energy ID & 16-digit Barcode A4 Landscape international certificate rendering and direct PDF downloads via html2pdf for R.U.H. Incorporation.
+ * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing input error highlights, custom cyber alert & success modals, newborn birth date calculation, Contingency Heir Succession Protocol (with opt-out checkbox), 11-digit Energy ID & 16-digit Barcode A4 Landscape international certificate rendering and direct PDF downloads via html2pdf (with Base64 CORS QR pre-fetching to prevent black PDF renders) for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -800,10 +800,17 @@ function initCertificateModal(submitFormBtn) {
 
             if (window.html2pdf) {
                 const opt = {
-                    margin: [4, 4, 4, 4],
+                    margin: [2, 2, 2, 2],
                     filename: filename,
                     image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2, useCORS: true, backgroundColor: '#07080d' },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#070913',
+                        letterRendering: true,
+                        logging: false
+                    },
                     jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
                 };
                 window.html2pdf().set(opt).from(certElement).save();
@@ -842,9 +849,23 @@ export function renderCertificateView(memberIndex = 0) {
     if (dateEl) dateEl.textContent = cert.registeredAt;
 
     const verifyUrl = `https://ozkanatasoy.github.io/RUH-Project/?verify=${cert.barcode}#verify`;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(verifyUrl)}&color=00f2fe&bkgnd=07080d`;
+
     if (qrImgEl) {
-        qrImgEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(verifyUrl)}&color=00f2fe&bkgnd=07080d`;
         qrImgEl.alt = `Sertifika QR Kodu: ${cert.barcode}`;
+        // Convert to Base64 Data URL to prevent CORS taint on html2canvas
+        fetch(qrUrl)
+            .then(res => res.blob())
+            .then(blob => {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    if (qrImgEl) qrImgEl.src = reader.result;
+                };
+                reader.readAsDataURL(blob);
+            })
+            .catch(() => {
+                if (qrImgEl) qrImgEl.src = qrUrl;
+            });
     }
 
     const switcherWrapper = document.getElementById('certMemberSwitcherWrapper');

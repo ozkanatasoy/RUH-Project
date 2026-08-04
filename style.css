@@ -2238,7 +2238,8 @@ a:hover {
 /* --- A4 LANDSCAPE INTERNATIONAL CERTIFICATE SYSTEM --- */
 .printable-cert {
     position: relative;
-    background: radial-gradient(ellipse at center, #0d1627 0%, #06080e 100%);
+    background-color: #070913 !important;
+    background-image: radial-gradient(ellipse at center, #0d1627 0%, #06080e 100%) !important;
     border: 3px double #d4af37;
     outline: 1px solid rgba(212, 175, 55, 0.3);
     outline-offset: 6px;
