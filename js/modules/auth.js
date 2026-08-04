@@ -295,7 +295,13 @@ function handleLogout() {
     updateNavAuthButton();
     const profileModal = document.getElementById('profileModal');
     if (profileModal) profileModal.classList.remove('active');
-    showCustomAlert(lang === 'tr' ? 'Oturum kapatıldı.' : 'Logged out successfully.', null, 'success');
+    showCustomAlert(
+        lang === 'tr' ? 'Oturumunuz başarıyla kapatılmıştır.' : 'Logged out successfully.',
+        null,
+        'success',
+        null,
+        lang === 'tr' ? 'Oturum Kapatıldı' : 'Logged Out'
+    );
 }
 
 function handleSendSmsCode() {

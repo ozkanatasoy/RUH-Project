@@ -14,9 +14,9 @@ let currentMemberCerts = [];
 
 /**
  * Custom Cyber Alert & Success Modal (replaces browser's default native alert popup)
- * Supports 'error' (red warning) and 'success' (green completion theme).
+ * Supports 'error' (red warning) and 'success' (green completion theme) with contextual titles and button labels.
  */
-export function showCustomAlert(msg, targetElement = null, type = 'error', callback = null) {
+export function showCustomAlert(msg, targetElement = null, type = 'error', callback = null, customTitle = null) {
     const modal = document.getElementById('validationAlertModal');
     const titleEl = document.getElementById('validationModalTitle');
     const msgEl = document.getElementById('validationModalMessage');
@@ -29,7 +29,14 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
     if (modal) {
         if (type === 'success') {
             modal.classList.add('modal-success');
-            if (titleEl) titleEl.textContent = getTranslation('valSuccessTitle') || (lang === 'tr' ? 'Kayıt Başarıyla Tamamlandı!' : 'Registration Successfully Completed!');
+            
+            if (customTitle) {
+                if (titleEl) titleEl.textContent = customTitle;
+            } else if (callback) {
+                if (titleEl) titleEl.textContent = getTranslation('valSuccessTitle') || (lang === 'tr' ? 'Kayıt Başarıyla Tamamlandı!' : 'Registration Successfully Completed!');
+            } else {
+                if (titleEl) titleEl.textContent = lang === 'tr' ? 'İşlem Başarılı' : 'Success';
+            }
             
             const existingIconWrapper = modalBody?.querySelector('div:first-child');
             if (existingIconWrapper) {
@@ -39,11 +46,15 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
 
             if (btnDismiss) {
                 btnDismiss.className = 'btn btn-glow btn-success-theme';
-                btnDismiss.innerHTML = `<i class="fa-solid fa-certificate"></i> <span>${getTranslation('btnViewCert') || (lang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate')}</span>`;
+                if (callback) {
+                    btnDismiss.innerHTML = `<i class="fa-solid fa-certificate"></i> <span>${getTranslation('btnViewCert') || (lang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate')}</span>`;
+                } else {
+                    btnDismiss.innerHTML = `<span>${getTranslation('btnOk') || (lang === 'tr' ? 'Tamam' : 'OK')}</span>`;
+                }
             }
         } else {
             modal.classList.remove('modal-success');
-            if (titleEl) titleEl.textContent = getTranslation('valModalTitle') || (lang === 'tr' ? 'Eksik Bilgi Uyarısı' : 'Incomplete Information Warning');
+            if (titleEl) titleEl.textContent = customTitle || getTranslation('valModalTitle') || (lang === 'tr' ? 'Eksik Bilgi Uyarısı' : 'Incomplete Information Warning');
             
             const existingIconWrapper = modalBody?.querySelector('div:first-child');
             if (existingIconWrapper) {
