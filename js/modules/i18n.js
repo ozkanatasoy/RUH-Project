@@ -238,9 +238,11 @@ export const translations = {
         btnNext: "Devam Et",
         btnSubmit: "Hesap Oluştur, Kaydı Tamamla & Sertifikayı Al",
 
-        // Expanded FAQ (10 Questions & Answers)
+        // Expanded FAQ (10 Questions & Answers + Expand Toggle)
         faqSub: "MERAK EDİLENLER VE TEKNİK DETAYLAR",
         faqTitle: "Sıkça Sorulan Sorular (SSS)",
+        btnFaqShowAll: "Tüm Sıkça Sorulan Soruları Gör (10 Soru)",
+        btnFaqShowLess: "Daha Az Göster",
         faqQ1: "Geçilecek canlı bedeni kendim seçebilir miyim?",
         faqA1: "Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ruhun doğal süreçle yeni bedene yerleşmesi sonrasında, kilitlenen biyo-enerji izi kuantum GPS sinyalleri ile otomatik olarak tespit edilir.",
         faqQ2: "Aşama 1 Ön Kayıt ücretli midir?",
@@ -509,9 +511,11 @@ export const translations = {
         btnNext: "Devam Et",
         btnSubmit: "Create Account, Complete & Get Certificate",
 
-        // Expanded FAQ (10 Questions & Answers)
+        // Expanded FAQ (10 Questions & Answers + Expand Toggle)
         faqSub: "TECHNICAL DETAILS & FREQUENTLY ASKED QUESTIONS",
         faqTitle: "Frequently Asked Questions (FAQ)",
+        btnFaqShowAll: "View All FAQ Questions (10 Questions)",
+        btnFaqShowLess: "Show Less",
         faqQ1: "Can I choose which living host body I will transfer to?",
         faqA1: "No. Neither the client nor RUH Project can select the host body. The bio-energy signature locked before death naturally resonates with the target host body, which is automatically pinpointed via Quantum GPS signals.",
         faqQ2: "Is Phase 1 Pre-Registration free?",

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateNavAuthButton();
     });
 
-    // 6. FAQ Accordion Controls
+    // 6. FAQ Accordion & Toggle Controls
     document.querySelectorAll('.faq-question').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.parentElement;
@@ -51,6 +51,36 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.setAttribute('aria-expanded', !isOpen);
         });
     });
+
+    const btnToggleFaq = document.getElementById('btnToggleFaq');
+    if (btnToggleFaq) {
+        let isFaqExpanded = false;
+        btnToggleFaq.addEventListener('click', () => {
+            isFaqExpanded = !isFaqExpanded;
+            const hiddenItems = document.querySelectorAll('.faq-hidden-item');
+            hiddenItems.forEach(item => {
+                item.style.display = isFaqExpanded ? 'block' : 'none';
+            });
+
+            const lang = getCurrentLang();
+            const icon = btnToggleFaq.querySelector('i');
+            const label = btnToggleFaq.querySelector('span');
+
+            if (isFaqExpanded) {
+                if (icon) icon.className = 'fa-solid fa-chevron-up';
+                if (label) {
+                    label.setAttribute('data-i18n', 'btnFaqShowLess');
+                    label.textContent = lang === 'tr' ? 'Daha Az Göster' : 'Show Less';
+                }
+            } else {
+                if (icon) icon.className = 'fa-solid fa-chevron-down';
+                if (label) {
+                    label.setAttribute('data-i18n', 'btnFaqShowAll');
+                    label.textContent = lang === 'tr' ? 'Tüm Sıkça Sorulan Soruları Gör (10 Soru)' : 'View All FAQ Questions (10 Questions)';
+                }
+            }
+        });
+    }
 
     // 7. Mobile Navigation Hamburger Menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');

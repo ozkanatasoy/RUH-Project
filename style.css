@@ -1555,6 +1555,10 @@ a:hover {
     overflow: hidden;
 }
 
+.faq-item.faq-hidden-item {
+    display: none;
+}
+
 .faq-question {
     width: 100%;
     padding: 20px 24px;
