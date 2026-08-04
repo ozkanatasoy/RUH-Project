@@ -1,6 +1,6 @@
 # RUH Project
 
-> **"Ölmeden önce yerinizi ayırtın"** / **"Reserve your place before you die"**
+>**"Reserve your place before you die"**
 
 ---
 
