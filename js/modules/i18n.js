@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture, Transparent Donation Pool, and User Auth/Profile.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture, Transparent Donation Pool, Single Protocol Card & User Auth/Profile.
  */
 
 export const translations = {
@@ -132,7 +132,7 @@ export const translations = {
         wizardTitle: "Aşama 1 Ön Kayıt Formu",
         wizardDesc: "Formu doldurarak RUH Project Aşama 1 ücretsiz ön kayıt protokolüne katılım sağlayabilirsiniz. Şahsen veya aile üyeleriniz için ayrı kayıt oluşturabilirsiniz.",
         step1Header: "Kişisel & Aile",
-        step2Header: "Protokol Paketi",
+        step2Header: "Protokol Kaydı",
         step3Header: "Hukuki Onay",
         step4Header: "Miras & Vasiyet",
         step5Header: "Özet & Sertifika",
@@ -151,21 +151,17 @@ export const translations = {
         btnAddFamily: "+ Aile Üyesi İçin Ayrı Form Ekle",
         btnRemoveMember: "Formu Kaldır",
 
-        // Wizard Step 2
-        step2Title: "Adım 2: Protokol Seçimi (Aşama 1 Ücretsiz)",
-        step2Subtitle: "Aşama 1 ön kayıt sürecinde katılım ücretsizdir. Aşama 2 ve 3 aktivasyonunda tercih edeceğiniz protokol seviyesini belirleyebilirsiniz.",
-        alphaDesc: "Aşama 1 ücretsiz ön kayıt, biyo-enerji taslağı ve standart miras escrow protokolü.",
-        sovereignDesc: "Kuantum kriptografik kasa, yörünge uydu takipli VIP GPS ve özel hukuki kayyum desteği.",
-        feat1: "Aşama 1 Ücretsiz Ön Kayıt Hakkı",
-        feat2: "Biyo-Enerji Taslak Profili",
-        feat3: "Aşama 2 ve 3 Öncelikli Aktivasyon",
-        feat4: "Standart Bankacılık Vasiyet Protokolü",
-        featSov1: "Tüm Alfa Protokol Hakları",
-        featSov2: "Yörünge Uydusu Destekli Öncelikli GPS Tespiti",
-        featSov3: "Kuantum Şifreli Dijital Vasiyet Kasası",
-        featSov4: "Uluslararası Özel Hukuk Kayyumu Ataması",
-        btnSelect: "Paketi Seç",
-        btnSelected: "Seçildi",
+        // Wizard Step 2 (Single Protocol Card)
+        step2Title: "Adım 2: Aşama 1 Ön Kayıt Protokolü",
+        step2Subtitle: "Aşama 1 ön kayıt katılımı tamamen ücretsizdir. Bu adımda protokol kaydınız onaylanarak Aşama 2 ve 3 devreye girdiğinde öncelikli aktivasyon sıranız güvenceye alınır.",
+        singleProtoTitle: "Aşama 1 Ön Kayıt Protokolü",
+        singleProtoPrice: "$0 <span>/ Aşama 1 Ücretsiz Ön Kayıt</span>",
+        singleProtoDesc: "Biyo-enerji profil taslağı oluşturma, vasiyetname escrow hazırlığı ve Aşama 2 & 3 aktivasyon önceliği garantisi kapsayan resmi protokol kaydı.",
+        singleFeat1: "Aşama 1 Ücretsiz Katılım Hakkı",
+        singleFeat2: "Biyo-Enerji Frekans Profil Taslağı",
+        singleFeat3: "Aşama 2 ve 3 Hizmet Aktivasyon Sıra Garantisi",
+        singleFeat4: "Hukuki Miras Escrow ve Vasiyetname Şablonu Altyapısı",
+        btnSelected: "Protokol Kaydı Aktif",
         calcFormCount: "Toplam Kayıtlı Kişi Sayısı:",
         calcSelectedTier: "Seçilen Protokol:",
         calcTotal: "Aşama 1 Katılım Ücreti:",
@@ -364,7 +360,7 @@ export const translations = {
         wizardTitle: "Phase 1 Pre-Registration Form",
         wizardDesc: "Participate in RUH Project Phase 1 free pre-registration protocol. Fill separate forms for yourself and family members.",
         step1Header: "Personal & Family",
-        step2Header: "Protocol Tier",
+        step2Header: "Protocol Entry",
         step3Header: "Legal Waiver",
         step4Header: "Inheritance & Will",
         step5Header: "Review & Certificate",
@@ -383,21 +379,17 @@ export const translations = {
         btnAddFamily: "+ Add Separate Form for Family Member",
         btnRemoveMember: "Remove Form",
 
-        // Wizard Step 2
-        step2Title: "Step 2: Protocol Selection (Phase 1 Free)",
-        step2Subtitle: "Phase 1 enrollment is completely free. Choose your preferred protocol tier for Phase 2 & 3 service activation.",
-        alphaDesc: "Phase 1 free pre-registration, bio-energy profile draft, and standard estate escrow protocol.",
-        sovereignDesc: "Quantum cryptographic vault, orbital satellite-tracked VIP GPS, and dedicated international legal custodian.",
-        feat1: "Phase 1 Free Pre-Registration Spot",
-        feat2: "Bio-Energy Profile Draft",
-        feat3: "Phase 2 & 3 Priority Activation Guarantee",
-        feat4: "Standard Banking Will Protocol",
-        featSov1: "Includes All Alpha Protocol Rights",
-        featSov2: "Orbital Satellite Priority GPS Tracing",
-        featSov3: "Quantum Encrypted Digital Will Vault",
-        featSov4: "Dedicated International Legal Custodian Assignment",
-        btnSelect: "Select Package",
-        btnSelected: "Selected",
+        // Wizard Step 2 (Single Protocol Card)
+        step2Title: "Step 2: Phase 1 Pre-Registration Protocol",
+        step2Subtitle: "Phase 1 enrollment is completely free of charge. Your pre-registration spot will be secured for Phase 2 & 3 priority activation.",
+        singleProtoTitle: "Phase 1 Pre-Registration Protocol",
+        singleProtoPrice: "$0 <span>/ Phase 1 Free Pre-Registration</span>",
+        singleProtoDesc: "Official protocol entry providing bio-energy profile drafting, Will escrow terms, and Phase 2 & 3 priority activation reservation.",
+        singleFeat1: "Phase 1 Free Enrollment Spot",
+        singleFeat2: "Bio-Energy Frequency Profile Draft",
+        singleFeat3: "Phase 2 & 3 Priority Service Activation Guarantee",
+        singleFeat4: "Legal Estate Escrow & Will Template Infrastructure",
+        btnSelected: "Protocol Entry Active",
         calcFormCount: "Total Registered Persons:",
         calcSelectedTier: "Selected Protocol:",
         calcTotal: "Phase 1 Contribution Fee:",

@@ -1029,6 +1029,21 @@ a:hover {
     color: var(--color-gold);
 }
 
+/* --- Single Protocol Card Layout --- */
+.single-protocol-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.single-protocol-card {
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 0 35px var(--color-gold-glow);
+    background: linear-gradient(135deg, rgba(18, 22, 36, 0.9), rgba(26, 32, 54, 0.95));
+    position: relative;
+    padding: 36px 28px;
+    border-radius: var(--radius-lg);
+}
+
 /* --- Mechanics Grid --- */
 .mechanic-card {
     text-align: center;

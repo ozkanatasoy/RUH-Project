@@ -66,6 +66,7 @@ To accelerate hardware biophysics R&D and orbital satellite Quantum GPS array de
 ## 🏗️ Technical Architecture & Enhancements
 
 - **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, `js/modules/donations.js`, `js/modules/auth.js`, and `js/app.js` entrypoint).
+- **Single Phase 1 Protocol Card:** Streamlined Step 2 protocol selection with a single, elegant free pre-registration protocol card.
 - **Dynamic Bilingual Placeholders:** Input placeholders and text hints dynamically switch between Turkish (e.g., `Örn: Ahmet Yıldız`) and English (e.g., `e.g., John Smith`).
 - **60-30-10 CSS Design System:** 60% Obsidian Black (`#07080d`), 30% Structural Surface Glass (`#121624`), 10% Neon Cyan (`#00f2fe`) & Gold (`#ffd700`) accents.
 - **SEO & Social Open Graph Metadata:** Complete Open Graph (`og:*`) & Twitter Cards (`twitter:*`) for viral social media preview cards.

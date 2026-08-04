@@ -355,7 +355,7 @@
                         <div class="step-line"></div>
                         <div class="step-indicator" data-step="2" role="tab" aria-selected="false">
                             <div class="step-number">2</div>
-                            <div class="step-label" data-i18n="step2Header">Protokol Paketi</div>
+                            <div class="step-label" data-i18n="step2Header">Protokol Kaydı</div>
                         </div>
                         <div class="step-line"></div>
                         <div class="step-indicator" data-step="3" role="tab" aria-selected="false">
@@ -432,57 +432,41 @@
                             </div>
                         </div>
 
-                        <!-- STEP 2: Service Fee & Tier Selection -->
+                        <!-- STEP 2: Single Protocol Card Selection -->
                         <div class="wizard-step-panel" id="stepPanel2" role="tabpanel">
                             <div class="panel-heading">
-                                <h3 data-i18n="step2Title">Adım 2: Protokol Seçimi (Aşama 1 Ücretsiz)</h3>
+                                <h3 data-i18n="step2Title">Adım 2: Aşama 1 Ön Kayıt Protokolü</h3>
                                 <p data-i18n="step2Subtitle">
-                                    Aşama 1 ön kayıt sürecinde katılım ücretsizdir. Aşama 2 ve 3 aktivasyonunda tercih edeceğiniz protokol seviyesini belirleyebilirsiniz.
+                                    Aşama 1 ön kayıt katılımı tamamen ücretsizdir. Bu adımda protokol kaydınız onaylanarak Aşama 2 ve 3 devreye girdiğinde öncelikli aktivasyon sıranız güvenceye alınır.
                                 </p>
                             </div>
 
-                            <!-- Package Cards Selection -->
-                            <div class="grid grid-2 package-selection-grid">
-                                <!-- Alpha Tier -->
-                                <div class="cyber-card tier-card active" data-tier="alpha" data-fee="0" tabindex="0" role="radio" aria-checked="true">
-                                    <div class="tier-badge">FREE PRE-REGISTRATION</div>
-                                    <h3>Alfa Protokol</h3>
-                                    <div class="tier-price">$0 <span>/ Aşama 1 Ücretsiz</span></div>
-                                    <p data-i18n="alphaDesc">Aşama 1 ücretsiz ön kayıt, biyo-enerji taslağı ve standart miras escrow protokolü.</p>
+                            <!-- Single Protocol Card Wrapper -->
+                            <div class="single-protocol-wrapper">
+                                <div class="cyber-card tier-card single-protocol-card active" tabindex="0">
+                                    <div class="tier-badge gold-badge">FREE PRE-REGISTRATION</div>
+                                    <h3 data-i18n="singleProtoTitle">Aşama 1 Ön Kayıt Protokolü</h3>
+                                    <div class="tier-price" data-i18n="singleProtoPrice">$0 <span>/ Aşama 1 Ücretsiz Ön Kayıt</span></div>
+                                    <p data-i18n="singleProtoDesc">Biyo-enerji profil taslağı oluşturma, vasiyetname escrow hazırlığı ve Aşama 2 & 3 aktivasyon önceliği garantisi kapsayan resmi protokol kaydı.</p>
                                     <ul class="tier-features">
-                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="feat1">Aşama 1 Ücretsiz Ön Kayıt Hakkı</span></li>
-                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="feat2">Biyo-Enerji Taslak Profili</span></li>
-                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="feat3">Aşama 2 ve 3 Öncelikli Aktivasyon</span></li>
-                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="feat4">Standart Bankacılık Vasiyet Protokolü</span></li>
+                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat1">Aşama 1 Ücretsiz Katılım Hakkı</span></li>
+                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat2">Biyo-Enerji Frekans Profil Taslağı</span></li>
+                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat3">Aşama 2 ve 3 Hizmet Aktivasyon Sıra Garantisi</span></li>
+                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat4">Hukuki Miras Escrow ve Vasiyetname Şablonu Altyapısı</span></li>
                                     </ul>
-                                    <button type="button" class="btn btn-outline btn-select-tier" data-i18n="btnSelected">Seçildi</button>
-                                </div>
-
-                                <!-- Sovereign Soul Tier -->
-                                <div class="cyber-card tier-card" data-tier="sovereign" data-fee="0" tabindex="0" role="radio" aria-checked="false">
-                                    <div class="tier-badge gold-badge">VIP PRE-REGISTRATION</div>
-                                    <h3>Sovereign Soul Protokol</h3>
-                                    <div class="tier-price">$0 <span>/ Aşama 1 Ücretsiz</span></div>
-                                    <p data-i18n="sovereignDesc">Kuantum kriptografik kasa, yörünge uydu takipli VIP GPS ve özel hukuki kayyum desteği.</p>
-                                    <ul class="tier-features">
-                                        <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov1">Tüm Alfa Protokol Hakları</span></li>
-                                        <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov2">Yörünge Uydusu Destekli Öncelikli GPS Tespiti</span></li>
-                                        <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov3">Kuantum Şifreli Dijital Vasiyet Kasası</span></li>
-                                        <li><i class="fa-solid fa-star"></i> <span data-i18n="featSov4">Uluslararası Özel Hukuk Kayyumu Ataması</span></li>
-                                    </ul>
-                                    <button type="button" class="btn btn-outline btn-select-tier" data-i18n="btnSelect">Paketi Seç</button>
+                                    <button type="button" class="btn btn-gold btn-select-tier" data-i18n="btnSelected">Protokol Kaydı Aktif</button>
                                 </div>
                             </div>
 
                             <!-- Live Calculator Summary Box -->
-                            <div class="calculator-summary-box">
+                            <div class="calculator-summary-box" style="margin-top: 24px;">
                                 <div class="calc-row">
                                     <span data-i18n="calcFormCount">Toplam Kayıtlı Kişi Sayısı:</span>
                                     <strong id="calcMemberCount">1 Kişi</strong>
                                 </div>
                                 <div class="calc-row">
                                     <span data-i18n="calcSelectedTier">Seçilen Protokol:</span>
-                                    <strong id="calcTierName">Alfa Protokol (Aşama 1 Ücretsiz)</strong>
+                                    <strong id="calcTierName">Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)</strong>
                                 </div>
                                 <div class="calc-divider"></div>
                                 <div class="calc-row total-row">
@@ -600,7 +584,7 @@
                                 </div>
                                 <div class="review-row">
                                     <span class="rev-label" data-i18n="revTier">Seçilen Paket:</span>
-                                    <span class="rev-value" id="revTierName">Alfa Protokol</span>
+                                    <span class="rev-value" id="revTierName">Aşama 1 Ön Kayıt Protokolü</span>
                                 </div>
                                 <div class="review-row">
                                     <span class="rev-label" data-i18n="revInherit">Miras Aktarımı:</span>
@@ -781,7 +765,7 @@
                         <div class="cert-details">
                             <p><strong>Başvuru Sahibi:</strong> <span id="certHolderName">Ahmet Yıldız</span></p>
                             <p><strong>Kayıtlı Kişi Sayısı:</strong> <span id="certMemberCount">1 Kişi</span></p>
-                            <p><strong>Seçilen Protokol:</strong> <span id="certTierName">Alfa Protokol (Aşama 1 Ücretsiz)</span></p>
+                            <p><strong>Seçilen Protokol:</strong> <span id="certTierName">Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)</span></p>
                             <p><strong>Miras Devir Durumu:</strong> <span id="certInheritance">Kayıtlı & Escrow Onaylı</span></p>
                             <p><strong>Tarih:</strong> <span id="certDate">04.08.2026</span></p>
                         </div>
@@ -891,7 +875,7 @@
                         </div>
                         <div class="prof-detail-item">
                             <span class="prof-label" data-i18n="lblProfTier">Protokol Seviyesi:</span>
-                            <strong id="profTier" class="prof-val">Alfa Protokol (Aşama 1 Ücretsiz)</strong>
+                            <strong id="profTier" class="prof-val">Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)</strong>
                         </div>
                         <div class="prof-detail-item">
                             <span class="prof-label" data-i18n="lblProfStatus">Biyo-Enerji İzi Durumu:</span>

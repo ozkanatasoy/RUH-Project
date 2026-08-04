@@ -1,5 +1,5 @@
 /**
- * RUH PROJECT - Wizard & Application State Module (3-Phase & User Registration)
+ * RUH PROJECT - Wizard & Application State Module (3-Phase & Single Protocol Card)
  * Manages 5-step wizard navigation, dynamic family member forms, Phase 1 free enrollment, account creation, and certificate preview.
  */
 
@@ -9,9 +9,8 @@ import { registerUserAccount } from './auth.js';
 
 let currentStep = 1;
 let memberCount = 1;
-let selectedTier = 'alpha';
+let selectedTier = 'phase1';
 let selectedTierFee = 0; // Phase 1 Free!
-let selectedTierName = 'Alfa Protokol';
 
 export function initWizard() {
     const familyFormsContainer = document.getElementById('familyFormsContainer');
@@ -94,34 +93,6 @@ export function initWizard() {
         }
     };
 
-    // Tier Selection Cards
-    const tierCards = document.querySelectorAll('.tier-card');
-    tierCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const lang = getCurrentLang();
-            tierCards.forEach(c => {
-                c.classList.remove('active');
-                const btn = c.querySelector('.btn-select-tier');
-                if (btn) btn.textContent = translations[lang].btnSelect;
-            });
-
-            card.classList.add('active');
-            selectedTier = card.getAttribute('data-tier');
-            selectedTierFee = 0; // Phase 1 Free
-            
-            const selectedBtn = card.querySelector('.btn-select-tier');
-            if (selectedBtn) selectedBtn.textContent = translations[lang].btnSelected;
-
-            if (selectedTier === 'alpha') {
-                selectedTierName = lang === 'tr' ? 'Alfa Protokol' : 'Alpha Protocol';
-            } else {
-                selectedTierName = lang === 'tr' ? 'Sovereign Soul Protokol' : 'Sovereign Soul Protocol';
-            }
-
-            updateFeeSummary();
-        });
-    });
-
     // Navigation Listeners
     if (nextStepBtn) {
         nextStepBtn.addEventListener('click', () => {
@@ -177,6 +148,8 @@ export function updateFeeSummary() {
     const countText = `${count} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
     const calcMemberCountEl = document.getElementById('calcMemberCount');
     if (calcMemberCountEl) calcMemberCountEl.textContent = countText;
+
+    const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
 
     const calcTierNameEl = document.getElementById('calcTierName');
     if (calcTierNameEl) {
@@ -285,6 +258,7 @@ function initInheritanceAndTemplates() {
 function populateSummaryReview() {
     const lang = getCurrentLang();
     const primaryName = document.querySelector('input[name="fullName_1"]')?.value || 'Ahmet Yıldız';
+    const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
 
     const revMemberNames = document.getElementById('revMemberNames');
     if (revMemberNames) revMemberNames.textContent = `${primaryName} (${memberCount} ${lang === 'tr' ? 'Kişi' : 'Person'})`;
@@ -326,6 +300,7 @@ function initCertificateModal(submitFormBtn) {
                 return;
             }
 
+            const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
             const randomHash = 'RUH-2026-X' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(100 + Math.random() * 900);
             const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
             const inheritStatus = isInheritYes 
