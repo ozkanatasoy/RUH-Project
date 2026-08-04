@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture, Transparent Donation Pool, Single Protocol Card & Optional Badge.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card & Optional Badge.
  */
 
 export const translations = {
@@ -83,7 +83,7 @@ export const translations = {
         phase2Desc: "Teknolojik biyo-tarama donanımları ve uluslararası banka escrow sözleşmeleri devreye girer. Ön kayıt yaptıran müşterilerin ölüm öncesi hücre ve bilinç frekansı protokole kilitlenir.",
         p2Check1: "Ölüm Öncesi Hücresel Biyo-Enerji İzi Kilitleme",
         p2Check2: "Resmi Bankacılık Escrow ve Vasiyetname Tescili",
-        p2Check3: "Aşama 1 Kullanıcılarına Özel Öncelikli Aktivasyon",
+        p2Check3: "Aşama 1 sürecinde form doldurup bağış yapan sıralamaya göre önceliklendirilen kişiye özel aktivasyon",
         p2Check4: "Kuantum Şifreli Dijital Miras Kasası Kurulumu",
 
         phase3Badge: "AŞAMA 3 (Aktivasyon)",
@@ -312,7 +312,7 @@ export const translations = {
         phase2Desc: "Deployment of bio-energy frequency scanning hardware and international banking escrow contracts. Pre-registered clients have their pre-mortem cellular signature locked into the protocol.",
         p2Check1: "Pre-Mortem Cellular Bio-Energy Signature Lock",
         p2Check2: "Official Banking Escrow & Will Registration",
-        p2Check3: "Exclusive Priority Activation for Phase 1 Registrants",
+        p2Check3: "Exclusive activation prioritized by ranking for applicants who complete the form and donate during Phase 1",
         p2Check4: "Quantum Encrypted Digital Will Vault Setup",
 
         phase3Badge: "PHASE 3 (Activation)",
@@ -433,8 +433,8 @@ export const translations = {
         payWire: "Digital Pre-Registration Entry",
         payCrypto: "Bio-Energy Signal Escrow",
         payCard: "Legal Pre-Approval",
-        btnPrev: "Back",
-        btnNext: "Continue",
+        btnPrev: "Geri",
+        btnNext: "Devam Et",
         btnSubmit: "Create Account, Complete & Get Certificate",
 
         // FAQ
