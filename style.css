@@ -235,6 +235,8 @@ a:hover {
     align-items: center;
     gap: 12px;
     text-decoration: none;
+    flex-shrink: 0;
+    margin-right: 48px;
 }
 
 .logo-icon {
@@ -273,9 +275,9 @@ a:hover {
 
 .nav-menu {
     display: flex;
-    gap: 32px;
+    gap: 22px;
     margin-left: auto;
-    margin-right: 32px;
+    margin-right: 20px;
 }
 
 .nav-link {
