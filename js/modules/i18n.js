@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html, Contingency Heir Transfer, Remember Me, Forgot Password, Mobile SMS Verification & Custom Validation / Success Modals.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK & GDPR Privacy Policy, Formal Legal Contract, Contingency Heir Opt-Out Checkbox, Direct PDF Certificate Downloads, Remember Me, Forgot Password, Mobile SMS Verification & Custom Validation / Success Modals.
  */
 
 export const translations = {
@@ -55,15 +55,16 @@ export const translations = {
         optGenderOther: "Diğer / Belirtmek İstemiyorum",
         phoneNoticeHint: "<i class=\"fa-solid fa-mobile-screen-button\"></i> Form tamamlandığında e-postanıza doğrulama bağlantısı, profilinizde ise mobil SMS onay sistemi sunulacaktır.",
 
-        // Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri)
+        // Contingency Rights Succession Box & Backup Heir Opt-Out
         contingencyTitle: "Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri Protokolü",
         contingencyDesc: "Aşama 2 (Biyo-Enerji Kilitleme) ve Aşama 3 (Kuantum GPS Tespiti) hizmetleri aktif edilmeden önce ana başvuru sahibinin vefat etmesi durumunda ön kayıt ve öncelik hakkının devredileceği aile üyesi veya yedek hak sahibi bilgileri aşağıdadır:",
         contingencyMultiNotice: "Kayıtlı diğer aile üyeleriniz arasından hak devri yapmak istediğiniz kişi(leri) seçiniz ve devir oranlarını belirleyiniz:",
         contingencySingleNotice: "Kendiniz dışında aile üyesi kaydetmediğiniz için, vefatınız durumunda Aşama 2 & 3 öncelik haklarınızı devretmek istediğiniz 1. derece kanuni mirasçı veya yedek hak sahibini belirtiniz:",
-        lblBackupHeirName: "Yedek Hak Sahibi Ad Soyad *",
-        lblBackupHeirRelation: "Yakınlık / İletişim *",
+        lblBackupHeirName: "Yedek Hak Sahibi Ad Soyad",
+        lblBackupHeirRelation: "Yakınlık / İletişim",
         phBackupHeirName: "Örn: Mehmet Yıldız",
         phBackupHeirRelation: "Örn: Oğlu / +90 555...",
+        chkNoBackupHeir: "Mirasçı veya yedek hak sahibi istemiyorum",
 
         // Auth, Remember Me, Forgot Password & User Profile Modal
         loginModalTitle: "Kullanıcı Girişi",
@@ -234,12 +235,13 @@ export const translations = {
         // Wizard Step 3
         step3Title: "Adım 3: Hukuki Çerçeve ve KVKK Gizlilik Sözleşmesi",
         step3Subtitle: "RUH Project Aşama 1 ön kayıt kapsamında bütün sorumluluğun ve 6698 Sayılı KVKK gizlilik şartlarının kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.",
-        contractHeader: "RUH PROJECT AŞAMA 1 ÖN KAYIT VE HUKUKİ SORUMLULUK SÖZLEŞMESİ",
-        contractP1: "<strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, R.U.H. Incorporation (Resonant Universal Heritage Inc.) ('Firma') ile bu platform üzerinden ücretsiz ön kayıt formunu dolduran 'Müşteri' arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 & 3 öncelik haklarının belirlenmesidir.",
-        contractP2: "<strong>Madde 2 - Şeffaflık ve Ücretsiz Ön Kayıt Beyanı:</strong> Müşteri, projenin mevcut durumda bir AR-GE ve fikir aşamasında olduğunu, Aşama 1 kaydının ücretsiz olduğunu ve gelecekteki hizmet aktivasyonları için sırasını güvenceye aldığını kabul eder.",
-        contractP3: "<strong>Madde 3 - Beden Seçim Sınırlaması:</strong> Müşteri, sonraki yaşamında hangi canlı bedene geçeceğini kendisinin veya Firmanın seçemeyeceğini bilmekte ve kabul etmektedir. Süreç tamamen ölüm öncesi kilitlenen biyo-enerji frekansı ve kuantum GPS tespiti esasına dayanır.",
-        contractP4: "<strong>Madde 4 - Sorumluluk Reddi ve Hizmet Önceliği:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, sonraki aşamalar devreye girdiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.",
-        contractP5: "<strong>Madde 5 - 6698 Sayılı KVKK ve Gizlilik Politikası:</strong> Müşteriye ait kişisel veriler (Ad, Soyad, TC Kimlik No, İletişim Bilgileri) ve biyo-enerji profil taslağı 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Genel Veri Koruma Tüzüğü (GDPR) uyumlu Post-Kuantum Şifreleme (PQC) standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik prensibi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****). Müşteri verilerinin tescil ve doğrulanma amacıyla işlenmesini açık rızası ile kabul eder.",
+        contractHeader: "RUH PROJECT AŞAMA 1 ÖN KAYIT, ESCROW VE HUKUKİ SORUMLULUK SÖZLEŞMESİ",
+        contractP1: "<strong>Madde 1 - Taraflar ve Sözleşmenin Konusu:</strong> İşbu sözleşme, R.U.H. Incorporation (Resonant Universal Heritage Inc.) (\"Firma / Protokol Yönetimi\") ile dijital portal üzerinden Aşama 1 ön kayıt formunu dolduran \"Müşteri / Kullanıcı\" arasında akdedilmiştir. Sözleşmenin konusu, Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt) şartlarının, biyo-enerji profil taslağının, uluslararası bankacılık escrow devirlerinin ve Aşama 2 & 3 öncelik haklarının yasal sınırlarının belirlenmesidir.",
+        contractP2: "<strong>Madde 2 - Aşama 1 Şeffaflık Beyanı ve AR-GE Statüsü:</strong> Müşteri, RUH Project'in mevcut durumda bir Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt) sürecinde olduğunu açıkça kabul eder. Aşama 1 ön kaydı tamamen ücretsiz olup, Müşteri Aşama 2 ve 3 hizmetleri aktifleştiğinde öncelikli aktivasyon sırası kazanır.",
+        contractP3: "<strong>Madde 3 - Beden Seçim Sınırlaması ve Kuantum GPS İlkesi:</strong> Müşteri, sonraki yaşamında hangi canlı bedene (host body) aktarılacağını kendisinin veya Firmanın SEÇEMEYECEĞİNİ bilmekte ve kabul etmektedir. Süreç, ölüm öncesi kilitlenen Elektro-Manyetik Biyo-Enerji Frekansı ile ruhun doğal rezonans sağladığı yeni canlı beden arasındaki kuantum GPS yörünge uydusu tespiti esasına dayanır.",
+        contractP4: "<strong>Madde 4 - Uluslararası Bankacılık Escrow ve Vasiyet Transferi:</strong> Müşteri, hayattayken vasiyetnamesini düzenler ve mal varlığını tarafsız banka/trust escrow hesabına bağlar. Varlıklar vefat halinde dondurulur; ölüm öncesi kilitlenen biyo-enerji izi yeni bedende Kuantum GPS uydularıyla tespit edilip resmi olarak tescillendiğinde yasal kayyumlar marifetiyle yeni kimliğe aktarılır.",
+        contractP5: "<strong>Madde 5 - 6698 Sayılı KVKK, GDPR ve Post-Kuantum Şifreleme (PQC):</strong> Müşteriye ait kişisel veriler (Ad, Soyad, TC Kimlik No, İletişim Bilgileri) ve biyo-profil kayıtları 6698 Sayılı KVKK ve Avrupa Genel Veri Koruma Tüzüğü (GDPR / General Data Protection Regulation) mevzuatına tam uyumlu olarak Post-Kuantum Şifreleme (PQC) standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik prensibi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****). Müşteri verilerinin tescil ve doğrulanma amacıyla işlenmesine açık rıza gösterir.",
+        contractP6: "<strong>Madde 6 - Sorumluluk Sınırlaması ve Yasal Feragat:</strong> Müşteri, işbu sözleşmeyi onaylayarak projenin bilimsel ve hukuki AR-GE süreçlerine tabi olduğunu, Aşama 1 kayıtlarının deneysel ve hazırlık niteliğinde olduğunu, doğabilecek tüm hukuki ve teknik süreçleri kabul ve taahhüt eder.",
         chkTermsText: "Yukarıdaki hukuki sözleşmeyi okudum, anladım ve Aşama 1 ön kayıt şartlarını ve tüm sorumluluğu kabul ediyorum. *",
         chkKvkkText: "6698 Sayılı KVKK ve Gizlilik Politikası Aydınlatma Metni'ni okudum, kişisel verilerimin, biyo-enerji taslağımın ve vasiyet bilgilerimin şifrelenerek işlenmesini onaylıyorum. *",
 
@@ -298,7 +300,7 @@ export const translations = {
         faqQ9: "Mirasımı mevcut ailem ile yeni bedenim arasında paylaştırabilir miyim?",
         faqA9: "Evet. Adım 4 vasiyetname seçeneğinde sunulan hazır şablonlar marifetiyle mal varlığınızın %100'ünü yeni bedeninize aktarabileceğiniz gibi, belirlediğiniz oranları mevcut aile üyelerinize bırakıp kalan kısmı yeni bedeninize devredebilirsiniz.",
         faqQ10: "Kişisel verilerim ve vasiyet detaylarım siber saldırılara karşı nasıl korunuyor?",
-        faqA10: "Bütün biyo-profil kayıtları, finansal talimatlar ve vasiyet metinleri Post-Kuantum Şifreleme (PQC) ve ISO/IEC 27001 güvenlik standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik ilkesi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****).",
+        faqA10: "Bütün biyo-profil kayıtları, finansal talimatlar ve vasiyet metinleri Post-Kuantum Şifreleme (PQC) ve ISO/IEC 27001 güvenlik standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik prensibi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****).",
 
         // Legal.html Page Specific i18n Keys
         legalPageTag: "RESMİ HUKUKİ BEYAN & PROTOKOL ŞARTLARI",
@@ -355,7 +357,7 @@ export const translations = {
         lblCertHolder: "HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER",
         certQrCaption: "Kuantum Doğrulama QR Kodu",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
-        btnPrint: "Sertifikayı Yazdır / PDF İndir",
+        btnPrint: "Sertifikayı PDF İndir",
         btnClose: "Kapat"
     },
     en: {
@@ -409,15 +411,16 @@ export const translations = {
         optGenderOther: "Other / Prefer not to say",
         phoneNoticeHint: "<i class=\"fa-solid fa-mobile-screen-button\"></i> Upon registration, a verification link will be sent to your email, and mobile SMS verification will be available in your profile.",
 
-        // Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri)
+        // Contingency Rights Succession Box & Backup Heir Opt-Out
         contingencyTitle: "Succession Rights Transfer Protocol Prior to Phase 2 & 3",
         contingencyDesc: "If the primary applicant passes away before Phase 2 (Bio-Energy Lock) & Phase 3 (Quantum GPS Tracing) activation, designated succession rights and transfer percentages are established below:",
         contingencyMultiNotice: "Select family member(s) to transfer your pre-registration rights to and specify transfer percentages:",
         contingencySingleNotice: "Since no other family members were registered, designate a primary legal heir or backup contact for succession rights:",
-        lblBackupHeirName: "Backup Heir Full Name *",
-        lblBackupHeirRelation: "Relationship / Contact *",
+        lblBackupHeirName: "Backup Heir Full Name",
+        lblBackupHeirRelation: "Relationship / Contact",
         phBackupHeirName: "e.g., John Smith",
         phBackupHeirRelation: "e.g., Son / +1 555...",
+        chkNoBackupHeir: "I do not want an heir or backup right holder",
 
         // Auth, Remember Me, Forgot Password & User Profile Modal
         loginModalTitle: "User Login",
@@ -588,14 +591,15 @@ export const translations = {
         // Wizard Step 3
         step3Title: "Step 3: Legal Framework & KVKK Privacy Policy",
         step3Subtitle: "Official legal contract below wherein customer assumes full liability and consents to KVKK Privacy Policy for Phase 1 R&D pre-registration.",
-        contractHeader: "RUH PROJECT PHASE 1 PRE-REGISTRATION & LEGAL LIABILITY CONTRACT",
-        contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between R.U.H. Incorporation (Resonant Universal Heritage Inc.) ('Company') and the 'Client' filling out the free pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 & 3 priority rights.",
-        contractP2: "<strong>Article 2 - Free Pre-Registration Disclosure:</strong> Client acknowledges that the project is currently in R&D and concept phase, Phase 1 registration is free of charge, and reserves priority for future service activations.",
-        contractP3: "<strong>Article 3 - Host Body Non-Selection Limitation:</strong> Client understands and agrees that neither the Client nor Company can choose the destination living entity. The process relies strictly on pre-mortem bio-energy signature locking and Quantum GPS tracing.",
-        contractP4: "<strong>Article 4 - Liability Release & Service Priority:</strong> Client agrees that due to the scientific R&D nature of the service, pre-registered clients receive priority activation rights upon Phase 2 rollout.",
-        contractP5: "<strong>Article 5 - KVKK Law No. 6698 & Privacy Policy:</strong> Client personal data (Name, ID, Contact Info) and bio-profile drafts are stored under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 compliant with KVKK Law No. 6698 and GDPR. Leaderboard entries display masked initials (e.g. A**** Y****) for privacy. Client provides explicit consent for data processing.",
+        contractHeader: "RUH PROJECT PHASE 1 PRE-REGISTRATION, ESCROW & LEGAL LIABILITY CONTRACT",
+        contractP1: "<strong>Article 1 - Parties & Purpose of Contract:</strong> This agreement is entered into between R.U.H. Incorporation (Resonant Universal Heritage Inc.) (\"Company / Protocol Management\") and the \"Client / User\" completing the Phase 1 pre-registration form. Purpose: Establishing the legal terms of Phase 1 (Concept, R&D & Free Pre-Registration), bio-energy profiling, international banking escrow transfers, and Phase 2 & 3 priority activation rights.",
+        contractP2: "<strong>Article 2 - Phase 1 Transparency Disclosure & R&D Status:</strong> Client explicitly acknowledges that RUH Project is currently in Phase 1 (Concept, R&D & Free Pre-Registration). Phase 1 registration is 100% free of charge, securing priority service activation for Client upon Phase 2 & 3 deployment.",
+        contractP3: "<strong>Article 3 - Host Body Non-Selection Limitation & Quantum GPS Principle:</strong> Client understands and accepts that neither Client nor Company can CHOOSE or SELECT the target living host body post-transition. The process relies strictly on orbital satellite Quantum GPS frequency matching between pre-mortem bio-energy signature and the natural rebirth host vessel.",
+        contractP4: "<strong>Article 4 - International Banking Escrow & Estate Transfer:</strong> Client establishes a Will and links assets to a neutral third-party banking/trust escrow protocol during lifetime. Upon death, assets are frozen and safely held until the Quantum GPS verification condition is fulfilled, whereupon legal custodians transfer the estate to the new identity.",
+        contractP5: "<strong>Article 5 - Data Protection (GDPR / KVKK) & Post-Quantum Cryptography (PQC):</strong> Client personal data (Name, ID, Contact Info) and bio-profiles are processed in full compliance with the European General Data Protection Regulation (GDPR) and Turkish KVKK Law No. 6698 under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 standards. Leaderboard data masks client names (e.g. A**** Y****) for privacy. Client provides explicit consent for data processing.",
+        contractP6: "<strong>Article 6 - Limitation of Liability & Legal Waiver:</strong> By approving this contract, Client accepts the scientific and legal R&D nature of the project and agrees that Phase 1 registrations represent preliminary enrollment, assuming all associated legal terms.",
         chkTermsText: "I have read, understood, and accept the legal contract, Phase 1 pre-registration terms, and full user liability. *",
-        chkKvkkText: "I have read the KVKK Law No. 6698 Privacy Policy Disclosure, and I consent to the encrypted processing of my personal data, bio-energy profile draft, and Will details. *",
+        chkKvkkText: "I have read the GDPR (General Data Protection Regulation) & International Privacy Policy Disclosure, and I explicitly consent to the encrypted processing of my personal data, bio-energy profile, and estate directives under Post-Quantum Cryptography (PQC). *",
 
         // Wizard Step 4
         step4Title: "Step 4: Inheritance Transfer Choice & Will Template",
@@ -652,7 +656,7 @@ export const translations = {
         faqQ9: "Can I split my inheritance between my current family and my new host body?",
         faqA9: "Yes. Using the Will templates provided in Step 4, clients can allocate 100% to the new body, or split designated percentages to existing family members while transferring the remainder to the new identity.",
         faqQ10: "How are my personal data and Will details protected against cyber threats?",
-        faqA10: "All bio-profiles, financial directives, and contract details are encrypted under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 standards. Leaderboard data displays initials only (e.g. A**** Y****).",
+        faqA10: "All bio-profiles, financial directives, and contract details are encrypted under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 standards. Leaderboard data masks client names (e.g. A**** Y****).",
 
         // Legal.html Page Specific i18n Keys
         legalPageTag: "OFFICIAL LEGAL DISCLAIMER & PROTOCOL TERMS",
@@ -709,7 +713,7 @@ export const translations = {
         lblCertHolder: "HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER",
         certQrCaption: "Quantum Verification QR Code",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
-        btnPrint: "Print Certificate / Download PDF",
+        btnPrint: "Download Certificate PDF",
         btnClose: "Close"
     }
 };

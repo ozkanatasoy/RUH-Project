@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing input error highlights, custom cyber alert & success modals, newborn birth date calculation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode A4 Landscape international certificate rendering for R.U.H. Incorporation.
+ * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing input error highlights, custom cyber alert & success modals, newborn birth date calculation, Contingency Heir Succession Protocol (with opt-out checkbox), 11-digit Energy ID & 16-digit Barcode A4 Landscape international certificate rendering and direct PDF downloads via html2pdf for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -21,7 +21,6 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
     const titleEl = document.getElementById('validationModalTitle');
     const msgEl = document.getElementById('validationModalMessage');
     const btnDismiss = document.getElementById('btnDismissValidationModal');
-    const modalDialog = modal?.querySelector('.modal-dialog');
     const modalBody = modal?.querySelector('.modal-body');
     const lang = getCurrentLang();
 
@@ -32,7 +31,6 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
             modal.classList.add('modal-success');
             if (titleEl) titleEl.textContent = getTranslation('valSuccessTitle') || (lang === 'tr' ? 'Kayıt Başarıyla Tamamlandı!' : 'Registration Successfully Completed!');
             
-            // Replace Icon with Emerald Green Checkmark
             const existingIconWrapper = modalBody?.querySelector('div:first-child');
             if (existingIconWrapper) {
                 existingIconWrapper.className = 'icon-wrapper-success';
@@ -533,7 +531,7 @@ function populateSummaryReview() {
 }
 
 /**
- * Renders Contingency Rights Succession Box in Step 5 (Vefat Halinde Hak Devri)
+ * Renders Contingency Rights Succession Box in Step 5 (Vefat Halinde Hak Devri with Opt-out Checkbox)
  */
 export function populateContingencySuccessionView() {
     const container = document.getElementById('contingencyDynamicContainer');
@@ -590,21 +588,49 @@ export function populateContingencySuccessionView() {
                 </p>
                 <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 14px;">
                     <div class="form-group" style="margin: 0;">
-                        <label>${translations[lang].lblBackupHeirName || 'Yedek Hak Sahibi Ad Soyad *'}</label>
-                        <input type="text" class="form-control" id="backupHeirName" placeholder="${translations[lang].phBackupHeirName || 'Örn: Mehmet Yıldız'}" required>
+                        <label>${translations[lang].lblBackupHeirName || 'Yedek Hak Sahibi Ad Soyad'}</label>
+                        <input type="text" class="form-control" id="backupHeirName" placeholder="${translations[lang].phBackupHeirName || 'Örn: Mehmet Yıldız'}">
                     </div>
                     <div class="form-group" style="margin: 0;">
-                        <label>${translations[lang].lblBackupHeirRelation || 'Yakınlık / İletişim *'}</label>
-                        <input type="text" class="form-control" id="backupHeirRelation" placeholder="${translations[lang].phBackupHeirRelation || 'Örn: Oğlu / +90 555...'}" required>
+                        <label>${translations[lang].lblBackupHeirRelation || 'Yakınlık / İletişim'}</label>
+                        <input type="text" class="form-control" id="backupHeirRelation" placeholder="${translations[lang].phBackupHeirRelation || 'Örn: Oğlu / +90 555...'}">
                     </div>
+                </div>
+                <div style="margin-top: 12px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--color-cyan); font-size: 0.88rem; font-weight: 500; margin: 0;">
+                        <input type="checkbox" id="chkNoBackupHeir" style="width: 16px; height: 16px; accent-color: var(--color-cyan);">
+                        <span data-i18n="chkNoBackupHeir">${translations[lang].chkNoBackupHeir || 'Mirasçı veya yedek hak sahibi istemiyorum'}</span>
+                    </label>
                 </div>
             </div>
         `;
         container.innerHTML = html;
         const bName = document.getElementById('backupHeirName');
         const bRel = document.getElementById('backupHeirRelation');
+        const chkNo = document.getElementById('chkNoBackupHeir');
+
         if (bName) attachErrorClearListener(bName);
         if (bRel) attachErrorClearListener(bRel);
+
+        if (chkNo && bName && bRel) {
+            chkNo.addEventListener('change', () => {
+                if (chkNo.checked) {
+                    bName.value = '';
+                    bRel.value = '';
+                    bName.disabled = true;
+                    bRel.disabled = true;
+                    bName.classList.remove('input-error');
+                    bRel.classList.remove('input-error');
+                    bName.style.opacity = '0.4';
+                    bRel.style.opacity = '0.4';
+                } else {
+                    bName.disabled = false;
+                    bRel.disabled = false;
+                    bName.style.opacity = '1';
+                    bRel.style.opacity = '1';
+                }
+            });
+        }
     }
 }
 
@@ -658,25 +684,35 @@ function initCertificateModal(submitFormBtn) {
                 return;
             }
 
-            // Single Heir backup fields validation if memberCount === 1
+            // Single Heir backup fields validation if memberCount === 1 and chkNoBackupHeir is UNCHECKED
             const familyCards = document.querySelectorAll('.family-member-card');
             let backupHeirData = null;
             if (familyCards.length === 1) {
                 const bName = document.getElementById('backupHeirName');
                 const bRel = document.getElementById('backupHeirRelation');
-                if (bName && !bName.value.trim()) {
-                    bName.classList.add('input-error');
-                    attachErrorClearListener(bName);
-                    const msg = lang === 'tr' 
-                        ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
-                        : 'Please complete all required missing fields!';
-                    showCustomAlert(msg, bName, 'error');
-                    return;
+                const chkNo = document.getElementById('chkNoBackupHeir');
+
+                if (chkNo && chkNo.checked) {
+                    backupHeirData = {
+                        noBackupHeir: true,
+                        name: null,
+                        relation: null
+                    };
+                } else {
+                    if (bName && !bName.value.trim()) {
+                        bName.classList.add('input-error');
+                        attachErrorClearListener(bName);
+                        const msg = lang === 'tr' 
+                            ? 'Doldurulmamış zorunlu eksik alanları tamamlayın veya "Yedek hak sahibi istemiyorum" seçeneğini işaretleyin!' 
+                            : 'Please complete missing backup heir details or select "I do not want an heir"!';
+                        showCustomAlert(msg, bName, 'error');
+                        return;
+                    }
+                    backupHeirData = {
+                        name: bName?.value.trim(),
+                        relation: bRel?.value.trim()
+                    };
                 }
-                backupHeirData = {
-                    name: bName?.value.trim(),
-                    relation: bRel?.value.trim()
-                };
             }
 
             const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
@@ -751,7 +787,31 @@ function initCertificateModal(submitFormBtn) {
 
     if (closeCertModal) closeCertModal.addEventListener('click', () => certModal.classList.remove('active'));
     if (finishModalBtn) finishModalBtn.addEventListener('click', () => certModal.classList.remove('active'));
-    if (printCertBtn) printCertBtn.addEventListener('click', () => window.print());
+
+    // Direct PDF Certificate Download (html2pdf.js) - No Print Dialog Window Opened!
+    if (printCertBtn) {
+        printCertBtn.addEventListener('click', () => {
+            const certElement = document.querySelector('.printable-cert');
+            if (!certElement) return;
+
+            const barcodeVal = document.getElementById('certBarcodeVal')?.textContent || 'RUH_CERTIFICATE';
+            const cleanBarcode = barcodeVal.replace(/\s+/g, '_').replace(/-/g, '');
+            const filename = `RUH_Certificate_${cleanBarcode}.pdf`;
+
+            if (window.html2pdf) {
+                const opt = {
+                    margin: [4, 4, 4, 4],
+                    filename: filename,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true, backgroundColor: '#07080d' },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+                };
+                window.html2pdf().set(opt).from(certElement).save();
+            } else {
+                window.print();
+            }
+        });
+    }
 }
 
 /**
