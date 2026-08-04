@@ -11,11 +11,7 @@
 
 ## 🌌 Project Overview & About
 
-"Ölmeden önce yerinizi ayırtın." RUH Project, ölüm öncesinde biyo-enerji izini dijital protokole kilitleyen ve ölüm sonrası kuantum GPS ile yeni canlı bedeni tespit eden yenilikçi bir AR-GE girişimidir. Hukuki escrow ve vasiyetname altyapısı sayesinde tüm finansal ve taşınmaz haklarınız resmi sözleşmelerle sonraki yaşamınıza güvenle aktarılır.
-
-> **About (EN):** "Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
-
----
+"Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
 
 ## 🏛️ Project Phases & Transparency
 
