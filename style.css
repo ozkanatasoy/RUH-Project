@@ -2107,3 +2107,52 @@ a:hover {
         gap: 16px;
     }
 }
+
+/* --- Cost Breakdown Card Styles --- */
+.cost-items-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.cost-item-box {
+    background: rgba(10, 14, 26, 0.7);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: var(--transition-normal);
+}
+
+.cost-item-box:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    background: rgba(16, 22, 40, 0.9);
+}
+
+.cost-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 12px;
+}
+
+.cost-item-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.cost-item-box p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .cost-items-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,7 +1,7 @@
 /**
  * RUH PROJECT - Transparent Donation & Donor Leaderboard Module
  * Features:
- * - Live R&D Donation Pool & Progress Bar Calculation (Starts at $0 USD)
+ * - Live R&D Donation Pool & Progress Bar Calculation (Starts at $0 USD / $70,000,000 USD Target)
  * - Name Masking & Encryption (e.g. Ahmet Yıldız -> A**** Y****)
  * - Sorted Descending Donor Leaderboard (Highest donor gets top rank & VIP Priority)
  * - Interactive Donation Modal & Live State Update
@@ -9,8 +9,8 @@
 
 import { getCurrentLang, getTranslation } from './i18n.js';
 
-let targetGoal = 500000; // $500,000 USD Target Goal
-let currentDonors = [];  // Reset to empty ($0 USD raised)
+let targetGoal = 70000000; // $70,000,000 USD Target Goal
+let currentDonors = [];    // Reset to empty ($0 USD raised)
 
 /**
  * Masks a full name for privacy & security.

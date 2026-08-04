@@ -108,6 +108,26 @@ export const translations = {
         thAmount: "Bağış Miktarı",
         thPriority: "Aktivasyon Öncelik Derecesi",
 
+        // R&D Cost Breakdown & Funding Tiers i18n
+        costBreakdownTitle: "Özet Maliyet Kalemleri ve AR-GE İhtiyacı",
+        costItem1Title: "1. Biyo-Fizik & Kuantum Sensör Donanımı",
+        costItem1Desc: "MEG / SQUID kuantum biyotarama donanımları, hücresel frekans kilitleme laboratuvarları ve temiz oda imalatı.",
+        costItem1Amount: "$25,000,000 USD",
+        costItem2Title: "2. Kuantum GPS & Yörünge Uydu Ağı",
+        costItem2Desc: "LEO uydu bant genişliği, kuantum transponder kiralama ve nokta atışı sinyal nirengi algoritmaları.",
+        costItem2Amount: "$20,000,000 USD",
+        costItem3Title: "3. Uluslararası Miras Hukuku & Escrow",
+        costItem3Desc: "Çoklu ülke miras devir trustları, bankacılık escrow anlaşmaları ve kuantum şifreli vasiyet kasası.",
+        costItem3Amount: "$10,000,000 USD",
+        costItem4Title: "4. Uzman Kadro & Operasyonel Güvenlik",
+        costItem4Desc: "Kuantum fizikçileri, nörologlar, hukukçular ve siber güvenlik/ISO sertifikasyon altyapısı.",
+        costItem4Amount: "$15,000,000 USD",
+
+        fundingTiersTitle: "Tavsiye Edilen AR-GE Bağış Hedef Seviyeleri",
+        tier1Label: "Seviye 1: $5,000,000 USD - Prototip & Yasal Sözleşme Altyapısı",
+        tier2Label: "Seviye 2: $25,000,000 USD - Donanım Üretimi & Uydu Entegrasyonu",
+        tier3Label: "Seviye 3: $70,000,000 USD - Tam Ölçekli Küresel AR-GE & Escrow Ağı (Ana Hedef)",
+
         // Donation Modal
         donateModalTitle: "AR-GE ve Altyapı Fonuna Bağış Yap",
         lblDonorName: "Adınız ve Soyadınız (Sistemde A**** Y**** şeklinde şifrelenecektir) *",
@@ -335,6 +355,26 @@ export const translations = {
         thIdentity: "Encrypted Identity / Initials",
         thAmount: "Contribution Amount",
         thPriority: "Activation Priority Tier",
+
+        // R&D Cost Breakdown & Funding Tiers i18n
+        costBreakdownTitle: "R&D Cost Breakdown & Infrastructure Need",
+        costItem1Title: "1. Biophysics & Quantum Sensor Hardware",
+        costItem1Desc: "MEG / SQUID quantum bio-scanning hardware, cellular frequency locking labs, and cleanroom fabrication.",
+        costItem1Amount: "$25,000,000 USD",
+        costItem2Title: "2. Quantum GPS & Orbital Satellite Network",
+        costItem2Desc: "LEO satellite bandwidth, quantum transponder leasing, and precision signal triangulation algorithms.",
+        costItem2Amount: "$20,000,000 USD",
+        costItem3Title: "3. International Estate Escrow & Legal Framework",
+        costItem3Desc: "Multi-jurisdictional estate transfer trusts, banking escrow contracts, and quantum encrypted Will vaults.",
+        costItem3Amount: "$10,000,000 USD",
+        costItem4Title: "4. Expert Team & Operational Security",
+        costItem4Desc: "Quantum physicists, neuroscientists, legal counsel, and cybersecurity/ISO certification infrastructure.",
+        costItem4Amount: "$15,000,000 USD",
+
+        fundingTiersTitle: "Target R&D Funding Progress Tiers",
+        tier1Label: "Tier 1: $5,000,000 USD - Prototype & Legal Contract Infrastructure",
+        tier2Label: "Tier 2: $25,000,000 USD - Hardware Manufacturing & Satellite Integration",
+        tier3Label: "Tier 3: $70,000,000 USD - Full-Scale Global R&D & Escrow Network (Main Goal)",
 
         // Donation Modal
         donateModalTitle: "Donate to R&D & Infrastructure Fund",
