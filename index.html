@@ -496,12 +496,11 @@
                                     <div class="tier-badge gold-badge">FREE PRE-REGISTRATION</div>
                                     <h3 data-i18n="singleProtoTitle">Aşama 1 Ön Kayıt Protokolü</h3>
                                     <div class="tier-price" data-i18n="singleProtoPrice">$0 <span>/ Aşama 1 Ücretsiz Ön Kayıt</span></div>
-                                    <p data-i18n="singleProtoDesc">Biyo-enerji profil taslağı oluşturma, vasiyetname escrow hazırlığı ve Aşama 2 & 3 aktivasyon önceliği garantisi kapsayan resmi protokol kaydı.</p>
+                                    <p data-i18n="singleProtoDesc">Profil taslağı oluşturma, vasiyetname escrow hazırlığı ve Aşama 2 & 3 aktivasyon önceliği garantisi kapsayan resmi protokol kaydı.</p>
                                     <ul class="tier-features">
                                         <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat1">Aşama 1 Ücretsiz Katılım Hakkı</span></li>
-                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat2">Biyo-Enerji Frekans Profil Taslağı</span></li>
+                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat2">Profil Taslağı</span></li>
                                         <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat3">Aşama 2 ve 3 Hizmet Aktivasyon Sıra Garantisi</span></li>
-                                        <li><i class="fa-solid fa-check"></i> <span data-i18n="singleFeat4">Hukuki Miras Escrow ve Vasiyetname Şablonu Altyapısı</span></li>
                                     </ul>
                                     <button type="button" class="btn btn-gold btn-select-tier" data-i18n="btnSelected">Protokol Kaydı Aktif</button>
                                 </div>
@@ -551,17 +550,12 @@
                                 </p>
                             </div>
 
-                            <!-- Checkboxes -->
+                            <!-- Single Main Checkbox -->
                             <div class="contract-checkboxes">
                                 <label class="checkbox-container">
                                     <input type="checkbox" id="chkTerms" required>
                                     <span class="checkmark"></span>
                                     <span data-i18n="chkTermsText">Yukarıdaki hukuki sözleşmeyi okudum, anladım ve Aşama 1 ön kayıt şartlarını ve tüm sorumluluğu kabul ediyorum. *</span>
-                                </label>
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="chkNoChoice" required>
-                                    <span class="checkmark"></span>
-                                    <span data-i18n="chkNoChoiceText">Beden seçimi yapılamayacağını ve biyo-enerji kilitleme prensibini onaylıyorum. *</span>
                                 </label>
                             </div>
                         </div>
@@ -617,7 +611,7 @@
                             </div>
                         </div>
 
-                        <!-- STEP 5: Summary Review & Password Creation -->
+                        <!-- STEP 5: Summary Review & Password Creation with Confirmation Field -->
                         <div class="wizard-step-panel" id="stepPanel5" role="tabpanel">
                             <div class="panel-heading">
                                 <h3 data-i18n="step5Title">Adım 5: Özet İnceleme & Hesap Şifresi Oluşturma</h3>
@@ -645,13 +639,22 @@
                                 </div>
                             </div>
 
-                            <!-- Account Password Creation Field -->
-                            <div class="form-group" style="margin-bottom: 24px;">
-                                <label data-i18n="lblCreatePassword">Kullanıcı Şifresi Oluştur (Giriş Yapmak İçin) *</label>
-                                <input type="password" class="form-control" id="regPassword" placeholder="En az 6 karakterli şifre belirleyin" data-i18n-placeholder="phPassword" required>
+                            <!-- Account Password Creation Fields -->
+                            <div class="form-group" style="margin-bottom: 16px;">
+                                <label data-i18n="lblCreatePassword">Kullanıcı Şifresi Oluştur (Sosyal Medya Güvenlik Kuralları) *</label>
+                                <input type="password" class="form-control" id="regPassword" placeholder="Örn: Ruh2026!" data-i18n-placeholder="phPassword" required>
+                                <p class="form-hint" style="margin-top: 6px; font-size: 0.82rem; color: var(--text-muted);">
+                                    <i class="fa-solid fa-shield"></i> En az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir.
+                                </p>
                             </div>
 
-                            <!-- Payment Method Preview -->
+                            <div class="form-group" style="margin-bottom: 24px;">
+                                <label data-i18n="lblConfirmPassword">Şifreyi Tekrar Girin (Onay) *</label>
+                                <input type="password" class="form-control" id="regPasswordConfirm" placeholder="Şifrenizi tekrar giriniz" data-i18n-placeholder="phConfirmPassword" required>
+                                <span id="passMatchStatus" style="font-size: 0.82rem; margin-top: 6px; display: block; font-weight: 600;"></span>
+                            </div>
+
+                            <!-- Approval Cards with Phase 2 & 3 Cyber Titles -->
                             <div class="payment-method-box">
                                 <h4 data-i18n="payMethodTitle">Ön Kayıt Onay Protokolü</h4>
                                 <div class="grid grid-3 pay-options" role="radiogroup" aria-label="Onay Protokolü">
@@ -660,15 +663,15 @@
                                         <i class="fa-solid fa-signature"></i>
                                         <span data-i18n="payWire">Dijital Ön Kayıt Tescili</span>
                                     </label>
-                                    <label class="pay-card">
-                                        <input type="radio" name="payMethod" value="signal">
-                                        <i class="fa-solid fa-satellite-dish"></i>
-                                        <span data-i18n="payCrypto">Biyo-Enerji Sinyal Tescili</span>
+                                    <label class="pay-card disabled-card" style="opacity: 0.5; cursor: not-allowed;">
+                                        <input type="radio" name="payMethod" value="phase2" disabled>
+                                        <i class="fa-solid fa-microscope"></i>
+                                        <span data-i18n="payPhase2">AŞAMA 2 (AR-GE ve Altyapı Hazırlığı)</span>
                                     </label>
-                                    <label class="pay-card">
-                                        <input type="radio" name="payMethod" value="legal">
-                                        <i class="fa-solid fa-scale-balanced"></i>
-                                        <span data-i18n="payCard">Hukuki Ön Onay</span>
+                                    <label class="pay-card disabled-card" style="opacity: 0.5; cursor: not-allowed;">
+                                        <input type="radio" name="payMethod" value="phase3" disabled>
+                                        <i class="fa-solid fa-hourglass-start"></i>
+                                        <span data-i18n="payPhase3">AŞAMA 3 (Planlanan Evre - Beklemede)</span>
                                     </label>
                                 </div>
                             </div>
@@ -944,7 +947,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </footer>
 
     <!-- ES6 Module Script -->
     <script type="module" src="js/app.js"></script>

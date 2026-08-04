@@ -93,6 +93,34 @@ export function initWizard() {
         }
     };
 
+    // Password live match feedback
+    const regPassEl = document.getElementById('regPassword');
+    const regPassConfirmEl = document.getElementById('regPasswordConfirm');
+    const passMatchStatus = document.getElementById('passMatchStatus');
+
+    function checkPasswordMatch() {
+        if (!regPassEl || !regPassConfirmEl || !passMatchStatus) return;
+        const p1 = regPassEl.value.trim();
+        const p2 = regPassConfirmEl.value.trim();
+        const lang = getCurrentLang();
+
+        if (!p2) {
+            passMatchStatus.textContent = '';
+            return;
+        }
+
+        if (p1 === p2) {
+            passMatchStatus.textContent = lang === 'tr' ? '✓ Şifreler eşleşiyor' : '✓ Passwords match';
+            passMatchStatus.style.color = '#00ff88';
+        } else {
+            passMatchStatus.textContent = lang === 'tr' ? '✕ Şifreler eşleşmiyor' : '✕ Passwords do not match';
+            passMatchStatus.style.color = '#ff5555';
+        }
+    }
+
+    if (regPassEl) regPassEl.addEventListener('input', checkPasswordMatch);
+    if (regPassConfirmEl) regPassConfirmEl.addEventListener('input', checkPasswordMatch);
+
     // Navigation Listeners
     if (nextStepBtn) {
         nextStepBtn.addEventListener('click', () => {
@@ -215,9 +243,8 @@ function validateStep(step) {
         }
     } else if (step === 3) {
         const chkTerms = document.getElementById('chkTerms');
-        const chkNoChoice = document.getElementById('chkNoChoice');
-        if (!chkTerms.checked || !chkNoChoice.checked) {
-            alert(lang === 'tr' ? 'Lütfen hukuki sözleşmeyi ve beden seçimi sınırlamasını onaylayınız.' : 'Please accept the legal terms and non-selection policy.');
+        if (!chkTerms || !chkTerms.checked) {
+            alert(lang === 'tr' ? 'Lütfen hukuki sözleşmeyi onaylayınız.' : 'Please accept the legal terms contract.');
             return false;
         }
     }
@@ -290,13 +317,34 @@ function initCertificateModal(submitFormBtn) {
             const primaryName = document.querySelector('input[name="fullName_1"]')?.value || 'Ahmet Yıldız';
             const primaryId = document.querySelector('input[name="identityNo_1"]')?.value || '11111111111';
             const primaryEmail = document.querySelector('input[name="email_1"]')?.value || 'user@example.com';
+            
             const regPasswordInput = document.getElementById('regPassword');
+            const regPasswordConfirmInput = document.getElementById('regPasswordConfirm');
 
             const password = regPasswordInput ? regPasswordInput.value.trim() : '';
+            const confirmPassword = regPasswordConfirmInput ? regPasswordConfirmInput.value.trim() : '';
 
-            if (!password || password.length < 6) {
-                alert(lang === 'tr' ? 'Lütfen en az 6 karakterli geçerli bir hesap şifresi oluşturunuz.' : 'Please create a valid account password (at least 6 characters).');
+            // Password Rule Checks (Social Media Rules: min 8 chars, 1 uppercase, 1 lowercase, 1 number)
+            const hasMinLength = password.length >= 8;
+            const hasUpper = /[A-Z]/.test(password);
+            const hasLower = /[a-z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+
+            if (!hasMinLength || !hasUpper || !hasLower || !hasNumber) {
+                alert(lang === 'tr' 
+                    ? 'Şifreniz güvenlik kurallarına uymamaktadır.\nLütfen en az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içeren bir şifre giriniz.' 
+                    : 'Password does not meet security requirements.\nMust contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number.'
+                );
                 if (regPasswordInput) regPasswordInput.focus();
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert(lang === 'tr' 
+                    ? 'Girdiğiniz şifreler eşleşmiyor! Lütfen şifre doğrulama kutucuğuna aynı şifreyi giriniz.' 
+                    : 'Passwords do not match! Please re-enter the exact same password in the confirmation box.'
+                );
+                if (regPasswordConfirmInput) regPasswordConfirmInput.focus();
                 return;
             }
 
