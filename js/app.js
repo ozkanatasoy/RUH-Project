@@ -5,7 +5,7 @@
 
 import { getCurrentLang, onLanguageChange, switchLanguage } from './modules/i18n.js';
 import { initEnergyCanvas } from './modules/canvas.js';
-import { initWizard, updateFeeSummary } from './modules/wizard.js';
+import { initWizard, updateDynamicFormTitles, updateFeeSummary, populateContingencySuccessionView } from './modules/wizard.js';
 import { initDonations, renderLeaderboard, updateDonationProgress } from './modules/donations.js';
 import { initAuth, updateNavAuthButton } from './modules/auth.js';
 
@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Initialize Language Switcher Controls
     const langBtn = document.getElementById('langToggleBtn');
     if (langBtn) {
-        langBtn.addEventListener('click', () => {
+        langBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             const nextLang = getCurrentLang() === 'tr' ? 'en' : 'tr';
             switchLanguage(nextLang);
         });
@@ -34,13 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Register callback on language change to update dynamic fee summary, leaderboard & nav auth label
     onLanguageChange(() => {
+        updateDynamicFormTitles();
         updateFeeSummary();
+        populateContingencySuccessionView();
         renderLeaderboard();
         updateDonationProgress();
         updateNavAuthButton();
     });
 
-    // 6. FAQ Accordion & Toggle Controls
+    // 6. Apply initial saved language state
+    switchLanguage(getCurrentLang());
+
+    // 7. FAQ Accordion & Toggle Controls
     document.querySelectorAll('.faq-question').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.parentElement;
@@ -82,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 7. Mobile Navigation Hamburger Menu
+    // 8. Mobile Navigation Hamburger Menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const navMenu = document.getElementById('navMenu');
     if (hamburgerBtn && navMenu) {
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Top Announcement Close Control
+    // 9. Top Announcement Close Control
     const closeAnnouncement = document.getElementById('closeAnnouncement');
     const announcementBar = document.getElementById('announcementBar');
     if (closeAnnouncement && announcementBar) {

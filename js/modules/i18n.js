@@ -678,7 +678,7 @@ export const translations = {
     }
 };
 
-let currentLanguage = 'tr';
+let currentLanguage = localStorage.getItem('ruh_lang') || 'tr';
 const listeners = [];
 
 export function getCurrentLang() {
@@ -695,6 +695,7 @@ export function onLanguageChange(fn) {
 
 export function switchLanguage(lang) {
     currentLanguage = lang;
+    localStorage.setItem('ruh_lang', lang);
     document.body.className = `lang-${lang}`;
     document.documentElement.lang = lang;
     
@@ -722,5 +723,11 @@ export function switchLanguage(lang) {
         }
     });
 
-    listeners.forEach(fn => fn(lang));
+    listeners.forEach(fn => {
+        try {
+            fn(lang);
+        } catch (e) {
+            console.error('i18n listener error:', e);
+        }
+    });
 }

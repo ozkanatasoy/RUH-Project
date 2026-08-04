@@ -179,7 +179,7 @@ export function initWizard() {
     updateStepView();
 }
 
-function updateDynamicFormTitles() {
+export function updateDynamicFormTitles() {
     const lang = getCurrentLang();
     const cards = document.querySelectorAll('.family-member-card');
     cards.forEach((card, idx) => {
@@ -196,14 +196,16 @@ function updateDynamicFormTitles() {
     });
 }
 
-function updateFeeSummary() {
-    const calcCountEl = document.getElementById('calcFormCount');
-    const calcTotalEl = document.getElementById('calcTotalFee');
+export function updateFeeSummary() {
+    const calcCountEl = document.getElementById('calcMemberCount');
+    const calcTierEl = document.getElementById('calcTierName');
+    const calcTotalEl = document.getElementById('calcTotalAmount');
     const lang = getCurrentLang();
 
     const count = document.querySelectorAll('.family-member-card').length;
     if (calcCountEl) calcCountEl.textContent = `${count} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
-    if (calcTotalEl) calcTotalEl.textContent = lang === 'tr' ? '$0 USD (Aşama 1 Ücretsiz)' : '$0 USD (Phase 1 Free)';
+    if (calcTierEl) calcTierEl.textContent = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)' : 'Phase 1 Pre-Registration Protocol (Phase 1 Free)';
+    if (calcTotalEl) calcTotalEl.textContent = lang === 'tr' ? '$0 USD (Ücretsiz Ön Kayıt)' : '$0 USD (Free Pre-Registration)';
 }
 
 function updateStepView() {
@@ -353,7 +355,7 @@ function populateSummaryReview() {
 /**
  * Renders Contingency Rights Succession Box in Step 5 (Vefat Halinde Hak Devri)
  */
-function populateContingencySuccessionView() {
+export function populateContingencySuccessionView() {
     const container = document.getElementById('contingencyDynamicContainer');
     if (!container) return;
 
