@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card & Certificate Verification Portal.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal & Expanded FAQ.
  */
 
 export const translations = {
@@ -236,17 +236,29 @@ export const translations = {
         btnNext: "Devam Et",
         btnSubmit: "Hesap Oluştur, Kaydı Tamamla & Sertifikayı Al",
 
-        // FAQ
-        faqSub: "MERAK EDİLENLER",
-        faqTitle: "Sıkça Sorulan Sorular",
+        // Expanded FAQ (10 Questions & Answers)
+        faqSub: "MERAK EDİLENLER VE TEKNİK DETAYLAR",
+        faqTitle: "Sıkça Sorulan Sorular (SSS)",
         faqQ1: "Geçilecek canlı bedeni kendim seçebilir miyim?",
         faqA1: "Hayır. RUH Project sisteminde ne müşteri ne de firma geçilecek bedeni seçebilir. Ölüm öncesinde vücutta kilitlenen biyo-enerji izi ve doğal frekans uyumu doğrultusunda ruhun aktarıldığı yeni beden kuantum GPS sinyalleri ile otomatik olarak tespit edilir.",
         faqQ2: "Aşama 1 Ön Kayıt ücretli midir?",
         faqA2: "Hayır, Aşama 1 ön kayıt katılımı tamamen ücretsizdir. Bu aşamada form dolduran kullanıcılar biyo-enerji taslağını oluşturur ve Aşama 2 & 3 devreye girdiğinde öncelikli hizmet sırası kazanır.",
         faqQ3: "Mirasım yeni bedene hukuken nasıl aktarılacak?",
-        faqA3: "Aşama 4'te doldurduğunuz vasiyetname metni ve anlaşmalı banka escrow protokolleri doğrultusunda, ölüm gerçekleştikten ve yeni beden GPS ile tescil edildikten sonra resmi hukuk organları marifetiyle mal varlığınız devredilir.",
+        faqA3: "Aşama 4'te doldurduğunuz vasiyetname metni ve uluslararası banka escrow protokolleri doğrultusunda, ölüm gerçekleştikten ve yeni beden kuantum GPS ile tescil edildikten sonra resmi hukuk kayyumları marifetiyle mal varlığınız devredilir.",
         faqQ4: "Aile üyelerim için ayrı form doldurmam gerekiyor mu?",
-        faqA4: "Evet. Her bireyin biyo-enerji izi ve kuantum frekansı benzersiz olduğundan, form adımında eklenen her aile üyesi için ayrı form doldurularak sisteme kaydedilir.",
+        faqA4: "Evet. Her bireyin biyo-enerji izi ve kuantum frekansı benzersiz olduğundan, form adımında eklenen her aile üyesi için ayrı form doldurularak sisteme kaydedilir ve her birine özel 11 haneli Enerji İzi ID'si ve 16 haneli Barkod No üretilir.",
+        faqQ5: "Biyo-enerji izi kilitleme işlemi fiziksel bir acı veya cerrahi müdahale gerektirir mi?",
+        faqA5: "Kesinlikle hayır. Biyo-tarama teknolojimiz girişimsel olmayan (non-invasive) MEG ve SQUID kuantum biyosensörleri ile çalışır. Hücresel ve beyinsel elektromanyetik frekanslar vücuda hiçbir temas veya cerrahi işlem uygulanmadan uzaktan taranarak kilitlenir.",
+        faqQ6: "11 haneli Dijital Enerji İzi ID'si ve 16 haneli Barkod No ne işe yarar?",
+        faqA6: "Her kayıtlı müşteriye özel olarak üretilen 11 haneli Enerji ID'si (Örn: RUH84K92M17) ve 16 haneli barkod (Örn: 8942-7109-4482-1928), kuantum GPS takibi ve R.U.H. Incorporation resmi sertifika doğrulama portalında orijinallik tescili sağlayan kriptografik kilit numaralarıdır.",
+        faqQ7: "AR-GE bağış havuzuna yapılan katkılar nasıl değerlendirilir ve öncelik nasıl sağlanır?",
+        faqA7: "Toplanan bağışlar %100 şeffaflık ilkesiyle 4 ana AR-GE kalemi (biyo-fizik donanımları, uydu ağı, escrow trustları ve uzman kadro) için kullanılır. Bağış yapan kullanıcılar sistemde en yüksek tutara göre sıralanarak Aşama 2 & 3 aktivasyonlarında 1. Derece VIP sırayı alır.",
+        faqQ8: "Ölüm anından ruhun yeni canlı bedende tespit edilmesine kadar geçen süre ne kadardır?",
+        faqA8: "Bilinç ve biyo-enerji akışı hücresel rezonansa bağlıdır. Yörünge uydularımız 7/24 küresel frekans taraması yapar ve ruh yeni bedende canlılık kazandığı an kilitli frekans sinyali sayesinde nokta atışı tespit edilir.",
+        faqQ9: "Mirasımı mevcut ailem ile yeni bedenim arasında paylaştırabilir miyim?",
+        faqA9: "Evet. Adım 4 vasiyetname seçeneğinde sunulan hazır şablonlar marifetiyle mal varlığınızın %100'ünü yeni bedeninize aktarabileceğiniz gibi, belirlediğiniz oranları mevcut aile üyelerinize bırakıp kalan kısmı yeni bedeninize devredebilirsiniz.",
+        faqQ10: "Kişisel verilerim ve vasiyet detaylarım siber saldırılara karşı nasıl korunuyor?",
+        faqA10: "Bütün biyo-profil kayıtları, finansal talimatlar ve vasiyet metinleri Post-Kuantum Şifreleme (PQC) ve ISO/IEC 27001 güvenlik standartlarında saklanır. Bağışçı sıralama tablosunda gizlilik ilkesi gereği ad ve soyadlar şifreli gösterilir (Örn: A**** Y****).",
 
         // Footer
         footerDesc: "Ölüm sonrası ruh aktarımı, biyo-enerji kilitleme ve miras koruma protokolü.",
@@ -493,17 +505,29 @@ export const translations = {
         btnNext: "Devam Et",
         btnSubmit: "Create Account, Complete & Get Certificate",
 
-        // FAQ
-        faqSub: "FREQUENTLY ASKED QUESTIONS",
-        faqTitle: "Frequently Asked Questions",
+        // Expanded FAQ (10 Questions & Answers)
+        faqSub: "TECHNICAL DETAILS & FREQUENTLY ASKED QUESTIONS",
+        faqTitle: "Frequently Asked Questions (FAQ)",
         faqQ1: "Can I choose which living host body I will transfer to?",
         faqA1: "No. Neither the client nor RUH Project can select the host body. The bio-energy signature locked before death naturally resonates with the target host body, which is automatically pinpointed via Quantum GPS signals.",
         faqQ2: "Is Phase 1 Pre-Registration free?",
         faqA2: "Yes! Phase 1 pre-registration is 100% free of charge. Users filling out the form create their bio-energy draft profile and secure first-tier priority placement for Phase 2 & 3 activation.",
         faqQ3: "How will my inheritance be legally transferred to the new host body?",
-        faqA3: "Pursuant to your Will draft and banking escrow agreements, once death occurs and the new host body's location is verified via GPS, legal escrow executors transfer the assets.",
+        faqA3: "Pursuant to your Will draft and international banking escrow agreements, once death occurs and the new host body's location is verified via Quantum GPS, legal escrow executors transfer the assets.",
         faqQ4: "Do I need to fill a separate form for each family member?",
-        faqA4: "Yes. Since every individual possesses a unique bio-energy frequency, a separate form is filled and registered for each added family member.",
+        faqA4: "Yes. Since every individual possesses a unique bio-energy frequency, a separate form is filled and registered for each added family member, issuing a unique 11-digit Energy ID and 16-digit Barcode for each.",
+        faqQ5: "Does the bio-energy signature locking procedure require any physical pain or surgical intervention?",
+        faqA5: "Absolutely not. Our bio-scanning technology utilizes non-invasive MEG and SQUID quantum biosensors. Electro-magnetic brain and cellular frequencies are captured remotely without any physical contact or surgery.",
+        faqQ6: "What is the purpose of the 11-digit Digital Energy ID and 16-digit Barcode No?",
+        faqA6: "The 11-digit Energy ID (e.g. RUH84K92M17) and 16-digit barcode (e.g. 8942-7109-4482-1928) generated uniquely for each client act as cryptographic keys for Quantum GPS tracking and official verification on the R.U.H. Incorporation portal.",
+        faqQ7: "How are contributions to the transparent R&D donation pool allocated?",
+        faqA7: "Donations are 100% transparently allocated across 4 main R&D items (biophysics hardware, satellite arrays, legal escrow trusts, and security). Donating clients gain 1st Class VIP priority placement for Phase 2 & 3 activation.",
+        faqQ8: "How long does it take from the moment of death to detect the consciousness in the new host body?",
+        faqA8: "Consciousness rebirth resonance depends on biological cellular activation. Our LEO satellite network scans global bio-frequencies 24/7 to pinpoint the host body instantly upon signal emission.",
+        faqQ9: "Can I split my inheritance between my current family and my new host body?",
+        faqA9: "Yes. Using the Will templates provided in Step 4, clients can allocate 100% to the new body, or split designated percentages to existing family members while transferring the remainder to the new identity.",
+        faqQ10: "How are my personal data and Will details protected against cyber threats?",
+        faqA10: "All bio-profiles, financial directives, and contract details are encrypted under Post-Quantum Cryptography (PQC) and ISO/IEC 27001 standards. Leaderboard data displays initials only (e.g. A**** Y****).",
 
         // Footer
         footerDesc: "Post-mortem soul relocation, bio-energy signature locking, and inheritance protection protocol.",
