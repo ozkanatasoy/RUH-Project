@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing red input error highlights, custom cyber alert modals, newborn birth date calculation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
+ * Manages 5-step wizard navigation, strict multi-member form validation with custom glowing input error highlights, custom cyber alert & success modals, newborn birth date calculation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode A4 Landscape international certificate rendering for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -13,17 +13,54 @@ let selectedTier = 'phase1';
 let currentMemberCerts = [];
 
 /**
- * Custom Cyber Alert Modal (replaces browser's default native alert popup)
- * Smoothly focuses and scrolls to target invalid element upon dismissal.
+ * Custom Cyber Alert & Success Modal (replaces browser's default native alert popup)
+ * Supports 'error' (red warning) and 'success' (green completion theme).
  */
-export function showCustomAlert(msg, targetElement = null) {
+export function showCustomAlert(msg, targetElement = null, type = 'error', callback = null) {
     const modal = document.getElementById('validationAlertModal');
+    const titleEl = document.getElementById('validationModalTitle');
     const msgEl = document.getElementById('validationModalMessage');
     const btnDismiss = document.getElementById('btnDismissValidationModal');
+    const modalDialog = modal?.querySelector('.modal-dialog');
+    const modalBody = modal?.querySelector('.modal-body');
+    const lang = getCurrentLang();
 
     if (msgEl) msgEl.textContent = msg;
 
     if (modal) {
+        if (type === 'success') {
+            modal.classList.add('modal-success');
+            if (titleEl) titleEl.textContent = getTranslation('valSuccessTitle') || (lang === 'tr' ? 'Kayıt Başarıyla Tamamlandı!' : 'Registration Successfully Completed!');
+            
+            // Replace Icon with Emerald Green Checkmark
+            const existingIconWrapper = modalBody?.querySelector('div:first-child');
+            if (existingIconWrapper) {
+                existingIconWrapper.className = 'icon-wrapper-success';
+                existingIconWrapper.innerHTML = `<i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: #00ff88;"></i>`;
+            }
+
+            if (btnDismiss) {
+                btnDismiss.className = 'btn btn-glow btn-success-theme';
+                btnDismiss.innerHTML = `<i class="fa-solid fa-certificate"></i> <span>${getTranslation('btnViewCert') || (lang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate')}</span>`;
+            }
+        } else {
+            modal.classList.remove('modal-success');
+            if (titleEl) titleEl.textContent = getTranslation('valModalTitle') || (lang === 'tr' ? 'Eksik Bilgi Uyarısı' : 'Incomplete Information Warning');
+            
+            const existingIconWrapper = modalBody?.querySelector('div:first-child');
+            if (existingIconWrapper) {
+                existingIconWrapper.className = '';
+                existingIconWrapper.style.cssText = 'width: 64px; height: 64px; border-radius: 50%; background: rgba(255, 51, 102, 0.15); border: 2px solid #ff3366; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);';
+                existingIconWrapper.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; color: #ff3366;"></i>`;
+            }
+
+            if (btnDismiss) {
+                btnDismiss.className = 'btn btn-gold';
+                btnDismiss.style.cssText = 'width: 100%; min-height: 46px; font-weight: 700; background: linear-gradient(135deg, #ff3366, #ff6b6b); border-color: #ff3366; color: #fff; box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);';
+                btnDismiss.innerHTML = `<span>${getTranslation('btnOk') || (lang === 'tr' ? 'Tamam' : 'OK')}</span>`;
+            }
+        }
+
         modal.classList.add('active');
 
         const dismissHandler = () => {
@@ -39,6 +76,8 @@ export function showCustomAlert(msg, targetElement = null) {
                     console.log('Scroll error:', e);
                 }
             }
+
+            if (callback) callback();
         };
 
         const keyHandler = (e) => {
@@ -52,6 +91,7 @@ export function showCustomAlert(msg, targetElement = null) {
     } else {
         alert(msg);
         if (targetElement) targetElement.focus();
+        if (callback) callback();
     }
 }
 
@@ -77,7 +117,6 @@ function attachBirthDateAgeListener(card, num) {
                 if (age < 0) age = 0; // Newborn baby
                 ageEl.value = age;
 
-                // Remove input-error highlight if present
                 birthEl.classList.remove('input-error');
                 ageEl.classList.remove('input-error');
             }
@@ -85,9 +124,6 @@ function attachBirthDateAgeListener(card, num) {
     }
 }
 
-/**
- * Attaches auto-clear listener for input error highlight
- */
 function attachErrorClearListener(element) {
     if (!element) return;
     const clearFn = () => {
@@ -401,7 +437,7 @@ function validateStep(step) {
             const alertMsg = lang === 'tr' 
                 ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
                 : 'Please complete all required missing fields!';
-            showCustomAlert(alertMsg, firstInvalidInput);
+            showCustomAlert(alertMsg, firstInvalidInput, 'error');
             return false;
         }
     } else if (step === 3) {
@@ -435,7 +471,7 @@ function validateStep(step) {
             const alertMsg = lang === 'tr' 
                 ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
                 : 'Please complete all required missing fields!';
-            showCustomAlert(alertMsg, firstInvalidInput);
+            showCustomAlert(alertMsg, firstInvalidInput, 'error');
             return false;
         }
     }
@@ -606,7 +642,7 @@ function initCertificateModal(submitFormBtn) {
                 const msg = lang === 'tr' 
                     ? 'Şifreniz en az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir!' 
                     : 'Password must contain 8+ chars, uppercase, lowercase & number!';
-                showCustomAlert(msg, regPasswordInput);
+                showCustomAlert(msg, regPasswordInput, 'error');
                 return;
             }
 
@@ -618,7 +654,7 @@ function initCertificateModal(submitFormBtn) {
                 const msg = lang === 'tr' 
                     ? 'Girdiğiniz şifreler eşleşmiyor!' 
                     : 'Passwords do not match!';
-                showCustomAlert(msg, regPasswordConfirmInput);
+                showCustomAlert(msg, regPasswordConfirmInput, 'error');
                 return;
             }
 
@@ -634,7 +670,7 @@ function initCertificateModal(submitFormBtn) {
                     const msg = lang === 'tr' 
                         ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' 
                         : 'Please complete all required missing fields!';
-                    showCustomAlert(msg, bName);
+                    showCustomAlert(msg, bName, 'error');
                     return;
                 }
                 backupHeirData = {
@@ -701,17 +737,15 @@ function initCertificateModal(submitFormBtn) {
                 members: currentMemberCerts
             });
 
-            // Custom Notification for Email Verification
+            // Show Green Success Alert Modal, then transition to Certificate Modal!
             const successMsg = lang === 'tr' 
-                ? `Form kaydınız oluşturuldu! E-postanıza (${primaryMember.email}) onay bağlantısı gönderildi.` 
-                : `Registration successful! Verification link sent to your email (${primaryMember.email}).`;
+                ? `Form kaydınız başarıyla tamamlanmıştır! E-postanıza (${primaryMember.email}) doğrulama bağlantısı iletilmiştir.` 
+                : `Registration successfully completed! Verification link sent to your email (${primaryMember.email}).`;
 
-            showCustomAlert(successMsg);
-
-            // Render Certificate in Modal
-            renderCertificateView(0);
-
-            if (certModal) certModal.classList.add('active');
+            showCustomAlert(successMsg, null, 'success', () => {
+                renderCertificateView(0);
+                if (certModal) certModal.classList.add('active');
+            });
         });
     }
 
@@ -730,18 +764,20 @@ export function renderCertificateView(memberIndex = 0) {
     const lang = getCurrentLang();
     const holderEl = document.getElementById('certHolderName');
     const energyIdEl = document.getElementById('certEnergyIdVal');
+    const identityEl = document.getElementById('certIdentityVal');
     const barcodeEl = document.getElementById('certBarcodeVal');
     const memberCountEl = document.getElementById('certMemberCount');
     const tierEl = document.getElementById('certTierName');
     const inheritEl = document.getElementById('certInheritance');
-    const dateEl = document.getElementById('certDate');
+    const dateEl = document.getElementById('certDateVal');
     const qrImgEl = document.getElementById('certQrImg');
 
     if (holderEl) holderEl.textContent = cert.fullName;
     if (energyIdEl) energyIdEl.textContent = cert.energyId;
+    if (identityEl) identityEl.textContent = cert.identityNo;
     if (barcodeEl) barcodeEl.textContent = formatBarcode(cert.barcode);
     if (memberCountEl) memberCountEl.textContent = `${currentMemberCerts.length} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
-    if (tierEl) tierEl.textContent = `${cert.tierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
+    if (tierEl) tierEl.textContent = `${cert.tierName} (${lang === 'tr' ? 'Ücretsiz' : 'Free'})`;
     if (inheritEl) inheritEl.textContent = cert.inheritanceStatus;
     if (dateEl) dateEl.textContent = cert.registeredAt;
 

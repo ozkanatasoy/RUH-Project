@@ -951,67 +951,118 @@
         </div>
     </footer>
 
-    <!-- Certificate Modal -->
+    <!-- Certificate Modal (A4 Landscape Professional International Certificate) -->
     <div class="modal-backdrop" id="certificateModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
-        <div class="modal-dialog" style="max-width: 680px;">
+        <div class="modal-dialog" style="max-width: 880px;">
             <div class="modal-header">
                 <h3 id="certModalTitle"><i class="fa-solid fa-certificate highlight-gold"></i> <span data-i18n="certModalTitle">R.U.H. Incorporation Resmi Ön Kayıt Sertifikası</span></h3>
                 <button class="modal-close" id="closeCertModal" aria-label="Kapat / Close Modal">&times;</button>
             </div>
-            <div class="modal-body" id="certificateBody">
+            <div class="modal-body" id="certificateBody" style="padding: 16px;">
                 
                 <!-- Member Switcher if multiple family members exist -->
-                <div id="certMemberSwitcherWrapper" style="margin-bottom: 16px; text-align: center;"></div>
+                <div id="certMemberSwitcherWrapper" style="margin-bottom: 16px; text-align: center; display: none;"></div>
 
-                <!-- Printable Corporate Certificate Document -->
+                <!-- Printable Corporate A4 Landscape Certificate Document -->
                 <div class="cert-card printable-cert">
-                    <div class="cert-border">
-                        <div class="cert-header" style="text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 20px;">
-                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; margin-bottom: 6px;">
-                                    <div style="display: flex; align-items: center; gap: 10px;">
-                                        <i class="fa-solid fa-dna cert-logo-icon" style="font-size: 1.8rem; color: var(--color-cyan); margin: 0;"></i>
-                                        <span style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 800; letter-spacing: 0.08em; color: #fff;">R.U.H. INCORPORATION</span>
+                    <!-- Ornamental Corner Elements -->
+                    <div class="cert-corner cert-corner-tl"></div>
+                    <div class="cert-corner cert-corner-tr"></div>
+                    <div class="cert-corner cert-corner-bl"></div>
+                    <div class="cert-corner cert-corner-br"></div>
+
+                    <div class="cert-inner-frame">
+                        <!-- Top Header Row -->
+                        <div class="cert-header-row">
+                            <div class="cert-brand-col">
+                                <div class="cert-logo-title">
+                                    <i class="fa-solid fa-dna cert-logo-icon"></i>
+                                    <span>R.U.H. INCORPORATION</span>
+                                </div>
+                                <span class="cert-sub-brand">RESONANT UNIVERSAL HERITAGE INC. | GLOBAL ESCROW TRUST & QUANTUM REGISTRY</span>
+                            </div>
+                            <div class="cert-doc-meta">
+                                <span class="cert-meta-label">DOKÜMAN kODU:</span>
+                                <span class="cert-meta-val">RUH-CERT-2026-PH1</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Title & Preamble -->
+                        <div class="cert-title-block">
+                            <h2 class="cert-main-title" data-i18n="certOfficialDoc">ULUSLARARASI BİYO-ENERJİ VE MİRAS PROTOKOLÜ SERTİFİKASI</h2>
+                            <p class="cert-preamble" data-i18n="certPreamble">
+                                İşbu resmi tescil belgesi, aşağıda kimlik bilgileri ve 11 haneli Enerji İzi ID'si yer alan hak sahibinin R.U.H. Incorporation Aşama 1 Biyo-Enerji ve Miras Escrow Protokolü'ne kaydının eksiksiz olarak tamamlandığını onaylar.
+                            </p>
+                        </div>
+
+                        <!-- Recipient Name Banner -->
+                        <div class="cert-recipient-banner">
+                            <span class="cert-recipient-label" data-i18n="lblCertHolder">HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER</span>
+                            <h3 id="certHolderName" class="cert-holder-name">Ahmet Yıldız</h3>
+                        </div>
+
+                        <!-- Data Grid 2-Column Section -->
+                        <div class="cert-data-grid">
+                            <div class="cert-data-col">
+                                <div class="cert-data-item">
+                                    <span class="cert-data-label" data-i18n="lblEnergyId">Dijital Enerji İzi ID (11 Hane):</span>
+                                    <strong id="certEnergyIdVal" class="cert-data-val highlight-cyan" style="font-family: monospace;">RUH84K92M17</strong>
+                                </div>
+                                <div class="cert-data-item">
+                                    <span class="cert-data-label" data-i18n="lblProfIdentity">Kimlik / Pasaport No:</span>
+                                    <span id="certIdentityVal" class="cert-data-val">11111111111</span>
+                                </div>
+                                <div class="cert-data-item">
+                                    <span class="cert-data-label">Tescil Tarihi ve Saati:</span>
+                                    <span id="certDateVal" class="cert-data-val highlight-gold">05.08.2026 00:15:30</span>
+                                </div>
+                            </div>
+                            <div class="cert-data-col">
+                                <div class="cert-data-item">
+                                    <span class="cert-data-label">Kayıtlı Kişi Sayısı:</span>
+                                    <span id="certMemberCount" class="cert-data-val">1 Kişi</span>
+                                </div>
+                                <div class="cert-data-item">
+                                    <span class="cert-data-label" data-i18n="lblProfTier">Protokol Seviyesi:</span>
+                                    <span id="certTierName" class="cert-data-val">Aşama 1 Ön Kayıt Protokolü (Ücretsiz)</span>
+                                </div>
+                                <div class="cert-data-item">
+                                    <span class="cert-data-label" data-i18n="lblProfInheritance">Miras Escrow Tercihi:</span>
+                                    <span id="certInheritance" class="cert-data-val highlight-gold">Kayıtlı & Escrow Onaylı</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Block: Left QR Code | Center Barcode | Right Gold Wax Seal Stamp -->
+                        <div class="cert-footer-row">
+                            <!-- Left: Live QR Code -->
+                            <div class="cert-qr-box">
+                                <img id="certQrImg" src="" alt="Sertifika QR Kodu">
+                                <span class="cert-qr-text" data-i18n="certQrCaption">Kuantum Doğrulama QR Kodu</span>
+                            </div>
+
+                            <!-- Center: Barcode 16 Digits -->
+                            <div class="cert-barcode-box">
+                                <span class="cert-barcode-label">16 HANELİ SERTİFİKA BARKOD NO</span>
+                                <strong id="certBarcodeVal" class="cert-barcode-num">8942-7109-4482-1928</strong>
+                                <div class="visual-barcode-bars">
+                                    <span style="width: 2px;"></span><span style="width: 1px;"></span><span style="width: 3px;"></span><span style="width: 1px;"></span><span style="width: 2px;"></span><span style="width: 4px;"></span><span style="width: 1px;"></span><span style="width: 2px;"></span><span style="width: 3px;"></span><span style="width: 1px;"></span><span style="width: 2px;"></span><span style="width: 1px;"></span><span style="width: 3px;"></span><span style="width: 2px;"></span><span style="width: 1px;"></span><span style="width: 4px;"></span><span style="width: 2px;"></span><span style="width: 1px;"></span><span style="width: 3px;"></span><span style="width: 2px;"></span>
+                                </div>
+                            </div>
+
+                            <!-- Right: 3D Corporate Gold Wax Seal Stamp -->
+                            <div class="cert-seal-box">
+                                <div class="cert-gold-seal">
+                                    <div class="seal-outer-ring">
+                                        <div class="seal-inner-ring">
+                                            <i class="fa-solid fa-shield-halved seal-icon"></i>
+                                            <span class="seal-text-top">PH1 APPROVED</span>
+                                            <span class="seal-text-bottom">R.U.H. INC.</span>
+                                        </div>
                                     </div>
-                                    <span style="font-size: 0.72rem; letter-spacing: 0.15em; color: var(--color-cyan); font-weight: 600; display: block; text-transform: uppercase;">RESONANT UNIVERSAL HERITAGE INC.</span>
-                                </div>
-                                <span style="font-size: 0.72rem; letter-spacing: 0.2em; color: var(--text-muted); display: block; text-transform: uppercase; margin-top: 4px;">PROTOCOL & ESCROW VAULT</span>
-                                <h2 style="font-size: 1.15rem; color: var(--color-gold); margin-top: 8px;" data-i18n="certOfficialDoc">AŞAMA 1 RESMİ BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ</h2>
-                            </div>
-
-                            <div class="cert-details-grid" style="display: grid; grid-template-columns: 1fr 120px; gap: 20px; align-items: center;">
-                                <div>
-                                    <p style="margin-bottom: 8px;"><strong>Başvuru Sahibi:</strong> <span id="certHolderName" style="font-size: 1.2rem; color: #fff; font-weight: 700;">Ahmet Yıldız</span></p>
-                                    <p style="margin-bottom: 8px;"><strong>Dijital Enerji İzi ID (11 Hane):</strong> <strong id="certEnergyIdVal" class="highlight-cyan" style="font-family: monospace; font-size: 1.05rem;">RUH84K92M17</strong></p>
-                                    <p style="margin-bottom: 8px;"><strong>Kayıtlı Kişi Sayısı:</strong> <span id="certMemberCount">1 Kişi</span></p>
-                                    <p style="margin-bottom: 8px;"><strong>Seçilen Protokol:</strong> <span id="certTierName">Aşama 1 Ön Kayıt Protokolü (Aşama 1 Ücretsiz)</span></p>
-                                    <p style="margin-bottom: 8px;"><strong>Miras Devir Durumu:</strong> <span id="certInheritance">Kayıtlı & Escrow Onaylı</span></p>
-                                    <p style="margin-bottom: 8px;"><strong>Tarih ve Saat:</strong> <span id="certDate">04.08.2026 18:10:55</span></p>
-                                </div>
-
-                                <!-- Live QR Code pointing to verification URL -->
-                                <div style="text-align: center;">
-                                    <img id="certQrImg" src="" alt="Sertifika QR Kodu" style="width: 110px; height: 110px; border-radius: 8px; border: 1px solid var(--border-color); background: #000; padding: 4px;">
-                                    <span style="font-size: 0.65rem; color: var(--text-muted); display: block; margin-top: 4px;">Kamera ile Tara</span>
                                 </div>
                             </div>
-
-                            <!-- Barcode Section -->
-                            <div class="cert-barcode-wrapper" style="margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--border-color); text-align: center;">
-                                <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 4px;">REKORT / BARKOD NO (16 HANE)</span>
-                                <strong id="certBarcodeVal" class="highlight-gold" style="font-family: monospace; font-size: 1.25rem; letter-spacing: 0.15em; display: block; margin-bottom: 8px;">8942-7109-4482-1928</strong>
-                                
-                                <!-- Visual Barcode Lines simulation -->
-                                <div class="visual-barcode-bars" style="display: flex; justify-content: center; gap: 3px; height: 32px; opacity: 0.85;">
-                                    <span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 4px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 4px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span><span style="width: 1px; background: #fff;"></span><span style="width: 3px; background: #fff;"></span><span style="width: 2px; background: #fff;"></span>
-                                </div>
-                            </div>
-
-                            <div class="cert-footer-stamp" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-size: 0.75rem; color: var(--text-muted);">Düzenleyen Kurum: R.U.H. Incorporation (Resonant Universal Heritage Inc.)</span>
-                                <div class="stamp-box" data-i18n="certStamp" style="border: 2px solid var(--color-gold); color: var(--color-gold); padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.75rem; text-align: center; text-transform: uppercase;">
-                                    PH1 APPROVED<br>R.U.H. INCORPORATION
-                                </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

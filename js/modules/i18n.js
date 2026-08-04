@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html, Contingency Heir Transfer, Remember Me, Forgot Password, Mobile SMS Verification & Custom Validation Modal.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool ($100M Phased Allocation), Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html, Contingency Heir Transfer, Remember Me, Forgot Password, Mobile SMS Verification & Custom Validation / Success Modals.
  */
 
 export const translations = {
@@ -10,8 +10,11 @@ export const translations = {
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         btnOk: "Tamam",
+        btnViewCert: "Sertifikayı Görüntüle",
         valModalTitle: "Eksik Bilgi Uyarısı",
         valModalMsg: "Doldurulmamış zorunlu eksik alanları tamamlayın!",
+        valSuccessTitle: "Kayıt Başarıyla Tamamlandı!",
+        valSuccessMsg: "Tebrikler! Ön kayıt protokolü işleminiz başarıyla tamamlanmıştır. Sertifikanız hazırlanıyor...",
         
         // Nav
         navAbout: "Proje & Aşamalar",
@@ -347,7 +350,10 @@ export const translations = {
 
         // Modal Certificate
         certModalTitle: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) Resmi Ön Kayıt Sertifikası",
-        certOfficialDoc: "AŞAMA 1 RESMİ BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ",
+        certOfficialDoc: "ULUSLARARASI BİYO-ENERJİ VE MİRAS PROTOKOLÜ SERTİFİKASI",
+        certPreamble: "İşbu resmi tescil belgesi, aşağıda kimlik bilgileri ve 11 haneli Enerji İzi ID'si yer alan hak sahibinin R.U.H. Incorporation Aşama 1 Biyo-Enerji ve Miras Escrow Protokolü'ne kaydının eksiksiz olarak tamamlandığını onaylar.",
+        lblCertHolder: "HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER",
+        certQrCaption: "Kuantum Doğrulama QR Kodu",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
         btnPrint: "Sertifikayı Yazdır / PDF İndir",
         btnClose: "Kapat"
@@ -358,8 +364,11 @@ export const translations = {
         announcementBadge: "PHASE 1 (FREE PRE-REGISTRATION)",
         announcementText: "This portal is currently in <strong>Phase 1 (Concept, R&D & Free Pre-Registration)</strong>. Pre-registered users gain priority service activation upon Phase 2 & 3 deployment.",
         btnOk: "OK",
+        btnViewCert: "View Certificate",
         valModalTitle: "Incomplete Information Warning",
         valModalMsg: "Please complete all required missing fields!",
+        valSuccessTitle: "Registration Successfully Completed!",
+        valSuccessMsg: "Congratulations! Your pre-registration protocol is complete. Preparing your official certificate...",
         
         // Nav (Shortened navLegal to Legal & GDPR for header space)
         navAbout: "Project & Phases",
@@ -695,7 +704,10 @@ export const translations = {
 
         // Modal Certificate
         certModalTitle: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) Official Pre-Registration Certificate",
-        certOfficialDoc: "PHASE 1 OFFICIAL BIO-ENERGY & INHERITANCE REGISTRATION CERTIFICATE",
+        certOfficialDoc: "INTERNATIONAL BIO-ENERGY & HERITAGE PROTOCOL CERTIFICATE",
+        certPreamble: "This official registration certificate confirms that the holder whose identity details and 11-digit Energy ID appear below has fully completed registration into the R.U.H. Incorporation Phase 1 Bio-Energy & Estate Escrow Protocol.",
+        lblCertHolder: "HAK SAHİBİ / PRIMARY CERTIFICATE HOLDER",
+        certQrCaption: "Quantum Verification QR Code",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
         btnPrint: "Print Certificate / Download PDF",
         btnClose: "Close"

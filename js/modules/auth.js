@@ -224,7 +224,7 @@ function handleLogin() {
 
     if (!email || !pass) {
         const msg = lang === 'tr' ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' : 'Please complete all required missing fields!';
-        showCustomAlert(msg, firstInvalid);
+        showCustomAlert(msg, firstInvalid, 'error');
         return;
     }
 
@@ -244,15 +244,14 @@ function handleLogin() {
         updateNavAuthButton();
         const loginModal = document.getElementById('loginModal');
         if (loginModal) loginModal.classList.remove('active');
-        showCustomAlert(lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`);
-        openProfileModal();
+        showCustomAlert(lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`, null, 'success', () => openProfileModal());
     } else {
         if (emailInput) emailInput.classList.add('input-error');
         if (passInput) passInput.classList.add('input-error');
         const msg = lang === 'tr' 
             ? 'Hatalı e-posta veya şifre!' 
             : 'Invalid email or password!';
-        showCustomAlert(msg, emailInput);
+        showCustomAlert(msg, emailInput, 'error');
     }
 }
 
@@ -264,7 +263,7 @@ function handleForgotPassword() {
     if (!email) {
         if (forgotEmailInput) forgotEmailInput.classList.add('input-error');
         const msg = lang === 'tr' ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' : 'Please complete all required missing fields!';
-        showCustomAlert(msg, forgotEmailInput);
+        showCustomAlert(msg, forgotEmailInput, 'error');
         return;
     }
 
@@ -280,12 +279,12 @@ function handleForgotPassword() {
         const msg = lang === 'tr' 
             ? `Şifre sıfırlama bağlantısı e-posta adresinize (${email}) gönderilmiştir.` 
             : `Password reset link sent to your email address (${email}).`;
-        showCustomAlert(msg);
+        showCustomAlert(msg, null, 'success');
     } else {
         const msg = lang === 'tr' 
             ? `Bu e-posta adresi (${email}) sistemde kayıtlı değildir.` 
             : `This email address (${email}) is not registered.`;
-        showCustomAlert(msg);
+        showCustomAlert(msg, null, 'error');
     }
 }
 
@@ -296,7 +295,7 @@ function handleLogout() {
     updateNavAuthButton();
     const profileModal = document.getElementById('profileModal');
     if (profileModal) profileModal.classList.remove('active');
-    showCustomAlert(lang === 'tr' ? 'Oturum kapatıldı.' : 'Logged out successfully.');
+    showCustomAlert(lang === 'tr' ? 'Oturum kapatıldı.' : 'Logged out successfully.', null, 'success');
 }
 
 function handleSendSmsCode() {
@@ -310,7 +309,7 @@ function handleSendSmsCode() {
         ? `Mobil SMS Onay Kodunuz: [ ${generatedSmsCode} ]`
         : `Mobile SMS Verification Code: [ ${generatedSmsCode} ]`;
 
-    showCustomAlert(msg);
+    showCustomAlert(msg, null, 'success');
 
     const smsInputRow = document.getElementById('smsInputRow');
     if (smsInputRow) smsInputRow.style.display = 'flex';
@@ -325,7 +324,7 @@ function handleVerifySmsCode() {
     if (!inputCode) {
         if (smsInput) smsInput.classList.add('input-error');
         const msg = lang === 'tr' ? 'Doldurulmamış zorunlu eksik alanları tamamlayın!' : 'Please complete all required missing fields!';
-        showCustomAlert(msg, smsInput);
+        showCustomAlert(msg, smsInput, 'error');
         return;
     }
 
@@ -347,13 +346,13 @@ function handleVerifySmsCode() {
         const msg = lang === 'tr' 
             ? 'Mobil telefon numaranız başarıyla doğrulandı.' 
             : 'Mobile phone number successfully verified.';
-        showCustomAlert(msg);
+        showCustomAlert(msg, null, 'success');
     } else {
         if (smsInput) smsInput.classList.add('input-error');
         const msg = lang === 'tr' 
             ? 'Hatalı SMS kodu!' 
             : 'Invalid SMS code!';
-        showCustomAlert(msg, smsInput);
+        showCustomAlert(msg, smsInput, 'error');
     }
 }
 
