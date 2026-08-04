@@ -28,9 +28,17 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ---
 
+## 🔐 User Registration & Customer Profile Dashboard
+
+- **Account Registration:** Completing the pre-registration wizard auto-registers a secure user account with custom password authentication.
+- **Login Modal & Session Management:** Clients can log in anytime using their registered email and password.
+- **Customer Profile Dashboard:** Displays bio-energy lock status, protocol tier, unique bio-signature hash ID, and estate escrow Will directives.
+
+---
+
 ## 💎 Transparent R&D Donation Pool & Encrypted Leaderboard
 
-To accelerate the hardware biophysics R&D and orbital satellite Quantum GPS array deployment in Phase 2 & 3, RUH Project features a **100% Transparent R&D Donation Pool**.
+To accelerate hardware biophysics R&D and orbital satellite Quantum GPS array deployment in Phase 2 & 3, RUH Project features a **100% Transparent R&D Donation Pool**.
 
 - **Priority Privilege Rule:** Enrolled clients who contribute to the R&D fund receive **1st-Tier VIP Service Activation Priority** when Phase 2 & 3 hardware deployments go live.
 - **Encrypted Privacy Protection:** Donor identities are masked using initial encryption algorithms (e.g., `A**** Y****`) to protect user privacy.
@@ -49,11 +57,11 @@ To accelerate the hardware biophysics R&D and orbital satellite Quantum GPS arra
 
 ## 🏗️ Technical Architecture & Enhancements
 
-- **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, `js/modules/donations.js`, and `js/app.js` entrypoint).
+- **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, `js/modules/donations.js`, `js/modules/auth.js`, and `js/app.js` entrypoint).
+- **Dynamic Bilingual Placeholders:** Input placeholders and text hints dynamically switch between Turkish (e.g., `Örn: Ahmet Yıldız`) and English (e.g., `e.g., John Smith`).
 - **60-30-10 CSS Design System:** 60% Obsidian Black (`#07080d`), 30% Structural Surface Glass (`#121624`), 10% Neon Cyan (`#00f2fe`) & Gold (`#ffd700`) accents.
 - **SEO & Social Open Graph Metadata:** Complete Open Graph (`og:*`) & Twitter Cards (`twitter:*`) for viral social media preview cards.
 - **WCAG Accessibility (A11y):** ARIA roles (`role="dialog"`, `role="tablist"`, `aria-expanded`), high-contrast focus rings (`:focus-visible`), and screen-reader accessibility.
-- **UI/UX Micro-Interactions:** Skeleton loading shimmer animations during step changes and card hover transformations.
 
 ---
 
@@ -67,11 +75,12 @@ RUH-Project/
 ├── js/                     # ES6 Modular Architecture
 │   ├── app.js              # Main application entrypoint
 │   └── modules/
-│       ├── i18n.js         # TR/EN translation dictionary & state manager
+│       ├── i18n.js         # TR/EN translation dictionary & placeholder manager
 │       ├── wizard.js       # 5-step form wizard, family forms & live calculator
 │       ├── canvas.js       # Bio-energy particle frequency visualizer
 │       ├── templates.js    # Will directive draft templates
-│       └── donations.js    # Transparent R&D pool, masked leaderboard & donation modal
+│       ├── donations.js    # Transparent R&D pool, masked leaderboard & donation modal
+│       └── auth.js         # User registration, login modal & profile dashboard
 ├── README.md               # Comprehensive Repository Documentation & Architecture
 └── LICENSE                 # Open-source MIT License
 ```

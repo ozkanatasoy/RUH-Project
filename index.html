@@ -67,6 +67,11 @@
             </nav>
 
             <div class="nav-actions">
+                <!-- User Auth Profile Button -->
+                <button class="btn btn-outline btn-sm nav-user-btn" id="navUserBtn" aria-label="Kullanıcı Girişi / Profilim">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-user-label" data-i18n="navUserBtn">Giriş Yap</span>
+                </button>
                 <!-- Language Toggle Button -->
                 <button class="lang-switch-btn" id="langToggleBtn" aria-label="Dil Değiştir / Switch Language" title="Dil Değiştir / Switch Language">
                     <i class="fa-solid fa-globe"></i>
@@ -393,11 +398,11 @@
                                     <div class="form-grid">
                                         <div class="form-group">
                                             <label data-i18n="lblFullName">Ad Soyad *</label>
-                                            <input type="text" class="form-control" name="fullName_1" placeholder="Örn: Ahmet Yıldız" required>
+                                            <input type="text" class="form-control" name="fullName_1" placeholder="Örn: Ahmet Yıldız" data-i18n-placeholder="phFullName" required>
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblIdentity">TC Kimlik / Pasaport No *</label>
-                                            <input type="text" class="form-control" name="identityNo_1" placeholder="11 Haneli TC veya Pasaport" required>
+                                            <input type="text" class="form-control" name="identityNo_1" placeholder="11 Haneli TC veya Pasaport" data-i18n-placeholder="phIdentity" required>
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblBirthDate">Doğum Tarihi *</label>
@@ -405,15 +410,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblEmail">E-posta Adresi *</label>
-                                            <input type="email" class="form-control" name="email_1" placeholder="ahmet@example.com" required>
+                                            <input type="email" class="form-control" name="email_1" placeholder="ahmet@example.com" data-i18n-placeholder="phEmail" required>
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblPhone">Telefon Numarası *</label>
-                                            <input type="tel" class="form-control" name="phone_1" placeholder="+90 555 000 0000" required>
+                                            <input type="tel" class="form-control" name="phone_1" placeholder="+90 555 000 0000" data-i18n-placeholder="phPhone" required>
                                         </div>
                                         <div class="form-group">
                                             <label data-i18n="lblRelation">Yakınlık Derecesi</label>
-                                            <input type="text" class="form-control" name="relation_1" value="Kendisi (Ana Başvuran)" readonly>
+                                            <input type="text" class="form-control" name="relation_1" value="Kendisi (Ana Başvuran)" data-i18n-placeholder="phRelationSelf" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -573,18 +578,18 @@
 
                                 <div class="form-group">
                                     <label data-i18n="lblWillText">Vasiyetname & Miras Aktarım Talimatı Metni</label>
-                                    <textarea class="form-control text-area-will" id="willText" rows="6" placeholder="Ölümümden sonra tespit edilecek yeni bedenime aktarılmasını istediğim banka hesapları, gayrimenkuller ve taşınır varlıkların listesi..."></textarea>
+                                    <textarea class="form-control text-area-will" id="willText" rows="6" placeholder="Ölümümden sonra tespit edilecek yeni bedenime aktarılmasını istediğim banka hesapları, gayrimenkuller ve taşınır varlıkların listesi..." data-i18n-placeholder="phWillText"></textarea>
                                 </div>
                                 <p class="form-hint" data-i18n="willHint"><i class="fa-solid fa-info-circle"></i> Bu metin sadece yazılı bir sözleşme taslağıdır. Gerekli devir ve banka süreçleri müşteri öldükten sonra hukuki escrow kanallarınca gerçekleştirilecektir.</p>
                             </div>
                         </div>
 
-                        <!-- STEP 5: Summary Review & Certificate -->
+                        <!-- STEP 5: Summary Review & Password Creation -->
                         <div class="wizard-step-panel" id="stepPanel5" role="tabpanel">
                             <div class="panel-heading">
-                                <h3 data-i18n="step5Title">Adım 5: Özet İnceleme & Ön Kayıt Onayı</h3>
+                                <h3 data-i18n="step5Title">Adım 5: Özet İnceleme & Hesap Şifresi Oluşturma</h3>
                                 <p data-i18n="step5Subtitle">
-                                    Başvuru özetinizi kontrol ediniz ve Aşama 1 ön kayıt sertifikanızı oluşturunuz.
+                                    Başvuru özetinizi kontrol ediniz, hesabınız için giriş şifresi belirleyiniz ve Aşama 1 ön kayıt sertifikanızı oluşturunuz.
                                 </p>
                             </div>
 
@@ -605,6 +610,12 @@
                                     <span class="rev-label" data-i18n="revTotal">Aşama 1 Katılım Bedeli:</span>
                                     <span class="rev-value highlight-gold" id="revTotalFee">$0 USD (Ücretsiz Ön Kayıt)</span>
                                 </div>
+                            </div>
+
+                            <!-- Account Password Creation Field -->
+                            <div class="form-group" style="margin-bottom: 24px;">
+                                <label data-i18n="lblCreatePassword">Kullanıcı Şifresi Oluştur (Giriş Yapmak İçin) *</label>
+                                <input type="password" class="form-control" id="regPassword" placeholder="En az 6 karakterli şifre belirleyin" data-i18n-placeholder="phPassword" required>
                             </div>
 
                             <!-- Payment Method Preview -->
@@ -640,7 +651,7 @@
                                 <span data-i18n="btnNext">Devam Et</span> <i class="fa-solid fa-arrow-right"></i>
                             </button>
                             <button type="button" class="btn btn-gold" id="submitFormBtn" style="display: none;">
-                                <i class="fa-solid fa-certificate"></i> <span data-i18n="btnSubmit">Ücretsiz Ön Kaydı Tamamla & Sertifikayı Al</span>
+                                <i class="fa-solid fa-certificate"></i> <span data-i18n="btnSubmit">Hesap Oluştur, Kaydı Tamamla & Sertifikayı Al</span>
                             </button>
                         </div>
 
@@ -803,7 +814,7 @@
                 <form id="donationForm" onsubmit="return false;">
                     <div class="form-group" style="margin-bottom: 20px;">
                         <label data-i18n="lblDonorName">Adınız ve Soyadınız (Sistemde A**** Y**** şeklinde şifrelenecektir) *</label>
-                        <input type="text" class="form-control" id="donorFullName" placeholder="Örn: Ahmet Yıldız" required>
+                        <input type="text" class="form-control" id="donorFullName" placeholder="Örn: Ahmet Yıldız" data-i18n-placeholder="phFullName" required>
                     </div>
 
                     <div class="form-group" style="margin-bottom: 20px;">
@@ -816,7 +827,7 @@
                             <button type="button" class="btn btn-outline donate-amount-btn" data-amount="50000">$50,000</button>
                             <button type="button" class="btn btn-outline donate-amount-btn" data-amount="100000">$100,000</button>
                         </div>
-                        <input type="number" class="form-control" id="customDonateAmount" value="10000" placeholder="Özel Tutar Giriniz (USD)" required>
+                        <input type="number" class="form-control" id="customDonateAmount" value="10000" placeholder="Özel Tutar Giriniz (USD)" data-i18n-placeholder="phDonateCustom" required>
                     </div>
 
                     <p class="form-hint" data-i18n="donateModalHint"><i class="fa-solid fa-lock highlight-cyan"></i> Bağış tutarınız onaylandıktan sonra adınız ve soyadınız otomatik şifrelenerek sıralama tablosunda en yüksek tutara göre konumlandırılır ve aktivasyon önceliği tanımlanır.</p>
@@ -824,6 +835,79 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-gold" id="submitDonationBtn"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="btnConfirmDonate">Bağışı Onayla ve Sıralamaya Gir</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+        <div class="modal-dialog" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 id="loginModalTitle"><i class="fa-solid fa-right-to-bracket highlight-cyan"></i> <span data-i18n="loginModalTitle">Kullanıcı Girişi</span></h3>
+                <button class="modal-close" id="closeLoginModalBtn" aria-label="Kapat / Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" onsubmit="return false;">
+                    <div class="form-group" style="margin-bottom: 18px;">
+                        <label data-i18n="lblLoginEmail">E-posta Adresi *</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Kayıtlı E-posta Adresiniz" data-i18n-placeholder="phLoginEmail" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 24px;">
+                        <label data-i18n="lblLoginPass">Şifre *</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Kullanıcı Şifreniz" data-i18n-placeholder="phLoginPass" required>
+                    </div>
+                    <button type="button" class="btn btn-glow" id="submitLoginBtn" style="width: 100%;">
+                        <i class="fa-solid fa-key"></i> <span data-i18n="btnLoginSubmit">Oturum Aç</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Dashboard Modal -->
+    <div class="modal-backdrop" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+        <div class="modal-dialog" style="max-width: 580px;">
+            <div class="modal-header">
+                <h3 id="profileModalTitle"><i class="fa-solid fa-user-gear highlight-gold"></i> <span data-i18n="profileModalTitle">Müşteri Hesabı & Protokol Profili</span></h3>
+                <button class="modal-close" id="closeProfileModalBtn" aria-label="Kapat / Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-dashboard-card">
+                    <div class="profile-avatar-row">
+                        <div class="profile-avatar-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                        <div>
+                            <h4 id="profName" class="gradient-text">Ahmet Yıldız</h4>
+                            <p id="profEmail" style="font-size: 0.88rem; color: var(--text-muted);">ahmet@example.com</p>
+                        </div>
+                    </div>
+                    <div class="profile-details-grid">
+                        <div class="prof-detail-item">
+                            <span class="prof-label" data-i18n="lblProfIdentity">Kimlik / Pasaport:</span>
+                            <strong id="profIdentity" class="prof-val">11111111111</strong>
+                        </div>
+                        <div class="prof-detail-item">
+                            <span class="prof-label" data-i18n="lblProfHash">Biyo-Kayıt Hash ID:</span>
+                            <strong id="profHash" class="prof-val highlight-cyan">RUH-2026-X9842-887</strong>
+                        </div>
+                        <div class="prof-detail-item">
+                            <span class="prof-label" data-i18n="lblProfTier">Protokol Seviyesi:</span>
+                            <strong id="profTier" class="prof-val">Alfa Protokol (Aşama 1 Ücretsiz)</strong>
+                        </div>
+                        <div class="prof-detail-item">
+                            <span class="prof-label" data-i18n="lblProfStatus">Biyo-Enerji İzi Durumu:</span>
+                            <strong class="priority-tag badge-standard" data-i18n="lblProfStatusVal">KİLİTLENMEYE HAZIR (Aşama 1 Ön Kayıtlı)</strong>
+                        </div>
+                        <div class="prof-detail-item" style="grid-column: span 2;">
+                            <span class="prof-label" data-i18n="lblProfInheritance">Miras Escrow Tercihi:</span>
+                            <strong id="profInheritance" class="prof-val highlight-gold">Kayıtlı & Escrow Onaylı</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button type="button" class="btn btn-outline btn-sm" id="logoutBtn" style="border-color: rgba(255,50,50,0.5); color: #ff5555;">
+                    <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="btnLogout">Oturumu Kapat</span>
+                </button>
             </div>
         </div>
     </div>

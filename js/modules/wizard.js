@@ -1,15 +1,16 @@
 /**
- * RUH PROJECT - Wizard & Application State Module (3-Phase & Free Pre-Registration)
- * Manages 5-step wizard navigation, dynamic family member forms, Phase 1 free enrollment, and certificate preview.
+ * RUH PROJECT - Wizard & Application State Module (3-Phase & User Registration)
+ * Manages 5-step wizard navigation, dynamic family member forms, Phase 1 free enrollment, account creation, and certificate preview.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
 import { getWillTemplate } from './templates.js';
+import { registerUserAccount } from './auth.js';
 
 let currentStep = 1;
 let memberCount = 1;
 let selectedTier = 'alpha';
-let selectedTierFee = 0; // Phase 1 is Free!
+let selectedTierFee = 0; // Phase 1 Free!
 let selectedTierName = 'Alfa Protokol';
 
 export function initWizard() {
@@ -34,6 +35,12 @@ export function initWizard() {
                 ? `Form ${memberIndex}: Aile Üyesi` 
                 : `Form ${memberIndex}: Family Member`;
 
+            const phName = translations[lang].phFullName;
+            const phId = translations[lang].phIdentity;
+            const phEmail = translations[lang].phEmail;
+            const phPhone = translations[lang].phPhone;
+            const phRel = translations[lang].phRelationFamily;
+
             memberCard.innerHTML = `
                 <div class="member-card-header">
                     <span class="member-card-title">
@@ -46,11 +53,11 @@ export function initWizard() {
                 <div class="form-grid">
                     <div class="form-group">
                         <label>${translations[lang].lblFullName}</label>
-                        <input type="text" class="form-control" name="fullName_${memberIndex}" required>
+                        <input type="text" class="form-control" name="fullName_${memberIndex}" placeholder="${phName}" data-i18n-placeholder="phFullName" required>
                     </div>
                     <div class="form-group">
                         <label>${translations[lang].lblIdentity}</label>
-                        <input type="text" class="form-control" name="identityNo_${memberIndex}" required>
+                        <input type="text" class="form-control" name="identityNo_${memberIndex}" placeholder="${phId}" data-i18n-placeholder="phIdentity" required>
                     </div>
                     <div class="form-group">
                         <label>${translations[lang].lblBirthDate}</label>
@@ -58,15 +65,15 @@ export function initWizard() {
                     </div>
                     <div class="form-group">
                         <label>${translations[lang].lblEmail}</label>
-                        <input type="email" class="form-control" name="email_${memberIndex}" required>
+                        <input type="email" class="form-control" name="email_${memberIndex}" placeholder="${phEmail}" data-i18n-placeholder="phEmail" required>
                     </div>
                     <div class="form-group">
                         <label>${translations[lang].lblPhone}</label>
-                        <input type="tel" class="form-control" name="phone_${memberIndex}" required>
+                        <input type="tel" class="form-control" name="phone_${memberIndex}" placeholder="${phPhone}" data-i18n-placeholder="phPhone" required>
                     </div>
                     <div class="form-group">
                         <label>${translations[lang].lblRelation}</label>
-                        <input type="text" class="form-control" name="relation_${memberIndex}" placeholder="${lang === 'tr' ? 'Örn: Eş / Çocuk' : 'e.g., Spouse / Child'}" required>
+                        <input type="text" class="form-control" name="relation_${memberIndex}" placeholder="${phRel}" data-i18n-placeholder="phRelationFamily" required>
                     </div>
                 </div>
             `;
@@ -141,7 +148,7 @@ export function initWizard() {
     // Inheritance Toggles & Will Templates
     initInheritanceAndTemplates();
 
-    // Modal Certificate
+    // Modal Certificate & Account Registration
     initCertificateModal(submitFormBtn);
 }
 
@@ -307,17 +314,41 @@ function initCertificateModal(submitFormBtn) {
         submitFormBtn.addEventListener('click', () => {
             const lang = getCurrentLang();
             const primaryName = document.querySelector('input[name="fullName_1"]')?.value || 'Ahmet Yıldız';
+            const primaryId = document.querySelector('input[name="identityNo_1"]')?.value || '11111111111';
+            const primaryEmail = document.querySelector('input[name="email_1"]')?.value || 'user@example.com';
+            const regPasswordInput = document.getElementById('regPassword');
+
+            const password = regPasswordInput ? regPasswordInput.value.trim() : '';
+
+            if (!password || password.length < 6) {
+                alert(lang === 'tr' ? 'Lütfen en az 6 karakterli geçerli bir hesap şifresi oluşturunuz.' : 'Please create a valid account password (at least 6 characters).');
+                if (regPasswordInput) regPasswordInput.focus();
+                return;
+            }
+
             const randomHash = 'RUH-2026-X' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(100 + Math.random() * 900);
+            const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
+            const inheritStatus = isInheritYes 
+                ? (lang === 'tr' ? 'Kayıtlı & Escrow Onaylı' : 'Registered & Escrow Approved')
+                : (lang === 'tr' ? 'Beden Tespiti (Miras Devirsiz)' : 'Host Body Detection Only');
+
+            // Save Account & Auto-login
+            registerUserAccount({
+                fullName: primaryName,
+                identityNo: primaryId,
+                email: primaryEmail,
+                password: password,
+                hashId: randomHash,
+                tierName: selectedTierName,
+                inheritanceStatus: inheritStatus,
+                registeredAt: new Date().toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US')
+            });
 
             document.getElementById('certHashVal').textContent = randomHash;
             document.getElementById('certHolderName').textContent = primaryName;
             document.getElementById('certMemberCount').textContent = `${memberCount} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
             document.getElementById('certTierName').textContent = `${selectedTierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
-            
-            const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
-            document.getElementById('certInheritance').textContent = isInheritYes 
-                ? (lang === 'tr' ? 'Kayıtlı & Escrow Onaylı' : 'Registered & Escrow Approved')
-                : (lang === 'tr' ? 'Beden Tespiti (Miras Devirsiz)' : 'Host Body Detection Only');
+            document.getElementById('certInheritance').textContent = inheritStatus;
 
             const today = new Date();
             document.getElementById('certDate').textContent = today.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US');

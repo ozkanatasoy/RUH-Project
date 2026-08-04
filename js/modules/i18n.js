@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture & Transparent Donation Pool.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture, Transparent Donation Pool, and User Auth/Profile.
  */
 
 export const translations = {
@@ -18,6 +18,37 @@ export const translations = {
         navApply: "Ön Kayıt Başvurusu",
         navFaq: "SSS",
         navCta: "Yerinizi Ayırtın",
+        navUserBtn: "Giriş Yap",
+        navUserLogged: "Profilim",
+
+        // Placeholders & Form Hints
+        phFullName: "Örn: Ahmet Yıldız",
+        phIdentity: "11 Haneli TC veya Pasaport",
+        phEmail: "ahmet@example.com",
+        phPhone: "+90 555 000 0000",
+        phRelationSelf: "Kendisi (Ana Başvuran)",
+        phRelationFamily: "Örn: Eş / Çocuk",
+        phWillText: "Ölümümden sonra tespit edilecek yeni bedenime aktarılmasını istediğim banka hesapları, gayrimenkuller ve taşınır varlıkların listesi...",
+        phDonateCustom: "Özel Tutar Giriniz (USD)",
+        phPassword: "En az 6 karakterli şifre belirleyin",
+        phLoginEmail: "Kayıtlı E-posta Adresiniz",
+        phLoginPass: "Kullanıcı Şifreniz",
+
+        // Auth & User Profile Modal
+        loginModalTitle: "Kullanıcı Girişi",
+        lblLoginEmail: "E-posta Adresi *",
+        lblLoginPass: "Şifre *",
+        btnLoginSubmit: "Oturum Aç",
+        profileModalTitle: "Müşteri Hesabı & Protokol Profili",
+        lblProfTitle: "Kayıtlı Müşteri:",
+        lblProfEmail: "E-posta:",
+        lblProfIdentity: "Kimlik / Pasaport:",
+        lblProfHash: "Biyo-Kayıt Hash kilit ID:",
+        lblProfTier: "Protokol Seviyesi:",
+        lblProfStatus: "Biyo-Enerji İzi Durumu:",
+        lblProfStatusVal: "KİLİTLENMEYE HAZIR (Aşama 1 Ön Kayıtlı)",
+        lblProfInheritance: "Miras Escrow Tercihi:",
+        btnLogout: "Oturumu Kapat",
 
         // Hero
         heroTag: "Biyo-Enerji Kilitlenme & Kuantum GPS Protokolü",
@@ -164,20 +195,21 @@ export const translations = {
         lblWillText: "Vasiyetname & Miras Aktarım Talimatı Metni",
         willHint: "Bu metin sadece yazılı bir sözleşme taslağıdır. Gerekli devir ve banka süreçleri müşteri öldükten sonra hukuki escrow kanallarınca gerçekleştirilecektir.",
 
-        // Wizard Step 5 & Modal
-        step5Title: "Adım 5: Özet İnceleme & Ön Kayıt Onayı",
-        step5Subtitle: "Başvuru özetinizi kontrol ediniz ve Aşama 1 ön kayıt sertifikanızı oluşturunuz.",
+        // Wizard Step 5 & Password Registration
+        step5Title: "Adım 5: Özet İnceleme & Hesap Şifresi Oluşturma",
+        step5Subtitle: "Başvuru özetinizi kontrol ediniz, hesabınız için giriş şifresi belirleyiniz ve Aşama 1 ön kayıt sertifikanızı oluşturunuz.",
         revForms: "Kayıtlı Formlar:",
         revTier: "Seçilen Paket:",
         revInherit: "Miras Aktarımı:",
         revTotal: "Aşama 1 Katılım Bedeli:",
+        lblCreatePassword: "Kullanıcı Şifresi Oluştur (Giriş Yapmak İçin) *",
         payMethodTitle: "Ön Kayıt Onay Protokolü",
         payWire: "Dijital Ön Kayıt Tescili",
         payCrypto: "Biyo-Enerji Sinyal Tescili",
         payCard: "Hukuki Ön Onay",
         btnPrev: "Geri",
         btnNext: "Devam Et",
-        btnSubmit: "Ücretsiz Ön Kaydı Tamamla & Sertifikayı Al",
+        btnSubmit: "Hesap Oluştur, Kaydı Tamamla & Sertifikayı Al",
 
         // FAQ
         faqSub: "MERAK EDİLENLER",
@@ -218,6 +250,37 @@ export const translations = {
         navApply: "Pre-Registration Portal",
         navFaq: "FAQ",
         navCta: "Reserve Your Place",
+        navUserBtn: "Login",
+        navUserLogged: "My Profile",
+
+        // Placeholders & Form Hints
+        phFullName: "e.g., John Smith",
+        phIdentity: "11-Digit ID or Passport",
+        phEmail: "john@example.com",
+        phPhone: "+1 555 000 0000",
+        phRelationSelf: "Self (Primary Applicant)",
+        phRelationFamily: "e.g., Spouse / Child",
+        phWillText: "List of bank accounts, real estate, and digital assets to be transferred to my target host body post-transition...",
+        phDonateCustom: "Enter Custom Amount (USD)",
+        phPassword: "Create a password (min 6 chars)",
+        phLoginEmail: "Your Registered Email Address",
+        phLoginPass: "Your Password",
+
+        // Auth & User Profile Modal
+        loginModalTitle: "User Login",
+        lblLoginEmail: "Email Address *",
+        lblLoginPass: "Password *",
+        btnLoginSubmit: "Log In",
+        profileModalTitle: "Customer Account & Protocol Profile",
+        lblProfTitle: "Registered Client:",
+        lblProfEmail: "Email:",
+        lblProfIdentity: "National ID / Passport:",
+        lblProfHash: "Bio-Signature Hash Lock ID:",
+        lblProfTier: "Protocol Tier:",
+        lblProfStatus: "Bio-Energy Lock Status:",
+        lblProfStatusVal: "READY FOR LOCKING (Phase 1 Pre-Registered)",
+        lblProfInheritance: "Inheritance Escrow Choice:",
+        btnLogout: "Log Out",
 
         // Hero
         heroTag: "Bio-Energy Lock & Quantum GPS Protocol",
@@ -364,20 +427,21 @@ export const translations = {
         lblWillText: "Will & Estate Transfer Directive Text",
         willHint: "This text serves as a legal drafting framework. Actual banking and asset transfers will be executed post-mortem via designated escrow trusts.",
 
-        // Wizard Step 5 & Modal
-        step5Title: "Step 5: Summary Review & Pre-Registration Approval",
-        step5Subtitle: "Review your application summary and generate your Phase 1 Certificate.",
+        // Wizard Step 5 & Password Registration
+        step5Title: "Step 5: Summary Review & Password Creation",
+        step5Subtitle: "Review your application summary, create your account password, and generate your Phase 1 Certificate.",
         revForms: "Registered Forms:",
         revTier: "Selected Package:",
         revInherit: "Inheritance Transfer:",
         revTotal: "Phase 1 Contribution Fee:",
+        lblCreatePassword: "Create Account Password (For Login) *",
         payMethodTitle: "Pre-Registration Protocol Approval",
         payWire: "Digital Pre-Registration Entry",
         payCrypto: "Bio-Energy Signal Escrow",
         payCard: "Legal Pre-Approval",
         btnPrev: "Back",
         btnNext: "Continue",
-        btnSubmit: "Complete Free Pre-Registration & Get Certificate",
+        btnSubmit: "Create Account, Complete & Get Certificate",
 
         // FAQ
         faqSub: "FREQUENTLY ASKED QUESTIONS",
@@ -434,10 +498,19 @@ export function switchLanguage(lang) {
 
     if (dict.title) document.title = dict.title;
 
+    // Update innerHTML
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) {
             el.innerHTML = dict[key];
+        }
+    });
+
+    // Update Placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) {
+            el.placeholder = dict[key];
         }
     });
 
