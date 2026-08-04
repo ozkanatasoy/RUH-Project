@@ -1,6 +1,6 @@
 # RUH Project
 
-**"Reserve your next vessel before you die"**
+**Reserve your place before you die**
 
 ![RUH Project Banner](https://img.shields.io/badge/Phase-Phase%201%20(R%26D%20%26%20Pre--Registration)-00f2fe?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-ffd700?style=for-the-badge)
