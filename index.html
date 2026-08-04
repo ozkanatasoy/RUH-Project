@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RUH Project | Ruh Aktarımı & Miras Koruma Protokolü</title>
     <meta name="description" content="Ölmeden önce yerinizi ayırtın. RUH Project, ölüm sonrası biyo-enerji izi kilitleme, kuantum GPS tespiti ve sözleşmeli miras koruma protokolüdür.">
-    <meta name="keywords" content="RUH Project, Ruh Aktarımı, Miras Koruma, Escrow, Biyo-Enerji Kilitleme, Kuantum GPS">
+    <meta name="keywords" content="RUH Project, Ruh Aktarımı, Miras Koruma, Escrow, Biyo-Enerji Kilitleme, Kuantum GPS, Şeffaf Bağış">
     <meta name="author" content="Özkan Atasoy - RUH Project Team">
     <meta name="theme-color" content="#07080d">
 
@@ -60,6 +60,7 @@
             <nav class="nav-menu" id="navMenu" aria-label="Ana Navigasyon">
                 <a href="#about" class="nav-link" data-i18n="navAbout">Proje & Aşamalar</a>
                 <a href="#mechanics" class="nav-link" data-i18n="navMechanics">Teknoloji & İşleyiş</a>
+                <a href="#donations" class="nav-link" data-i18n="navDonations">Şeffaf AR-GE Havuzu</a>
                 <a href="#legal" class="nav-link" data-i18n="navLegal">Hukuki Çerçeve</a>
                 <a href="#apply" class="nav-link" data-i18n="navApply">Ön Kayıt Başvurusu</a>
                 <a href="#faq" class="nav-link" data-i18n="navFaq">SSS</a>
@@ -217,8 +218,78 @@
             </div>
         </section>
 
+        <!-- Transparent R&D Donation Pool & Encrypted Leaderboard Section -->
+        <section class="section section-dark section-donations" id="donations">
+            <div class="container">
+                <div class="section-header text-center">
+                    <div class="section-subtitle" data-i18n="donationSub">%100 ŞEFFAFLIK İLKESİ VE AR-GE DESTEĞİ</div>
+                    <h2 class="section-title" data-i18n="donationTitle">AR-GE ve Altyapı Bağış Havuzu</h2>
+                    <p class="section-desc" data-i18n="donationDesc">
+                        Projenin Aşama 2 ve 3 teknolojik altyapısını hızlandırmak amacıyla bağış havuzu oluşturulmuştur. Form dolduran kullanıcılar arasında bağış yapan kişilere aktivasyon sürecinde mutlak öncelik tanınacaktır.
+                    </p>
+                </div>
+
+                <!-- Crowdfunding Progress Container -->
+                <div class="cyber-card donation-progress-card">
+                    <div class="donation-progress-header">
+                        <span class="progress-title" data-i18n="donateTargetHeader">Şeffaf AR-GE İlerleme Durumu</span>
+                        <span class="progress-percentage-label" id="donationProgressPercentage">%29.0</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="donationProgressBarFill" style="width: 29.0%;"></div>
+                    </div>
+                    <div class="donation-stats-row">
+                        <div>
+                            <span class="stat-label-dim" data-i18n="donateRaisedLabel">Toplanan Bağış:</span>
+                            <strong class="highlight-cyan stat-value-lg" id="totalRaisedAmount">$145,000 USD</strong>
+                        </div>
+                        <div>
+                            <span class="stat-label-dim" data-i18n="donateTargetLabel">Hedeflanan AR-GE Fonu:</span>
+                            <strong class="highlight-gold stat-value-lg" id="targetGoalAmount">$500,000 USD</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Priority Notice Callout Box -->
+                <div class="priority-callout-box">
+                    <div class="callout-icon"><i class="fa-solid fa-award"></i></div>
+                    <div class="callout-content">
+                        <p data-i18n="donatePriorityNotice">
+                            <strong>Öncelik Kuralı:</strong> Form dolduran kullanıcılar arasında bağış yapan kişilerin kimlikleri (gizlilik ilkesi gereği ad ve soyadın baş harfleri hariç şifrelenerek) en çok bağış yapana göre sıralanır. En yüksek bağış sahipleri Aşama 2 ve 3 hizmet aktivasyonunda 1. Derece VIP sırayı alır.
+                        </p>
+                    </div>
+                    <button type="button" class="btn btn-gold btn-md" id="openDonationModalBtn">
+                        <i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="btnOpenDonateModal">AR-GE Havuzuna Bağış Yap & Öncelik Kazan</span>
+                    </button>
+                </div>
+
+                <!-- Encrypted Donor Leaderboard Table -->
+                <div class="cyber-card leaderboard-card">
+                    <h3 class="leaderboard-card-title" data-i18n="leaderboardHeader">
+                        <i class="fa-solid fa-trophy highlight-gold"></i> Şifreli Bağışçı Sıralama Tablosu (En Yüksek Bağış Sıralaması)
+                    </h3>
+                    <div class="table-responsive">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="thRank">Sıra</th>
+                                    <th data-i18n="thIdentity">Şifreli Kimlik / İnisiyaller</th>
+                                    <th data-i18n="thAmount">Bağış Miktarı</th>
+                                    <th data-i18n="thPriority">Aktivasyon Öncelik Derecesi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donorLeaderboardBody">
+                                <!-- Dynamic Leaderboard Rows Rendered via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Core Technology & Rules Section -->
-        <section class="section section-dark" id="mechanics">
+        <section class="section" id="mechanics">
             <div class="container">
                 <div class="section-header text-center">
                     <div class="section-subtitle" data-i18n="mechSub">TEMEL İLKELER VE TEKNİK MEKANİZMA</div>
@@ -663,6 +734,7 @@
                 <ul>
                     <li><a href="#about" data-i18n="navAbout">Proje & Aşamalar</a></li>
                     <li><a href="#mechanics" data-i18n="navMechanics">Teknoloji & İşleyiş</a></li>
+                    <li><a href="#donations" data-i18n="navDonations">Şeffaf AR-GE Havuzu</a></li>
                     <li><a href="#apply" data-i18n="navApply">Ön Kayıt Başvurusu</a></li>
                     <li><a href="#faq" data-i18n="navFaq">Sıkça Sorulan Sorular</a></li>
                 </ul>
@@ -716,6 +788,42 @@
             <div class="modal-footer">
                 <button class="btn btn-outline" id="printCertBtn"><i class="fa-solid fa-print"></i> <span data-i18n="btnPrint">Sertifikayı Yazdır / PDF İndir</span></button>
                 <button class="btn btn-glow" id="finishModalBtn"><i class="fa-solid fa-check"></i> <span data-i18n="btnClose">Kapat</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div class="modal-backdrop" id="donationModal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="donateModalTitle"><i class="fa-solid fa-hand-holding-dollar highlight-gold"></i> <span data-i18n="donateModalTitle">AR-GE ve Altyapı Fonuna Bağış Yap</span></h3>
+                <button class="modal-close" id="closeDonationModalBtn" aria-label="Kapat / Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="donationForm" onsubmit="return false;">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label data-i18n="lblDonorName">Adınız ve Soyadınız (Sistemde A**** Y**** şeklinde şifrelenecektir) *</label>
+                        <input type="text" class="form-control" id="donorFullName" placeholder="Örn: Ahmet Yıldız" required>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label data-i18n="lblDonateAmount">Bağış Miktarı (USD) *</label>
+                        <div class="donate-presets-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
+                            <button type="button" class="btn btn-outline donate-amount-btn" data-amount="1000">$1,000</button>
+                            <button type="button" class="btn btn-outline donate-amount-btn" data-amount="5000">$5,000</button>
+                            <button type="button" class="btn btn-outline donate-amount-btn active" data-amount="10000">$10,000</button>
+                            <button type="button" class="btn btn-outline donate-amount-btn" data-amount="25000">$25,000</button>
+                            <button type="button" class="btn btn-outline donate-amount-btn" data-amount="50000">$50,000</button>
+                            <button type="button" class="btn btn-outline donate-amount-btn" data-amount="100000">$100,000</button>
+                        </div>
+                        <input type="number" class="form-control" id="customDonateAmount" value="10000" placeholder="Özel Tutar Giriniz (USD)" required>
+                    </div>
+
+                    <p class="form-hint" data-i18n="donateModalHint"><i class="fa-solid fa-lock highlight-cyan"></i> Bağış tutarınız onaylandıktan sonra adınız ve soyadınız otomatik şifrelenerek sıralama tablosunda en yüksek tutara göre konumlandırılır ve aktivasyon önceliği tanımlanır.</p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-gold" id="submitDonationBtn"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="btnConfirmDonate">Bağışı Onayla ve Sıralamaya Gir</span></button>
             </div>
         </div>
     </div>

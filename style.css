@@ -273,12 +273,12 @@ a:hover {
 
 .nav-menu {
     display: flex;
-    gap: 32px;
+    gap: 28px;
 }
 
 .nav-link {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 500;
     position: relative;
     padding: 6px 0;
@@ -544,7 +544,7 @@ a:hover {
     background: var(--border-color);
 }
 
-/* --- Hero Visual Card & Canvas --- */
+/* --- Cyber Card --- */
 .cyber-card {
     background: var(--bg-card);
     backdrop-filter: blur(16px);
@@ -760,6 +760,208 @@ a:hover {
 }
 
 .phase-3-card .phase-list i {
+    color: var(--color-gold);
+}
+
+/* --- Transparent R&D Donation & Leaderboard Section --- */
+.donation-progress-card {
+    margin-bottom: 32px;
+    padding: 32px;
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.donation-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.progress-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.progress-percentage-label {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-gold);
+    text-shadow: 0 0 15px var(--color-gold-glow);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 14px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-primary), var(--color-gold));
+    border-radius: 20px;
+    transition: width 1s ease-in-out;
+    box-shadow: 0 0 20px var(--color-gold-glow);
+}
+
+.donation-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label-dim {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+.stat-value-lg {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+}
+
+/* Priority Callout Box */
+.priority-callout-box {
+    background: linear-gradient(135deg, rgba(121, 40, 202, 0.25), rgba(0, 242, 254, 0.15));
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
+}
+
+.callout-icon {
+    font-size: 2.8rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 20px var(--color-gold-glow);
+}
+
+.callout-content p {
+    color: #f0f4fd;
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+/* Leaderboard Table */
+.leaderboard-card-title {
+    font-size: 1.35rem;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.92rem;
+}
+
+.leaderboard-table th {
+    padding: 14px 18px;
+    border-bottom: 2px solid var(--border-color);
+    font-family: var(--font-heading);
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.leaderboard-table td {
+    padding: 16px 18px;
+    border-bottom: 1px dashed var(--border-color);
+    vertical-align: middle;
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.rank-gold {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #000;
+    box-shadow: 0 0 15px var(--color-gold-glow);
+}
+
+.rank-silver {
+    background: linear-gradient(135deg, #e0e0e0, #9e9e9e);
+    color: #000;
+}
+
+.rank-bronze {
+    background: linear-gradient(135deg, #cd7f32, #8b4513);
+    color: #fff;
+}
+
+.masked-name {
+    font-family: monospace;
+    font-size: 1.05rem;
+    color: var(--color-primary);
+    letter-spacing: 0.1em;
+}
+
+.donor-amount {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #fff;
+}
+
+.priority-tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.badge-vip {
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+}
+
+.badge-priority {
+    background: rgba(121, 40, 202, 0.15);
+    color: #b829ea;
+    border: 1px solid #b829ea;
+}
+
+.badge-standard {
+    background: rgba(0, 242, 254, 0.15);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+/* Donate Preset Buttons in Modal */
+.donate-amount-btn.active {
+    border-color: var(--color-gold);
+    background: rgba(255, 215, 0, 0.15);
     color: var(--color-gold);
 }
 
@@ -1547,6 +1749,10 @@ a:hover {
     }
     .footer-container {
         grid-template-columns: 1fr;
+    }
+    .priority-callout-box {
+        flex-direction: column;
+        text-align: center;
     }
 }
 

@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture & Transparent Donation Pool.
  */
 
 export const translations = {
@@ -13,6 +13,7 @@ export const translations = {
         // Nav
         navAbout: "Proje & Aşamalar",
         navMechanics: "Teknoloji & İşleyiş",
+        navDonations: "Şeffaf AR-GE Havuzu",
         navLegal: "Hukuki Çerçeve",
         navApply: "Ön Kayıt Başvurusu",
         navFaq: "SSS",
@@ -61,6 +62,28 @@ export const translations = {
         p3Check2: "Banka Escrow ve Gayrimenkul Devirlerinin Gerçekleştirilmesi",
         p3Check3: "Yeni Beden Kimliğine Vasiyet Şartlarının Aktarılması",
         p3Check4: "Kesintisiz Yaşam ve Varlık Sürekliliği Garantisi",
+
+        // Transparent R&D Donation & Leaderboard Section
+        donationSub: "%100 ŞEFFAFLIK İLKESİ VE AR-GE DESTEĞİ",
+        donationTitle: "AR-GE ve Altyapı Bağış Havuzu",
+        donationDesc: "Projenin Aşama 2 ve 3 teknolojik altyapısını hızlandırmak amacıyla bağış havuzu oluşturulmuştur. Form dolduran kullanıcılar arasında bağış yapan kişilere aktivasyon sürecinde mutlak öncelik tanınacaktır.",
+        donateTargetHeader: "Şeffaf AR-GE İlerleme Durumu",
+        donateRaisedLabel: "Toplanan Bağış:",
+        donateTargetLabel: "Hedeflenen AR-GE Fonu:",
+        donatePriorityNotice: "<strong>Öncelik Kuralı:</strong> Form dolduran kullanıcılar arasında bağış yapan kişilerin kimlikleri (gizlilik ilkesi gereği ad ve soyadın baş harfleri hariç şifrelenerek) en çok bağış yapana göre sıralanır. En yüksek bağış sahipleri Aşama 2 ve 3 hizmet aktivasyonunda 1. Derece VIP sırayı alır.",
+        btnOpenDonateModal: "AR-GE Havuzuna Bağış Yap & Öncelik Kazan",
+        leaderboardHeader: "Şifreli Bağışçı Sıralama Tablosu (En Yüksek Bağış Sıralaması)",
+        thRank: "Sıra",
+        thIdentity: "Şifreli Kimlik / İnisiyaller",
+        thAmount: "Bağış Miktarı",
+        thPriority: "Aktivasyon Öncelik Derecesi",
+
+        // Donation Modal
+        donateModalTitle: "AR-GE ve Altyapı Fonuna Bağış Yap",
+        lblDonorName: "Adınız ve Soyadınız (Sistemde A**** Y**** şeklinde şifrelenecektir) *",
+        lblDonateAmount: "Bağış Miktarı (USD) *",
+        donateModalHint: "Bağış tutarınız onaylandıktan sonra adınız ve soyadınız otomatik şifrelenerek sıralama tablosunda en yüksek tutara göre konumlandırılır ve aktivasyon önceliği tanımlanır.",
+        btnConfirmDonate: "Bağışı Onayla ve Sıralamaya Gir",
 
         // Mechanics
         mechSub: "TEMEL İLKELER VE TEKNİK MEKANİZMA",
@@ -190,6 +213,7 @@ export const translations = {
         // Nav
         navAbout: "Project & Phases",
         navMechanics: "Tech & Mechanics",
+        navDonations: "Transparent R&D Pool",
         navLegal: "Legal Framework",
         navApply: "Pre-Registration Portal",
         navFaq: "FAQ",
@@ -238,6 +262,28 @@ export const translations = {
         p3Check2: "Execution of Banking Escrow & Real Estate Asset Transfer",
         p3Check3: "Will Terms Activation for the Identified Identity",
         p3Check4: "Seamless Life Continuity & Wealth Protection Guarantee",
+
+        // Transparent R&D Donation & Leaderboard Section
+        donationSub: "100% TRANSPARENCY & R&D SUPPORT",
+        donationTitle: "R&D & Infrastructure Donation Pool",
+        donationDesc: "To accelerate Phase 2 & 3 technological R&D, a transparent donation pool has been established. Donating clients receive top-tier activation priority.",
+        donateTargetHeader: "Transparent R&D Funding Progress",
+        donateRaisedLabel: "Total Raised:",
+        donateTargetLabel: "Target R&D Goal:",
+        donatePriorityNotice: "<strong>Priority Rule:</strong> Donating applicants are encrypted (names masked except initials for privacy) and sorted by contribution amount. Top donors secure 1st Class VIP Priority placement for Phase 2 & 3 service activation.",
+        btnOpenDonateModal: "Donate to R&D Fund & Gain Priority",
+        leaderboardHeader: "Encrypted Donor Leaderboard (Sorted by Highest Contribution)",
+        thRank: "Rank",
+        thIdentity: "Encrypted Identity / Initials",
+        thAmount: "Contribution Amount",
+        thPriority: "Activation Priority Tier",
+
+        // Donation Modal
+        donateModalTitle: "Donate to R&D & Infrastructure Fund",
+        lblDonorName: "Full Name (Masked as A**** Y**** for privacy) *",
+        lblDonateAmount: "Donation Amount (USD) *",
+        donateModalHint: "Upon confirmation, your identity will be automatically encrypted, ranked on the leaderboard by contribution amount, and assigned activation priority.",
+        btnConfirmDonate: "Confirm Donation & Join Priority Rank",
 
         // Mechanics
         mechSub: "CORE PRINCIPLES & TECHNICAL MECHANISMS",

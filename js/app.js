@@ -1,11 +1,12 @@
 /**
  * RUH PROJECT - Application Main Entrypoint (ES6 Module)
- * Initializes i18n, Canvas visualizer, Wizard portal, FAQ accordion, and UI micro-interactions.
+ * Initializes i18n, Canvas visualizer, Wizard portal, Donations Leaderboard, FAQ accordion, and UI micro-interactions.
  */
 
 import { getCurrentLang, onLanguageChange, switchLanguage } from './modules/i18n.js';
 import { initEnergyCanvas } from './modules/canvas.js';
 import { initWizard, updateFeeSummary } from './modules/wizard.js';
+import { initDonations, renderLeaderboard, updateDonationProgress } from './modules/donations.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -15,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Initialize Interactive Multi-Step Wizard
     initWizard();
 
-    // 3. Initialize Language Switcher Controls
+    // 3. Initialize Transparent Donation Pool & Masked Leaderboard
+    initDonations();
+
+    // 4. Initialize Language Switcher Controls
     const langBtn = document.getElementById('langToggleBtn');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
@@ -24,12 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Register callback on language change to update dynamic fee summary & forms
+    // Register callback on language change to update dynamic fee summary & leaderboard
     onLanguageChange(() => {
         updateFeeSummary();
+        renderLeaderboard();
+        updateDonationProgress();
     });
 
-    // 4. FAQ Accordion Controls
+    // 5. FAQ Accordion Controls
     document.querySelectorAll('.faq-question').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.parentElement;
@@ -41,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Mobile Navigation Hamburger Menu
+    // 6. Mobile Navigation Hamburger Menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const navMenu = document.getElementById('navMenu');
     if (hamburgerBtn && navMenu) {
@@ -51,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Top Announcement Close Control
+    // 7. Top Announcement Close Control
     const closeAnnouncement = document.getElementById('closeAnnouncement');
     const announcementBar = document.getElementById('announcementBar');
     if (closeAnnouncement && announcementBar) {

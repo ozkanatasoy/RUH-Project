@@ -1,6 +1,6 @@
 # RUH Project
 
->**"Reserve your place before you die"**
+> **"Ölmeden önce yerinizi ayırtın"** / **"Reserve your place before you die"**
 
 ---
 
@@ -28,6 +28,16 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ---
 
+## 💎 Transparent R&D Donation Pool & Encrypted Leaderboard
+
+To accelerate the hardware biophysics R&D and orbital satellite Quantum GPS array deployment in Phase 2 & 3, RUH Project features a **100% Transparent R&D Donation Pool**.
+
+- **Priority Privilege Rule:** Enrolled clients who contribute to the R&D fund receive **1st-Tier VIP Service Activation Priority** when Phase 2 & 3 hardware deployments go live.
+- **Encrypted Privacy Protection:** Donor identities are masked using initial encryption algorithms (e.g., `A**** Y****`) to protect user privacy.
+- **Sorted Leaderboard:** The leaderboard automatically ranks supporters in descending order by contribution amount, giving top donors absolute priority placement.
+
+---
+
 ## ⚡ Core Technical Mechanics
 
 1. **No Host Body Selection:** Neither the client nor RUH Project can select the target host body. Destination is determined strictly by pre-mortem cellular bio-energy frequency locking and natural resonance.
@@ -39,7 +49,7 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ## 🏗️ Technical Architecture & Enhancements
 
-- **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, and `js/app.js` entrypoint).
+- **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, `js/modules/donations.js`, and `js/app.js` entrypoint).
 - **60-30-10 CSS Design System:** 60% Obsidian Black (`#07080d`), 30% Structural Surface Glass (`#121624`), 10% Neon Cyan (`#00f2fe`) & Gold (`#ffd700`) accents.
 - **SEO & Social Open Graph Metadata:** Complete Open Graph (`og:*`) & Twitter Cards (`twitter:*`) for viral social media preview cards.
 - **WCAG Accessibility (A11y):** ARIA roles (`role="dialog"`, `role="tablist"`, `aria-expanded`), high-contrast focus rings (`:focus-visible`), and screen-reader accessibility.
@@ -60,7 +70,8 @@ RUH-Project/
 │       ├── i18n.js         # TR/EN translation dictionary & state manager
 │       ├── wizard.js       # 5-step form wizard, family forms & live calculator
 │       ├── canvas.js       # Bio-energy particle frequency visualizer
-│       └── templates.js    # Will directive draft templates
+│       ├── templates.js    # Will directive draft templates
+│       └── donations.js    # Transparent R&D pool, masked leaderboard & donation modal
 ├── README.md               # Comprehensive Repository Documentation & Architecture
 └── LICENSE                 # Open-source MIT License
 ```
