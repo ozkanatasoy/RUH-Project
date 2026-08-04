@@ -65,7 +65,7 @@ export const translations = {
         statusLocked: "KİLİTLENMEYE HAZIR",
         labelGPS: "Kuantum GPS Frekansı:",
 
-        // Phases (Roadmap Architecture)
+        // Phases (Roadmap Architecture Badges)
         phaseSub: "ŞEFFAFLIK İLKESİ VE PROJE YOL HARİTASI",
         phaseTitle: "Gelişim Yol Haritası",
         phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmuştur.",
@@ -77,7 +77,7 @@ export const translations = {
         p1Check2: "Miras Devir Protokolü ve Vasiyetname Şablonu Hazırlığı",
         p1Check4: "Hukuki Beyan ve Sorumluluk Şartları Kabulü",
 
-        phase2Badge: "AŞAMA 2 (Geliştirme)",
+        phase2Badge: "AŞAMA 2 (AR-GE ve Altyapı Hazırlığı)",
         phase2Title: "Aşama 2: Biyo-Enerji Kilitleme & Escrow Sözleşmeleri",
         phase2Desc: "Teknolojik biyo-tarama donanımları ve uluslararası banka escrow sözleşmeleri devreye girer. Ön kayıt yaptıran müşterilerin ölüm öncesi hücre ve bilinç frekansı protokole kilitlenir.",
         p2Check1: "Ölüm Öncesi Hücresel Biyo-Enerji İzi Kilitleme",
@@ -85,7 +85,7 @@ export const translations = {
         p2Check3: "Aşama 1 sürecinde form doldurup bağış yapan sıralamaya göre önceliklendirilen kişiye özel aktivasyon",
         p2Check4: "Kuantum Şifreli Dijital Miras Kasası Kurulumu",
 
-        phase3Badge: "AŞAMA 3 (Aktivasyon)",
+        phase3Badge: "AŞAMA 3 (Planlanan Evre - Beklemede)",
         phase3Title: "Aşama 3: Kuantum GPS Tespiti & Canlı Beden Aktarımı",
         phase3Desc: "Ruhun yeni canlı bedende hayat bulmasıyla birlikte kuantum uydu ağı sinyali tespit eder. Hukuki kayyumlar marifetiyle tüm miras varlıkları resmi olarak yeni kimliğe devredilir.",
         p3Check1: "Yörünge Uyduları Destekli Kuantum GPS Yeri Tespiti",
@@ -293,7 +293,7 @@ export const translations = {
         statusLocked: "READY FOR LOCKING",
         labelGPS: "Quantum GPS Frequency:",
 
-        // Phases (Roadmap Architecture)
+        // Phases (Roadmap Architecture Badges)
         phaseSub: "TRANSPARENCY & PROJECT ROADMAP",
         phaseTitle: "Development Roadmap",
         phaseDesc: "RUH Project operates under a transparent 3-phase development roadmap detailed below.",
@@ -305,7 +305,7 @@ export const translations = {
         p1Check2: "Inheritance Escrow Transfer Protocol & Will Drafting",
         p1Check4: "Legal Liability & Responsibility Consent Protocol",
 
-        phase2Badge: "PHASE 2 (Development)",
+        phase2Badge: "PHASE 2 (R&D & Infra Prep)",
         phase2Title: "Phase 2: Bio-Energy Lock & Estate Escrow",
         phase2Desc: "Deployment of bio-energy frequency scanning hardware and international banking escrow contracts. Pre-registered clients have their pre-mortem cellular signature locked into the protocol.",
         p2Check1: "Pre-Mortem Cellular Bio-Energy Signature Lock",
@@ -313,7 +313,7 @@ export const translations = {
         p2Check3: "Exclusive activation prioritized by ranking for applicants who complete the form and donate during Phase 1",
         p2Check4: "Quantum Encrypted Digital Will Vault Setup",
 
-        phase3Badge: "PHASE 3 (Activation)",
+        phase3Badge: "PHASE 3 (Planned Phase - Standby)",
         phase3Title: "Phase 3: Quantum GPS Tracing & Host Body Relocation",
         phase3Desc: "Upon consciousness rebirth in a new host body, orbital satellite arrays pinpoint the target vessel. Legal custodians execute the official transfer of wealth to the new identity.",
         p3Check1: "Orbital Satellite Priority Quantum GPS Location Tracing",
