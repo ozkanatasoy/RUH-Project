@@ -75,7 +75,6 @@ export const translations = {
         phase1Desc: "Müşteriler kişisel bilgi ve miras tercihlerini içeren formu doldurarak ücretsiz olarak ön kayıt yaptırır. Bu aşamada herhangi bir kayıt ücreti talep edilmez; biyo-fizik AR-GE ve uluslararası miras hukuku altyapısı modellenir.",
         p1Check1: "Ücretsiz Kişisel Kayıt ve Biyo-Enerji Taslağı Oluşturma",
         p1Check2: "Miras Devir Protokolü ve Vasiyetname Şablonu Hazırlığı",
-        p1Check3: "Sonraki Aşamalar Devreye Girdiğinde Sıra Önceliği Hakkı",
         p1Check4: "Hukuki Beyan ve Sorumluluk Şartları Kabulü",
 
         phase2Badge: "AŞAMA 2 (Geliştirme)",
@@ -304,7 +303,6 @@ export const translations = {
         phase1Desc: "Clients fill out personal preferences and pre-register free of charge. No upfront fees are required during Phase 1 while biophysics R&D and legal escrow models are finalized.",
         p1Check1: "Free Personal Data Registration & Bio-Energy Profiling",
         p1Check2: "Inheritance Escrow Transfer Protocol & Will Drafting",
-        p1Check3: "Priority Placement for Phase 2 & 3 Service Activation",
         p1Check4: "Legal Liability & Responsibility Consent Protocol",
 
         phase2Badge: "PHASE 2 (Development)",
