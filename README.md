@@ -54,12 +54,12 @@ To accelerate hardware biophysics R&D and orbital satellite Quantum GPS array de
 
 ---
 
-## ⚡ Core Technical Mechanics
+## ⚡ Core Technical Mechanics & Optional Badges
 
 1. **No Host Body Selection:** Neither the client nor RUH Project can select the target host body. Destination is determined strictly by pre-mortem cellular bio-energy frequency locking and natural resonance.
 2. **Bio-Energy Lock:** Electro-magnetic consciousness frequencies are scanned and locked prior to death.
 3. **Quantum GPS Location:** Satellites track and locate the newly activated host body post-transition.
-4. **Contractual Estate Escrow:** Written wills and banking trust agreements ensure seamless legal transfer of wealth to the new identity.
+4. **Contractual Estate Escrow (Optional / İsteğe Bağlı):** Written wills and banking trust agreements ensure seamless legal transfer of wealth to the new identity, labeled with an optional gold badge (`İsteğe Bağlı` / `Optional`).
 
 ---
 
@@ -67,7 +67,7 @@ To accelerate hardware biophysics R&D and orbital satellite Quantum GPS array de
 
 - **ES6 Modular JavaScript:** Code split into decoupled modules (`js/modules/i18n.js`, `js/modules/wizard.js`, `js/modules/canvas.js`, `js/modules/templates.js`, `js/modules/donations.js`, `js/modules/auth.js`, and `js/app.js` entrypoint).
 - **Single Phase 1 Protocol Card:** Streamlined Step 2 protocol selection with a single, elegant free pre-registration protocol card.
-- **Dynamic Bilingual Placeholders:** Input placeholders and text hints dynamically switch between Turkish (e.g., `Örn: Ahmet Yıldız`) and English (e.g., `e.g., John Smith`).
+- **Dynamic Bilingual Badges & Placeholders:** Input placeholders, hints, and optional badges dynamically switch between Turkish (`İsteğe Bağlı`) and English (`Optional`).
 - **60-30-10 CSS Design System:** 60% Obsidian Black (`#07080d`), 30% Structural Surface Glass (`#121624`), 10% Neon Cyan (`#00f2fe`) & Gold (`#ffd700`) accents.
 - **SEO & Social Open Graph Metadata:** Complete Open Graph (`og:*`) & Twitter Cards (`twitter:*`) for viral social media preview cards.
 - **WCAG Accessibility (A11y):** ARIA roles (`role="dialog"`, `role="tablist"`, `aria-expanded`), high-contrast focus rings (`:focus-visible`), and screen-reader accessibility.

@@ -1044,10 +1044,27 @@ a:hover {
     border-radius: var(--radius-lg);
 }
 
-/* --- Mechanics Grid --- */
+/* --- Mechanics Grid & Optional Badge --- */
 .mechanic-card {
     text-align: center;
     padding: 40px 28px;
+    position: relative;
+}
+
+.badge-optional-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 215, 0, 0.15);
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 10px var(--color-gold-glow);
 }
 
 .card-icon {

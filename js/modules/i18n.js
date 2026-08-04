@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture, Transparent Donation Pool, Single Protocol Card & User Auth/Profile.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for 3-Phase Architecture, Transparent Donation Pool, Single Protocol Card & Optional Badge.
  */
 
 export const translations = {
@@ -116,7 +116,7 @@ export const translations = {
         donateModalHint: "Bağış tutarınız onaylandıktan sonra adınız ve soyadınız otomatik şifrelenerek sıralama tablosunda en yüksek tutara göre konumlandırılır ve aktivasyon önceliği tanımlanır.",
         btnConfirmDonate: "Bağışı Onayla ve Sıralamaya Gir",
 
-        // Mechanics
+        // Mechanics & Badges
         mechSub: "TEMEL İLKELER VE TEKNİK MEKANİZMA",
         mechTitle: "Nasıl Çalışır?",
         mechDesc: "Beden seçimi yapılmaz; biyo-enerji iziniz kilitlenir ve doğal uyum kanalıyla yeni beden kuantum GPS ile tespit edilir.",
@@ -126,6 +126,7 @@ export const translations = {
         mechCard2Desc: "Ruhun yeni canlı bedende hayat bulmasıyla birlikte, kilitlenen biyo-enerji izinin yaydığı frekans sinyali sayesinde yeni bedenin konumu nokta atışı tespit edilir.",
         mechCard3Title: "3. Hukuki Miras Transferi",
         mechCard3Desc: "Belirlenen vasiyetname ve bankacılık escrow sözleşmeleri doğrultusunda, kişinin önceki yaşamındaki tüm mal varlığı ve taşınmazları resmi devir süreciyle yeni kimliğine garanti edilir.",
+        badgeOptional: "İsteğe Bağlı",
 
         // Wizard Headers
         wizardSub: "İNTERAKTİF BAŞVURU PORTALI",
@@ -344,7 +345,7 @@ export const translations = {
         donateModalHint: "Upon confirmation, your identity will be automatically encrypted, ranked on the leaderboard by contribution amount, and assigned activation priority.",
         btnConfirmDonate: "Confirm Donation & Join Priority Rank",
 
-        // Mechanics
+        // Mechanics & Badges
         mechSub: "CORE PRINCIPLES & TECHNICAL MECHANISMS",
         mechTitle: "How It Works",
         mechDesc: "Host body selection is impossible; your bio-energy signature is locked pre-death, and your next host body is located via resonant Quantum GPS.",
@@ -354,6 +355,7 @@ export const translations = {
         mechCard2Desc: "As consciousness awakens in the new living entity, the locked bio-frequency signal allows Quantum GPS satellite arrays to pinpoint the exact location of the target host body.",
         mechCard3Title: "3. Legal Estate Escrow",
         mechCard3Desc: "Pursuant to pre-established legal trusts and banking escrow contracts, all assets, bank accounts, and real estate are legally transferred to the new identity.",
+        badgeOptional: "Optional",
 
         // Wizard Headers
         wizardSub: "INTERACTIVE APPLICATION PORTAL",
