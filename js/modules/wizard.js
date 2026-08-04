@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - Wizard & Application State Module
- * Manages 5-step wizard navigation, multi-member form registration, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
+ * Manages 5-step wizard navigation, multi-member form registration, Age & Gender validation, Contingency Heir Succession Protocol, 11-digit Energy ID & 16-digit Barcode certificate rendering for R.U.H. Incorporation.
  */
 
 import { getCurrentLang, getTranslation, translations } from './i18n.js';
@@ -39,6 +39,14 @@ export function initWizard() {
             const phEmail = translations[lang].phEmail;
             const phPhone = translations[lang].phPhone;
             const phRel = translations[lang].phRelationFamily;
+            const phAgeVal = translations[lang].phAge || '35';
+
+            const lblAgeVal = translations[lang].lblAge || (lang === 'tr' ? 'Yaş *' : 'Age *');
+            const lblGenderVal = translations[lang].lblGender || (lang === 'tr' ? 'Cinsiyet *' : 'Gender *');
+            const optSelectVal = translations[lang].optGenderSelect || (lang === 'tr' ? 'Cinsiyet Seçiniz' : 'Select Gender');
+            const optMaleVal = translations[lang].optGenderMale || (lang === 'tr' ? 'Erkek' : 'Male');
+            const optFemaleVal = translations[lang].optGenderFemale || (lang === 'tr' ? 'Kadın' : 'Female');
+            const optOtherVal = translations[lang].optGenderOther || (lang === 'tr' ? 'Diğer / Belirtmek İstemiyorum' : 'Other / Prefer not to say');
 
             memberCard.innerHTML = `
                 <div class="member-card-header">
@@ -61,6 +69,19 @@ export function initWizard() {
                     <div class="form-group">
                         <label>${translations[lang].lblBirthDate}</label>
                         <input type="date" class="form-control" name="birthDate_${memberIndex}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>${lblAgeVal}</label>
+                        <input type="number" class="form-control" name="age_${memberIndex}" placeholder="${phAgeVal}" data-i18n-placeholder="phAge" min="1" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label>${lblGenderVal}</label>
+                        <select class="form-control" name="gender_${memberIndex}" required>
+                            <option value="" disabled selected>${optSelectVal}</option>
+                            <option value="male">${optMaleVal}</option>
+                            <option value="female">${optFemaleVal}</option>
+                            <option value="other">${optOtherVal}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>${translations[lang].lblEmail}</label>
@@ -98,57 +119,64 @@ export function initWizard() {
     const regPassConfirmEl = document.getElementById('regPasswordConfirm');
     const passMatchStatus = document.getElementById('passMatchStatus');
 
-    function checkPasswordMatch() {
-        if (!regPassEl || !regPassConfirmEl || !passMatchStatus) return;
-        const p1 = regPassEl.value.trim();
-        const p2 = regPassConfirmEl.value.trim();
-        const lang = getCurrentLang();
-
-        if (!p2) {
-            passMatchStatus.textContent = '';
-            return;
-        }
-
-        if (p1 === p2) {
-            passMatchStatus.textContent = lang === 'tr' ? '✓ Şifreler eşleşiyor' : '✓ Passwords match';
-            passMatchStatus.style.color = '#00ff88';
-        } else {
-            passMatchStatus.textContent = lang === 'tr' ? '✕ Şifreler eşleşmiyor' : '✕ Passwords do not match';
-            passMatchStatus.style.color = '#ff5555';
-        }
+    if (regPassEl && regPassConfirmEl && passMatchStatus) {
+        const checkMatch = () => {
+            const lang = getCurrentLang();
+            const p1 = regPassEl.value;
+            const p2 = regPassConfirmEl.value;
+            if (!p2) {
+                passMatchStatus.textContent = '';
+                return;
+            }
+            if (p1 === p2) {
+                passMatchStatus.textContent = lang === 'tr' ? '✓ Şifreler eşleşiyor' : '✓ Passwords match';
+                passMatchStatus.style.color = 'var(--color-green)';
+            } else {
+                passMatchStatus.textContent = lang === 'tr' ? '✗ Şifreler eşleşmiyor' : '✗ Passwords do not match';
+                passMatchStatus.style.color = 'var(--color-red)';
+            }
+        };
+        regPassEl.addEventListener('input', checkMatch);
+        regPassConfirmEl.addEventListener('input', checkMatch);
     }
 
-    if (regPassEl) regPassEl.addEventListener('input', checkPasswordMatch);
-    if (regPassConfirmEl) regPassConfirmEl.addEventListener('input', checkPasswordMatch);
-
-    // Navigation Listeners
+    // Step Navigation
     if (nextStepBtn) {
         nextStepBtn.addEventListener('click', () => {
             if (validateStep(currentStep)) {
-                if (currentStep < 5) {
-                    showSkeletonLoading(() => {
-                        currentStep++;
-                        updateStepView();
-                    });
-                }
+                showSkeletonLoading(() => {
+                    currentStep = Math.min(currentStep + 1, 5);
+                    updateStepView();
+                });
             }
         });
     }
 
     if (prevStepBtn) {
         prevStepBtn.addEventListener('click', () => {
-            if (currentStep > 1) {
-                currentStep--;
+            showSkeletonLoading(() => {
+                currentStep = Math.max(currentStep - 1, 1);
                 updateStepView();
-            }
+            });
         });
     }
 
-    // Inheritance Toggles & Will Templates
-    initInheritanceAndTemplates();
+    // Indicator Click Handler
+    document.querySelectorAll('.step-indicator').forEach(indicator => {
+        indicator.addEventListener('click', () => {
+            const targetStep = parseInt(indicator.getAttribute('data-step'), 10);
+            if (targetStep < currentStep || validateStep(currentStep)) {
+                showSkeletonLoading(() => {
+                    currentStep = targetStep;
+                    updateStepView();
+                });
+            }
+        });
+    });
 
-    // Modal Certificate & Account Registration
+    initInheritanceAndTemplates();
     initCertificateModal(submitFormBtn);
+    updateStepView();
 }
 
 function updateDynamicFormTitles() {
@@ -160,38 +188,28 @@ function updateDynamicFormTitles() {
         const titleSpan = card.querySelector('.member-title-span');
         if (titleSpan) {
             if (num === 1) {
-                titleSpan.textContent = translations[lang].formTitle1;
+                titleSpan.textContent = lang === 'tr' ? 'Form 1: Ana Başvuru Sahibi (Kendiniz)' : 'Form 1: Primary Applicant (Self)';
             } else {
-                titleSpan.textContent = `${translations[lang].formTitleN} ${num}: ${lang === 'tr' ? 'Aile Üyesi' : 'Family Member'}`;
+                titleSpan.textContent = lang === 'tr' ? `Form ${num}: Aile Üyesi` : `Form ${num}: Family Member`;
             }
         }
     });
 }
 
-export function updateFeeSummary() {
+function updateFeeSummary() {
+    const calcCountEl = document.getElementById('calcFormCount');
+    const calcTotalEl = document.getElementById('calcTotalFee');
     const lang = getCurrentLang();
-    const count = document.querySelectorAll('.family-member-card').length || 1;
-    memberCount = count;
 
-    const countText = `${count} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
-    const calcMemberCountEl = document.getElementById('calcMemberCount');
-    if (calcMemberCountEl) calcMemberCountEl.textContent = countText;
-
-    const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
-
-    const calcTierNameEl = document.getElementById('calcTierName');
-    if (calcTierNameEl) {
-        calcTierNameEl.textContent = `${selectedTierName} (${lang === 'tr' ? 'Aşama 1 Ücretsiz' : 'Phase 1 Free'})`;
-    }
-
-    const calcTotalEl = document.getElementById('calcTotalAmount');
-    if (calcTotalEl) calcTotalEl.textContent = lang === 'tr' ? '$0 USD (Ücretsiz Ön Kayıt)' : '$0 USD (Free Pre-Registration)';
+    const count = document.querySelectorAll('.family-member-card').length;
+    if (calcCountEl) calcCountEl.textContent = `${count} ${lang === 'tr' ? 'Kişi' : 'Person(s)'}`;
+    if (calcTotalEl) calcTotalEl.textContent = lang === 'tr' ? '$0 USD (Aşama 1 Ücretsiz)' : '$0 USD (Phase 1 Free)';
 }
 
 function updateStepView() {
-    document.querySelectorAll('.wizard-step-panel').forEach(panel => panel.classList.remove('active'));
-    const activePanel = document.getElementById(`stepPanel${currentStep}`);
-    if (activePanel) activePanel.classList.add('active');
+    document.querySelectorAll('.wizard-step-panel').forEach((panel, idx) => {
+        panel.classList.toggle('active', idx + 1 === currentStep);
+    });
 
     document.querySelectorAll('.step-indicator').forEach(ind => {
         const stepNum = parseInt(ind.getAttribute('data-step'), 10);
@@ -213,6 +231,7 @@ function updateStepView() {
         if (nextStepBtn) nextStepBtn.style.display = 'none';
         if (submitFormBtn) submitFormBtn.style.display = 'inline-flex';
         populateSummaryReview();
+        populateContingencySuccessionView();
     } else {
         if (nextStepBtn) nextStepBtn.style.display = 'inline-flex';
         if (submitFormBtn) submitFormBtn.style.display = 'none';
@@ -235,11 +254,32 @@ function showSkeletonLoading(callback) {
 function validateStep(step) {
     const lang = getCurrentLang();
     if (step === 1) {
-        const primaryName = document.querySelector('input[name="fullName_1"]');
-        const primaryId = document.querySelector('input[name="identityNo_1"]');
-        if (!primaryName.value.trim() || !primaryId.value.trim()) {
-            alert(lang === 'tr' ? 'Lütfen 1. Formdaki gerekli alanları (Ad Soyad, Kimlik No) doldurunuz.' : 'Please complete required fields in Form 1.');
-            return false;
+        const formCards = document.querySelectorAll('.family-member-card');
+        for (let idx = 0; idx < formCards.length; idx++) {
+            const num = idx + 1;
+            const nameEl = formCards[idx].querySelector(`input[name="fullName_${num}"]`);
+            const idEl = formCards[idx].querySelector(`input[name="identityNo_${num}"]`);
+            const ageEl = formCards[idx].querySelector(`input[name="age_${num}"]`);
+            const genderEl = formCards[idx].querySelector(`select[name="gender_${num}"]`);
+
+            if (!nameEl || !nameEl.value.trim() || !idEl || !idEl.value.trim()) {
+                alert(lang === 'tr' 
+                    ? `Lütfen Form ${num}'deki Ad Soyad ve Kimlik No alanlarını doldurunuz.` 
+                    : `Please complete Full Name and Identity No in Form ${num}.`);
+                return false;
+            }
+            if (!ageEl || !ageEl.value.trim()) {
+                alert(lang === 'tr' 
+                    ? `Lütfen Form ${num}'deki Yaş alanını doldurunuz.` 
+                    : `Please enter Age in Form ${num}.`);
+                return false;
+            }
+            if (!genderEl || !genderEl.value) {
+                alert(lang === 'tr' 
+                    ? `Lütfen Form ${num}'deki Cinsiyet seçimini yapınız.` 
+                    : `Please select Gender in Form ${num}.`);
+                return false;
+            }
         }
     } else if (step === 3) {
         const chkTerms = document.getElementById('chkTerms');
@@ -310,6 +350,80 @@ function populateSummaryReview() {
     if (revTotalFee) revTotalFee.textContent = lang === 'tr' ? '$0 USD (Ücretsiz Ön Kayıt)' : '$0 USD (Free Pre-Registration)';
 }
 
+/**
+ * Renders Contingency Rights Succession Box in Step 5 (Vefat Halinde Hak Devri)
+ */
+function populateContingencySuccessionView() {
+    const container = document.getElementById('contingencyDynamicContainer');
+    if (!container) return;
+
+    const lang = getCurrentLang();
+    const familyCards = document.querySelectorAll('.family-member-card');
+    
+    if (familyCards.length > 1) {
+        // Multiple family members registered
+        let html = `
+            <p style="font-size: 0.88rem; color: var(--color-gold); margin-bottom: 14px; font-weight: 600;">
+                <i class="fa-solid fa-users"></i> ${translations[lang].contingencyMultiNotice || 'Kayıtlı diğer aile üyeleriniz arasından hak devri yapmak istediğiniz kişi(leri) seçiniz ve devir oranlarını belirleyiniz:'}
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+        `;
+
+        const otherMembers = [];
+        familyCards.forEach((card, idx) => {
+            const memberIdx = card.getAttribute('data-member-index');
+            if (memberIdx !== '1') {
+                const nameInput = card.querySelector(`input[name="fullName_${memberIdx}"]`);
+                const relInput = card.querySelector(`input[name="relation_${memberIdx}"]`);
+                const name = nameInput ? nameInput.value.trim() : `Aile Üyesi ${memberIdx}`;
+                const relation = relInput ? relInput.value.trim() : (lang === 'tr' ? 'Aile Üyesi' : 'Family Member');
+                otherMembers.push({ index: memberIdx, name, relation });
+            }
+        });
+
+        const equalShare = Math.floor(100 / (otherMembers.length || 1));
+
+        otherMembers.forEach((m) => {
+            html += `
+                <div class="contingency-item-row" style="display: flex; align-items: center; justify-content: space-between; background: rgba(10, 14, 26, 0.8); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.2);">
+                    <label style="display: flex; align-items: center; gap: 10px; margin: 0; cursor: pointer; color: #fff; font-size: 0.95rem; font-weight: 500;">
+                        <input type="checkbox" class="chk-contingency-member" data-member-idx="${m.index}" checked style="width: 18px; height: 18px; accent-color: var(--color-cyan);">
+                        <span><strong>${m.name}</strong> (${m.relation})</span>
+                    </label>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">${lang === 'tr' ? 'Devir Oranı:' : 'Share:'}</span>
+                        <input type="number" class="form-control input-contingency-share" data-member-idx="${m.index}" value="${equalShare}" min="1" max="100" style="width: 75px; text-align: center; padding: 6px; font-weight: 700;"> %
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+        container.innerHTML = html;
+
+    } else {
+        // Single applicant (only Form 1)
+        const html = `
+            <div class="contingency-single-box">
+                <p style="font-size: 0.88rem; color: var(--color-gold); margin-bottom: 12px; font-weight: 600;">
+                    <i class="fa-solid fa-user-shield"></i> ${translations[lang].contingencySingleNotice || 'Kendiniz dışında aile üyesi kaydetmediğiniz için, vefatınız durumunda Aşama 2 & 3 öncelik haklarınızı devretmek istediğiniz 1. derece kanuni mirasçı veya yedek hak sahibini belirtiniz:'}
+                </p>
+                <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group" style="margin: 0;">
+                        <label>${translations[lang].lblBackupHeirName || 'Yedek Hak Sahibi Ad Soyad *'}</label>
+                        <input type="text" class="form-control" id="backupHeirName" placeholder="${translations[lang].phBackupHeirName || 'Örn: Mehmet Yıldız'}" required>
+                    </div>
+                    <div class="form-group" style="margin: 0;">
+                        <label>${translations[lang].lblBackupHeirRelation || 'Yakınlık / İletişim *'}</label>
+                        <input type="text" class="form-control" id="backupHeirRelation" placeholder="${translations[lang].phBackupHeirRelation || 'Örn: Oğlu / +90 555...'}" required>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.innerHTML = html;
+    }
+}
+
 function initCertificateModal(submitFormBtn) {
     const certModal = document.getElementById('certificateModal');
     const closeCertModal = document.getElementById('closeCertModal');
@@ -353,6 +467,23 @@ function initCertificateModal(submitFormBtn) {
                 return;
             }
 
+            // Single Heir backup fields validation if memberCount === 1
+            const familyCards = document.querySelectorAll('.family-member-card');
+            let backupHeirData = null;
+            if (familyCards.length === 1) {
+                const bName = document.getElementById('backupHeirName');
+                const bRel = document.getElementById('backupHeirRelation');
+                if (bName && !bName.value.trim()) {
+                    alert(lang === 'tr' ? 'Lütfen vefat halinde devredilecek Yedek Hak Sahibi Ad Soyad alanını doldurunuz.' : 'Please enter Backup Heir Full Name.');
+                    if (bName) bName.focus();
+                    return;
+                }
+                backupHeirData = {
+                    name: bName?.value.trim(),
+                    relation: bRel?.value.trim()
+                };
+            }
+
             const selectedTierName = lang === 'tr' ? 'Aşama 1 Ön Kayıt Protokolü' : 'Phase 1 Pre-Registration Protocol';
             const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
             const inheritStatus = isInheritYes 
@@ -366,18 +497,21 @@ function initCertificateModal(submitFormBtn) {
 
             // Build array of all registered family members with unique 11-digit Energy IDs and 16-digit Barcodes
             currentMemberCerts = [];
-            const formCards = document.querySelectorAll('.family-member-card');
             
-            formCards.forEach((card, idx) => {
+            familyCards.forEach((card, idx) => {
                 const num = idx + 1;
                 const fName = card.querySelector(`input[name="fullName_${num}"]`)?.value || (num === 1 ? primaryName : `Member ${num}`);
                 const fId = card.querySelector(`input[name="identityNo_${num}"]`)?.value || primaryId;
                 const fEmail = card.querySelector(`input[name="email_${num}"]`)?.value || primaryEmail;
+                const fAge = card.querySelector(`input[name="age_${num}"]`)?.value || '';
+                const fGender = card.querySelector(`select[name="gender_${num}"]`)?.value || '';
 
                 currentMemberCerts.push({
                     fullName: fName,
                     identityNo: fId,
                     email: fEmail,
+                    age: fAge,
+                    gender: fGender,
                     energyId: generateEnergyId(), // 11 alphanumeric characters
                     barcode: generateBarcode16(), // 16 digits
                     registeredAt: fullDateTime,
@@ -393,12 +527,15 @@ function initCertificateModal(submitFormBtn) {
                 fullName: primaryMember.fullName,
                 identityNo: primaryMember.identityNo,
                 email: primaryMember.email,
+                age: primaryMember.age,
+                gender: primaryMember.gender,
                 password: password,
                 energyId: primaryMember.energyId,
                 barcode: primaryMember.barcode,
                 tierName: selectedTierName,
                 inheritanceStatus: inheritStatus,
                 registeredAt: fullDateTime,
+                backupHeir: backupHeirData,
                 members: currentMemberCerts
             });
 
@@ -448,28 +585,23 @@ export function renderCertificateView(memberIndex = 0) {
 
     // Populate Member Switcher dropdown if multiple members exist
     const switcherWrapper = document.getElementById('certMemberSwitcherWrapper');
-    if (switcherWrapper) {
+    const switcherSelect = document.getElementById('certMemberSwitcher');
+
+    if (switcherWrapper && switcherSelect) {
         if (currentMemberCerts.length > 1) {
             switcherWrapper.style.display = 'block';
-            switcherWrapper.innerHTML = `
-                <label style="font-size: 0.85rem; color: var(--text-muted); margin-right: 8px;">
-                    ${lang === 'tr' ? 'Sertifika Seçin:' : 'Select Certificate:'}
-                </label>
-                <select id="certMemberSelect" class="form-control" style="display: inline-block; width: auto; padding: 4px 12px; font-size: 0.88rem;">
-                    ${currentMemberCerts.map((m, i) => `
-                        <option value="${i}" ${i === memberIndex ? 'selected' : ''}>
-                            ${m.fullName} (${m.energyId})
-                        </option>
-                    `).join('')}
-                </select>
-            `;
+            switcherSelect.innerHTML = '';
+            currentMemberCerts.forEach((m, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `${m.fullName} (${m.energyId})`;
+                if (idx === memberIndex) opt.selected = true;
+                switcherSelect.appendChild(opt);
+            });
 
-            const selectEl = document.getElementById('certMemberSelect');
-            if (selectEl) {
-                selectEl.addEventListener('change', (e) => {
-                    renderCertificateView(parseInt(e.target.value, 10));
-                });
-            }
+            switcherSelect.onchange = (e) => {
+                renderCertificateView(parseInt(e.target.value, 10));
+            };
         } else {
             switcherWrapper.style.display = 'none';
         }

@@ -1,6 +1,6 @@
 /**
  * RUH PROJECT - i18n Translation Module
- * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy & Legal.html.
+ * Handles bilingual state (TR / EN) and dynamic DOM updates for Roadmap Architecture, Transparent Donation Pool, Single Protocol Card, Certificate Verification Portal, Expanded FAQ, KVKK Privacy Policy, Legal.html & Contingency Heir Transfer.
  */
 
 export const translations = {
@@ -10,7 +10,7 @@ export const translations = {
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         
-        // Nav (Shortened navLegal to Hukuk & KVKK / Legal & GDPR for header space)
+        // Nav
         navAbout: "Proje & Aşamalar",
         navMechanics: "Teknoloji & İşleyiş",
         navDonations: "AR-GE Havuzu",
@@ -38,6 +38,25 @@ export const translations = {
         phLoginEmail: "Kayıtlı E-posta Adresiniz",
         phLoginPass: "Kullanıcı Şifreniz",
         phVerifyInput: "16 Haneli Barkod No veya 11 Haneli Enerji İzi ID",
+        phAge: "Örn: 35",
+
+        // Form Age & Gender i18n
+        lblAge: "Yaş *",
+        lblGender: "Cinsiyet *",
+        optGenderSelect: "Cinsiyet Seçiniz",
+        optGenderMale: "Erkek",
+        optGenderFemale: "Kadın",
+        optGenderOther: "Diğer / Belirtmek İstemiyorum",
+
+        // Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri)
+        contingencyTitle: "Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri Protokolü",
+        contingencyDesc: "Aşama 2 (Biyo-Enerji Kilitleme) ve Aşama 3 (Kuantum GPS Tespiti) hizmetleri aktif edilmeden önce ana başvuru sahibinin vefat etmesi durumunda ön kayıt ve öncelik hakkının devredileceği aile üyesi veya yedek hak sahibi bilgileri aşağıdadır:",
+        contingencyMultiNotice: "Kayıtlı diğer aile üyeleriniz arasından hak devri yapmak istediğiniz kişi(leri) seçiniz ve devir oranlarını belirleyiniz:",
+        contingencySingleNotice: "Kendiniz dışında aile üyesi kaydetmediğiniz için, vefatınız durumunda Aşama 2 & 3 öncelik haklarınızı devretmek istediğiniz 1. derece kanuni mirasçı veya yedek hak sahibini belirtiniz:",
+        lblBackupHeirName: "Yedek Hak Sahibi Ad Soyad *",
+        lblBackupHeirRelation: "Yakınlık / İletişim *",
+        phBackupHeirName: "Örn: Mehmet Yıldız",
+        phBackupHeirRelation: "Örn: Oğlu / +90 555...",
 
         // Auth & User Profile Modal
         loginModalTitle: "Kullanıcı Girişi",
@@ -355,6 +374,25 @@ export const translations = {
         phLoginEmail: "Your Registered Email Address",
         phLoginPass: "Your Password",
         phVerifyInput: "16-Digit Barcode No or 11-Digit Energy ID",
+        phAge: "e.g., 35",
+
+        // Form Age & Gender i18n
+        lblAge: "Age *",
+        lblGender: "Gender *",
+        optGenderSelect: "Select Gender",
+        optGenderMale: "Male",
+        optGenderFemale: "Female",
+        optGenderOther: "Other / Prefer not to say",
+
+        // Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri)
+        contingencyTitle: "Succession Rights Transfer Protocol Prior to Phase 2 & 3",
+        contingencyDesc: "If the primary applicant passes away before Phase 2 (Bio-Energy Lock) & Phase 3 (Quantum GPS Tracing) activation, designated succession rights and transfer percentages are established below:",
+        contingencyMultiNotice: "Select family member(s) to transfer your pre-registration rights to and specify transfer percentages:",
+        contingencySingleNotice: "Since no other family members were registered, designate a primary legal heir or backup contact for succession rights:",
+        lblBackupHeirName: "Backup Heir Full Name *",
+        lblBackupHeirRelation: "Relationship / Contact *",
+        phBackupHeirName: "e.g., John Smith",
+        phBackupHeirRelation: "e.g., Son / +1 555...",
 
         // Auth & User Profile Modal
         loginModalTitle: "User Login",

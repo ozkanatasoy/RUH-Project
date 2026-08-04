@@ -458,6 +458,19 @@
                                             <input type="date" class="form-control" name="birthDate_1" required>
                                         </div>
                                         <div class="form-group">
+                                            <label data-i18n="lblAge">Yaş *</label>
+                                            <input type="number" class="form-control" name="age_1" placeholder="Örn: 35" data-i18n-placeholder="phAge" min="1" max="120" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label data-i18n="lblGender">Cinsiyet *</label>
+                                            <select class="form-control" name="gender_1" required>
+                                                <option value="" disabled selected data-i18n="optGenderSelect">Cinsiyet Seçiniz</option>
+                                                <option value="male" data-i18n="optGenderMale">Erkek</option>
+                                                <option value="female" data-i18n="optGenderFemale">Kadın</option>
+                                                <option value="other" data-i18n="optGenderOther">Diğer / Belirtmek İstemiyorum</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label data-i18n="lblEmail">E-posta Adresi *</label>
                                             <input type="email" class="form-control" name="email_1" placeholder="ahmet@example.com" data-i18n-placeholder="phEmail" required>
                                         </div>
@@ -646,6 +659,19 @@
                                     <span class="rev-label" data-i18n="revTotal">Aşama 1 Katılım Bedeli:</span>
                                     <span class="rev-value highlight-gold" id="revTotalFee">$0 USD (Ücretsiz Ön Kayıt)</span>
                                 </div>
+                            </div>
+
+                            <!-- Contingency Rights Succession Box (Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri) -->
+                            <div class="contingency-succession-box cyber-card" style="margin-top: 24px; margin-bottom: 24px; padding: 24px; border: 1px solid var(--color-cyan); background: rgba(0, 242, 254, 0.04); border-radius: var(--radius-md);">
+                                <h4 style="color: var(--color-cyan); font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fa-solid fa-hand-holding-heart highlight-gold"></i> <span data-i18n="contingencyTitle">Aşama 2 & 3 Öncesi Vefat Halinde Hak Devri Protokolü</span>
+                                </h4>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;" data-i18n="contingencyDesc">
+                                    Aşama 2 (Biyo-Enerji Kilitleme) ve Aşama 3 (Kuantum GPS Tespiti) hizmetleri aktif edilmeden önce ana başvuru sahibinin vefat etmesi durumunda ön kayıt ve öncelik hakkının devredileceği aile üyesi veya yedek hak sahibi bilgileri aşağıdadır:
+                                </p>
+
+                                <!-- Dynamic Container Populated by JS -->
+                                <div id="contingencyDynamicContainer"></div>
                             </div>
 
                             <!-- Account Password Creation Fields -->
