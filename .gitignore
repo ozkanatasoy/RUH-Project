@@ -1,0 +1,28 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE & Editor Directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node / Development Cache
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.tmp/
+temp/
+logs/
+*.log
+
+# AntiGravity / Gemini IDE brain artifacts
+.gemini/

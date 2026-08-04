@@ -1,14 +1,22 @@
 /* ==========================================================================
    RUH PROJECT - FUTURISTIC CYBER-LUXURY DESIGN SYSTEM (CSS)
+   Design Harmony: 60-30-10 Color Rule
+   - 60% Dominant Background (#07080d / Obsidian Black)
+   - 30% Structural Cards & Surface (#121624 / Deep Navy Glass)
+   - 10% Neon Accent Highlights (#00f2fe Cyan / #ffd700 Gold)
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens --- */
 :root {
+    /* 60% Dominant Base */
     --bg-dark: #07080d;
-    --bg-card: rgba(18, 22, 36, 0.7);
-    --bg-card-hover: rgba(26, 32, 54, 0.85);
+    
+    /* 30% Structural Surfaces */
+    --bg-card: rgba(18, 22, 36, 0.75);
+    --bg-card-hover: rgba(26, 32, 54, 0.9);
     --bg-elevated: #161b2e;
     
+    /* 10% Accent Colors */
     --color-primary: #00f2fe;
     --color-primary-glow: rgba(0, 242, 254, 0.35);
     --color-secondary: #7928ca;
@@ -16,22 +24,28 @@
     --color-gold: #ffd700;
     --color-gold-glow: rgba(255, 215, 0, 0.35);
     
+    /* Typography Colors */
     --text-main: #f0f4fd;
     --text-muted: #8e9bb5;
     --text-dim: #5c6880;
     
+    /* Borders & Outlines */
     --border-color: rgba(255, 255, 255, 0.08);
     --border-color-glow: rgba(0, 242, 254, 0.4);
+    --focus-ring: #00f2fe;
     
+    /* Typography */
     --font-sans: 'Plus Jakarta Sans', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
     
+    /* Radii */
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 22px;
 
-    --transition-fast: 0.25s ease;
-    --transition-normal: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* --- Base & Reset --- */
@@ -53,6 +67,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility Focus Ring */
+:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
 }
 
 /* --- Typography --- */
@@ -118,9 +139,31 @@ a:hover {
 .flex-spacer { flex: 1; }
 .text-center { text-align: center; }
 
+/* --- Skeleton Loading Animation --- */
+.skeleton-loading {
+    position: relative;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.skeleton-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+    100% { left: 100%; }
+}
+
 /* --- Announcement Bar --- */
 .announcement-bar {
-    background: linear-gradient(90deg, rgba(121, 40, 202, 0.8), rgba(0, 242, 254, 0.8));
+    background: linear-gradient(90deg, rgba(121, 40, 202, 0.85), rgba(0, 242, 254, 0.85));
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     padding: 10px 0;
     font-size: 0.875rem;
@@ -164,16 +207,17 @@ a:hover {
     font-size: 1.1rem;
     margin-left: auto;
     opacity: 0.8;
+    transition: var(--transition-fast);
 }
 
-.announcement-close:hover { opacity: 1; }
+.announcement-close:hover { opacity: 1; transform: scale(1.1); }
 
 /* --- Navbar --- */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(7, 8, 13, 0.85);
+    background: rgba(7, 8, 13, 0.88);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
     padding: 18px 0;
@@ -265,7 +309,6 @@ a:hover {
     gap: 16px;
 }
 
-/* Language Switch Button */
 .lang-switch-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -517,6 +560,7 @@ a:hover {
 .cyber-card:hover {
     border-color: rgba(0, 242, 254, 0.3);
     box-shadow: 0 20px 60px rgba(0, 242, 254, 0.15);
+    transform: translateY(-2px);
 }
 
 .visual-card {
@@ -814,10 +858,9 @@ a:hover {
     z-index: 1;
 }
 
-/* Wizard Panels */
 .wizard-step-panel {
     display: none;
-    animation: fadeInStep 0.4s ease forwards;
+    animation: fadeInStep 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .wizard-step-panel.active {
@@ -840,7 +883,7 @@ a:hover {
     margin-bottom: 6px;
 }
 
-/* Step 1: Forms & Dynamic Family Members */
+/* Step 1: Dynamic Family Forms */
 .family-forms-container {
     display: flex;
     flex-direction: column;
@@ -883,6 +926,7 @@ a:hover {
     border-radius: 20px;
     font-size: 0.75rem;
     cursor: pointer;
+    transition: var(--transition-fast);
 }
 
 .btn-remove-member:hover {
@@ -1349,7 +1393,6 @@ a:hover {
     padding: 28px;
 }
 
-/* Official Certificate Style */
 .cert-card {
     background: linear-gradient(135deg, #090c17, #13192f);
     border-radius: var(--radius-md);
@@ -1480,7 +1523,7 @@ a:hover {
     }
 }
 
-/* --- Responsive Layout Breakpoints --- */
+/* --- Responsive Breakpoints --- */
 @media (max-width: 992px) {
     .hero-container {
         grid-template-columns: 1fr;
