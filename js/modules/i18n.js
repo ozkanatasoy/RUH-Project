@@ -135,7 +135,7 @@ export const translations = {
         // Certificate Verification Section
         verifySub: "SİSTEM DOĞRULAMA & ORJİNAL KAYIT SORGULAMA",
         verifyTitle: "Sertifika & Barkod Doğrulama",
-        verifyDesc: "R.U.H. Incorporation tarafından düzenlenen resmi sertifikaların ve 11 haneli Dijital Enerji İzi ID'lerinin orijinalliğini 16 haneli barkod numaranız ile buradan sorgulayabilirsiniz.",
+        verifyDesc: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) tarafından düzenlenen resmi sertifikaların ve 11 haneli Dijital Enerji İzi ID'lerinin orijinalliğini 16 haneli barkod numaranız ile buradan sorgulayabilirsiniz.",
         btnVerify: "Sorgula & Doğrula",
 
         // Donation Modal
@@ -199,7 +199,7 @@ export const translations = {
         step3Title: "Adım 3: Hukuki Çerçeve ve KVKK Gizlilik Sözleşmesi",
         step3Subtitle: "RUH Project Aşama 1 ön kayıt kapsamında bütün sorumluluğun ve 6698 Sayılı KVKK gizlilik şartlarının kullanıcı tarafından kabul edildiğine dair resmi hukuki metin aşağıdadır.",
         contractHeader: "RUH PROJECT AŞAMA 1 ÖN KAYIT VE HUKUKİ SORUMLULUK SÖZLEŞMESİ",
-        contractP1: "<strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, RUH Project ('Firma') ile bu platform üzerinden ücretsiz ön kayıt formunu dolduran 'Müşteri' arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 & 3 öncelik haklarının belirlenmesidir.",
+        contractP1: "<strong>Madde 1 - Taraflar ve Konu:</strong> İşbu sözleşme, R.U.H. Incorporation (Resonant Universal Heritage Inc.) ('Firma') ile bu platform üzerinden ücretsiz ön kayıt formunu dolduran 'Müşteri' arasında akdedilmiştir. Konu, Aşama 1 (Fikir ve AR-GE) süreci şartlarının ve Aşama 2 & 3 öncelik haklarının belirlenmesidir.",
         contractP2: "<strong>Madde 2 - Şeffaflık ve Ücretsiz Ön Kayıt Beyanı:</strong> Müşteri, projenin mevcut durumda bir AR-GE ve fikir aşamasında olduğunu, Aşama 1 kaydının ücretsiz olduğunu ve gelecekteki hizmet aktivasyonları için sırasını güvenceye aldığını kabul eder.",
         contractP3: "<strong>Madde 3 - Beden Seçim Sınırlaması:</strong> Müşteri, sonraki yaşamında hangi canlı bedene geçeceğini kendisinin veya Firmanın seçemeyeceğini bilmekte ve kabul etmektedir. Süreç tamamen ölüm öncesi kilitlenen biyo-enerji frekansı ve kuantum GPS tespiti esasına dayanır.",
         contractP4: "<strong>Madde 4 - Sorumluluk Reddi ve Hizmet Önceliği:</strong> Müşteri, söz konusu hizmetin doğası gereği bilimsel ve hukuki AR-GE süreçlerine bağlı olduğunu, sonraki aşamalar devreye girdiğinde ön kayıtlı müşterilerin ilk ve öncelikli sıradan yararlanacağını kabul eder.",
@@ -271,7 +271,7 @@ export const translations = {
         footerLegalNotice: "Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler 6698 Sayılı KVKK ve uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar gizlilik ve sorumluluk şartlarını kabul eder.",
 
         // Modal Certificate
-        certModalTitle: "R.U.H. Incorporation Resmi Ön Kayıt Sertifikası",
+        certModalTitle: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) Resmi Ön Kayıt Sertifikası",
         certOfficialDoc: "AŞAMA 1 RESMİ BİYO-ENERJİ VE MİRAS ÖN KAYIT BELGESİ",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
         btnPrint: "Sertifikayı Yazdır / PDF İndir",
@@ -408,7 +408,7 @@ export const translations = {
         // Certificate Verification Section
         verifySub: "SYSTEM VERIFICATION & CERTIFICATE LOOKUP",
         verifyTitle: "Certificate & Barcode Verification",
-        verifyDesc: "Verify the official authenticity of certificates and 11-digit Digital Energy IDs issued by R.U.H. Incorporation using your 16-digit barcode number.",
+        verifyDesc: "Verify the official authenticity of certificates and 11-digit Digital Energy IDs issued by R.U.H. Incorporation (Resonant Universal Heritage Inc.) using your 16-digit barcode number.",
         btnVerify: "Lookup & Verify",
 
         // Donation Modal
@@ -472,7 +472,7 @@ export const translations = {
         step3Title: "Step 3: Legal Framework & KVKK Privacy Policy",
         step3Subtitle: "Official legal contract below wherein customer assumes full liability and consents to KVKK Privacy Policy for Phase 1 R&D pre-registration.",
         contractHeader: "RUH PROJECT PHASE 1 PRE-REGISTRATION & LEGAL LIABILITY CONTRACT",
-        contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between RUH Project ('Company') and the 'Client' filling out the free pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 & 3 priority rights.",
+        contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between R.U.H. Incorporation (Resonant Universal Heritage Inc.) ('Company') and the 'Client' filling out the free pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 & 3 priority rights.",
         contractP2: "<strong>Article 2 - Free Pre-Registration Disclosure:</strong> Client acknowledges that the project is currently in R&D and concept phase, Phase 1 registration is free of charge, and reserves priority for future service activations.",
         contractP3: "<strong>Article 3 - Host Body Non-Selection Limitation:</strong> Client understands and agrees that neither the Client nor Company can choose the destination living entity. The process relies strictly on pre-mortem bio-energy signature locking and Quantum GPS tracing.",
         contractP4: "<strong>Article 4 - Liability Release & Service Priority:</strong> Client agrees that due to the scientific R&D nature of the service, pre-registered clients receive priority activation rights upon Phase 2 rollout.",
@@ -544,7 +544,7 @@ export const translations = {
         footerLegalNotice: "This project is currently in Phase 1 (Concept & R&D). All services and contracts are governed under KVKK Law No. 6698 and international legal frameworks; clients accept privacy and responsibility terms.",
 
         // Modal Certificate
-        certModalTitle: "R.U.H. Incorporation Official Pre-Registration Certificate",
+        certModalTitle: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) Official Pre-Registration Certificate",
         certOfficialDoc: "PHASE 1 OFFICIAL BIO-ENERGY & INHERITANCE REGISTRATION CERTIFICATE",
         certStamp: "PH1 APPROVED<br>R.U.H. INCORPORATION",
         btnPrint: "Print Certificate / Download PDF",
