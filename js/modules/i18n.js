@@ -10,7 +10,7 @@ export const translations = {
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         
-        // Nav
+        // Nav (Shortened navLegal to Hukuk & KVKK / Legal & GDPR for header space)
         navAbout: "Proje & Aşamalar",
         navMechanics: "Teknoloji & İşleyiş",
         navDonations: "AR-GE Havuzu",
@@ -311,6 +311,8 @@ export const translations = {
         footerQuickLinks: "Hızlı Bağlantılar",
         footerLegalTitle: "Yasal Uyarı & KVKK",
         footerLegalNotice: "Bu proje Aşama 1 (AR-GE ve Fikir) evresindedir. Sunulan tüm hizmetler ve sözleşmeler 6698 Sayılı KVKK ve uluslararası hukuk çerçevesinde yürütülmekte olup, kullanıcılar gizlilik ve sorumluluk şartlarını kabul eder.",
+        footerCopyright: "© 2026 R.U.H. Incorporation (Resonant Universal Heritage Inc.). Tüm Hakları Saklıdır. | 6698 Sayılı KVKK Uyumlu",
+        legalFooterCopyright: "© 2026 R.U.H. Incorporation (Resonant Universal Heritage Inc.). Tüm Hakları Saklıdır. | Uluslararası Hukuki Çerçeve & GDPR",
 
         // Modal Certificate
         certModalTitle: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) Resmi Ön Kayıt Sertifikası",
@@ -626,6 +628,8 @@ export const translations = {
         footerQuickLinks: "Quick Links",
         footerLegalTitle: "Legal Disclaimer & KVKK",
         footerLegalNotice: "This project is currently in Phase 1 (Concept & R&D). All services and contracts are governed under KVKK Law No. 6698 and international legal frameworks; clients accept privacy and responsibility terms.",
+        footerCopyright: "© 2026 R.U.H. Incorporation (Resonant Universal Heritage Inc.). All Rights Reserved. | GDPR & KVKK Compliant",
+        legalFooterCopyright: "© 2026 R.U.H. Incorporation (Resonant Universal Heritage Inc.). All Rights Reserved. | International Legal Framework & GDPR",
 
         // Modal Certificate
         certModalTitle: "R.U.H. Incorporation (Resonant Universal Heritage Inc.) Official Pre-Registration Certificate",
