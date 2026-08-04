@@ -2,19 +2,11 @@
 
 > **"Ölmeden önce yerinizi ayırtın"** / **"Reserve your place before you die"**
 
-![RUH Project Banner](https://img.shields.io/badge/Phase-Phase%201%20(R%26D%20%26%20Pre--Registration)-00f2fe?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-ffd700?style=for-the-badge)
-![Bilingual](https://img.shields.io/badge/Language-Bilingual%20(TR%20%7C%20EN)-7928ca?style=for-the-badge)
-![Architecture](https://img.shields.io/badge/Architecture-ES6%20Modules%20%2B%20CSS%20Design%20System-ff8c00?style=for-the-badge)
-![Deployment](https://img.shields.io/badge/Deploy-GitHub%20Pages%20Ready-00ff88?style=for-the-badge)
-
 ---
 
 ## 🌌 Project Overview & About
 
-"Ölmeden önce yerinizi ayırtın." RUH Project, ölüm öncesinde biyo-enerji izini dijital protokole kilitleyen ve ölüm sonrası kuantum GPS ile yeni canlı bedeni tespit eden yenilikçi bir AR-GE girişimidir. Hukuki escrow ve vasiyetname altyapısı sayesinde tüm finansal ve taşınmaz haklarınız resmi sözleşmelerle sonraki yaşamınıza güvenle aktarılır.
-
-> **About (EN):** "Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
+"Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
 
 ---
 
@@ -102,6 +94,12 @@ npx serve .
 
 ---
 
-## 📜 License
+## 📜 License & Badges
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+![RUH Project Banner](https://img.shields.io/badge/Phase-Phase%201%20(R%26D%20%26%20Pre--Registration)-00f2fe?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-ffd700?style=for-the-badge)
+![Bilingual](https://img.shields.io/badge/Language-Bilingual%20(TR%20%7C%20EN)-7928ca?style=for-the-badge)
+![Architecture](https://img.shields.io/badge/Architecture-ES6%20Modules%20%2B%20CSS%20Design%20System-ff8c00?style=for-the-badge)
+![Deployment](https://img.shields.io/badge/Deploy-GitHub%20Pages%20Ready-00ff88?style=for-the-badge)
