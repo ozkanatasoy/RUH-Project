@@ -65,7 +65,7 @@
         .legal-highlight-box {
             background: rgba(255, 215, 0, 0.05);
             border-left: 4px solid var(--color-gold);
-            padding: 18px 24px;
+            padding: 20px 24px;
             border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
             margin: 20px 0;
             color: #e2e8f0;
@@ -73,9 +73,41 @@
             line-height: 1.65;
         }
 
+        .escrow-steps-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .escrow-step-item {
+            background: rgba(10, 14, 26, 0.7);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+
+        .escrow-step-item strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .escrow-step-item p {
+            font-size: 0.88rem;
+            margin: 0;
+            line-height: 1.45;
+        }
+
         @media (max-width: 768px) {
             .legal-doc-card {
                 padding: 24px;
+            }
+            .escrow-steps-list {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -157,17 +189,45 @@
                 </p>
             </div>
 
-            <!-- Section 4 -->
+            <!-- Section 4: Expanded Escrow Contract Details -->
             <div class="legal-section-block">
                 <h2 class="legal-section-title">
                     <i class="fa-solid fa-vault"></i> Madde 4 - Uluslararası Bankacılık Escrow ve Vasiyetname Transferi
                 </h2>
                 <p>
-                    Müşteri Aşama 4 formunda miras devri talep ettiği takdirde; mevcut finansal hesapları, kripto varlıkları ve gayrimenkulleri uluslararası anlaşmalı banka escrow hesaplarına ve yazılı vasiyetname sözleşmelerine bağlanır.
+                    <strong>Escrow Sözleşmesi Nedir?</strong> Escrow (Emanet / Güvence Hesabı Sözleşmesi), iki taraf arasındaki bir finansal veya hukuki işlemin güvenle gerçekleşmesi amacıyla varlıkların (banka hesapları, kripto varlıklar, gayrimenkuller) tarafsız bir üçüncü taraf (yediemin / uluslararası banka / hukuk trustı) tarafından dondurularak koruma altına alınması ve sözleşmedeki şart tam olarak gerçekleştiğinde hak sahibine aktarılması mekanizmasıdır.
                 </p>
-                <p>
-                    Müşterinin ölümü resmi makamlarca onaylandıktan ve kuantum GPS uyduları yeni bedenin konumunu ve kimlik tescilini gerçekleştirdikten sonra, resmi yasal kayyumlar marifetiyle miras varlıkları yeni bedenin yasal kimliğine devredilir.
-                </p>
+
+                <h4 style="color: var(--color-gold); font-size: 1.05rem; margin-top: 20px; margin-bottom: 12px;">
+                    <i class="fa-solid fa-diagram-project"></i> Escrow Sözleşmesinin 4 Aşamalı Çalışma Protokolü:
+                </h4>
+
+                <div class="escrow-steps-list">
+                    <div class="escrow-step-item">
+                        <strong>🔒 1. Varlıkların Kilitlenmesi (Yaşam Süresince)</strong>
+                        <p>Müşteri hayattayken vasiyetnamesini düzenler ve banka hesaplarını, gayrimenkullerini veya kripto fonlarını uluslararası anlaşmalı escrow protokolüne bağlar.</p>
+                    </div>
+                    <div class="escrow-step-item">
+                        <strong>🛡️ 2. Ölüm Sonrası Koruma (Yediemin / Banka Kasası)</strong>
+                        <p>Müşteri vefat ettiğinde varlıklar yasal olarak dondurulur. Üçüncü şahıslarca gasp edilmesi engellenir ve tarafsız bankacılık escrow hesabında güvende tutulur.</p>
+                    </div>
+                    <div class="escrow-step-item">
+                        <strong>📡 3. Şartın Gerçekleşmesi (Kuantum GPS Tespiti)</strong>
+                        <p>Escrow şartı: Ölüm öncesi kilitlenen biyo-enerji frekansının yeni canlı bedende kuantum GPS uyduları ile tespit edilip resmi olarak tescillenmesidir.</p>
+                    </div>
+                    <div class="escrow-step-item">
+                        <strong>🔑 4. Varlıkların Yeni Bedene Resmi Devri</strong>
+                        <p>Kuantum uyduları yeni bedenin konumunu doğruladığı an escrow şartı tamamlanır; resmi yasal kayyumlar marifetiyle varlıklar yeni kimliğinize aktarılır.</p>
+                    </div>
+                </div>
+
+                <div class="legal-highlight-box" style="border-left-color: var(--color-cyan);">
+                    <strong>💡 Escrow Sözleşmesinin Temel Gerekliliği ve Neden Önemli Olduğu:</strong>
+                    <ul style="margin-top: 8px; margin-left: 20px; color: var(--text-muted);">
+                        <li><strong>Mutlak Güvenlik Sınırı:</strong> Belirlenen kuantum GPS tescil şartı gerçekleşmeden hiçbir taraf veya 3. şahıs paraya dokunamaz.</li>
+                        <li><strong>Kesintisiz Varlık Sürekliliği:</strong> Eski yaşamınızdaki birikimlerinizin kaybolmadan veya el koyulmadan, yasal olarak bir sonraki canlı bedeninize aktarılmasını hukuken garanti eder.</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Section 5 -->
