@@ -10,11 +10,11 @@ export const translations = {
         announcementBadge: "AŞAMA 1 (ÜCRETSİZ ÖN KAYIT)",
         announcementText: "Bu portal şu anda <strong>Aşama 1 (Fikir, AR-GE ve Ücretsiz Ön Kayıt)</strong> sürecindedir. Ön kayıt yaptıran kullanıcılar Aşama 2 ve 3 devreye girdiğinde öncelikli hizmet hakkı kazanır.",
         
-        // Nav (Shortened navDonations for header space)
+        // Nav (Shortened navLegal to Hukuk & KVKK / Legal & GDPR for header space)
         navAbout: "Proje & Aşamalar",
         navMechanics: "Teknoloji & İşleyiş",
         navDonations: "AR-GE Havuzu",
-        navLegal: "Hukuki Çerçeve & KVKK",
+        navLegal: "Hukuk & KVKK",
         navApply: "Ön Kayıt Başvurusu",
         navVerify: "Sertifika Sorgulama",
         navFaq: "SSS",
@@ -281,11 +281,11 @@ export const translations = {
         announcementBadge: "PHASE 1 (FREE PRE-REGISTRATION)",
         announcementText: "This portal is currently in <strong>Phase 1 (Concept, R&D & Free Pre-Registration)</strong>. Pre-registered users gain priority service activation upon Phase 2 & 3 deployment.",
         
-        // Nav (Shortened navDonations for header space)
+        // Nav (Shortened navLegal to Legal & GDPR for header space)
         navAbout: "Project & Phases",
         navMechanics: "Tech & Mechanics",
         navDonations: "R&D Pool",
-        navLegal: "Legal Framework & KVKK",
+        navLegal: "Legal & GDPR",
         navApply: "Pre-Registration Portal",
         navVerify: "Verify Certificate",
         navFaq: "FAQ",
