@@ -1,6 +1,6 @@
 # RUH Project
 
-**Reserve your place before you die**
+> **"Ölmeden önce yerinizi ayırtın"** / **"Reserve your place before you die"**
 
 ![RUH Project Banner](https://img.shields.io/badge/Phase-Phase%201%20(R%26D%20%26%20Pre--Registration)-00f2fe?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-ffd700?style=for-the-badge)
@@ -9,11 +9,11 @@
 
 ---
 
-## 🌌 Project Overview
+## 🌌 Project Overview & About
 
-**RUH Project** is a futuristic digital protocol designed for post-mortem soul relocation identification and contractual estate inheritance transfer. 
+"Ölmeden önce yerinizi ayırtın." RUH Project, ölüm öncesinde biyo-enerji izini dijital protokole kilitleyen ve ölüm sonrası kuantum GPS ile yeni canlı bedeni tespit eden yenilikçi bir AR-GE girişimidir. Hukuki escrow ve vasiyetname altyapısı sayesinde tüm finansal ve taşınmaz haklarınız resmi sözleşmelerle sonraki yaşamınıza güvenle aktarılır.
 
-Before death, a client's unique electro-magnetic bio-energy frequency is locked into the protocol. Upon rebirth into a new living entity, Quantum GPS arrays detect the newly activated vessel. All financial assets, real estate, and cryptographic vaults declared prior to death are legally transferred to the identified new identity through pre-arranged banking escrow contracts.
+> **About (EN):** "Reserve your place before you die." RUH Project is an innovative R&D initiative locking bio-energy signatures pre-mortem and pinpointing the target host body via Quantum GPS post-relocation. Through legal escrow trusts and wills, all financial and real estate assets are securely guaranteed for transfer to your next identity.
 
 ---
 
@@ -34,9 +34,9 @@ Transparency is a core commitment of RUH Project. The initiative operates across
 
 ## ⚡ Core Technical Mechanics
 
-1. **No Vessel Selection:** Neither the client nor RUH Project can select the target living vessel. Destination is determined strictly by pre-mortem cellular bio-energy frequency locking and natural resonance.
+1. **No Host Body Selection:** Neither the client nor RUH Project can select the target host body. Destination is determined strictly by pre-mortem cellular bio-energy frequency locking and natural resonance.
 2. **Bio-Energy Lock:** Electro-magnetic consciousness frequencies are scanned and locked prior to death.
-3. **Quantum GPS Location:** Satellites track and locate the newly activated host vessel post-transition.
+3. **Quantum GPS Location:** Satellites track and locate the newly activated host body post-transition.
 4. **Contractual Estate Escrow:** Written wills and banking trust agreements ensure seamless legal transfer of wealth to the new identity.
 
 ---

@@ -195,13 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
             navLegal: "Legal Framework",
             navApply: "Pre-Registration Portal",
             navFaq: "FAQ",
-            navCta: "Reserve Your Vessel",
+            navCta: "Reserve Your Place",
 
             // Hero
             heroTag: "Bio-Energy Lock & Quantum GPS Protocol",
             heroTitleGrad: "RUH PROJECT",
-            heroSlogan: '"Reserve your next vessel before you die"',
-            heroDesc: "A revolutionary protocol locking human consciousness and bio-energy signature before death, pinpointing the target vessel via Quantum GPS post-relocation, and securing all inheritance & estate rights via legal contracts.",
+            heroSlogan: '"Reserve your place before you die"',
+            heroDesc: "A revolutionary protocol locking human consciousness and bio-energy signature before death, pinpointing the target host body via Quantum GPS post-relocation, and securing all inheritance & estate rights via legal contracts.",
             heroBtnApply: "Fill Pre-Registration Form",
             heroBtnExplore: "Explore Technology",
             statPhase: "R&D & Legal Infrastructure",
@@ -228,18 +228,18 @@ document.addEventListener('DOMContentLoaded', () => {
             phase2Title: "Implementation & Service Activation",
             phase2Desc: "Once bio-scanning hardware and international banking escrow contracts are live, clients pre-registered in Phase 1 gain immediate, first-tier priority service access.",
             p2Check1: "Pre-Mortem Bio-Energy Signature Locking Procedure",
-            p2Check2: "Quantum GPS Location Tracing & Registration of Next Vessel",
+            p2Check2: "Quantum GPS Location Tracing & Registration of Next Host Body",
             p2Check3: "Execution of Banking Escrow & Real Estate Asset Transfer",
             p2Check4: "Will Terms Activation for the Identified Identity",
 
             // Mechanics
             mechSub: "CORE PRINCIPLES & TECHNICAL MECHANISMS",
             mechTitle: "How It Works",
-            mechDesc: "Vessel selection is impossible; your bio-energy signature is locked pre-death, and your next vessel is located via resonant Quantum GPS.",
+            mechDesc: "Host body selection is impossible; your bio-energy signature is locked pre-death, and your next host body is located via resonant Quantum GPS.",
             mechCard1Title: "1. Bio-Energy Signature Lock",
-            mechCard1Desc: "Prior to death, the unique electro-magnetic frequency of the client's cellular consciousness is scanned and locked into the digital protocol. Neither the client nor RUH can select the host vessel.",
+            mechCard1Desc: "Prior to death, the unique electro-magnetic frequency of the client's cellular consciousness is scanned and locked into the digital protocol. Neither the client nor RUH can select the host body.",
             mechCard2Title: "2. Quantum GPS Tracing",
-            mechCard2Desc: "As consciousness awakens in the new living entity, the locked bio-frequency signal allows Quantum GPS satellite arrays to pinpoint the exact location of the target vessel.",
+            mechCard2Desc: "As consciousness awakens in the new living entity, the locked bio-frequency signal allows Quantum GPS satellite arrays to pinpoint the exact location of the target host body.",
             mechCard3Title: "3. Legal Estate Escrow",
             mechCard3Desc: "Pursuant to pre-established legal trusts and banking escrow contracts, all assets, bank accounts, and real estate are legally transferred to the new identity.",
 
@@ -292,18 +292,18 @@ document.addEventListener('DOMContentLoaded', () => {
             contractHeader: "RUH PROJECT PHASE 1 PRE-REGISTRATION & LEGAL LIABILITY CONTRACT",
             contractP1: "<strong>Article 1 - Parties & Subject:</strong> This contract is entered into between RUH Project ('Company') and the 'Client' filling out the pre-registration form. Subject: Establishing Phase 1 (Concept & R&D) terms and Phase 2 (Activation) rights.",
             contractP2: "<strong>Article 2 - R&D Disclosure & Transparency:</strong> Client irrevocably acknowledges that the project is currently in R&D and concept phase, and paid contribution fees fund biophysics R&D, energy-scanning software, and international legal escrow frameworks.",
-            contractP3: "<strong>Article 3 - Vessel Non-Selection Limitation:</strong> Client understands and agrees that neither the Client nor Company can choose the destination living entity. The process relies strictly on pre-mortem bio-energy signature locking and Quantum GPS tracing.",
+            contractP3: "<strong>Article 3 - Host Body Non-Selection Limitation:</strong> Client understands and agrees that neither the Client nor Company can choose the destination living entity. The process relies strictly on pre-mortem bio-energy signature locking and Quantum GPS tracing.",
             contractP4: "<strong>Article 4 - Liability Release:</strong> Client agrees that due to the scientific R&D nature of the service, pre-registered clients receive priority activation rights upon Phase 2 rollout.",
             chkTermsText: "I have read, understood, and accept the legal contract, Phase 1 R&D contribution terms, and full user liability. *",
-            chkNoChoiceText: "I confirm that vessel selection is impossible and accept the bio-energy locking principle. *",
+            chkNoChoiceText: "I confirm that host body selection is impossible and accept the bio-energy locking principle. *",
 
             // Wizard Step 4
             step4Title: "Step 4: Inheritance Transfer Choice & Will Template",
             step4Subtitle: "Optionally transfer wealth, assets, and real estate to your next living entity. Contracts are executed post-mortem via banking escrow.",
-            inheritYesTitle: "Yes, I Want to Transfer My Estate to My Next Vessel",
+            inheritYesTitle: "Yes, I Want to Transfer My Estate to My Next Host Body",
             inheritYesDesc: "Lock my financial and real estate rights via legal banking escrow.",
             inheritNoTitle: "No / Decided Later",
-            inheritNoDesc: "Proceed with vessel identification protocol only, without asset transfer.",
+            inheritNoDesc: "Proceed with host body identification protocol only, without asset transfer.",
             templateLabel: "Will & Testament Templates:",
             btnTpl1: "100% Full Transfer Template",
             btnTpl2: "Split Estate Template",
@@ -329,12 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // FAQ
             faqSub: "FREQUENTLY ASKED QUESTIONS",
             faqTitle: "Frequently Asked Questions",
-            faqQ1: "Can I choose which living vessel I will transfer to?",
-            faqA1: "No. Neither the client nor RUH Project can select the host vessel. The bio-energy signature locked before death naturally resonates with the target vessel, which is automatically pinpointed via Quantum GPS signals.",
+            faqQ1: "Can I choose which living host body I will transfer to?",
+            faqA1: "No. Neither the client nor RUH Project can select the host body. The bio-energy signature locked before death naturally resonates with the target host body, which is automatically pinpointed via Quantum GPS signals.",
             faqQ2: "What is the purpose of the $20,000 USD contribution fee?",
             faqA2: "This fee finances Phase 1 R&D, biophysics frequency locking software, and international legal inheritance escrow frameworks. Pre-registered participants gain priority activation in Phase 2.",
-            faqQ3: "How will my inheritance be legally transferred to the new vessel?",
-            faqA3: "Pursuant to your Will draft and banking escrow agreements, once death occurs and the new vessel's location is verified via GPS, legal escrow executors transfer the assets.",
+            faqQ3: "How will my inheritance be legally transferred to the new host body?",
+            faqA3: "Pursuant to your Will draft and banking escrow agreements, once death occurs and the new host body's location is verified via GPS, legal escrow executors transfer the assets.",
             faqQ4: "Do I need to pay a separate fee for each family member?",
             faqA4: "Yes. Since every individual possesses a unique bio-energy frequency, a separate form and individual fee ($20,000 USD per person) applies for each family member added.",
 
@@ -719,13 +719,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Will Templates Insertion
     const templates = {
         tpl1_tr: "VASİYETNAME VE TAM MİRAS DEVİR TALİMATI:\n\nÖlümüm gerçekleştikten sonra RUH Project biyo-enerji kilitleme protokolü çerçevesinde tespit edilen yeni canlı bedenime, tarafıma ait tüm banka mevduatlarımın, gayrimenkullerimin, hisse senetlerimin ve dijital varlıklarımın %100 oranında eksiksiz devredilmesini resmi escrow kanalları vasıtasıyla talep ediyorum.",
-        tpl1_en: "WILL & FULL ESTATE TRANSFER DIRECTIVE:\n\nUpon my death, I instruct that 100% of my bank deposits, real estate properties, equities, and digital assets be legally transferred via official escrow trusts to my identified next living vessel registered under the RUH Project bio-energy protocol.",
+        tpl1_en: "WILL & FULL ESTATE TRANSFER DIRECTIVE:\n\nUpon my death, I instruct that 100% of my bank deposits, real estate properties, equities, and digital assets be legally transferred via official escrow trusts to my identified next living host body registered under the RUH Project bio-energy protocol.",
         
         tpl2_tr: "PAYLAŞMALI MİRAS DEVİR TALİMATI:\n\nÖlümümden sonra tespit edilecek yeni bedenime varlığımın %50'sinin aktarılmasını; kalan %50'lik kısmın ise kanuni mirasçılarıma / belirttiğim vakıflara devredilmesini talep ediyorum.",
-        tpl2_en: "SPLIT ESTATE TRANSFER DIRECTIVE:\n\nUpon my death, I direct that 50% of my total estate be transferred to my identified next living vessel, and the remaining 50% be distributed to my legal heirs and designated charitable foundations.",
+        tpl2_en: "SPLIT ESTATE TRANSFER DIRECTIVE:\n\nUpon my death, I direct that 50% of my total estate be transferred to my identified next living host body, and the remaining 50% be distributed to my legal heirs and designated charitable foundations.",
         
         tpl3_tr: "KRİPTO VE TAŞINMAZ VASIYET KASASI:\n\nÖlümüm sonrasında tüm soğuk cüzdan kripto varlıklarımın ve gayrimenkul tapularımın kuantum şifreli kilitli kasadan tespit edilecek yeni beden kimliğime 18 yaşına ulaştığında devredilmesini onaylıyorum.",
-        tpl3_en: "CRYPTOGRAPHIC & REAL ESTATE VAULT DIRECTIVE:\n\nUpon my death, I direct that all cold-wallet cryptographic assets and real estate titles held in quantum escrow be released to my identified next vessel upon reaching the age of 18."
+        tpl3_en: "CRYPTOGRAPHIC & REAL ESTATE VAULT DIRECTIVE:\n\nUpon my death, I direct that all cold-wallet cryptographic assets and real estate titles held in quantum escrow be released to my identified next host body upon reaching the age of 18."
     };
 
     const btnTpl1 = document.getElementById('btnTpl1');
@@ -774,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isInheritYes = document.querySelector('input[name="inheritanceChoice"]:checked')?.value === 'yes';
             document.getElementById('certInheritance').textContent = isInheritYes 
                 ? (currentLang === 'tr' ? 'Kayıtlı & Escrow Onaylı' : 'Registered & Escrow Approved')
-                : (currentLang === 'tr' ? 'Beden Tespiti (Miras Devirsiz)' : 'Vessel Detection Only');
+                : (currentLang === 'tr' ? 'Beden Tespiti (Miras Devirsiz)' : 'Host Body Detection Only');
 
             const today = new Date();
             document.getElementById('certDate').textContent = today.toLocaleDateString(currentLang === 'tr' ? 'tr-TR' : 'en-US');
