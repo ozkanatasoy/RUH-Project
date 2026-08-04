@@ -65,9 +65,9 @@ export const translations = {
         statusLocked: "KİLİTLENMEYE HAZIR",
         labelGPS: "Kuantum GPS Frekansı:",
 
-        // Phases (3 Phase Architecture)
+        // Phases (Roadmap Architecture)
         phaseSub: "ŞEFFAFLIK İLKESİ VE PROJE YOL HARİTASI",
-        phaseTitle: "3 Aşamalı Gelişim Yol Haritası",
+        phaseTitle: "Gelişim Yol Haritası",
         phaseDesc: "RUH Project üç temel evrede yürütülmektedir. Şeffaflık ilkesi gereği proje aşamaları ve katılım şartları aşağıda sunulmuştur.",
         
         phase1Badge: "AŞAMA 1 (Şu An Aktif)",
@@ -100,7 +100,7 @@ export const translations = {
         donationDesc: "Projenin Aşama 2 ve 3 teknolojik altyapısını hızlandırmak amacıyla bağış havuzu oluşturulmuştur. Form dolduran kullanıcılar arasında bağış yapan kişilere aktivasyon sürecinde mutlak öncelik tanınacaktır.",
         donateTargetHeader: "Şeffaf AR-GE İlerleme Durumu",
         donateRaisedLabel: "Toplanan Bağış:",
-        donateTargetLabel: "Hedeflenen AR-GE Fonu:",
+        donateTargetLabel: "Hedeflanan AR-GE Fonu:",
         donatePriorityNotice: "<strong>Öncelik Kuralı:</strong> Form dolduran kullanıcılar arasında bağış yapan kişilerin kimlikleri (gizlilik ilkesi gereği ad ve soyadın baş harfleri hariç şifrelenerek) en çok bağış yapana göre sıralanır. En yüksek bağış sahipleri Aşama 2 ve 3 hizmet aktivasyonunda 1. Derece VIP sırayı alır.",
         btnOpenDonateModal: "AR-GE Havuzuna Bağış Yap & Öncelik Kazan",
         leaderboardHeader: "Şifreli Bağışçı Sıralama Tablosu (En Yüksek Bağış Sıralaması)",
@@ -294,9 +294,9 @@ export const translations = {
         statusLocked: "READY FOR LOCKING",
         labelGPS: "Quantum GPS Frequency:",
 
-        // Phases (3 Phase Architecture)
+        // Phases (Roadmap Architecture)
         phaseSub: "TRANSPARENCY & PROJECT ROADMAP",
-        phaseTitle: "3-Phase Development Roadmap",
+        phaseTitle: "Development Roadmap",
         phaseDesc: "RUH Project operates under a transparent 3-phase development roadmap detailed below.",
         
         phase1Badge: "PHASE 1 (Currently Active)",
