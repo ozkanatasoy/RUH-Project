@@ -1,7 +1,7 @@
 /**
  * RUH PROJECT - Transparent Donation & Donor Leaderboard Module
  * Features:
- * - Live R&D Donation Pool & Progress Bar Calculation
+ * - Live R&D Donation Pool & Progress Bar Calculation (Starts at $0 USD)
  * - Name Masking & Encryption (e.g. Ahmet Yıldız -> A**** Y****)
  * - Sorted Descending Donor Leaderboard (Highest donor gets top rank & VIP Priority)
  * - Interactive Donation Modal & Live State Update
@@ -10,14 +10,7 @@
 import { getCurrentLang, getTranslation } from './i18n.js';
 
 let targetGoal = 500000; // $500,000 USD Target Goal
-let currentDonors = [
-    { name: "Ahmet Yıldız", amount: 50000, date: "2026-08-01", tier: "VIP" },
-    { name: "Mehmet Kaya", amount: 35000, date: "2026-08-02", tier: "VIP" },
-    { name: "Elena Rostova", amount: 25000, date: "2026-08-03", tier: "Priority" },
-    { name: "Selin Demir", amount: 15000, date: "2026-08-03", tier: "Priority" },
-    { name: "Burak Arslan", amount: 10000, date: "2026-08-04", tier: "Standard" },
-    { name: "David Chen", amount: 5000, date: "2026-08-04", tier: "Standard" }
-];
+let currentDonors = [];  // Reset to empty ($0 USD raised)
 
 /**
  * Masks a full name for privacy & security.
@@ -125,10 +118,25 @@ export function renderLeaderboard() {
     const tbody = document.getElementById('donorLeaderboardBody');
     if (!tbody) return;
 
+    const lang = getCurrentLang();
+
+    if (currentDonors.length === 0) {
+        const emptyMsg = lang === 'tr' 
+            ? 'Henüz bağış kaydı bulunmamaktadır. Formu doldurduktan sonra bağış yaparak 1. sırada yerinizi alabilirsiniz.'
+            : 'No donations recorded yet. Complete the form and donate to claim 1st rank priority placement!';
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 36px 16px;">
+                    <i class="fa-solid fa-hand-holding-dollar" style="font-size: 2rem; margin-bottom: 12px; display: block; color: var(--gold-accent);"></i>
+                    <span>${emptyMsg}</span>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
     // Sort descending by amount
     currentDonors.sort((a, b) => b.amount - a.amount);
-
-    const lang = getCurrentLang();
 
     tbody.innerHTML = currentDonors.map((donor, index) => {
         const masked = maskName(donor.name);
