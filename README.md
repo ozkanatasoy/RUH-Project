@@ -1,8 +1,6 @@
-# RUH Project
+# RUH Projec
 
-> "Reserve your place before you die." / "Ölmeden önce yerinizi ayırtın."
-
-Welcome to the RUH Project. This initiative aims to automatically detect the host body a soul will transfer to after death via energy signature locking and GPS tracking. 
+Reserve your place before you die.This initiative aims to automatically detect the host body a soul will transfer to after death via energy signature locking and GPS tracking. 
 
 ## Project Phases
 * **Phase 1 (Idea, R&D & Pre-Registration):** Clients fill out their personal details, declare inheritance choices, and pay a pre-registration fee to fund the legal and technological infrastructure.
