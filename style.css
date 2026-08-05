@@ -603,7 +603,7 @@ a:hover {
 .canvas-wrapper {
     position: relative;
     width: 100%;
-    height: 260px;
+    height: 380px;
     border-radius: var(--radius-md);
     overflow: hidden;
     background: #040509;
@@ -1973,7 +1973,7 @@ a:hover {
     }
 
     .canvas-wrapper {
-        height: 210px;
+        height: 300px;
     }
 
     .inheritance-choice-box {
@@ -2553,5 +2553,41 @@ a:hover {
     letter-spacing: 0.1em;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
+
+/* --- Admin Panel Styling --- */
+.admin-table-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.admin-table-wrapper::-webkit-scrollbar-track {
+    background: rgba(4, 5, 9, 0.8);
+}
+
+.admin-table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(0, 242, 254, 0.3);
+    border-radius: 4px;
+}
+
+.admin-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .admin-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.btn-toggle-password:hover {
+    color: var(--color-primary) !important;
+}
+
 
 

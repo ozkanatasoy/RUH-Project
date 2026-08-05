@@ -16,7 +16,7 @@ let currentMemberCerts = [];
  * Custom Cyber Alert & Success Modal (replaces browser's default native alert popup)
  * Supports 'error' (red warning) and 'success' (green completion theme) with contextual titles and button labels.
  */
-export function showCustomAlert(msg, targetElement = null, type = 'error', callback = null, customTitle = null) {
+export function showCustomAlert(msg, targetElement = null, type = 'error', callback = null, customTitle = null, customBtnText = null) {
     const modal = document.getElementById('validationAlertModal');
     const titleEl = document.getElementById('validationModalTitle');
     const msgEl = document.getElementById('validationModalMessage');
@@ -32,8 +32,6 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
             
             if (customTitle) {
                 if (titleEl) titleEl.textContent = customTitle;
-            } else if (callback) {
-                if (titleEl) titleEl.textContent = getTranslation('valSuccessTitle') || (lang === 'tr' ? 'Kayıt Başarıyla Tamamlandı!' : 'Registration Successfully Completed!');
             } else {
                 if (titleEl) titleEl.textContent = lang === 'tr' ? 'İşlem Başarılı' : 'Success';
             }
@@ -46,8 +44,8 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
 
             if (btnDismiss) {
                 btnDismiss.className = 'btn btn-glow btn-success-theme';
-                if (callback) {
-                    btnDismiss.innerHTML = `<i class="fa-solid fa-certificate"></i> <span>${getTranslation('btnViewCert') || (lang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate')}</span>`;
+                if (customBtnText) {
+                    btnDismiss.innerHTML = customBtnText.includes('<') ? customBtnText : `<span>${customBtnText}</span>`;
                 } else {
                     btnDismiss.innerHTML = `<span>${getTranslation('btnOk') || (lang === 'tr' ? 'Tamam' : 'OK')}</span>`;
                 }
@@ -66,7 +64,11 @@ export function showCustomAlert(msg, targetElement = null, type = 'error', callb
             if (btnDismiss) {
                 btnDismiss.className = 'btn btn-gold';
                 btnDismiss.style.cssText = 'width: 100%; min-height: 46px; font-weight: 700; background: linear-gradient(135deg, #ff3366, #ff6b6b); border-color: #ff3366; color: #fff; box-shadow: 0 0 20px rgba(255, 51, 102, 0.4);';
-                btnDismiss.innerHTML = `<span>${getTranslation('btnOk') || (lang === 'tr' ? 'Tamam' : 'OK')}</span>`;
+                if (customBtnText) {
+                    btnDismiss.innerHTML = customBtnText.includes('<') ? customBtnText : `<span>${customBtnText}</span>`;
+                } else {
+                    btnDismiss.innerHTML = `<span>${getTranslation('btnOk') || (lang === 'tr' ? 'Tamam' : 'OK')}</span>`;
+                }
             }
         }
 
@@ -789,10 +791,17 @@ function initCertificateModal(submitFormBtn) {
                 ? `Form kaydınız başarıyla tamamlanmıştır! E-postanıza (${primaryMember.email}) doğrulama bağlantısı iletilmiştir.` 
                 : `Registration successfully completed! Verification link sent to your email (${primaryMember.email}).`;
 
-            showCustomAlert(successMsg, null, 'success', () => {
-                renderCertificateView(0);
-                if (certModal) certModal.classList.add('active');
-            });
+            showCustomAlert(
+                successMsg,
+                null,
+                'success',
+                () => {
+                    renderCertificateView(0);
+                    if (certModal) certModal.classList.add('active');
+                },
+                getTranslation('valSuccessTitle') || (lang === 'tr' ? 'Kayıt Başarıyla Tamamlandı!' : 'Registration Successfully Completed!'),
+                `<i class="fa-solid fa-certificate"></i> <span>${getTranslation('btnViewCert') || (lang === 'tr' ? 'Sertifikayı Görüntüle' : 'View Certificate')}</span>`
+            );
         });
     }
 

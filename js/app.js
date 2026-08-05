@@ -107,4 +107,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 10. Password Eye Icon Visibility Toggles
+    document.querySelectorAll('.btn-toggle-password').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.getAttribute('data-target');
+            const targetInput = document.getElementById(targetId);
+            if (!targetInput) return;
+
+            const icon = btn.querySelector('i');
+            if (targetInput.type === 'password') {
+                targetInput.type = 'text';
+                if (icon) {
+                    icon.className = 'fa-solid fa-eye-slash';
+                    icon.style.color = 'var(--color-primary)';
+                }
+            } else {
+                targetInput.type = 'password';
+                if (icon) {
+                    icon.className = 'fa-solid fa-eye';
+                    icon.style.color = 'var(--text-muted)';
+                }
+            }
+        });
+    });
+
 });

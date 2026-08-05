@@ -22,6 +22,21 @@ export function generateEnergyId() {
     return result;
 }
 
+export const ADMIN_ACCOUNT = {
+    email: 'admin@ruhproject.com',
+    password: 'admin123',
+    fullName: 'Özkan Atasoy (Sistem Yöneticisi)',
+    identityNo: '99999999999',
+    energyId: 'RUH-ADMIN-01',
+    barcode: '8942999999999999',
+    tierName: 'Sistem Yöneticisi (Admin)',
+    inheritanceStatus: 'Tam Sistem Yetkisi',
+    phone: '+90 500 000 0000',
+    phoneVerified: true,
+    role: 'ADMIN',
+    registeredAt: '05.08.2026 00:00'
+};
+
 /**
  * Generates an exact 16-digit numeric barcode string.
  * e.g., "8942710944821928"
@@ -48,6 +63,14 @@ export function formatBarcode(raw) {
 }
 
 export function initAuth() {
+    // Automatic cleanup of old test logs on init (as requested by user)
+    const hasCleanedOldLogs = localStorage.getItem('ruh_v2_logs_cleaned');
+    if (!hasCleanedOldLogs) {
+        localStorage.removeItem('ruh_accounts');
+        localStorage.removeItem('ruh_certificates_db');
+        localStorage.setItem('ruh_v2_logs_cleaned', 'true');
+    }
+
     // Restore session
     const savedUser = localStorage.getItem('ruh_current_user');
     if (savedUser) {
@@ -65,10 +88,13 @@ export function initAuth() {
     const loginModal = document.getElementById('loginModal');
     const profileModal = document.getElementById('profileModal');
     const forgotModal = document.getElementById('forgotModal');
+    const adminModal = document.getElementById('adminModal');
 
     const closeLoginModalBtn = document.getElementById('closeLoginModalBtn');
     const closeProfileModalBtn = document.getElementById('closeProfileModalBtn');
     const closeForgotModalBtn = document.getElementById('closeForgotModalBtn');
+    const closeAdminModalBtn = document.getElementById('closeAdminModalBtn');
+    const closeAdminModalFooterBtn = document.getElementById('closeAdminModalFooterBtn');
 
     const submitLoginBtn = document.getElementById('submitLoginBtn');
     const submitForgotBtn = document.getElementById('submitForgotBtn');
@@ -78,10 +104,19 @@ export function initAuth() {
     const btnSendSmsCode = document.getElementById('btnSendSmsCode');
     const btnVerifySmsCode = document.getElementById('btnVerifySmsCode');
 
+    const adminSearchInput = document.getElementById('adminSearchInput');
+    const btnAdminResetAll = document.getElementById('btnAdminResetAll');
+    const btnAdminExportCsv = document.getElementById('btnAdminExportCsv');
+    const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+
     if (navUserBtn) {
         navUserBtn.addEventListener('click', () => {
             if (currentUser) {
-                openProfileModal();
+                if (currentUser.role === 'ADMIN') {
+                    openAdminModal();
+                } else {
+                    openProfileModal();
+                }
             } else {
                 if (loginModal) {
                     const rememberedEmail = localStorage.getItem('ruh_remembered_email');
@@ -98,21 +133,19 @@ export function initAuth() {
     }
 
     if (closeLoginModalBtn && loginModal) {
-        closeLoginModalBtn.addEventListener('click', () => {
-            loginModal.classList.remove('active');
-        });
+        closeLoginModalBtn.addEventListener('click', () => loginModal.classList.remove('active'));
     }
-
     if (closeProfileModalBtn && profileModal) {
-        closeProfileModalBtn.addEventListener('click', () => {
-            profileModal.classList.remove('active');
-        });
+        closeProfileModalBtn.addEventListener('click', () => profileModal.classList.remove('active'));
     }
-
     if (closeForgotModalBtn && forgotModal) {
-        closeForgotModalBtn.addEventListener('click', () => {
-            forgotModal.classList.remove('active');
-        });
+        closeForgotModalBtn.addEventListener('click', () => forgotModal.classList.remove('active'));
+    }
+    if (closeAdminModalBtn && adminModal) {
+        closeAdminModalBtn.addEventListener('click', () => adminModal.classList.remove('active'));
+    }
+    if (closeAdminModalFooterBtn && adminModal) {
+        closeAdminModalFooterBtn.addEventListener('click', () => adminModal.classList.remove('active'));
     }
 
     if (forgotPassLink && loginModal && forgotModal) {
@@ -123,24 +156,44 @@ export function initAuth() {
         });
     }
 
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleLogin();
+        });
+    }
+
     if (submitLoginBtn) {
-        submitLoginBtn.addEventListener('click', handleLogin);
+        submitLoginBtn.addEventListener('click', (e) => {
+            if (loginForm && loginForm.requestSubmit) {
+                // Allows browser to process native form submission & trigger password manager prompt
+                loginForm.requestSubmit();
+            } else {
+                handleLogin();
+            }
+        });
     }
+    if (submitForgotBtn) submitForgotBtn.addEventListener('click', handleForgotPassword);
+    if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
 
-    if (submitForgotBtn) {
-        submitForgotBtn.addEventListener('click', handleForgotPassword);
+    if (btnSendSmsCode) btnSendSmsCode.addEventListener('click', handleSendSmsCode);
+    if (btnVerifySmsCode) btnVerifySmsCode.addEventListener('click', handleVerifySmsCode);
+
+    if (adminSearchInput) {
+        adminSearchInput.addEventListener('input', (e) => renderAdminDashboardData(e.target.value));
     }
-
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', handleLogout);
+    if (btnAdminResetAll) {
+        btnAdminResetAll.addEventListener('click', resetAllTestLogs);
     }
-
-    if (btnSendSmsCode) {
-        btnSendSmsCode.addEventListener('click', handleSendSmsCode);
+    if (btnAdminExportCsv) {
+        btnAdminExportCsv.addEventListener('click', exportUsersToCsv);
     }
-
-    if (btnVerifySmsCode) {
-        btnVerifySmsCode.addEventListener('click', handleVerifySmsCode);
+    if (adminLogoutBtn) {
+        adminLogoutBtn.addEventListener('click', () => {
+            if (adminModal) adminModal.classList.remove('active');
+            handleLogout();
+        });
     }
 }
 
@@ -228,6 +281,29 @@ function handleLogin() {
         return;
     }
 
+    // Admin Login Verification
+    if (email.toLowerCase() === 'admin@ruhproject.com' && pass === 'admin123') {
+        currentUser = ADMIN_ACCOUNT;
+        localStorage.setItem('ruh_current_user', JSON.stringify(currentUser));
+        if (chkRemember && chkRemember.checked) {
+            localStorage.setItem('ruh_remembered_email', email);
+        } else {
+            localStorage.removeItem('ruh_remembered_email');
+        }
+        updateNavAuthButton();
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) loginModal.classList.remove('active');
+        showCustomAlert(
+            lang === 'tr' ? 'Yönetici Girişi Başarılı! Hoş geldiniz, Admin.' : 'Admin Login Successful! Welcome Admin.',
+            null,
+            'success',
+            () => openAdminModal(),
+            lang === 'tr' ? 'Yönetici Girişi Başarılı' : 'Admin Login Successful',
+            lang === 'tr' ? 'Admin Paneline Git' : 'Go to Admin Panel'
+        );
+        return;
+    }
+
     const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
     const user = existingAccounts.find(acc => acc.email.toLowerCase() === email.toLowerCase() && acc.password === pass);
 
@@ -244,7 +320,14 @@ function handleLogin() {
         updateNavAuthButton();
         const loginModal = document.getElementById('loginModal');
         if (loginModal) loginModal.classList.remove('active');
-        showCustomAlert(lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`, null, 'success', () => openProfileModal());
+        showCustomAlert(
+            lang === 'tr' ? `Hoş geldiniz, ${user.fullName}!` : `Welcome back, ${user.fullName}!`,
+            null,
+            'success',
+            () => openProfileModal(),
+            lang === 'tr' ? 'Giriş Başarılı' : 'Login Successful',
+            lang === 'tr' ? 'Profili Aç' : 'Open Profile'
+        );
     } else {
         if (emailInput) emailInput.classList.add('input-error');
         if (passInput) passInput.classList.add('input-error');
@@ -396,12 +479,220 @@ export function updateNavAuthButton() {
     const userLabelSpan = navUserBtn.querySelector('.nav-user-label');
 
     if (currentUser) {
-        if (userLabelSpan) userLabelSpan.textContent = lang === 'tr' ? 'Profilim' : 'My Profile';
-        navUserBtn.classList.add('logged-in');
+        if (currentUser.role === 'ADMIN') {
+            if (userLabelSpan) userLabelSpan.innerHTML = lang === 'tr' ? '<i class="fa-solid fa-user-shield highlight-gold"></i> Admin Paneli' : '<i class="fa-solid fa-user-shield highlight-gold"></i> Admin Panel';
+            navUserBtn.classList.add('logged-in');
+        } else {
+            if (userLabelSpan) userLabelSpan.textContent = lang === 'tr' ? 'Profilim' : 'My Profile';
+            navUserBtn.classList.add('logged-in');
+        }
     } else {
         if (userLabelSpan) userLabelSpan.textContent = lang === 'tr' ? 'Giriş Yap' : 'Login';
         navUserBtn.classList.remove('logged-in');
     }
+}
+
+export function openAdminModal() {
+    const adminModal = document.getElementById('adminModal');
+    if (!adminModal) return;
+
+    renderAdminDashboardData();
+    adminModal.classList.add('active');
+}
+
+export function renderAdminDashboardData(filterQuery = '') {
+    const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
+    const certDb = JSON.parse(localStorage.getItem('ruh_certificates_db') || '[]');
+    const donations = JSON.parse(localStorage.getItem('ruh_donations_list') || '[]');
+
+    const totalUsersEl = document.getElementById('adminTotalUsers');
+    const totalCertsEl = document.getElementById('adminTotalCerts');
+    const verifiedPhoneEl = document.getElementById('adminVerifiedPhone');
+    const totalDonationsEl = document.getElementById('adminTotalDonations');
+
+    if (totalUsersEl) totalUsersEl.textContent = existingAccounts.length;
+    if (totalCertsEl) totalCertsEl.textContent = certDb.length;
+    if (verifiedPhoneEl) {
+        const verifiedCount = existingAccounts.filter(acc => acc.phoneVerified).length;
+        verifiedPhoneEl.textContent = verifiedCount;
+    }
+    if (totalDonationsEl) {
+        const totalSum = donations.reduce((sum, d) => sum + (d.amount || 0), 0);
+        totalDonationsEl.textContent = `$${totalSum.toLocaleString()}`;
+    }
+
+    const query = filterQuery.trim().toLowerCase();
+    const filteredAccounts = existingAccounts.filter(acc => {
+        if (!query) return true;
+        return (
+            (acc.fullName && acc.fullName.toLowerCase().includes(query)) ||
+            (acc.email && acc.email.toLowerCase().includes(query)) ||
+            (acc.identityNo && acc.identityNo.includes(query)) ||
+            (acc.energyId && acc.energyId.toLowerCase().includes(query)) ||
+            (acc.barcode && acc.barcode.includes(query)) ||
+            (acc.phone && acc.phone.includes(query))
+        );
+    });
+
+    const tbody = document.getElementById('adminUsersTableBody');
+    if (!tbody) return;
+
+    if (filteredAccounts.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="10" style="text-align: center; padding: 36px 16px; color: var(--text-muted);">
+                    <i class="fa-solid fa-inbox" style="font-size: 2.2rem; color: var(--text-dim); margin-bottom: 10px; display: block;"></i>
+                    ${query ? 'Arama kriterlerinize uygun kayıt bulunamadı.' : 'Henüz hiç kayıtlı kullanıcı bulunmamaktadır (Tüm test kayıtları sıfırlanmıştır).'}
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    tbody.innerHTML = filteredAccounts.map((acc, idx) => {
+        const phoneBadge = acc.phoneVerified 
+            ? `<span style="font-size: 0.72rem; color: #00ff88; border: 1px solid #00ff88; padding: 2px 6px; border-radius: 4px; margin-left: 4px;">✓ ONALANMIŞ</span>` 
+            : `<span style="font-size: 0.72rem; color: #ff6b6b; border: 1px solid rgba(255, 80, 80, 0.4); padding: 2px 6px; border-radius: 4px; margin-left: 4px;">ONAYSIZ</span>`;
+
+        return `
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;" onmouseover="this.style.background='rgba(0,242,254,0.05)'" onmouseout="this.style.background='transparent'">
+                <td style="padding: 12px 14px; font-weight: 700; color: var(--color-primary);">${idx + 1}</td>
+                <td style="padding: 12px 14px; font-weight: 600; color: #fff;">${acc.fullName || '-'}</td>
+                <td style="padding: 12px 14px; color: var(--text-muted);">${acc.email || '-'}</td>
+                <td style="padding: 12px 14px; font-size: 0.82rem;">${acc.phone || '-'}${phoneBadge}</td>
+                <td style="padding: 12px 14px; font-family: monospace;">${acc.identityNo || '-'}</td>
+                <td style="padding: 12px 14px; font-family: monospace; color: var(--color-primary);">${acc.energyId || '-'}</td>
+                <td style="padding: 12px 14px; font-family: monospace; color: var(--color-gold);">${formatBarcode(acc.barcode)}</td>
+                <td style="padding: 12px 14px; font-size: 0.82rem;">${acc.inheritanceStatus || '-'}</td>
+                <td style="padding: 12px 14px; font-size: 0.82rem; color: var(--text-muted);">${acc.registeredAt || '-'}</td>
+                <td style="padding: 12px 14px; text-align: center;">
+                    <div style="display: flex; gap: 6px; justify-content: center;">
+                        <button type="button" class="btn btn-outline btn-xs admin-view-cert-btn" data-email="${acc.email}" title="Sertifikayı Gör">
+                            <i class="fa-solid fa-certificate" style="color: var(--color-gold);"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline btn-xs admin-delete-user-btn" data-email="${acc.email}" style="border-color: rgba(255,80,80,0.5); color: #ff6b6b;" title="Kullanıcıyı Sil">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    const deleteBtns = tbody.querySelectorAll('.admin-delete-user-btn');
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const email = btn.getAttribute('data-email');
+            deleteSingleUserAccount(email);
+        });
+    });
+
+    const viewCertBtns = tbody.querySelectorAll('.admin-view-cert-btn');
+    viewCertBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const email = btn.getAttribute('data-email');
+            const targetAcc = existingAccounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+            if (targetAcc) {
+                const foundCert = certDb.find(c => c.email && c.email.toLowerCase() === email.toLowerCase());
+                if (foundCert) {
+                    const certModal = document.getElementById('certificateModal');
+                    if (certModal) {
+                        const holderName = document.getElementById('certHolderName');
+                        const energyIdVal = document.getElementById('certEnergyIdVal');
+                        const identityVal = document.getElementById('certIdentityVal');
+                        const barcodeVal = document.getElementById('certBarcodeVal');
+                        const dateVal = document.getElementById('certDateVal');
+
+                        if (holderName) holderName.textContent = foundCert.fullName;
+                        if (energyIdVal) energyIdVal.textContent = foundCert.energyId;
+                        if (identityVal) identityVal.textContent = foundCert.identityNo;
+                        if (barcodeVal) barcodeVal.textContent = foundCert.formattedBarcode;
+                        if (dateVal) dateVal.textContent = foundCert.registeredAt;
+
+                        certModal.classList.add('active');
+                    }
+                }
+            }
+        });
+    });
+}
+
+export function deleteSingleUserAccount(email) {
+    if (!email) return;
+    const lang = getCurrentLang();
+    if (!confirm(lang === 'tr' ? `${email} e-posta adresine sahip kaydı silmek istediğinize emin misiniz?` : `Are you sure you want to delete ${email}?`)) return;
+
+    let existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
+    let certDb = JSON.parse(localStorage.getItem('ruh_certificates_db') || '[]');
+
+    existingAccounts = existingAccounts.filter(a => a.email.toLowerCase() !== email.toLowerCase());
+    certDb = certDb.filter(c => c.email && c.email.toLowerCase() !== email.toLowerCase());
+
+    localStorage.setItem('ruh_accounts', JSON.stringify(existingAccounts));
+    localStorage.setItem('ruh_certificates_db', JSON.stringify(certDb));
+
+    renderAdminDashboardData();
+    showCustomAlert(lang === 'tr' ? `${email} kaydı sistemden silindi.` : `Deleted ${email} from system.`, null, 'success');
+}
+
+export function resetAllTestLogs() {
+    const lang = getCurrentLang();
+    const confirmMsg = lang === 'tr' 
+        ? 'TÜM TEST KAYITLARINI SIFIRLAMAK İSTEDİĞİNİZE EMİN MİSİNİZ?\n\nBu işlem sistemdeki tüm kullanıcı başvurularını ve tescilli sertifikaları tamamen temizleyecektir.'
+        : 'ARE YOU SURE YOU WANT TO RESET ALL TEST LOGS?\n\nThis will clear all user applications and certificates.';
+        
+    if (!confirm(confirmMsg)) return;
+
+    localStorage.removeItem('ruh_accounts');
+    localStorage.removeItem('ruh_certificates_db');
+
+    if (currentUser && currentUser.role !== 'ADMIN') {
+        currentUser = null;
+        localStorage.removeItem('ruh_current_user');
+        updateNavAuthButton();
+    }
+
+    renderAdminDashboardData();
+    showCustomAlert(
+        lang === 'tr' ? 'Tüm test kayıtları ve sertifika verileri başarıyla sıfırlandı!' : 'All test logs and certificate databases reset successfully!',
+        null,
+        'success'
+    );
+}
+
+export function exportUsersToCsv() {
+    const existingAccounts = JSON.parse(localStorage.getItem('ruh_accounts') || '[]');
+    const lang = getCurrentLang();
+    if (existingAccounts.length === 0) {
+        showCustomAlert(lang === 'tr' ? 'Dışa aktarılacak kayıtlı kullanıcı bulunmamaktadır.' : 'No registered users to export.', null, 'error');
+        return;
+    }
+
+    const headers = ['Sira', 'Ad Soyad', 'E-posta', 'Telefon', 'Telefon Onay', 'TC Kimlik No', 'Dijital Enerji ID', 'Barkod No', 'Protokol Seviyesi', 'Miras Escrow Tercihi', 'Kayit Tarihi'];
+    
+    const rows = existingAccounts.map((acc, i) => [
+        i + 1,
+        `"${(acc.fullName || '').replace(/"/g, '""')}"`,
+        `"${(acc.email || '').replace(/"/g, '""')}"`,
+        `"${(acc.phone || '').replace(/"/g, '""')}"`,
+        acc.phoneVerified ? 'Evet' : 'Hayir',
+        `"${(acc.identityNo || '').replace(/"/g, '""')}"`,
+        `"${(acc.energyId || '').replace(/"/g, '""')}"`,
+        `"${formatBarcode(acc.barcode)}"`,
+        `"${(acc.tierName || '').replace(/"/g, '""')}"`,
+        `"${(acc.inheritanceStatus || '').replace(/"/g, '""')}"`,
+        `"${(acc.registeredAt || '').replace(/"/g, '""')}"`
+    ]);
+
+    const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `RUH_Project_Kayitli_Kullanicilar_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 export function openProfileModal() {

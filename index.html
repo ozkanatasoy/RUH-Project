@@ -682,16 +682,26 @@
 
                             <!-- Account Password Creation Fields -->
                             <div class="form-group" style="margin-bottom: 16px;">
-                                <label data-i18n="lblCreatePassword">Kullanıcı Şifresi Oluştur (Sosyal Medya Güvenlik Kuralları) *</label>
-                                <input type="password" class="form-control" id="regPassword" placeholder="Örn: Ruh2026!" data-i18n-placeholder="phPassword" required>
+                                <label data-i18n="lblCreatePassword">Kullanıcı Şifresi Oluştur *</label>
+                                <div class="password-input-wrapper" style="position: relative;">
+                                    <input type="password" class="form-control" id="regPassword" name="new-password" autocomplete="new-password" placeholder="Örn: Ruh2026!" data-i18n-placeholder="phPassword" required style="padding-right: 44px;">
+                                    <button type="button" class="btn-toggle-password" data-target="regPassword" aria-label="Şifreyi Göster/Gizle" title="Şifreyi Göster/Gizle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; font-size: 1rem; transition: color 0.2s;">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
                                 <p class="form-hint" style="margin-top: 6px; font-size: 0.82rem; color: var(--text-muted);">
                                     <i class="fa-solid fa-shield"></i> En az 8 karakter, 1 büyük harf, 1 küçük harf ve 1 rakam içermelidir.
                                 </p>
                             </div>
 
                             <div class="form-group" style="margin-bottom: 24px;">
-                                <label data-i18n="lblConfirmPassword">Şifreyi Tekrar Girin (Onay) *</label>
-                                <input type="password" class="form-control" id="regPasswordConfirm" placeholder="Şifrenizi tekrar giriniz" data-i18n-placeholder="phConfirmPassword" required>
+                                <label data-i18n="lblConfirmPassword">Şifreyi Tekrar Girin *</label>
+                                <div class="password-input-wrapper" style="position: relative;">
+                                    <input type="password" class="form-control" id="regPasswordConfirm" name="new-password-confirm" autocomplete="new-password" placeholder="Şifrenizi tekrar giriniz" data-i18n-placeholder="phConfirmPassword" required style="padding-right: 44px;">
+                                    <button type="button" class="btn-toggle-password" data-target="regPasswordConfirm" aria-label="Şifreyi Göster/Gizle" title="Şifreyi Göster/Gizle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; font-size: 1rem; transition: color 0.2s;">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
                                 <span id="passMatchStatus" style="font-size: 0.82rem; margin-top: 6px; display: block; font-weight: 600;"></span>
                             </div>
 
@@ -1118,14 +1128,19 @@
                 <button class="modal-close" id="closeLoginModalBtn" aria-label="Kapat / Close Modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="loginForm" onsubmit="return false;">
+                <form id="loginForm" method="POST" action="javascript:void(0);">
                     <div class="form-group" style="margin-bottom: 18px;">
                         <label data-i18n="lblLoginEmail">E-posta Adresi *</label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Kayıtlı E-posta Adresiniz" data-i18n-placeholder="phLoginEmail" required>
+                        <input type="email" class="form-control" id="loginEmail" name="username" autocomplete="username email" placeholder="Kayıtlı E-posta Adresiniz" data-i18n-placeholder="phLoginEmail" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 16px;">
                         <label data-i18n="lblLoginPass">Şifre *</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Kullanıcı Şifreniz" data-i18n-placeholder="phLoginPass" required>
+                        <div class="password-input-wrapper" style="position: relative;">
+                            <input type="password" class="form-control" id="loginPassword" name="password" autocomplete="current-password" placeholder="Kullanıcı Şifreniz" data-i18n-placeholder="phLoginPass" required style="padding-right: 44px;">
+                            <button type="button" class="btn-toggle-password" data-target="loginPassword" aria-label="Şifreyi Göster/Gizle" title="Şifreyi Göster/Gizle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; font-size: 1rem; transition: color 0.2s;">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
                     </div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;">
                         <label style="display: flex; align-items: center; gap: 8px; font-size: 0.88rem; cursor: pointer; color: var(--text-muted); margin: 0;">
@@ -1134,7 +1149,7 @@
                         </label>
                         <a href="#" id="forgotPassLink" style="font-size: 0.88rem; color: var(--color-cyan); text-decoration: none;" data-i18n="btnForgotPass">Şifremi Unuttum?</a>
                     </div>
-                    <button type="button" class="btn btn-glow" id="submitLoginBtn" style="width: 100%;">
+                    <button type="submit" class="btn btn-glow" id="submitLoginBtn" style="width: 100%;">
                         <i class="fa-solid fa-key"></i> <span data-i18n="btnLoginSubmit">Oturum Aç</span>
                     </button>
                 </form>
@@ -1235,6 +1250,91 @@
             </div>
         </div>
     </div>
+
+    <!-- System Admin Dashboard Modal -->
+    <div class="modal-backdrop" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+        <div class="modal-dialog" style="max-width: 1050px; width: 95%;">
+            <div class="modal-header" style="border-bottom: 1px solid rgba(255, 215, 0, 0.3);">
+                <h3 id="adminModalTitle" style="color: var(--color-gold);">
+                    <i class="fa-solid fa-user-shield highlight-gold"></i>
+                    <span data-i18n="adminModalTitle">RUH Project - Sistem Yönetici & Kayıt Kontrol Paneli</span>
+                </h3>
+                <button class="modal-close" id="closeAdminModalBtn" aria-label="Kapat / Close Modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 24px;">
+                <!-- Admin Top Statistics Cards -->
+                <div class="grid grid-4 admin-stats-grid" style="gap: 16px; margin-bottom: 24px;">
+                    <div class="cyber-card admin-stat-card" style="padding: 18px; text-align: center; border-color: rgba(0, 242, 254, 0.3);">
+                        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em;" data-i18n="adminStatUsers">TOPLAM KAYITLI KULLANICI</div>
+                        <div id="adminTotalUsers" style="font-size: 2rem; font-weight: 800; color: var(--color-primary); margin-top: 4px;" class="font-heading">0</div>
+                    </div>
+                    <div class="cyber-card admin-stat-card" style="padding: 18px; text-align: center; border-color: rgba(255, 215, 0, 0.3);">
+                        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em;" data-i18n="adminStatCerts">TESCİLLİ SERTİFİKA SAYISI</div>
+                        <div id="adminTotalCerts" style="font-size: 2rem; font-weight: 800; color: var(--color-gold); margin-top: 4px;" class="font-heading">0</div>
+                    </div>
+                    <div class="cyber-card admin-stat-card" style="padding: 18px; text-align: center; border-color: rgba(0, 255, 136, 0.3);">
+                        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em;" data-i18n="adminStatPhone">DOĞRULANMIŞ TELEFONLAR</div>
+                        <div id="adminVerifiedPhone" style="font-size: 2rem; font-weight: 800; color: #00ff88; margin-top: 4px;" class="font-heading">0</div>
+                    </div>
+                    <div class="cyber-card admin-stat-card" style="padding: 18px; text-align: center; border-color: rgba(121, 40, 202, 0.4);">
+                        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700; letter-spacing: 0.05em;" data-i18n="adminStatDonations">TOPLAM BAĞIŞ TUTARI</div>
+                        <div id="adminTotalDonations" style="font-size: 2rem; font-weight: 800; color: #b57edc; margin-top: 4px;" class="font-heading">$0</div>
+                    </div>
+                </div>
+
+                <!-- Admin Action Toolbar -->
+                <div class="admin-toolbar" style="display: flex; gap: 14px; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                    <div style="position: relative; flex: 1; min-width: 260px;">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        <input type="text" id="adminSearchInput" class="form-control" placeholder="Kayıtlarda Ara (Ad, E-posta, TC, Enerji ID, Barkod...)" data-i18n-placeholder="phAdminSearch" style="padding-left: 40px; border-color: rgba(0, 242, 254, 0.3);">
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button type="button" class="btn btn-outline btn-sm" id="btnAdminExportCsv" style="border-color: var(--color-primary); color: var(--color-primary);">
+                            <i class="fa-solid fa-file-csv"></i> <span data-i18n="btnAdminExportCsv">CSV Olarak İndir</span>
+                        </button>
+                        <button type="button" class="btn btn-outline btn-sm" id="btnAdminResetAll" style="border-color: rgba(255, 80, 80, 0.6); color: #ff6b6b; background: rgba(255, 80, 80, 0.08);">
+                            <i class="fa-solid fa-trash-can"></i> <span data-i18n="btnAdminResetAll">Tüm Kayıtları Sıfırla</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Users List Table Container -->
+                <div class="admin-table-wrapper" style="overflow-x: auto; max-height: 440px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: rgba(10, 14, 26, 0.95);">
+                    <table class="admin-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+                        <thead style="position: sticky; top: 0; background: #121624; z-index: 10; border-bottom: 1px solid rgba(0, 242, 254, 0.3);">
+                            <tr>
+                                <th style="padding: 12px 14px; color: var(--color-primary);">#</th>
+                                <th style="padding: 12px 14px; color: var(--text-main);" data-i18n="thAdminName">Ad Soyad</th>
+                                <th style="padding: 12px 14px; color: var(--text-main);" data-i18n="thAdminEmail">E-posta</th>
+                                <th style="padding: 12px 14px; color: var(--text-main);" data-i18n="thAdminPhone">Telefon</th>
+                                <th style="padding: 12px 14px; color: var(--text-main);" data-i18n="thAdminIdentity">TC / Pasaport</th>
+                                <th style="padding: 12px 14px; color: var(--color-primary);" data-i18n="thAdminEnergyId">Enerji ID</th>
+                                <th style="padding: 12px 14px; color: var(--color-gold);" data-i18n="thAdminBarcode">Barkod No</th>
+                                <th style="padding: 12px 14px; color: var(--text-main);" data-i18n="thAdminInheritance">Miras Escrow</th>
+                                <th style="padding: 12px 14px; color: var(--text-main);" data-i18n="thAdminDate">Kayıt Tarihi</th>
+                                <th style="padding: 12px 14px; text-align: center; color: var(--text-main);" data-i18n="thAdminActions">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminUsersTableBody">
+                            <!-- Dynamic rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer" style="justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-outline btn-sm" id="adminLogoutBtn" style="border-color: rgba(255, 80, 80, 0.6); color: #ff6b6b; background: rgba(255, 80, 80, 0.08);">
+                    <i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="btnLogout">Oturumu Kapat</span>
+                </button>
+                <div style="font-size: 0.85rem; color: var(--text-muted);">
+                    <i class="fa-solid fa-shield-halved highlight-gold"></i> <span data-i18n="adminFooterNotice">R.U.H. Incorporation Yüksek Güvenlikli Yönetici Paneli</span>
+                </div>
+                <button type="button" class="btn btn-glow btn-sm" id="closeAdminModalFooterBtn">
+                    <i class="fa-solid fa-xmark"></i> <span data-i18n="btnClose">Kapat</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Custom Cyber Validation Warning Modal -->
     <div class="modal-backdrop" id="validationAlertModal" role="dialog" aria-modal="true" aria-labelledby="validationModalTitle">
